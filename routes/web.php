@@ -2,11 +2,13 @@
 
 
 
-Route::redirect('/login', '/login');
+
 
 Route::get('/', function () {
-    return view('errors/503');
+    return view('home');
 });
+
+Route::redirect('/login', '/login');
 
 Route::get('/admin', function () {
     if (session('status')) {
