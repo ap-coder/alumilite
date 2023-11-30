@@ -1,5 +1,8 @@
 <?php
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('r', function () {
     function philsroutes()
@@ -34,9 +37,7 @@ Route::get('r', function () {
 })->name('assigned-routes');
 
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Route::redirect('/login', '/login');
 
