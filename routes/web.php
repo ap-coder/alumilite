@@ -1,7 +1,14 @@
 <?php
 
-Route::redirect('/', '/login');
-Route::get('/home', function () {
+
+
+Route::redirect('/login', '/login');
+
+Route::get('/', function () {
+    return view('errors/503');
+});
+
+Route::get('/admin', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
     }
@@ -41,6 +48,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
     Route::resource('products', 'ProductController');
 });
+
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
     if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
@@ -50,3 +58,11 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+
+
+Route::get('logout', function () {
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/');
+})->name('user.logout');
