@@ -1,8 +1,8 @@
 <?php
 
 Route::get('/', function () {
-    return view('site.home');
-})->('home');
+    return view('site.index');
+})->('site.home');
 
 
 Route::get('r', function () {
