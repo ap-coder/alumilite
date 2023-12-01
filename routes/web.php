@@ -2,7 +2,7 @@
 
 Route::get('/', function () {
     return view('site.index');
-})->('site.home');
+})->name('site.home');
 
 
 Route::get('r', function () {
