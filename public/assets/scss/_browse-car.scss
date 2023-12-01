@@ -1,0 +1,131 @@
+
+
+
+/*===========================
+       06.Browse car css 
+===========================*/
+
+
+.browse-area{
+    padding-top: 115px;
+    padding-bottom: 117px;
+    background-color: $gray;
+
+       @media #{$lg}{
+              padding-top: 95px;
+              padding-bottom: 97px;
+       }
+       @media #{$md}{
+              padding-top: 75px;
+              padding-bottom: 77px;
+       }
+       @media #{$xs}{
+              padding-top: 55px;
+              padding-bottom: 57px;
+       }
+}
+
+.single-browse-item{
+       padding-top: 35px;
+
+       & a{
+              display: block;
+              position: relative;
+
+              & img{
+                     
+              }
+              & .title{
+                     font-size: 16px;
+                     font-weight: 700;
+                     margin: 20px 0 0;
+                     text-transform: uppercase;
+                     transition: all .3s;
+                     text-align: center;
+                     color: $heading-color;
+                     @include transition(0.3s);
+
+                     @media #{$md}{
+                            font-size: 14px;
+                     }
+                     @media #{$xs}{
+                            font-size: 14px;
+                     }
+              }
+
+              &:hover{
+                     & .title{
+                            color: $theme-color;
+                     }
+              }
+       }
+}
+
+.browse-wrapper{
+       position: relative;
+       padding-top: 40px;
+
+       & .browse-more{
+              position: absolute;
+              top: -32px;
+              right: 0;
+              margin-top: 5px;
+
+              @media #{$xs}{
+                     position: relative;
+                     text-align: center;
+                     top: 0;
+                     margin-top: 0;
+                     padding-top: 40px;
+              }
+
+              & .more{
+                     color: $heading-color;
+                     text-transform: uppercase;
+                     font-weight: 700;
+                     font-size: 14px;
+              }
+       }
+}
+
+
+/*===== Browse Dark =====*/
+
+.browse-dark{
+       background-color: #202424;
+
+       & .section-title {
+              & .title{
+                     color: $white;
+              }
+       }   
+       
+       & .single-browse-item{       
+              & a{       
+                     & img{
+                            
+                     }
+                     & .title{                            
+                            color: $white;
+                     }
+       
+                     &:hover{
+                            & .title{
+                                   color: $theme-color;
+                            }
+                     }
+              }
+       }
+
+       & .browse-wrapper{       
+              & .browse-more{       
+                     & .more{
+                            color: #7a8395;
+                     }
+              }
+       }
+}
+
+
+
+

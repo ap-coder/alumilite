@@ -1,0 +1,302 @@
+
+
+
+/*===========================
+       18.Team css 
+===========================*/
+
+.team-area{
+       padding-top: 115px;
+       padding-bottom: 115px;
+
+       @media #{$lg}{
+              padding-top: 95px;
+              padding-bottom: 95px;
+       }
+       @media #{$md}{
+              padding-top: 75px;
+              padding-bottom: 75px;
+       }
+       @media #{$xs}{
+              padding-top: 55px;
+              padding-bottom: 55px;
+       }
+}
+
+.team-wrapper{
+       border-top: 1px solid #cfd3d8;
+       padding-top: 115px;
+       padding-bottom: 120px;
+
+       @media #{$lg}{
+              padding-top: 95px;
+              padding-bottom: 100px;
+       }
+       @media #{$md}{
+              padding-top: 75px;
+              padding-bottom: 80px;
+       }
+       @media #{$xs}{
+              padding-top: 55px;
+              padding-bottom: 60px;
+       }
+}
+
+.team-col{
+       padding-left: 15px;
+       padding-right: 15px;
+}
+
+.single-team{
+       margin-top: 50px;
+
+       & .team-image{
+              position: relative;
+              overflow: hidden;
+              border-radius: 3px;
+
+              & img{
+                     width: 100%;
+              }
+              & .team-hover{
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 100%;
+                     height: 100%;
+                     background-color: #f1f2f4;
+                     padding: 30px;
+                     @include transform(translateY(100%));
+                     @include transition(0.3s);
+
+                     @media #{$laptop}{
+                            padding: 25px;
+                     }
+                     @media #{$sm}{
+                            padding: 15px;
+                     }
+                     
+                     & .team-meta{
+                            & li{
+                                   font-size: 16px;
+                                   color: $body-color;
+
+                                   & + li{
+                                          margin-top: 10px;
+                                   }
+
+                                   & i{
+                                          margin-right: 3px;
+                                   }
+
+                                   & strong{
+                                          color: $heading-color;
+
+                                          & a{
+                                                 color: $heading-color;
+                                                 @include transition(0.3s);
+                                                 
+                                                 &:hover{
+                                                        color: #e9490a;
+                                                 }
+                                          }
+                                   }
+                            }
+                     }
+
+                     & .team-social{
+                            position: absolute;
+                            bottom: 30px;
+                            left: 30px;
+
+                            & li{
+                                   display: inline-block;
+
+                                   & + li{
+                                          margin-left: 20px;
+                                   }
+
+                                   & a{
+                                          font-size: 16px;
+                                          color: $body-color;
+                                          @include transition(0.3s);
+
+                                          &:hover{
+                                                 color: #e9490a;
+                                          }
+                                   }
+                            }
+                     }
+              }
+       }
+       & .team-content{
+              & .name{
+                     & a{
+                            font-size: 20px;
+                            font-weight: 700;
+                            font-family: $font-2;
+                            color: $heading-color;
+                            margin-top: 20px;
+                            position: relative;
+
+                            &::before{
+                                   position: absolute;
+                                   content: '';
+                                   width: 100%;
+                                   height: 1px;
+                                   background-color: $heading-color;
+                                   left: 0;
+                                   bottom: 0;
+                                   opacity: 0;
+                                   visibility: hidden;
+                                   @include transition(0.3s);
+                            }
+                            &:hover{
+                                   &::before{
+                                          opacity: 1;
+                                          visibility: visible;
+                                   }
+                            }
+                     }
+              }
+              & .designation{
+                     font-size: 16px;
+                     color: $body-color;
+                     margin-top: 5px;
+              }
+              
+       }
+
+
+       &:hover{
+              & .team-image{
+                     & .team-hover{
+                            @include transform(translateY(0)); 
+                     }
+              }
+       }
+}
+
+
+.team-active{
+       & .slick-arrow{
+              font-size: 16px;
+              width: 25px;
+              height: 25px;
+              line-height: 25px;
+              text-align: center;              
+              border-radius: 2px;
+              color: $white;
+              background: #c2cad9;
+              cursor: pointer;
+              @include transition(0.3s);
+              position: absolute;
+              top: -52px;
+              right: 15px;
+              z-index: 5;
+              padding: 0;
+              
+              &.prev{
+                     right: 47px;
+              }
+
+              &:hover{
+                     background-color: #e9490a;
+              }
+       }
+       & .slick-dots{
+              text-align: center;
+              width: 100%;
+              margin-top: 20px;
+                          
+              & li{
+                    display: inline-block;
+                    margin: 0 5px;
+  
+                    & button{
+                          width: 10px;
+                          height: 10px;
+                          border-radius: 50%;
+                          font-size: 0;
+                          background-color: #737f96;
+                          border: 0;
+                          cursor: pointer;
+                          @include transition(0.3s);
+                    }
+  
+                    &.slick-active{
+                          & button{
+                                background-color: $theme-color;
+                          }
+                    }
+              }
+       }
+}
+
+
+/*===== Team Dark =====*/
+
+.team-dark{
+       background-color: #1b1f28;
+
+       & .section-title-3{            
+              & .main-title{
+                    color: $white;
+              }
+        }
+        & .team-active{
+              & .slick-arrow{
+                    color: $white;
+                    background: #3e485a;
+      
+                    &:hover{
+                          background-color: $theme-color;
+                          color: $white;
+                    }
+              }
+        }
+
+        & .single-team{       
+              & .team-image{
+                     & .team-hover{
+                            background-color: #222e3f;
+
+                            & .team-meta{
+                                   & li{       
+                                          & strong{
+                                                 color: $white;
+       
+                                                 & a{
+                                                        color: $white;
+                                                        
+                                                        &:hover{
+                                                               color: #e9490a;
+                                                        }
+                                                 }
+                                          }
+                                   }
+                            }
+                     }
+              }
+              & .team-content{
+                     & .name{
+                            & a{
+                                   color: $white;
+       
+                                   &::before{
+                                          background-color: $white;
+                                   }
+                                   &:hover{
+                                          &::before{
+                                                 opacity: 1;
+                                                 visibility: visible;
+                                          }
+                                   }
+                            }
+                     }                     
+              }
+       }
+}
+
+
+

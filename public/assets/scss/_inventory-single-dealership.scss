@@ -1,0 +1,1023 @@
+
+
+
+/*===========================
+22.Inventory Single Dealership css 
+===========================*/
+
+
+.inventory-single-dealership-area{}
+
+
+.inventory-single-dealership-content{
+      border-bottom: 1px solid rgba($heading-color, 0.15);
+      padding-top: 70px;
+      padding-bottom: 40px;
+
+      @media #{$lg}{
+            padding-top: 50px;
+      }
+      @media #{$md}{
+            padding-top: 30px;
+      }
+      @media #{$xs}{
+            padding-top: 10px;
+      }
+
+      & .title-price{
+            padding-top: 40px;
+            position: relative;            
+
+            & .title-excerpt{
+                  & .entry-title{
+                        font-size: 36px;
+                        font-weight: 700;
+                        color: $heading-color;
+
+                        @media #{$md}{
+                              font-size: 30px;
+                        }
+                        @media #{$xs}{
+                              font-size: 24px;
+                        }
+
+                        & i{
+                              color: $theme-color;
+                              font-size: 30px;
+                              line-height: 35px;
+
+                              @media #{$md}{
+                                    font-size: 24px;
+                                    line-height: 28px;
+                              }
+                              @media #{$xs}{
+                                    font-size: 20px;
+                                    line-height: 24px;
+                              }
+                        }
+                  }
+                  & .entry-excerpt{
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: $body-color;
+                        margin-top: 5px;
+                  }
+            }
+
+            & .price{                 
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  -webkit-flex-wrap: wrap;
+                  -ms-flex-wrap: wrap;
+                  -moz-flex-wrap: wrap;
+                  flex-wrap: wrap;
+                  -webkit-box-align: flex-end;
+                  -ms-flex-align: flex-end;
+                  align-items: flex-end;
+                  -webkit-box-pack: space-between;
+                  -ms-flex-pack: space-between;
+                  justify-content: space-between;
+                  margin-top: 10px;
+                  
+                  & .price-amount{
+                        font-size: 40px;
+                        line-height: 45px;
+                        color: $theme-color;
+                        font-weight: 700;
+                        font-style: italic;
+                        font-family: $font-1;
+                        
+                        @media #{$lg}{
+                              font-size: 30px;
+                        }
+                        @media #{$md}{
+                              font-size: 30px;
+                        }
+                        @media #{$xs}{
+                              font-size: 24px;
+                        }
+                  }
+                  & .sale-price{
+                        font-size: 40px;
+                        line-height: 45px;
+                        color: #ec3922;
+                        font-weight: 700;
+                        font-style: italic;
+                        font-family: $font-1;
+
+                        @media #{$lg}{
+                              font-size: 30px;
+                        }
+                        @media #{$md}{
+                              font-size: 30px;
+                        }
+                        @media #{$xs}{
+                              font-size: 24px;
+                        }
+                  }
+                  & .regular-price {
+                        color: #737f96;
+                        text-decoration: line-through;
+                        font-size: 22px;
+                        margin-left: 10px;
+                        font-weight: 400;
+                        position: relative;
+                        top: 3px;
+                        font-style: italic;
+                  }                  
+                  & .sold{
+                        font-size: 40px;
+                        line-height: 45px;
+                        color: $body-color;
+                        font-weight: 700;
+                        font-style: italic;
+                        font-family: $font-1;
+
+                        @media #{$lg}{
+                              font-size: 30px;
+                        }
+                        @media #{$md}{
+                              font-size: 30px;
+                        }
+                        @media #{$xs}{
+                              font-size: 24px;
+                        }
+                  }
+
+                  & .msrp{
+                        font-size: 18px;
+                        color: $body-color;
+                        margin-top: 5px;
+                        margin-left: 20px;
+
+                        @media #{$lg}{
+                              font-size: 16px;
+                        }
+                        @media #{$md}{
+                              font-size: 16px;
+                        }
+                        @media #{$xs}{
+                              text-align: left;
+                              font-size: 16px;
+                        }
+
+                        & strong{
+                              font-size: 22px;
+                              font-weight: 700;
+                              color: $heading-color;
+
+                              @media #{$lg}{
+                                    font-size: 20px;
+                              }
+                              @media #{$md}{
+                                    font-size: 20px;
+                              }
+                              @media #{$xs}{
+                                    font-size: 18px;
+                              }
+                        }
+                  }
+          }
+      }
+
+      & .listing-social{
+
+            & .listing-btn{
+                  padding-top: 30px;
+
+                  & .listing-actions{
+                        & li{
+                              display: inline-block;
+                              margin-right: 8px;
+                              margin-top: 10px;
+
+                              &:last-child{
+                                    margin-right: 0;
+                              }
+
+                              & a{
+                                    background-color: #edeff1;
+                                    font-size: 16px;
+                                    font-weight: 700;
+                                    color: $heading-color;
+                                    text-transform: uppercase;
+                                    @include transition(0.3s);
+                                    height: 40px;
+                                    line-height: 40px;
+                                    padding: 0 15px;
+                                    border-radius: 3px;
+
+                                    @media #{$lg}{
+                                          font-size: 14px;
+                                    }
+                                    @media #{$xs}{
+                                          font-size: 14px;
+                                          height: 30px;
+                                          line-height: 30px;
+                                    }
+                                    & i{
+                                          margin-right: 3px;
+                                    }
+
+                                    &:hover{
+                                          background-color: $theme-color;
+                                          color: $white;
+                                    }
+                              }
+                        }
+                  }
+            }
+            & .social-share{
+                  padding-top: 30px;
+
+                  & .social{
+                        & li{
+                              display: inline-block;
+                              margin-top: 10px;
+
+                              & + li{
+                                    margin-left: 8px;
+                              }
+
+                              & a{
+                                    font-size: 22px;
+                                    color: $white;
+                                    width: 40px;
+                                    height: 40px;
+                                    line-height: 40px;
+                                    text-align: center;
+                                    border-radius: 3px;
+
+                                    @media #{$xs}{
+                                          font-size: 18px;
+                                          width: 30px;
+                                          height: 30px;
+                                          line-height: 30px;
+                                    }
+
+                                    @media #{$lg}{
+                                          font-size: 18px;
+                                    }
+
+                                    &.facebook{
+                                          background-color: #2b53b8;
+                                    }
+                                    &.twitter{
+                                          background-color: #0096ff;
+                                    }
+                                    &.googleplus{
+                                          background-color: #bf2828;
+                                    }
+                                    &.tumblr{
+                                          background-color: #2b4873;
+                                    }
+                                    &.rss{
+                                          background-color: #f37214;
+                                    }
+                              }
+                        }
+                  }
+            }            
+      }
+}
+
+
+
+.inventory-single-dealership-main{
+      padding-top: 50px;
+      padding-bottom: 120px;
+
+      @media #{$lg}{
+            padding-bottom: 100px;
+      }
+      @media #{$md}{
+            padding-bottom: 80px;
+      }
+      @media #{$xs}{
+            padding-bottom: 50px;
+      }
+}
+
+.inventory-single-dealership-gallery{
+      margin-top: 30px;
+
+      & .dealership-gallery-active{
+            & .slick-arrow{
+                  position: absolute;
+                  top: 50%;
+                  @include transform(translateY(-50%));
+                  text-align: center;
+                  z-index: 5;
+                  width: 45px;
+                  line-height: 45px;
+                  height: 45px;
+                  font-size: 26px;
+                  color: $heading-color;
+                  border-radius: 2px;
+                  background: $white;
+                  @include transition(0.3s);
+                  left: 20px;
+                  cursor: pointer;
+
+                  @media #{$xs}{
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        font-size: 18px;
+                        left: 10px;
+                  }
+                  
+                  &.next{
+                        left: auto;
+                        right: 20px;
+
+                        @media #{$xs}{
+                              right: 0;
+                        }
+                  }
+  
+                  &:hover{
+                        background-color: $theme-color;
+                        color: $white;
+                  }
+            }
+      }
+
+      & .single-dealership-gallery{
+            & img{
+                  width: 100%;
+            }
+      }
+
+      & .dealership-gallery-thumb-active{
+            margin-left: -10px;
+            margin-right: -10px;
+            margin-top: 20px;
+
+            & .thumb-col{
+                  padding: 0 10px;
+            }
+
+            & .slick-arrow{
+                  position: absolute;
+                  top: 50%;
+                  @include transform(translateY(-50%));
+                  text-align: center;
+                  z-index: 5;
+                  width: 25px;
+                  line-height: 25px;
+                  height: 25px;
+                  font-size: 16px;
+                  color: $heading-color;
+                  border-radius: 2px;
+                  background: $white;
+                  @include transition(0.3s);
+                  left: 10px;
+                  cursor: pointer;
+                  
+                  &.next{
+                          left: auto;
+                          right: 10px;
+                  }
+  
+                  &:hover{
+                          background-color: $theme-color;
+                          color: $white;
+                  }
+            }
+      }
+
+      & .single-dealership-thumb{
+            cursor: pointer;
+            border: 2px solid $white;
+            @include transition(0.3s);
+
+            & img{
+                  width: 100%;
+            }
+            &:hover{
+                  border-color: #63ffa5;
+            }
+      }
+      & .slick-current{
+            & .single-dealership-thumb{
+                  border-color: #63ffa5;
+            }
+      }
+}
+
+
+
+.inventory-single-dealership-tab{
+      padding-top: 60px;
+
+      & .nav{
+            background-color: #edeff1;
+
+            & li{
+                  @media #{$xs}{
+                        width: 50%;
+                  }
+
+                  & a{
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: #969fb0;
+                        text-transform: uppercase;
+                        padding: 15px 20px;
+                        display: block;
+
+                        @media #{$xs}{
+                              font-size: 14px;
+                              padding: 15px;
+                              text-align: center;
+                        }
+
+                        &.active{
+                              color: $heading-color;
+                        }
+                  }
+            }
+      }
+
+      & .inventory-dealership-overview{
+            margin-top: 35px;
+
+            & p{
+                  font-size: 16px;
+            }
+      }
+
+      & .inventory-dealership-specifications{
+            padding-top: 35px;
+
+            & .table{
+                  & tbody{
+                        & tr{
+                              & th{
+                                    padding: 7px 0;
+                                    font-size: 16px;
+                                    color: $body-color;
+                                    vertical-align: middle;
+                                    line-height: 30px;
+
+                                    & i{
+                                          font-size: 20px;
+                                          line-height: 30px;
+                                          margin-right: 5px;
+                                    }
+                              }
+                              & td{
+                                    padding: 7px 0;
+                                    color: $heading-color;
+                                    font-size: 16px;
+                                    vertical-align: middle;
+
+                                    & .color-items{
+                                          display: -webkit-flex;
+                                          display: -moz-flex;
+                                          display: -ms-flex;
+                                          display: -o-flex;
+                                          display: flex;
+
+                                          & li{
+                                                & + li{
+                                                      margin-left: 5px;
+                                                }
+                                                width: 17px;
+                                                height: 17px;
+                                                border-radius: 3px;
+                                                border: 1px solid rgba($heading-color, 0.15);
+                                          }
+                                    }
+                              }
+                        }
+                  }
+            }
+      }
+
+      & .inventory-dealership-features{
+            padding-top: 5px;
+
+            & .features-list{
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  -webkit-flex-wrap: wrap;
+                  -ms-flex-wrap: wrap;
+                  -moz-flex-wrap: wrap;
+                  flex-wrap: wrap;
+                  padding-top: 20px;
+
+                  & li{
+                        width: 33.33%;
+                        margin-top: 15px;
+                        font-size: 16px;
+                        color: $body-color;
+
+                        @media #{$xs}{
+                              width: 100%;
+                        }
+                        @media #{$sm}{
+                              width: 50%;
+                        }
+
+                        & i{
+                              color: $theme-color;
+                              font-size: 16px;
+                              margin-right: 5px;
+                        }
+                  }
+            }
+      }
+
+      & .inventory-dealership-review{
+            & .point-rating{
+                  background-color: #f2f3f5;
+                  padding: 0 30px 30px;
+                  margin-top: 50px;
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  -webkit-flex-wrap: wrap;
+                  -ms-flex-wrap: wrap;
+                  -moz-flex-wrap: wrap;
+                  flex-wrap: wrap;
+
+                  @media #{$xs}{
+                        padding: 0 15px 15px;
+                  }
+
+                  & .rating-score{
+                        padding-top: 28px;
+                        width: 30%;
+
+                        @media #{$lg}{
+                              width: 33%;
+                        }
+                        @media #{$xs}{
+                              width: 100%;
+                              text-align: center;
+                              padding-top: 13px;
+                        }
+
+                        & .score-title{
+                              font-size: 16px;
+                              font-weight: 400;
+                              color: $heading-color;
+                              font-family: $font-2;
+                        }
+                        & .score-point{
+                              font-size: 72px;
+                              font-weight: 400;
+                              color: #669900;
+                              line-height: 60px;
+                              margin-top: 15px;
+                        }
+                        & .score-star{
+                              display: -webkit-flex;
+                              display: -moz-flex;
+                              display: -ms-flex;
+                              display: -o-flex;
+                              display: flex;
+                              margin-top: 5px;
+
+                              @media #{$xs}{
+                                    -webkit-box-pack: center;
+                                    -ms-flex-pack: center;
+                                    justify-content: center;
+                              }
+
+                              & .star{
+                                    display: -webkit-flex;
+                                    display: -moz-flex;
+                                    display: -ms-flex;
+                                    display: -o-flex;
+                                    display: flex;
+
+                                    & li{
+                                          font-size: 24px;
+                                          color: #a4a9b0;
+                                          line-height: 26px;
+
+                                          &.rating-on{
+                                                color: #fcb800;
+                                          }
+                                    }
+                              }
+                              & span{
+                                    font-size: 14px;
+                                    color: $body-color;
+                                    line-height: 26px;
+                                    margin-left: 8px;
+                              }
+                        }
+                  }
+
+                  & .rating-progress{
+                        width: 70%;
+                        padding-top: 25px;
+
+                        @media #{$lg}{
+                              width: 67%;
+                        }
+                        @media #{$xs}{
+                              width: 100%;
+                              padding-top: 10px;
+                        }
+
+                        & .single-progress{
+                              display: -webkit-flex;
+                              display: -moz-flex;
+                              display: -ms-flex;
+                              display: -o-flex;
+                              display: flex;
+                              -webkit-flex-wrap: wrap;
+                              -ms-flex-wrap: wrap;
+                              -moz-flex-wrap: wrap;
+                              flex-wrap: wrap;
+                              -webkit-box-align: center;
+                              -ms-flex-align: center;
+                              align-items: center;
+                              margin-top: 5px;
+
+                              & .progress-star{
+                                    width: 70px;
+
+                                    @media #{$lg}{
+                                          width: 55px;
+                                    }
+                                    @media #{$xs}{
+                                          width: 55px;
+                                    }
+                                    @media #{$sm}{
+                                          width: 70px;
+                                    }
+
+                                    & span{
+                                          font-size: 14px;
+                                          line-height: 18px;
+                                          font-weight: 700;
+                                          color: $heading-color;
+                                    }
+                              }
+                              & .progress-line{
+                                    width: 74%;
+                                    height: 14px;
+                                    background-color: #e1e3e6;
+                                    position: relative;
+                                    margin-left: auto;
+
+                                    @media #{$laptop}{
+                                          width: 70%;
+                                    }
+                                    @media #{$lg}{
+                                          width: 70%;
+                                    }
+                                    @media #{$md}{
+                                          width: 68%;
+                                    }
+                                    @media #{$xs}{
+                                          width: 61%;
+                                    }
+                                    @media #{$sm}{
+                                          width: 70%;
+                                    }
+
+                                    & .line-bar{
+                                          position: absolute;
+                                          top: 0;
+                                          left: 0;
+                                          height: 100%;
+                                          background-color: #669900;
+                                          z-index: 5;
+                                    }
+                              }
+                              & .progress-percent{
+                                    width: 70px;
+                                    text-align: right;
+
+                                    @media #{$lg}{
+                                          width: 50px;
+                                    }
+                                    @media #{$xs}{
+                                          width: 40px;
+                                    }
+                                    @media #{$sm}{
+                                          width: 70px;
+                                    }
+
+                                    & span{
+                                          font-size: 14px;
+                                          line-height: 18px;
+                                          color: $body-color;
+                                          font-weight: 400;
+                                    }
+                              }
+                        }
+                  }
+            }
+
+            & .reviews-comment{
+                  padding-top: 15px;
+
+                  & .reviews-comments-items{
+                        & > li{
+                              & + li{
+                                    border-top: 1px solid rgba($heading-color, 0.15);
+                              }
+                        }
+
+                        & .single-reviews-comment{
+                              display: -webkit-flex;
+                              display: -moz-flex;
+                              display: -ms-flex;
+                              display: -o-flex;
+                              display: flex;
+                              padding: 35px 0;
+
+                              @media #{$xs}{
+                                    display: block;
+                              }
+                              @media #{$sm}{
+                                    display: -webkit-flex;
+                                    display: -moz-flex;
+                                    display: -ms-flex;
+                                    display: -o-flex;
+                                    display: flex;
+                              }
+                              
+                              & .comment-author{
+                                    & img{
+                                          border-radius: 50%;
+                                    }
+                              }
+                              & .comment-content{
+                                    padding-left: 30px;
+                                    -webkit-flex: 1;
+                                    -moz-flex: 1;
+                                    -ms-flex: 1;
+                                    flex: 1;	
+
+                                    @media #{$xs}{
+                                          padding-left: 0;
+                                          padding-top: 15px;
+                                    }
+                                    @media #{$sm}{
+                                          padding-left: 30px;
+                                          padding-top: 0;
+                                    }
+
+                                    & .rating-name{
+                                          display: -webkit-flex;
+                                          display: -moz-flex;
+                                          display: -ms-flex;
+                                          display: -o-flex;
+                                          display: flex;
+                                          
+                                          & .author-rating{
+                                                display: -webkit-flex;
+                                                display: -moz-flex;
+                                                display: -ms-flex;
+                                                display: -o-flex;
+                                                display: flex;
+                                                margin-right: 10px;
+
+                                                & li{
+                                                      font-size: 22px;
+                                                      color: #a4a9b0;
+                                                      line-height: 26px;
+
+                                                      @media #{$xs}{
+                                                            font-size: 18px;
+                                                            line-height: 22px;
+                                                      }
+
+                                                      &.rating-on{
+                                                            color: #fcb800;
+                                                      }
+                                                }
+                                          }
+                                          & .author-name{
+                                                & .name{
+                                                      font-size: 20px;
+                                                      font-weight: 700;
+                                                      color: $heading-color;
+                                                      font-family: $font-2;
+
+                                                      @media #{$xs}{
+                                                            font-size: 16px;
+                                                      }
+                                                }
+                                          }
+                                    }
+
+                                    & .meta{
+                                          & li{
+                                                font-size: 14px;
+                                                display: inline-block;
+                                                color: $body-color;
+                                                position: relative;
+
+                                                & + li{
+                                                      &::before{
+                                                            content: '|';
+                                                            font-size: 14px;
+                                                            color: $heading-color;
+                                                            margin: 0 7px;
+                                                      }
+                                                }
+
+                                                & a{
+                                                      color: #0099cc;
+                                                      @include transition(0.3s);
+
+                                                      &:hover{
+                                                            color: $theme-color;
+                                                      }
+                                                }
+                                          }
+                                    }
+
+                                    & p{
+                                          color: $heading-color;
+                                          font-size: 16px;
+                                          margin-top: 15px;
+                                    }
+                                    & .replay{
+                                          color: #0099cc;
+                                          font-size: 14px;
+                                          @include transition(0.3s);
+                                          margin-top: 15px;
+
+                                          &:hover{
+                                                color: $theme-color;
+                                          }
+                                    }
+                              }
+                        }
+                  }
+
+                  & .more-reviews{
+                        padding-top: 15px;
+
+                        & .more{
+                              font-size: 14px;
+                              color: $heading-color;
+                              text-transform: uppercase;
+                              font-weight: 700;
+                              position: relative;
+                              line-height: 18px;
+                              @include transition(0.3s);
+
+                              & i{
+                                    font-size: 18px;
+                              }
+
+                              &::before{
+                                    position: absolute;
+                                    content: '';
+                                    width: 100%;
+                                    height: 1px;
+                                    background-color: $heading-color;
+                                    left: 0;
+                                    bottom: 0;
+                                    @include transition(0.3s);
+                              }
+
+                              &:hover{
+                                    color: $theme-color;
+
+                                    &::before{
+                                          background-color: $theme-color;
+                                    }
+                              }
+                        }
+                  }
+            }
+
+            & .reviews-form{
+                  padding: 30px;
+                  border: 1px solid rgba($heading-color, 0.15);
+                  margin-top: 50px;
+
+                  @media #{$xs}{
+                        padding: 15px;
+                  }
+
+                  .form-title{
+                        font-size: 18px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        color: $heading-color;
+
+                        @media #{$xs}{
+                              font-size: 16px;
+                        }
+                  }
+                  & .your-rating{
+                        display: -webkit-flex;
+                        display: -moz-flex;
+                        display: -ms-flex;
+                        display: -o-flex;
+                        display: flex;
+                        margin-top: 10px;
+
+                        & p{
+                              font-size: 16px;
+                              color: $body-color;
+                              margin-top: 10px;
+                              line-height: 30px;
+                              margin-right: 15px;
+
+                              @media #{$xs}{
+                                    font-size: 14px;
+                                    margin-right: 5px;
+                                    line-height: 22px;
+                              }
+                        }
+                        & ul{
+                              margin-top: 10px;
+          
+                              & li{
+                                    display: inline-block;
+                                    color: #cccccc;
+                                    cursor: pointer;
+                                    font-size: 24px;
+                                    line-height: 30px;
+
+                                    @media #{$xs}{
+                                          font-size: 18px;
+                                          line-height: 22px;
+                                    }
+            
+                                    &.selected,
+                                    &.hover{
+                                          color: #EAB830;
+                                    }
+                              }
+                        }
+                  }
+
+                  & .form-input-items{
+                        & .single-input{
+                              margin-top: 20px;
+
+                              & input,
+                              & textarea{
+                                    width: 100%;
+                                    padding: 0 15px;
+                                    height: 45px;
+                                    border-radius: 3px;
+                                    border: 1px solid #d7dce6;
+                                    background-color: #f5f6f6;
+                                    font-size: 16px;
+                                    color: $heading-color;
+                                    @include transition(0.3s);
+
+                                    &:focus{
+                                          border-color: $heading-color;
+                                          background-color: $white;
+                                    }
+                              }
+                              & textarea{
+                                    height: 120px;
+                                    padding-top: 10px;
+                                    resize: none;
+                              }
+                        }
+                  }                  
+            }  
+      }
+}
+
+
+.inventory-single-features-car{
+      margin-top: 70px;
+
+      & .singe-title{
+            font-size: 20px;
+            font-weight: 700;
+            font-family: $font-2;
+            color: $heading-color;
+            border-bottom: 1px solid rgba($heading-color, 0.15);
+            padding-bottom: 8px;
+            text-transform: uppercase;
+
+            @media #{$xs}{
+                  font-size: 16px;
+            }
+
+            & a{
+                  color: #0099cc;
+            }
+      }
+}
+

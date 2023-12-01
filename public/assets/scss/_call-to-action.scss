@@ -1,0 +1,139 @@
+
+
+
+/*===========================
+    15.Call To Action css 
+===========================*/
+
+.call-to-action-area{
+    background-color: #ce8339;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+
+.call-to-action-content{
+    padding-top: 25px;
+
+    & .title{
+        font-size: 30px;
+        font-weight: 800;
+        font-style: italic;
+        color: $white;
+        text-transform: uppercase;
+
+        @media #{$lg}{
+            font-size: 26px;
+        }
+        @media #{$xs}{
+            font-size: 24px;
+        }
+    }
+    & p{
+        font-size: 16px;
+        color: #fae2ca;
+        margin-top: 7px;
+
+        & span{
+            color: $white;
+            font-weight: 700;
+        }
+    }
+}
+
+
+.call-to-action-btn{
+    padding-top: 20px;
+
+    & ul{
+        & li{
+            display: inline-block;
+            margin-top: 10px;
+
+            & + li{
+                margin-left: 5px;                
+            }
+
+            & .main-btn{
+                width: 180px;
+
+                @media #{$xs}{
+                    width: auto;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 14px;
+                    padding: 0 15px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+.call-to-action-2-area{
+    padding-top: 110px;
+    padding-bottom: 140px;
+}
+
+.call-to-action-2-content{
+    padding-top: 20px;
+
+    @media #{$md}{
+        text-align: center;
+    }
+    @media #{$xs}{
+        text-align: center;
+    }
+
+    & .title{
+        font-size: 48px;
+        font-weight: 800;
+        color: $white;
+        text-transform: uppercase;
+
+        @media #{$lg}{
+            font-size: 38px;
+        }
+        @media #{$md}{
+            font-size: 38px;
+        }
+        @media #{$xs}{
+            font-size: 24px;
+        }
+        @media #{$sm}{
+            font-size: 34px;
+        }
+    }
+}
+
+.call-to-action-2-btn{
+    padding-top: 30px;
+    text-align: center;
+
+    & .main-btn{
+        padding: 0 40px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 24px;
+
+        @media #{$lg}{
+            padding: 0 30px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 18px;
+        }
+        @media #{$xs}{
+            padding: 0 20px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+
+

@@ -1,0 +1,76 @@
+
+
+
+/*===========================
+      18.Page Banner css 
+===========================*/
+
+.page-banner-area{
+      padding-top: 175px;
+      padding-bottom: 185px;
+      position: relative;
+
+      @media #{$md}{
+            padding-top: 180px;
+            padding-bottom: 92px;
+      }
+      @media #{$xs}{
+            padding-top: 175px;
+            padding-bottom: 92px;
+      }
+}
+
+
+.page-banner{
+      & .breadcrumb{
+            margin-bottom: 0;
+            border-radius: 0;
+            padding: 0;
+            background: none;
+
+            & .breadcrumb-item{
+                  text-transform: uppercase;
+                  font-size: 16px;
+                  font-family: $font-1;
+                  color: $white;
+                  font-weight: 700;
+
+                  & + .breadcrumb-item{
+                        &::before{
+                              color: $white;
+                        }
+                  }
+
+                  & a{
+                        color: $white;
+                  }
+                  &.active{
+                        text-decoration: underline;
+                  }
+            }
+      }
+
+      & .page-title{
+            font-size: 80px;
+            font-weight: 800;
+            color: $white;
+            text-transform: uppercase;
+            line-height: 70px;
+            margin-top: 25px;
+
+            @media #{$md}{
+                  font-size: 50px;
+                  line-height: 55px;
+            }
+            @media #{$xs}{
+                  font-size: 30px;
+                  line-height: 35px;
+            }
+            @media #{$sm}{
+                  font-size: 40px;
+                  line-height: 45px;
+            }
+      }
+}
+
+

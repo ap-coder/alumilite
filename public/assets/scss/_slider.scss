@@ -1,0 +1,496 @@
+
+
+
+/*===========================
+        03.Slider css 
+===========================*/
+
+
+.slider-area{
+        @media #{$md}{
+                padding-top: 85px;
+        }
+        @media #{$xs}{
+                padding-top: 75px;
+        }
+
+        &.slider-2{
+                @media #{$md}{
+                        padding-top: 0;
+                }
+                @media #{$xs}{
+                        padding-top: 0;
+                } 
+        }
+}
+
+.single-slider{
+        
+}
+
+.slider-content{
+        padding: 90px 0 220px;
+
+        @media #{$md}{
+                padding: 90px 0 100px;
+        }
+        @media #{$xs}{
+                padding: 90px 0 100px;
+        }
+
+        & .sub-title{
+                font-size: 24px;
+                font-weight: 800;
+                line-height: 2.5em;
+                color: $white;
+
+                @media #{$lg}{
+                        font-size: 20px;
+                        line-height: 2em;
+                }
+                @media #{$md}{
+                        font-size: 20px;
+                        line-height: 2em;
+                }
+                @media #{$xs}{
+                        font-size: 16px;
+                        line-height: 22px;
+                }
+        }
+        & .main-title{
+                font-size: 100px;
+                font-weight: 800;
+                letter-spacing: -5px;
+                margin: 15px 0 32px -5px;
+                color: $white;
+                line-height: 60px;
+
+                @media #{$laptop}{
+                        font-size: 90px;
+                }
+                @media #{$lg}{
+                        font-size: 80px;
+                }
+                @media #{$md}{
+                        font-size: 80px;
+                }
+                @media #{$xs}{
+                        font-size: 44px;
+                        letter-spacing: 0px;
+                        line-height: 48px;
+                }
+                
+        }
+        & .sub-title-2{
+                font-family: "Great Vibes",Sans-serif;
+                letter-spacing: -1.2px;
+                margin: -45px 0 0 30px;
+                font-size: 48px;
+                font-style: italic;
+                font-family: $font-3;
+                color: $white;
+
+                @media #{$lg}{
+                        font-size: 36px;
+                }
+                @media #{$md}{
+                        font-size: 36px;
+                }
+                @media #{$xs}{
+                        font-size: 36px;
+                        margin-left: 5px;
+                }
+
+                & span{
+                        color: #ffa646;
+                }
+        }
+
+        & .slider-description{
+                padding-top: 20px;
+
+                & p{
+                        color: $white;
+
+                        & br{
+                                @media #{$xs}{
+                                        display: none;
+                                }
+                                @media #{$sm}{
+                                        display: block;
+                                }
+                        }
+                }
+                & .text-heading{
+                        & .heading-1{
+                                font-size: 52px;
+                                color: #03fe97;
+                                font-weight: 700;
+
+                                @media #{$lg}{
+                                        font-size: 42px;
+                                }
+                                @media #{$md}{
+                                        font-size: 42px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 40px;
+                                }
+                        }
+                        & .heading-2{
+                                font-size: 30px;
+
+                                @media #{$xs}{
+                                        font-size: 26px;
+                                }
+                        }
+                        & .heading-3{
+                                font-size: 20px;
+
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                }
+        }
+
+        & .slider-btn{
+                display: -webkit-flex;
+                display: -moz-flex;
+                display: -ms-flex;
+                display: -o-flex;
+                display: flex;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                -moz-flex-wrap: wrap;
+                flex-wrap: wrap;
+                padding-top: 50px;
+
+                @media #{$md}{
+                        padding-top: 30px;
+                }
+                @media #{$xs}{
+                        padding-top: 20px;
+                }
+
+                & li{
+                        margin-right: 8px;
+                        margin-top: 15px;
+
+                        & .main-btn{
+                                @media #{$xs}{
+                                        height: 40px;
+                                        line-height: 40px;
+                                        font-size: 14px;
+                                        padding: 0 13px;
+                                }
+
+                                & i{
+                                        margin-right: 5px;
+                                }
+                        }
+                }
+        }
+}
+
+.slider-active{
+        & .slick-arrow{
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%));
+                text-align: center;
+                z-index: 5;
+                width: 45px;
+                line-height: 45px;
+                height: 45px;
+                font-size: 26px;
+                color: $heading-color;
+                border-radius: 2px;
+                background: $white;
+                @include transition(0.3s);
+                left: 5%;
+                cursor: pointer;
+
+                @media #{$laptop}{
+                        left: 0;
+                        opacity: 0;
+                        visibility: hidden;
+                }
+                
+                &.next{
+                        left: auto;
+                        right: 5%;
+
+                        @media #{$laptop}{
+                                right: 0;
+                        }
+                }
+
+                &:hover{
+                        background-color: $theme-color;
+                        color: $white;
+                }
+        }
+
+        &:hover{
+                & .slick-arrow{
+                        @media #{$laptop}{
+                                left: 3%;
+                                opacity: 1;
+                                visibility: visible;
+                        }
+
+                        &.next{
+                                @media #{$laptop}{
+                                        left: auto;
+                                        right: 3%;
+                                }
+                        }
+                }
+        }
+
+        & .slick-dots{
+                position: absolute;
+                bottom: 22%;
+                left: 50%;
+                @include transform(translateX(-50%));
+
+                @media #{$md}{
+                        bottom: 50px;
+                }
+                @media #{$xs}{
+                        bottom: 50px;
+                }
+
+                & li{
+                        display: inline-block;
+                        margin: 0 5px;
+
+                        & button{
+                                width: 10px;
+                                height: 10px;
+                                border-radius: 50%;
+                                font-size: 0;
+                                background-color: $white;
+                                border: 0;
+                                cursor: pointer;
+                                @include transition(0.3s);
+                        }
+
+                        &.slick-active{
+                                & button{
+                                        background-color: #737f96;
+                                }
+                        }
+                }
+        }
+}
+
+
+/*===== Slider Dark =====*/
+
+.slider-dark{
+        &.slider-active{
+                & .slick-arrow{
+                        color: $white;
+                        background: $black;
+                        
+                        &:hover{
+                                background-color: $theme-color;
+                                color: $white;
+                        }
+                }
+        }
+}
+
+
+/*===== Slider 2 =====*/
+
+.single-slider-2{
+        padding-top: 140px;
+        padding-bottom: 110px;
+
+        @media #{$md}{
+                padding-top: 80px;
+        }
+        @media #{$xs}{
+                padding-top: 50px;
+        }
+}
+
+.slider-content-2{
+        padding-top: 100px;
+
+        & .main-title{
+                font-size: 48px;
+                font-weight: 800;
+                font-style: italic;
+                color: $white;
+                text-transform: uppercase;
+
+                @media #{$xs}{
+                        font-size: 30px;
+                }
+        }
+        & p{
+                font-size: 18px;
+                color: $white;
+                margin-top: 30px;
+
+                & span{
+                        color: $theme-color;
+                }
+        }
+}
+
+
+
+/*===== Slider 3 =====*/
+
+.slider-3{
+
+        @media #{$md}{
+                padding-top: 0;
+        }
+        @media #{$xs}{
+                padding-top: 0;
+        }
+
+        & .single-slider{
+                height: 1080px;
+                padding: 150px 0;
+
+                @media #{$lg}{
+                        height: 900px;
+                }
+                @media #{$md}{
+                        padding: 100px 0;
+                        height: auto;
+                }
+                @media #{$xs}{
+                        padding: 100px 0;
+                        height: auto;
+                }
+        }
+}
+
+
+.slider-content-3{
+        padding-top: 100px;
+        
+        @media #{$xs}{
+                padding-top: 50px;
+        }
+
+        & .sub-title{
+                font-size: 24px;
+                font-weight: 800;
+                color: $white;
+                text-transform: uppercase;
+
+                @media #{$lg}{
+                        font-size: 20px;
+                }
+                @media #{$md}{
+                        font-size: 20px;
+                }
+                @media #{$xs}{
+                        font-size: 16px;
+                }
+        }
+        & .main-title{
+                font-size: 72px;
+                font-weight: 800;
+                color: $white;
+                text-transform: uppercase;
+                line-height: 75px;
+                margin-top: 20px;
+
+                @media #{$lg}{
+                        font-size: 54px;
+                        line-height: 56px;
+                }
+                @media #{$md}{
+                        font-size: 54px;
+                        line-height: 56px;
+                }
+                @media #{$xs}{
+                        font-size: 30px;
+                        line-height: 40px;
+                }
+        }
+        & .discount{
+                color: #fec003;
+                font-size: 48px;
+                text-transform: uppercase;
+                font-weight: 700;
+                line-height: 50px;
+                margin-top: 40px;
+
+                @media #{$xs}{
+                        font-size: 30px;
+                }
+        }
+        & p{
+                font-size: 16px;
+                font-weight: 600;
+                color: $white;
+                padding-top: 15px;
+
+                & br{
+                        @media #{$xs}{
+                                display: none;
+                        }
+                }
+        }
+        & .text-heading{
+                & .heading-1{
+                        font-size: 52px;
+                        color: #fec003;
+                        font-weight: 700;
+
+                        @media #{$lg}{
+                                font-size: 42px;
+                        }
+                        @media #{$md}{
+                                font-size: 42px;
+                        }
+                        @media #{$xs}{
+                                font-size: 40px;
+                        }
+                }
+                & .heading-2{
+                        font-size: 30px;
+
+                        @media #{$xs}{
+                                font-size: 26px;
+                        }
+                }
+                & .heading-3{
+                        font-size: 20px;
+
+                        @media #{$xs}{
+                                font-size: 18px;
+                        }
+                }
+        }
+        & .main-btn{
+                margin-top: 80px;
+
+                &:hover{
+                        background-color: #fec003;
+                        color: $white;
+                }
+        }
+}
+
+
+
+
+
+
+
+
+
+
+

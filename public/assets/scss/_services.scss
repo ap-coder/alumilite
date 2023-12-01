@@ -1,0 +1,173 @@
+
+
+
+/*===========================
+       17.Services css 
+===========================*/
+
+.services-area{
+       padding-top: 115px;
+       padding-bottom: 110px;
+
+       @media #{$lg}{
+              padding-top: 95px;
+              padding-bottom: 90px;
+       }
+       @media #{$md}{
+              padding-top: 75px;
+              padding-bottom: 70px;
+       }
+       @media #{$xs}{
+              padding-top: 55px;
+              padding-bottom: 50px;
+       }
+}
+
+.services-wrapper{
+       position: relative;
+
+       & .services-more{
+              position: absolute;
+              top: 50px;
+              right: 0;
+
+              @media #{$md}{
+                     position: relative;
+                     top: 0;
+                     padding-top: 35px;
+                     text-align: center;
+              }
+              @media #{$xs}{
+                     position: relative;
+                     top: 0;
+                     padding-top: 35px;
+                     text-align: center;
+              }
+
+              & a{
+                     font-size: 14px;
+                     text-transform: uppercase;
+                     color: $heading-color;
+                     font-weight: 700;
+                     @include transition(0.3s);
+
+                     & i{
+                            font-size: 16px;
+                            margin-left: 5px;
+                     }
+
+                     &:hover{
+                            color: $theme-color;
+                     }
+              }
+       }
+}
+
+.single-service{
+       margin-top: 75px;
+
+       @media #{$md}{
+              margin-top: 55px;
+       }
+       @media #{$xs}{
+              margin-top: 45px;
+       }
+
+       & .service-title{
+              & a{
+                     font-family: $font-2;
+                     font-size: 24px;
+                     font-weight: 700;
+                     color: $heading-color;
+                     @include transition(0.3s);
+                     text-transform: uppercase;
+
+                     @media #{$xs}{
+                            font-size: 20px;
+                     }
+
+                     &:hover{
+                            color: #e9490a;
+                     }
+              }
+       }
+       & .image{
+              display: block;
+              margin-top: 20px;
+
+              & img{
+                     width: 100%;
+                     border-radius: 3px;
+                     @include transition(0.3s);
+              }
+       }
+       & p{
+              font-size: 16px;
+              color: $body-color;
+              margin-top: 30px;
+       }
+       & .more{
+              font-size: 18px;
+              font-weight: 700;
+              color: $heading-color;
+              @include transition(0.3s);
+              text-transform: uppercase;
+              margin-top: 15px;
+
+              @media #{$xs}{
+                     font-size: 16px;
+              }
+
+              &:hover{
+                     color: #e9490a;
+              }
+       }
+
+       &:hover{
+              & .image{       
+                     & img{
+                            opacity: 0.8;
+                     }
+              }
+       }
+}
+
+
+
+/*===== Services Dark =====*/
+
+
+
+.services-dark{
+       background-color: #1b1f28;
+       
+       & .section-title-3{            
+              & .main-title{
+                    color: $white;
+              }
+       }
+
+       & .services-wrapper{       
+              & .services-more{                            
+                     & a{
+                            color: $white;
+                     }
+              }
+       }
+
+       & .single-service{
+              & .service-title{
+                     & a{
+                            color: $white;
+                     }
+              }
+              & .more{
+                     color: $white;
+       
+                     &:hover{
+                            color: #e9490a;
+                     }
+              }
+       }
+}
+

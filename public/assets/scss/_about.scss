@@ -1,0 +1,388 @@
+
+
+
+/*===========================
+         26.About css 
+===========================*/
+
+
+/*====== About ======*/
+
+.about-banner-area{
+       height: 630px;
+       position: relative;
+       z-index: 5;
+       
+       @media #{$md}{
+              margin-top: 77px;
+              height: auto;
+              padding-top: 100px;
+              padding-bottom: 100px;
+       }
+       @media #{$xs}{
+              margin-top: 77px;
+              height: auto;
+              padding-top: 100px;
+              padding-bottom: 100px;
+       }
+
+       &::before{
+              position: absolute;
+              content: '';
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+              top: 0;
+              left: 0;
+              z-index: -1;
+              opacity: 0.65;
+       }
+}
+
+.about-banner-content{
+       & .sub-title{
+              font-size: 24px;
+              font-weight: 800;
+              text-transform: uppercase;
+              color: $white;
+
+              @media #{$xs}{
+                     font-size: 16px;
+              }
+       }
+       & .main-title{
+              font-size: 80px;
+              font-weight: 800;
+              text-transform: uppercase;
+              color: $white;
+
+              @media #{$laptop}{
+                     font-size: 72px;
+              }
+              @media #{$lg}{
+                     font-size: 58px;
+              }
+              @media #{$md}{
+                     font-size: 58px;
+              }
+              @media #{$xs}{
+                     font-size: 30px;
+                     margin-top: 15px;
+              }
+              @media #{$sm}{
+                     font-size: 40px;
+                     margin-top: 15px;
+              }
+       }
+       & p{
+              font-size: 18px;
+              font-weight: 400;
+              color: $white;
+              margin-top: 25px;
+
+              @media #{$xs}{
+                     font-size: 16px;
+
+                     & br{
+                            display: none;
+                     }
+              }
+       }
+}
+
+
+
+/*====== About 2 ======*/
+
+
+.about-banner-2-area{
+       height: 1080px;
+
+       @media #{$lg}{
+              height: 780px;
+       }
+       @media #{$md}{
+              height: 720px;
+       }
+       @media #{$xs}{
+              height: 580px;
+       }
+       @media #{$sm}{
+              height: 620px;
+       }
+}
+
+.about-banner-content-2{
+       padding-top: 240px;
+
+       @media #{$lg}{
+              padding-top: 200px;
+       }
+       @media #{$md}{
+              padding-top: 170px;
+       }
+       @media #{$xs}{
+              padding-top: 120px;
+       }
+
+       & .sub-title{
+              font-size: 16px;
+              font-weight: 800;
+              text-transform: uppercase;
+              color: $white;
+       }
+       & .main-title{
+              font-size: 48px;
+              font-weight: 800;
+              text-transform: uppercase;
+              color: $white;
+              margin-top: 25px;
+              
+              @media #{$lg}{
+                     font-size: 38px;
+              }
+              @media #{$md}{
+                     font-size: 36px;
+              }
+              @media #{$xs}{
+                     font-size: 24px;
+              }
+              @media #{$sm}{
+                     font-size: 30px;
+              }
+       }
+}
+
+
+.about-area{
+       padding-top: 70px;
+       padding-bottom: 120px;
+
+       @media #{$lg}{
+              padding-top: 50px;
+              padding-bottom: 100px;
+       }
+       @media #{$md}{
+              padding-top: 20px;
+              padding-bottom: 80px;
+       }
+       @media #{$xs}{
+              padding-top: 10px;
+              padding-bottom: 60px;
+       }
+}
+
+.about-experience{
+       padding: 75px 70px;
+       background-color: #f4f6f7;
+       max-width: 470px;
+       margin-top: 50px;
+
+       @media #{$xs}{
+              padding: 25px;
+       }
+       @media #{$sm}{
+              padding: 75px 70px;
+       }
+
+       & .experience-year{
+              position: relative;
+              padding-bottom: 45px;
+
+              & .year{
+                     font-size: 250px;
+                     font-weight: 700;
+                     color: #e9490a;
+                     line-height: 200px;
+
+                     @media #{$xs}{
+                            font-size: 160px;
+                            line-height: 120px;
+                     }
+              }
+              & .title{
+                     font-size: 16px;
+                     font-weight: 700;
+                     line-height: 24px;
+                     color: $heading-color;
+                     text-transform: uppercase;
+                     position: absolute;
+                     top: 35px;
+                     right: -35px;
+                     @include transform(rotate(-90deg));
+                     text-align: right;
+
+                     @media #{$xs}{
+                            right: auto;
+                            left: 70%;
+                            top: 30px;
+                            font-size: 14px;
+                            line-height: 20px;
+                     }
+                     @media #{$sm}{
+                            left: 45%;
+                            font-size: 14px;
+                            line-height: 24px;
+                     }
+              }
+       }
+
+       & .experience-counter{
+              border-top: 1px solid rgba(41, 57, 87, 0.15);
+              display: -webkit-flex;
+              display: -moz-flex;
+              display: -ms-flex;
+              display: -o-flex;
+              display: flex;              
+              -webkit-flex-wrap: wrap;
+              -ms-flex-wrap: wrap;
+              -moz-flex-wrap: wrap;
+              flex-wrap: wrap;
+
+              & .single-counter{
+                     margin-top: 35px;
+                     width: 50%;
+
+                     & .count{
+                            font-size: 36px;
+                            font-weight: 700;
+                            font-family: $font-1;
+                            color: #e9490a;
+
+                            @media #{$xs}{
+                                   font-size: 24px;
+                            }
+                            @media #{$sm}{
+                                   font-size: 30px;
+                            }
+                     }
+                     & p{
+                            font-size: 14px;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            color: $heading-color;
+
+                            @media #{$xs}{
+                                   font-size: 12px;
+                            }
+                            @media #{$sm}{
+                                   font-size: 14px;
+                            }
+                     }
+              }
+       }
+}
+
+
+.about-main-content{
+       max-width: 500px;
+       margin-top: 45px;
+
+       & .about-content{
+              & .sub-title{
+                     font-size: 18px;
+                     font-weight: 700;
+                     color: $body-color;
+                     text-transform: uppercase;
+
+                     @media #{$xs}{
+                            font-size: 14px;
+                     }
+                     @media #{$sm}{
+                            font-size: 16px;
+                     }
+              }
+              & .main-title{
+                     font-size: 42px;
+                     font-weight: 800;
+                     color: $heading-color;
+                     text-transform: uppercase;
+                     margin-top: 10px;
+
+                     @media #{$xs}{
+                            font-size: 24px;
+                     }
+                     @media #{$sm}{
+                            font-size: 40px;
+                     }
+              }
+              & p{
+                     margin-top: 35px;
+              }
+              & img{
+                     padding-top: 45px;
+              }
+              & .name{
+                     font-size: 16px;
+                     font-weight: 700;
+                     color: #e9490a;
+                     text-transform: uppercase;
+                     margin-top: 10px;
+              }
+              & .designation{
+                     font-size: 14px;
+                     color: $body-color;
+                     margin-top: 5px;
+              }
+       }
+
+       & .about-call{
+              padding-top: 50px;
+              
+              & .call-title{
+                     position: relative;
+                     margin-top: 30px;
+
+                     & i{
+                            font-size: 34px;
+                            color: $heading-color;
+                            position: absolute;
+                            top: 50%;
+                            @include transform(translateY(-50%));
+                            left: 0;
+
+                            @media #{$laptop}{
+                                   font-size: 30px;
+                            }
+                            @media #{$lg}{
+                                   font-size: 28px;
+                            }
+                     }
+                     & .title{
+                            padding-left: 45px;
+                            font-size: 16px;
+                            text-transform: uppercase;
+                            font-weight: 700;
+                            color: $heading-color;
+
+                            @media #{$laptop}{
+                                   font-size: 14px;
+                            }
+                            @media #{$lg}{
+                                   font-size: 14px;
+                                   padding-left: 40px;
+                            }
+                     }
+              }
+              & .call-number{
+                     font-size: 36px;
+                     font-weight: 700;
+                     color: $heading-color;
+                     line-height: 40px;
+                     margin-top: 25px;
+
+                     @media #{$laptop}{
+                            font-size: 30px;
+                     }
+                     @media #{$lg}{
+                            font-size: 26px;
+                     }
+                     @media #{$xs}{
+                            font-size: 30px;
+                     }
+              }
+       }
+}
+
+
+

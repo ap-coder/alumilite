@@ -1,0 +1,632 @@
+
+
+
+/*===========================
+   20.Inventory Sidebar css 
+===========================*/
+
+.sidebar{
+      & .sidebar-title{
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: $heading-color;
+      }
+}
+
+.sidebar-trusted{
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      -moz-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: space-around;
+      -ms-flex-pack: space-around;
+      justify-content: space-around;
+      background-color: #f5f6f6;
+      border: 1px solid #d7dce6;
+      border-radius: 3px;
+      padding: 10px 40px;
+      margin-top: 40px;
+
+      @media #{$lg}{
+            padding: 10px 25px;
+      }
+      @media #{$xs}{
+            padding: 10px 25px;
+      }
+
+      & .single-logo{
+            & img{
+                  width: 100px;
+                  padding: 0 5px;
+            }
+      }
+}
+
+.sidebar-dealer-info{
+      margin-top: 30px;
+
+      & .dealer-title{
+            padding: 25px;
+            background-color: #f5f6f6;
+            border: 1px solid #d7dce6;
+
+            @media #{$lg}{
+                  padding: 15px;
+            }
+      }
+
+      & .dealer-map{
+            margin-top: -1px;
+
+            & #contact-map{
+                  width: 100%;
+                  height: 200px;
+                  border: 1px solid #d7dce6;
+            }
+      }
+
+      .dealer-info{
+            padding: 25px;
+            background-color: #f5f6f6;
+            border: 1px solid #d7dce6;
+
+            @media #{$lg}{
+                  padding: 15px;
+            }
+
+            & .dealer-profile{
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  align-items: center;
+
+                  & .profile-image{
+                        & img{
+                              border-radius: 50%;                              
+                        }
+                  }
+                  & .profile-content{
+                        -webkit-flex: 1;
+                        -moz-flex: 1;
+                        -ms-flex: 1;
+                        flex: 1;
+                        padding-left: 20px;
+                       
+
+                        & .name{
+                              & a{
+                                    font-size: 18px;
+                                    color: #0084c8;
+                                    font-family: $font-2;
+                                    font-weight: 700;
+                                    @include transition(0.3s);
+                              }
+                        }
+                        & .profile-rating{
+                              display: -webkit-flex;
+                              display: -moz-flex;
+                              display: -ms-flex;
+                              display: -o-flex;
+                              display: flex;
+                              margin-top: 3px;
+
+                              & .star{
+                                    display: -webkit-flex;
+                                    display: -moz-flex;
+                                    display: -ms-flex;
+                                    display: -o-flex;
+                                    display: flex;
+                                    margin-right: 5px;
+
+                                    & li{
+                                          font-size: 16px;
+                                          color: #fa9900;
+                                    }
+                              }
+                              & span{
+                                    font-size: 14px;
+                                    color: $body-color;
+                                    font-weight: 700;
+                                    white-space: nowrap;
+                              }
+                        }
+                  }
+            }
+
+            & .info-items{
+                  margin-top: 15px;
+
+                  & li{
+                        & + li{
+                              border-top: 1px solid rgba($heading-color, 0.15);
+                        }
+
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: $heading-color;
+                        padding-left: 35px;
+                        position: relative;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        
+                        & i{
+                              font-size: 20px;
+                              position: absolute;
+                              top: 10px;
+                              left: 0;
+                        }
+
+                        & a{
+                              color: $heading-color;
+                              @include transition(0.3s);
+
+                              &:hover{
+                                    color: $theme-color;
+                              }
+                        }
+                        & .call{
+                              font-family: $font-1;
+                              font-weight: 700;
+                              color: #ed3921;
+                        }
+                        & .site{
+                              color: #0084c8;
+                              text-decoration: underline;
+                        }
+                        
+                  }
+            }
+
+            & .social{
+                  margin-top: 30px;
+
+                  & li{
+                        display: inline-block;
+
+                        & + li{
+                              margin-left: 3px;
+                        }
+
+                        & a{
+                              font-size: 16px;
+                              color: $white;
+                              width: 30px;
+                              height: 30px;
+                              line-height: 30px;
+                              text-align: center;
+                              border-radius: 3px;
+
+                              &.facebook{
+                                    background-color: #2b53b8;
+                              }
+                              &.twitter{
+                                    background-color: #0096ff;
+                              }
+                              &.googleplus{
+                                    background-color: #bf2828;
+                              }
+                              &.tumblr{
+                                    background-color: #2b4873;
+                              }
+                              &.rss{
+                                    background-color: #f37214;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+
+.sidebar-dealer-contact{
+      padding: 25px;
+      background-color: #f5f6f6;
+      border: 1px solid #d7dce6;
+      margin-top: 30px;
+
+      @media #{$lg}{
+            padding: 15px;
+      }
+
+      & .dealer-contact-form{
+            padding-top: 15px;
+
+            & .single-input{
+                  margin-top: 10px;
+                  position: relative;
+
+                  & i{
+                        position: absolute;
+                        left: 15px;
+                        top: 9px;
+                        color: $body-color;
+                        font-size: 20px;
+                  }
+
+                  & input,
+                  & textarea{
+                        width: 100%;
+                        padding: 0 15px;
+                        padding-left: 40px;
+                        height: 45px;
+                        border-radius: 3px;
+                        border: 1px solid #d7dce6;
+                        bbackground-color: $white;
+                        font-size: 16px;
+                        color: $heading-color;
+                        @include transition(0.3s);
+
+                        &:focus{
+                              border-color: $heading-color;
+                        }
+                  }
+                  & textarea{
+                        height: 150px;
+                        padding-top: 10px;
+                        resize: none;
+                  }
+            }
+      }
+}
+
+
+.sidebar-calculator{
+      padding: 25px;
+      background-color: #f5f6f6;
+      border: 1px solid #d7dce6;
+      margin-top: 30px;
+
+      @media #{$lg}{
+            padding: 15px;
+      }
+
+      & .calculator-form{
+            padding-top: 15px;
+
+            & .calculator-input{
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  -webkit-box-align: center;
+                  -ms-flex-align: center;
+                  align-items: center;
+                  background: $white;
+                  padding: 8px 14px;
+                  border: 1px solid #dedede;
+                  @include transition(0.3s);
+                  margin-top: 12px;
+
+                  & .placeholder{
+                        white-space: nowrap;
+                        margin-right: 5px;
+
+                        & span{
+                              color: $theme-color;
+                        }
+                  }
+                  & .input{
+                        & input{
+                              color: $heading-color;
+                              padding: 0;
+                              height: 100%;
+                              border: none;
+                              width: 100%;
+                              text-align: right;
+                        }
+                  }
+            }
+
+            & .calculator-form-result{
+                  & .single-result{
+                        margin-top: 25px;
+
+                        & .title{
+                              color: $heading-color;
+                              font-size: 14px;
+                              text-transform: uppercase;
+                              display: block;
+                        }
+                        & .main-result{
+                              color: #690;
+                              font-size: 18px;
+                              font-weight: 700;                        
+                        }
+                  }
+            }
+
+            & .calculator-btn{
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  -webkit-flex-wrap: wrap;
+                  -ms-flex-wrap: wrap;
+                  -moz-flex-wrap: wrap;
+                  flex-wrap: wrap;
+                  margin-left: -5px;
+                  margin-right: -5px;
+                  padding-top: 20px;
+
+                  & .single-btn{
+                        width: 50%;
+                        padding: 10px 5px 0;
+
+                        & .main-btn{
+                              font-size: 14px;
+                              padding: 0 15px;
+                              width: 100%;
+
+                              &.main-btn-2{
+
+                              }
+                        }
+                  }
+            }
+            
+      }
+}
+
+
+.sidebar-post{
+      padding: 25px;
+      background-color: #f5f6f6;
+      border: 1px solid #d7dce6;
+      margin-top: 30px;
+
+      @media #{$lg}{
+            padding: 15px;
+      }
+
+      & .post-wrapper{
+            & .slick-arrow{
+                  font-size: 16px;
+                  width: 25px;
+                  height: 25px;
+                  line-height: 25px;
+                  text-align: center;              
+                  border-radius: 2px;
+                  color: $white;
+                  background: #c2cad9;
+                  cursor: pointer;
+                  @include transition(0.3s);
+                  position: absolute;
+                  top: -25px;
+                  right: 0px;
+                  z-index: 5;
+                  padding: 0;
+
+                  &:hover{
+                        background-color: $theme-color;
+                        color: $white;
+                  }
+                  
+                  &.prev{
+                        right: 30px;
+                  }
+            }
+      }
+}
+
+
+.sidebar-similar-listing{
+      padding: 25px 25px 10px;
+      background-color: #f5f6f6;
+      border: 1px solid #d7dce6;
+      margin-top: 30px;
+
+      @media #{$lg}{
+            padding: 15px 15px 5px;
+      }
+
+      & .similar-listing-items{
+            padding-top: 15px;
+            
+            & li{
+                  & + li{
+                        & .single-listing{
+                              border-top: 1px solid #d7dce6;
+                        }
+                  }
+            }
+      }
+
+      & .single-listing{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            padding: 15px 0;
+
+            & .listing-image{
+                  & a{
+                        display: block;
+
+                        & img{
+                              width: 100px;
+                        }
+                  }
+            }
+            & .listing-content{
+                  -webkit-flex: 1;
+                  -moz-flex: 1;
+                  -ms-flex: 1;
+                  flex: 1;
+                  padding-left: 15px;
+
+                  & .title{
+                        & a{
+                              font-size: 14px;
+                              font-weight: 700;
+                              color: $heading-color;
+                              @include transition(0.3s);
+
+                              &:hover{
+                                    color: $theme-color;
+                                    text-decoration: underline;
+                              }
+                        }
+                  }
+                  & .price{
+                        & .price-amount{
+                              font-size: 16px;
+                              font-weight: 700;
+                              font-style: italic;
+                              color: #669900;
+                        }
+                        & .price-sale{
+                              font-size: 16px;
+                              font-weight: 700;
+                              font-style: italic;
+                              color: #ed3921;
+                        }
+                        & .regular-price{
+                              font-size: 12px;
+                              font-style: italic;
+                              color: $body-color;
+                              text-decoration: line-through;
+                        }
+                  }
+            }
+      }
+}
+
+
+.sidebar-consultants{
+      padding: 25px 25px 5px;
+      background-color: #f5f6f6;
+      border: 1px solid #d7dce6;
+      margin-top: 30px;
+
+      & .consultants-items{
+            padding-top: 5px;
+            
+            & > li{
+                  & + li{
+                        border-top: 1px solid rgba($heading-color, 0.15);
+                  }
+            }
+
+            & .single-consultants{
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+                  padding: 20px 0;
+
+                  & .consultants-author{
+                        & img{
+                              border-radius: 50%;
+                        }
+                  }
+                  & .consultants-content{
+                        -webkit-flex: 1;
+                        -moz-flex: 1;
+                        -ms-flex: 1;
+                        flex: 1;
+                        padding-left: 15px;
+
+                        & .name{
+                              & a{
+                                    font-size: 18px;
+                                    font-weight: 700;
+                                    color: $heading-color;
+                                    @include transition(0.3s);
+
+                                    &:hover{
+                                          color: $theme-color;
+                                    }
+                              }
+                        }
+                        & .profile-rating{
+                              display: -webkit-flex;
+                              display: -moz-flex;
+                              display: -ms-flex;
+                              display: -o-flex;
+                              display: flex;
+                              margin-top: 3px;
+
+                              & .star{
+                                    display: -webkit-flex;
+                                    display: -moz-flex;
+                                    display: -ms-flex;
+                                    display: -o-flex;
+                                    display: flex;
+                                    margin-right: 5px;
+
+                                    & li{
+                                          font-size: 16px;
+                                          color: #fa9900;
+                                    }
+                              }
+                              & span{
+                                    font-size: 14px;
+                                    color: $body-color;
+                                    font-weight: 700;
+                                    white-space: nowrap;
+                              }
+                        }
+
+                        & .phone{
+                              font-size: 14px;
+                              font-weight: 404;
+                              color: $heading-color;
+                              line-height: 20px;
+                        }
+                        & .mail{
+                              font-size: 14px;
+                              font-weight: 404;
+                              color: #0084c8;
+                              line-height: 20px;
+                        }
+                  }
+            }
+      }
+}
+
+
+.sidebar-button{
+      margin-top: 30px;
+      
+      & .button-items{
+            & li{
+                  & + li{
+                        margin-top: 10px;
+                  }
+                  & .main-btn{
+                        background-color: #edeff1;
+                        color: $heading-color;
+                        text-align: left;
+                        width: 100%;
+
+                        & i{
+                              display: block;
+                              float: right;
+                        }
+
+                        &:hover{
+                              background-color: $theme-color;
+                              color: $white;
+                        }
+                  }
+            }
+      }
+}
+

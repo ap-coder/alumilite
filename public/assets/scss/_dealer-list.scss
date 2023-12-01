@@ -1,0 +1,385 @@
+
+
+
+/*===========================
+     35.Dealer List css 
+===========================*/
+
+.dealer-list-page{
+   padding-top: 115px;
+   padding-bottom: 120px;
+
+   @media #{$lg}{
+      padding-top: 95px;
+      padding-bottom: 100px;
+   }
+   @media #{$md}{
+      padding-top: 75px;
+      padding-bottom: 80px;
+   }
+   @media #{$xs}{
+      padding-top: 55px;
+      padding-bottom: 60px;
+   }
+}
+
+
+.search-box-dealer{
+   margin-top: 65px;
+   background-color: #f5f6f6;
+
+   & .search-field{
+      & .single-field{
+         padding:  0;
+
+         & .SumoSelect{                     
+               & .CaptionCont {
+                  background: $white;
+               }
+         }
+
+         & input{
+            background: $white;
+         }
+      }
+   }
+}
+
+
+
+.dealer-list-content{
+   padding-top: 70px;
+
+   @media #{$lg}{
+      padding-top: 60px;
+   }
+   @media #{$md}{
+      padding-top: 50px;
+   }
+   @media #{$xs}{
+      padding-top: 40px;
+   }
+
+   & .dealer-top{
+      & .dealer-top-left{
+         padding-top: 25px;
+
+         & p{
+            font-size: 18px;
+            font-weight: 700;
+            color: $heading-color;
+            text-transform: uppercase;
+
+            @media #{$xs}{
+               font-size: 14px;
+            }
+
+            & span{
+               color: $theme-color;
+            }
+         }
+      }
+
+      & .dealer-top-right{
+         margin-top: 30px;
+
+         & .dealer-select{
+            & .SumoSelect {
+               width: 300px;
+
+               @media #{$xs}{
+                  width: 100%;
+               }
+               @media #{$sm}{
+                  width: 250px;
+               }
+
+               & > .CaptionCont {
+                  background: #edeff1;
+                  border-radius: 1px;
+                  border: 0;
+                  padding: 0 24px;
+                  font-size: 16px;
+                  cursor: pointer;                        
+                  height: 50px;
+                  line-height: 50px;
+                  color: $heading-color;
+                  font-weight: 700;
+                  @include transition(0.3s);
+                  @include box-shadow (none !important);
+
+                  @media #{$xs}{
+                     height: 45px;
+                     line-height: 45px;
+                     padding: 0 15px;
+                     font-size: 14px;
+                  }
+
+                  & > span {
+                     display: block;
+                     padding-right: 30px;
+                     text-overflow: ellipsis;
+                     white-space: nowrap;
+                     overflow: hidden;
+                     cursor: pointer; 
+                  }
+
+                  & > label {
+                     cursor: pointer; 
+
+                     @media #{$xs}{
+                        font-size: 14px;
+                     }
+
+                     & > i {
+                        width: 32px;
+                        height: 32px;
+                        line-height: 32px;
+                        background: 0 0;
+                        font-weight: 400;
+
+                        &::after {
+                           content: '\f123';
+                           display: inline-block;
+                           font-family: "Ionicons";
+                           font-style: normal;
+                           line-height: 1;
+                           -webkit-font-smoothing: antialiased;
+                           -moz-osx-font-smoothing: grayscale;
+                        }
+                     }
+                  }
+                  &:hover{
+                     background-color: $theme-color;
+                     color: $white;                              
+                  }
+               }
+               
+               & .optWrapper{
+                  top: 50px;
+
+                  @media #{$xs}{
+                     top: 82px;
+                  }
+                  @media #{$sm}{
+                     top: 50px;
+                  }
+
+                  & .options{
+                     & .opt{
+                        padding: 8px 0 8px 20px;
+                        color: $heading-color;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+
+
+.dealer-list-items{
+   margin-top: 10px;
+}
+
+.single-dealer{
+   padding-top: 20px;
+   padding-bottom: 40px;
+   border-top: 1px solid rgba($heading-color, 0.15);
+
+   & .dealer-author{
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      margin-top: 20px;
+
+      & .author-image{
+         & img{
+            border-radius: 50%;
+         }
+      }
+      & .author-content{
+         -webkit-flex: 1;
+         -moz-flex: 1;
+         -ms-flex: 1;
+         flex: 1;
+         padding-left: 30px;
+
+         & .author-name{
+            & a{
+               font-size: 20px;
+               font-weight: 700;
+               font-family: $font-2;
+               color: $heading-color;
+               @include transition(0.3s);
+
+               &:hover{
+                  color: $theme-color;
+                  text-decoration: underline;
+               }
+            }
+         }
+         & .author-rating{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            margin-top: 5px;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            
+            & .rating-star{
+               display: -webkit-flex;
+               display: -moz-flex;
+               display: -ms-flex;
+               display: -o-flex;
+               display: flex;
+               margin-right: 10px;
+
+               & li{
+                  font-size: 16px;
+                  color: #a4a9b0;
+                  line-height: 18px;
+
+                  &.rating-on{
+                     color: #fcb800;
+                  }
+               }
+            }
+            & span{
+               font-size: 14px;
+               color: $body-color;
+            }
+         }
+      }
+   }
+
+   & .dealer-info{
+      & .dealer-info-wrapper{
+         margin-left: -5px;
+         margin-right: -5px;
+
+         & .info-left{
+            width: 50%;
+            padding: 20px 5px 0; 
+
+            @media #{$xs}{
+               width: 100%;
+            }
+
+            & .info{
+               & li{
+                  font-size: 16px;
+                  color: $body-color;
+                  font-weight: 400;
+                  margin-top: 3px;
+                  position: relative;
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+
+                  & span{
+                     ont-size: 16px;
+                     color: #0084c8;
+                     font-weight: 700;
+                     -webkit-flex: 1;
+                     -moz-flex: 1;
+                     -ms-flex: 1;
+                     flex: 1;
+                  }
+                  & a{
+                     font-size: 16px;
+                     color: $heading-color;
+                     font-weight: 700;
+                     -webkit-flex: 1;
+                     -moz-flex: 1;
+                     -ms-flex: 1;
+                     flex: 1;
+
+                     & span{
+                        color: $theme-color;
+                     }
+                  }
+                  & .location{
+                     font-weight: 400;
+                     color: $body-color;
+                     font-size: 14px;
+                     text-decoration: underline;
+                  }
+                  & i{
+                     font-size: 18px;
+                     width: 30px;
+                  }
+               }
+            }
+         }
+         & .info-right{
+            width: 50%;
+            padding: 20px 5px 0; 
+
+            @media #{$xs}{
+               width: 100%;
+            }
+
+            & p{
+               font-style: italic;
+               font-size: 16px;
+               color: $body-color;
+            }
+         }
+      }
+      & .dealer-info-phone{
+         padding-top: 15px;
+
+         & ul{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            -moz-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+            & li{
+               font-size: 16px;
+               font-weight: 400;
+               color: $body-color;
+               margin-right: 50px;
+               margin-top: 5px;
+
+               &:last-child{
+                  margin-right: 0;
+               }
+
+               & a{
+                  color: $heading-color;
+                  font-weight: 700;
+               }
+            }
+         }
+      }
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

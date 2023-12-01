@@ -1,0 +1,281 @@
+
+
+
+/*===========================
+   31.Vehicle Compare css 
+===========================*/
+
+
+.vehicle-compare-page{
+   padding-top: 115px;
+   padding-bottom: 120px;
+
+   @media #{$lg}{
+      padding-top: 95px;
+      padding-bottom: 100px;
+   }
+   @media #{$md}{
+      padding-top: 75px;
+      padding-bottom: 80px;
+   }
+   @media #{$xs}{
+      padding-top: 55px;
+      padding-bottom: 60px;
+   }
+}
+
+
+
+.vehicle-compare-table{
+   margin-top: 90px;
+
+   & .table{
+      & tr{
+         & th{
+            border: 1px solid rgba($heading-color, 0.15);
+            font-size: 14px;
+            font-weight: 400;
+            color: $body-color;
+            text-transform: uppercase;
+            background-color: #f5f6f6;
+            padding: 8px 20px;
+            vertical-align: middle;
+            min-width: 300px;
+
+            @media #{$laptop}{
+               min-width: 250px;
+            }
+            @media #{$lg}{
+               min-width: 250px;
+            }
+            @media #{$md}{
+               min-width: 250px;
+            }
+            @media #{$xs}{
+               min-width: 250px;
+            }
+         }
+         & td{
+            border: 1px solid rgba($heading-color, 0.15);
+            font-size: 16px;
+            font-weight: 700;
+            color: $heading-color;
+            padding: 12px 20px;
+            min-width: 300px;
+
+            @media #{$laptop}{
+               min-width: 250px;
+            }
+            @media #{$lg}{
+               min-width: 250px;
+            }
+            @media #{$md}{
+               min-width: 250px;
+            }
+            @media #{$xs}{
+               min-width: 250px;
+               font-size: 14px;
+               padding: 8px 20px;
+            }
+
+            &.header{
+               padding: 0;
+            }
+
+            & .compare-header{
+               & .remove{
+                  text-align: center;
+                  border-bottom: 1px solid rgba($heading-color, 0.15);
+                  padding: 12px 20px;
+                  
+                  & button{
+                     font-size: 16px;
+                     font-weight: 400;
+                     color: $body-color;
+                     @include transition(0.3s);
+                     padding: 0;
+                     border: 0;
+                     background: none;
+
+                     & i{
+                        margin-right: 5px;
+                     }
+
+                     &:hover{
+                        color: $heading-color;
+                     }
+                  }
+               }
+               & .compare-image{
+                  padding: 20px 20px 15px;
+
+                  & img{}
+               }
+               & .compare-title{
+                  padding: 0 20px 15px;
+
+                  & .title{
+                     & a{
+                        font-size: 20px;
+                        font-weight: 700;
+                        font-family: $font-1;
+                        color: $heading-color;
+                        @include transition(0.3s);
+
+                        @media #{$lg}{
+                           font-size: 16px;
+                        }
+                        @media #{$md}{
+                           font-size: 16px;
+                        }
+                        @media #{$xs}{
+                           font-size: 16px;
+                        }
+
+                        &:hover{
+                           color: $theme-color;
+                           text-decoration: underline;
+                        }
+                     }
+                  }
+               }
+
+               & .add-compare{
+                  text-align: center;
+                  padding: 20px;
+
+                  & a{
+                     height: 185px;
+                     background-color: #f1f1f1;
+                     color: $body-color;
+                     font-size: 16px;
+                     font-weight: 700;
+                     text-transform: uppercase;
+                     display: -webkit-flex;
+                     display: -moz-flex;
+                     display: -ms-flex;
+                     display: -o-flex;
+                     display: flex;
+                     -webkit-box-align: center;
+                     -ms-flex-align: center;
+                     align-items: center;
+                     -webkit-box-pack: center;
+                     -ms-flex-pack: center;
+                     justify-content: center;
+                     flex-direction: column;
+                     @include transition(0.3s);
+
+                     @media #{$laptop}{
+                        height: 160px;
+                     }
+                     @media #{$lg}{
+                        height: 130px;
+                        font-size: 14px;
+                     }
+                     @media #{$md}{
+                        height: 130px;
+                        font-size: 14px;
+                     }
+                     @media #{$xs}{
+                        height: 130px;
+                        font-size: 14px;
+                     }
+
+                     & i{
+                        display: block;
+                        font-size: 36px;
+                        line-height: 40px;
+
+                        @media #{$lg}{
+                           font-size: 26px;
+                        }
+                     }
+                     & span{
+                        margin-top: 8px;
+                     }
+
+                     &:hover{
+                        color: $heading-color;
+                     }
+                  }
+               }
+            }
+
+            & .rating{
+               display: -webkit-flex;
+               display: -moz-flex;
+               display: -ms-flex;
+               display: -o-flex;
+               display: flex;
+
+               & .rating-star{
+                  display: -webkit-flex;
+                  display: -moz-flex;
+                  display: -ms-flex;
+                  display: -o-flex;
+                  display: flex;
+
+                  & li{
+                     font-size: 16px;
+                     color: #ccc;
+
+                     &.ration-on{
+                        color: #fcb800;
+                     }
+                  }
+               }
+               & span{
+                  font-size: 14px;
+                  color: $body-color;
+                  margin-left: 3px;
+               }
+            }
+
+            & .price{
+               & .price-amount{
+                  font-size: 20px;
+                  font-weight: 700;
+                  color: #669900;
+                  margin-right: 3px;
+
+                  @media #{$xs}{
+                     font-size: 18px;
+                  }
+               }
+               & .sale-price{
+                  font-size: 20px;
+                  font-weight: 700;
+                  color: #ec3a20;
+                  margin-right: 3px;
+
+                  @media #{$xs}{
+                     font-size: 18px;
+                  }
+               }
+               & .regular-price{
+                  font-size: 16px;
+                  font-weight: 700;
+                  color: $body-color;
+                  text-decoration: line-through;
+                  margin-right: 3px;
+               }
+               & .percent{
+                  font-size: 16px;
+                  font-weight: 400;
+                  color: #ec3a20;
+               }
+            }
+            
+            & .link{
+               color: #0084c8;
+               font-size: 16px;
+               @include transition(0.3s);
+
+               &:hover{
+                  text-decoration: underline;
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,384 @@
+
+
+
+/*===========================
+      10.Choose css 
+===========================*/
+
+.choose-area{
+    padding-top: 115px;
+
+    @media #{$lg}{
+          padding-top: 95px;
+    }
+    @media #{$md}{
+          padding-top: 75px;
+    }
+    @media #{$xs}{
+          padding-top: 55px;
+    }
+}
+
+.choose-wrapper{
+      border-bottom: 1px solid rgba(122, 131, 149, 0.15);
+      padding-bottom: 115px;
+
+      @media #{$lg}{
+            padding-bottom: 95px;
+      }
+      @media #{$md}{
+            padding-bottom: 75px;
+      }
+      @media #{$xs}{
+            padding-bottom: 55px;
+      }
+}
+
+.single-choose{
+      margin-top: 30px;
+      position: relative;
+
+      & .choose-icon{
+            position: relative;
+            width: 50px;
+            text-align: center;
+
+            & i{
+                  font-size: 60px;
+                  color: $theme-color;
+            }
+            & .number{
+                  color: #e6e7e9;
+                  font-family: $font-1;
+                  font-size: 48px;
+                  font-weight: 800;
+                  position: absolute;
+                  left: 50%;
+                  top: 60px;
+                  @include transform(translateX(-50%));
+
+                  @media #{$md}{
+                        display: none;
+                  }
+                  @media #{$xs}{
+                        display: none;
+                  }
+            }
+      }
+      & .choose-content{
+            padding-left: 30px;
+            -webkit-flex: 1;
+            -moz-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+
+            @media #{$lg}{
+                  padding-left: 20px;
+            }
+            
+            @media #{$xs}{
+                  padding-left: 0;
+                  padding-top: 20px;
+            }
+
+            & .title{
+                  color: $heading-color;
+                  font-size: 18px;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  line-height: 26px;    
+                  
+                  @media #{$lg}{
+                        font-size: 16px;
+                  }
+                  @media #{$xs}{
+                        font-size: 16px;
+                  }
+            }
+            & p{
+                  margin-top: 22px;
+
+            }
+      }
+
+      
+}
+
+
+
+/*===== Choose Dark =====*/
+
+.choose-dark{
+      background-color: $black;
+
+      & .section-title {
+            & .title{
+                   color: $white;
+            }
+      } 
+
+      .single-choose{      
+            & .choose-icon{                  
+                  & .number{
+                        color: #333939;
+                  }
+            }
+            & .choose-content{      
+                  & .title{
+                        color: $white;
+                  }
+                  & p{
+                        margin-top: 22px;      
+                  }
+            }            
+      }
+}
+
+
+
+/*===== Why Choose =====*/
+
+.why-choose-area{
+      padding-top: 115px;
+      padding-bottom: 120px;
+      position: relative;
+
+      @media #{$lg}{
+            padding-top: 95px;
+            padding-bottom: 95px;
+      }
+      @media #{$md}{
+            padding-top: 75px;
+            padding-bottom: 0;
+      }
+      @media #{$xs}{
+            padding-top: 75px;
+            padding-bottom: 0;
+      }
+}
+
+.why-choose-image{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50%;
+
+      @media #{$md}{
+            position: relative;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 720px;
+            margin: 0 auto;
+      }
+      @media #{$xs}{
+            position: relative;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 100%;
+            margin: 0 auto;
+      }
+
+      & .image{
+            max-width: 580px;
+            margin-left: 250px;
+            margin-right: auto;
+
+            @media #{$laptop}{
+                  margin-left: 180px;
+            }
+            @media #{$lg}{
+                  margin-left: 180px;
+            }
+            @media #{$md}{
+                  margin: 0 auto;
+                  max-width: 380px;
+                  padding-top: 80px;
+            }
+            @media #{$xs}{
+                  margin: 0 auto;
+                  max-width: 380px;
+                  padding-top: 80px;
+            }
+
+            & img{}
+      }
+}
+
+.why-choose-items{}
+
+.single-choose-item{
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      margin-top: 100px;
+
+      @media #{$md}{
+            margin-top: 70px;
+      }
+      @media #{$xs}{
+            margin-top: 50px;
+      }
+
+      & .choose-icon{
+            width: 100px;
+
+            @media #{$xs}{
+                  width: 50px;
+            }
+
+            & i{
+                  font-size: 72px;
+                  color: #e9490a;
+                  line-height: 60px;
+
+                  @media #{$xs}{
+                        font-size: 36px;
+                        line-height: 40px;
+                  }
+            }
+
+      }
+      & .choose-content{
+            -webkit-flex: 1;
+            -moz-flex: 1;
+            -ms-flex: 1;
+            flex: 1;		
+            max-width: 230px;
+
+            & .title{
+                  font-size: 20px;
+                  font-weight: 700;
+                  color: $heading-color;
+                  font-family: $font-2;
+
+                  @media #{$xs}{
+                        font-size: 18px;
+                  }
+            }
+            & p{
+                  font-size: 16px;
+                  color: $body-color;
+                  margin-top: 15px;
+            }
+      }
+}
+
+
+/*===== Why Choose Dark =====*/
+
+.why-choose-dark{
+
+      & .section-title-3{            
+            & .main-title{
+                  color: $white;
+            }
+      }
+
+      & .single-choose-item{                  
+            & .choose-content{      
+                  & .title{
+                        color: $white;
+                  }
+            }
+      }
+}
+
+
+
+/*===== Why Choose 2 =====*/
+
+.why-choose-2-area{
+
+}
+
+.why-choose-wrapper{
+   border-top: 1px solid rgba($heading-color, 0.15);
+   padding-top: 112px;
+   padding-bottom: 120px;
+
+   @media #{$lg}{
+      padding-top: 92px;
+      padding-bottom: 100px;
+   }
+   @media #{$md}{
+      padding-top: 72px;
+      padding-bottom: 80px;
+   }
+   @media #{$xs}{
+      padding-top: 52px;
+      padding-bottom: 60px;
+   }
+}
+
+
+.why-choose-title{
+      & .title{
+            font-size: 36px;
+            font-weight: 700;
+            font-family: $font-2;
+            color: $heading-color;
+
+            @media #{$xs}{
+                  font-size: 24px;
+            }
+      }
+}
+
+
+
+.single-choose-2{
+      margin-top: 50px;
+
+      & .choose-image{
+            & img{
+                  width: 100%;
+            }
+      }
+      & .choose-content{
+            background-color: #f0f3f5;
+            padding: 30px;
+            min-height: 172px;
+
+            @media #{$lg}{
+                  min-height: 195px;
+            }
+            @media #{$md}{
+                  min-height: inherit;
+            }
+            @media #{$xs}{
+                  min-height: inherit;
+                  padding: 20px;
+            }
+
+            & .title{
+                  font-size: 20px;
+                  font-weight: 700;
+                  font-family: $font-2;
+                  color: $heading-color;      
+                  text-transform: uppercase;      
+                  
+                  @media #{$xs}{
+                        font-size: 18px;
+                  }
+            }
+            & p{
+                  margin-top: 15px;
+
+                  & strong{
+                        color: $heading-color;    
+                  }
+            }
+      }
+}
+
+
+
+
+
+
+
+
+
+

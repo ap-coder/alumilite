@@ -1,0 +1,148 @@
+
+
+
+/*===========================
+       05.Trending css 
+===========================*/
+
+
+.trending-area{
+       padding-top: 115px;
+       background-color: $gray;
+
+       @media #{$lg}{
+              padding-top: 95px;
+       }
+       @media #{$md}{
+              padding-top: 75px;
+       }
+       @media #{$xs}{
+              padding-top: 55px;
+       }
+}
+
+
+.trending-row{
+       margin-left: -8px;
+       margin-right: -8px;
+
+       & .trending-col{
+              padding: 0 8px;
+              width: 20%;
+       }
+}
+
+.single-trending-items{
+       & a{
+              display: block;
+              position: relative;
+              @include transition(0.3s);
+              border-radius: 3px;
+              overflow: hidden;
+
+              &::after {
+                     content: "";
+                     position: absolute;
+                     top: 0;
+                     right: 0;
+                     bottom: 0;
+                     left: 0;
+                     background: linear-gradient(transparent,rgba(0,0,0,.4));
+              }
+
+              & img{
+                     width: 100%;
+              }
+              & .content{
+                     position: absolute;
+                     font-size: 18px;
+                     font-weight: 700;
+                     color: $white;
+                     z-index: 1;
+                     bottom: 13px;
+                     left: 18px;
+                     right: 18px;
+                     
+                     & span{
+                            display: block;
+                     }
+                     & .price{}
+              }
+
+              &:hover{
+                     opacity: 0.8;
+              }
+       }       
+}
+
+
+.trending-active{
+       & .slick-arrow{
+              font-size: 16px;
+              width: 25px;
+              height: 25px;
+              line-height: 25px;
+              text-align: center;              
+              border-radius: 2px;
+              color: $white;
+              background: #c2cad9;
+              cursor: pointer;
+              @include transition(0.3s);
+              position: absolute;
+              top: -70px;
+              right: 8px;
+              z-index: 5;
+
+              @media #{$xs}{
+                     top: 50%;
+                     @include transform(translateY(-50%));
+              }
+              @media #{$sm}{
+                     top: -60px;
+              }
+              
+              &.prev{
+                     right: 40px;
+
+                     @media #{$xs}{
+                            right: auto;
+                            left: 8px;
+                     }
+                     @media #{$sm}{
+                            right: 40px;
+                            left: auto;
+                     }
+              }
+
+              &:hover{
+                     background-color: $theme-color;
+                     color: $white;
+              }
+       }
+}
+
+
+/*===== Trending Dark =====*/
+
+.trending-dark{
+       background-color: #202424;
+
+       & .section-title {
+              & .title{
+                     color: $white;
+              }
+       } 
+       
+       & .trending-active{
+              & .slick-arrow{
+                     color: $white;
+                     background: #4b6363;
+       
+                     &:hover{
+                            background-color: $theme-color;
+                            color: $white;
+                     }
+              }
+       }
+}
+

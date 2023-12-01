@@ -1,0 +1,166 @@
+
+
+
+/*===========================
+      14.Browse Type css 
+===========================*/
+
+.browse-type-area{
+      padding-top: 115px;
+      padding-bottom: 115px;
+
+      @media #{$lg}{
+            padding-top: 95px;
+            padding-bottom: 95px;
+      }
+      @media #{$md}{
+            padding-top: 75px;
+            padding-bottom: 75px;
+      }
+      @media #{$xs}{
+            padding-top: 55px;
+            padding-bottom: 60px;
+      }
+}
+
+
+.browse-col {
+      padding-left: 15px;
+      padding-right: 15px;
+}
+
+.single-browse-type{
+      margin-top: 50px;
+
+      & .image{
+            display: block;
+            overflow: hidden;
+            
+            & a{
+                  display: block;
+                  
+                  & img{
+                        width: 100%;
+                        @include transition(0.3s);
+                  }
+            }
+      }
+      & .title{
+            & a{
+                  font-size: 18px;
+                  font-weight: 800;
+                  font-style: italic;
+                  color: $heading-color;
+                  @include transition(0.3s);
+                  text-transform: uppercase;
+                  margin-top: 22px;
+
+                  &:hover{
+                        color: $theme-color;
+                  }
+            }
+      }
+      & span{
+            font-size: 16px;
+            color: $body-color;
+      }
+}
+
+
+.browse-type-active{
+      & .slick-active{
+            @include animation(slickZoomIn 1s);
+      }
+
+    & .slick-arrow{
+            font-size: 16px;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;              
+            border-radius: 2px;
+            color: $white;
+            background: #c2cad9;
+            cursor: pointer;
+            @include transition(0.3s);
+            position: absolute;
+            top: -25px;
+            right: 15px;
+            z-index: 5;
+            padding: 0;
+            
+            &.prev{
+                   right: 47px;
+            }
+
+            &:hover{
+                  background-color: $theme-color;
+                  color: $white;
+            }
+      }
+      & .slick-dots{
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+                        
+            & li{
+                  display: inline-block;
+                  margin: 0 5px;
+
+                  & button{
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        font-size: 0;
+                        background-color: #737f96;
+                        border: 0;
+                        cursor: pointer;
+                        @include transition(0.3s);
+                  }
+
+                  &.slick-active{
+                        & button{
+                              background-color: $theme-color;
+                        }
+                  }
+            }
+      }
+}
+
+
+/*===== Browse Type Dark ======*/
+
+.browse-type-dark{
+      
+      & .section-title-2{
+            & .title{
+                 color: $white;
+            }
+     }
+     & .single-browse-type{            
+            & .title{
+                  & a{
+                        color: $white;
+
+                        &:hover{
+                              color: $theme-color;
+                        }
+                  }
+            }
+      }
+
+      & .browse-type-active{
+            & .slick-arrow{
+                  color: $white;
+                  background: #3e485a;
+    
+                  &:hover{
+                        background-color: $theme-color;
+                        color: $white;
+                  }
+            }
+      }
+}
+
+
+

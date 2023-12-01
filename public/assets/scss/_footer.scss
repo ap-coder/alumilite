@@ -1,0 +1,728 @@
+
+
+
+/*===========================
+      11.Footer css 
+===========================*/
+
+.footer-area{
+    background-color: $gray;
+}
+
+.footer-widget{
+      padding-top: 50px;
+      padding-bottom: 95px;
+
+
+      @media #{$md}{
+            padding-top: 30px;
+            padding-bottom: 80px;
+      }
+      @media #{$xs}{
+            padding-top: 10px;
+            padding-bottom: 60px;
+      }
+
+      & .footer-title{
+            font-size: 18px;
+            text-transform: uppercase;
+            color: $heading-color;
+            font-weight: 800;
+      }
+}
+
+.text-widget{
+
+      & a{
+            & img{
+                  width: 164px;
+            }
+      }
+      & .text-content{
+            margin-top: 50px;
+
+            & .single-text{
+                  & p{
+                        font-size: 14px;
+                        line-height: 26px;
+                        color: $body-color;
+
+                        & span{
+                              display: block;
+                        }
+
+                        & a{
+                              color: $body-color;
+                              @include transition(0.3s);
+
+                              &:hover{
+                                    color: $theme-color;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+.footer-menu{
+      & .menu-items{
+            margin-top: 45px;
+
+            & li{
+                  margin-top: 4px;
+
+                  & a{
+                        font-size: 14px;
+                        color: $body-color;
+                        line-height: 26px;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }
+                  }
+            }
+      }
+}
+
+.footer-newsletter{
+      & .newsletter-wrapper{
+            margin-top: 45px;
+
+            & p{
+                  font-size: 14px;
+            }
+            & .newsletter-form{
+                  position: relative;
+                  margin-top: 30px;
+
+                  & input{
+                        width: 100%;
+                        height: 44px;
+                        padding: 0 15px;
+                        border: 0;
+                        background-color: $white;
+                        color: #666;
+                        padding-right: 63px;
+                  }
+                  & button{
+                        width: 48px;
+                        height: 44px;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        background-color: $theme-color;
+                        color: $white;
+                        padding: 0;
+                        font-size: 20px;
+                        border: 0;
+                  }
+            }
+
+            & span{
+                  display: block;
+                  margin-top: 17px;
+                  color: $body-color;
+                  font-style: italic;
+            }
+      }
+}
+
+.footer-text{
+      padding-top: 20px;
+      padding-bottom: 40px;
+      font-size: 14px;
+      color: #737f96;
+      border-top: 1px solid #dfe2e5;
+}
+
+.footer-text-wrapper{}
+
+.footer-copyright{
+      margin-top: 20px;
+
+      @media #{$md}{
+            width: 100%;
+            text-align: center;
+      }
+      @media #{$xs}{
+            width: 100%;
+            text-align: center;
+      }
+
+      & p{
+            font-size: 14px;
+            color: $body-color;
+
+            & a{
+                  font-weight: 700;
+                  color: $heading-color;      
+                  @include transition(0.3s);
+
+                  &:hover{
+                        color: $theme-color;
+                  }            
+            }
+      }
+}
+
+.footer-social{
+      display: flex;
+      margin-top: 20px;
+
+      @media #{$md}{
+            width: 100%;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+      }
+      @media #{$xs}{
+            width: 100%;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+      }
+
+      & .label{
+            font-size: 14px;
+            color: $body-color;
+      }
+
+      & .socia{
+            display: flex;
+
+            & li{
+                  margin-left: 20px;
+
+                  & a{
+                        color: $body-color;
+                        font-size: 16px;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }
+                  }
+            }
+      }
+}
+
+.footer-menu-language{
+      display: flex;
+      margin-top: 20px;
+
+      @media #{$md}{
+            width: 100%;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+      }
+      @media #{$xs}{
+            width: 100%;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+      }
+            
+      & li{
+            & + li{
+                  margin-left: 30px;
+            }
+            & a{
+                  font-size: 14px;
+                  color: $body-color;
+                  @include transition(0.3s);
+
+                  &:hover{
+                        color: $theme-color;
+                  }
+            }
+      }
+}
+
+
+/*===== Back To Top =====*/
+
+.back-to-top{
+      position: fixed;
+      bottom: 36px;
+      right: 36px;
+      font-size: 16px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 2px;
+      z-index: 99;
+      text-align: center;
+      display: none;
+      @include box-shadow (0px 0px 30px 0px rgba(156,156,156,0.25));
+      @include transition(0.4s);
+      color: $white;
+      background-color: $theme-color;
+
+      @media #{$xs}{
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            bottom: 15px;
+            right: 15px;
+      }
+      
+      &:hover{
+          color: $white;
+          background-color: $heading-color;
+      }
+}
+
+
+
+/*===== Footer Dark =====*/
+
+.footer-dark{
+      background-color: #202424;
+
+      & .footer-widget{      
+            & .footer-title{
+                  color: $white;
+            }
+      }
+      
+      & .text-widget{
+            & .text-content{      
+                  & .single-text{
+                        & p{
+                              color: #7a8395;
+
+                              & a{
+                                    color: #7a8395;
+                                    @include transition(0.3s);
+
+                                    &:hover{
+                                          color: $theme-color;
+                                    }
+                              }
+                        }
+                  }
+            }
+      }
+
+      & .footer-menu{
+            & .menu-items{      
+                  & li{      
+                        & a{
+                              color: #7a8395;
+                              @include transition(0.3s);
+
+                              &:hover{
+                                    color: $theme-color;
+                              }
+                        }
+                  }
+            }
+      }
+
+      & .footer-text{
+            border-top: 1px solid rgba(122, 131, 149, 0.15);
+      }
+
+      & .footer-copyright{
+            & p{
+                  color: #7a8395;
+      
+                  & a{
+                        color: $white;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }                  
+                  }
+            }
+      }
+
+      & .footer-social{
+            & .label{
+                  color: #7a8395;
+            }
+      
+            & .socia{      
+                  & li{
+                        & a{
+                              color: #7a8395;
+                              @include transition(0.3s);
+
+                              &:hover{
+                                    color: $theme-color;
+                              }
+                        }
+                  }
+            }
+      }
+
+      
+      & .footer-menu-language{
+            & li{
+                  & a{
+                        color: #7a8395;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }
+                  }
+            }
+      }
+}
+
+
+/*===== Footer 2 =====*/
+
+.footer-area-2{
+      background-color: #1a1f28;
+}
+
+.footer-top{
+      padding-bottom: 50px;
+}
+
+.footer-fact{}
+
+.single-fact{
+      margin-top: 50px;
+
+      & +.single-fact{
+            margin-left: 130px;
+
+            @media #{$xs}{
+                  margin-left: 40px;
+            }
+      }
+      
+      & .count{
+            font-size: 30px;
+            font-weight: 800;
+            font-style: italic;
+            color: $white;
+            font-family: $font-1;
+
+            @media #{$xs}{
+                  font-size: 22px;
+            }
+      }
+      & p{
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #999;
+      }
+}
+
+
+
+.footer-download{
+      padding-top: 40px;
+
+      & ul{
+            & li{
+                  display: inline-block;
+                  margin-top: 10px;
+
+                  & + li{
+                        margin-left: 14px;
+                  }
+
+                  & a{
+                        @media #{$xs}{
+                              width: 120px;
+                        }
+                  }
+            }
+      }
+}
+
+
+.footer-widget-2{
+      padding-top: 20px;
+      padding-bottom: 70px;
+      border-top: 1px solid rgba(245, 245, 245, 0.15);
+
+      & .footer-title{
+            font-size: 18px;
+            font-style: italic;
+            text-transform: uppercase;
+            color: $white;
+            font-weight: 800;
+            
+      }
+}
+
+.footer-menu-2{
+      @media #{$xs}{
+            width: 100%;
+      }
+      @media #{$sm}{
+            width: auto;
+      }
+
+      & + .footer-menu-2{
+            margin-left: 130px;
+
+            @media #{$lg}{
+                  margin-left: 90px;
+            }
+            @media #{$xs}{
+                  margin-left: 0px;
+            }
+            @media #{$sm}{
+                  margin-left: 50px;
+            }
+      }
+
+      & .menu-items{
+            margin-top: 45px;
+
+            & li{
+                  margin-top: 4px;
+
+                  & a{
+                        font-size: 14px;
+                        color: #99a3b6;
+                        line-height: 26px;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }
+                  }
+            }
+      }
+}
+
+.footer-newsletter-2{
+      & .newsletter-wrapper{
+            margin-top: 45px;
+
+            & p{
+                  font-size: 14px;
+                  color: #99a3b6;
+            }
+            & .newsletter-form{
+                  position: relative;
+                  margin-top: 30px;
+
+                  & input{
+                        width: 100%;
+                        height: 44px;
+                        padding: 0 15px;
+                        padding-right: 60px;
+                        border: 0;
+                        background-color: #242b36;
+                        color: $white;
+                  }
+                  & button{
+                        width: 48px;
+                        height: 44px;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        background-color: $theme-color;
+                        color: $white;
+                        padding: 0;
+                        font-size: 20px;
+                        border: 0;
+                  }
+            }
+
+            & span{
+                  display: block;
+                  margin-top: 17px;
+                  color: $body-color;
+                  font-style: italic;
+            }
+      }
+}
+
+
+.footer-text-2{
+      padding-top: 20px;
+      padding-bottom: 40px;
+}
+
+.footer-copyright-2{
+      margin-top: 20px;
+
+      @media #{$md}{
+            width: 100%;
+            text-align: center;
+      }
+      @media #{$xs}{
+            width: 100%;
+            text-align: center;
+      }
+
+      & p{
+            font-size: 14px;
+            color: #999;
+
+            & a{
+                  font-weight: 700;
+                  color: $white;      
+                  @include transition(0.3s);
+
+                  &:hover{
+                        color: $theme-color;
+                  }            
+            }
+      }
+}
+
+.footer-social-2{
+      display: flex;
+      margin-top: 20px;
+
+      @media #{$md}{
+            width: 100%;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+      }
+      @media #{$xs}{
+            width: 100%;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+      }
+
+      & .label{
+            font-size: 14px;
+            color: #999;
+      }
+
+      & .socia{
+            display: flex;
+
+            & li{
+                  margin-left: 20px;
+
+                  & a{
+                        color: #999;
+                        font-size: 16px;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }
+                  }
+            }
+      }
+}
+
+
+
+/*===== Footer Dark 2 =====*/
+
+.footer-dark-2{
+      background-color: #1d242e;
+
+      & .footer-widget{      
+            & .footer-title{
+                  color: $white;
+            }
+      }
+      
+      & .text-widget{
+            & .text-content{      
+                  & .single-text{
+                        & p{
+                              color: #7a8395;
+
+                              & a{
+                                    color: #7a8395;
+                                    @include transition(0.3s);
+
+                                    &:hover{
+                                          color: $theme-color;
+                                    }
+                              }
+                        }
+                  }
+            }
+      }
+
+      & .footer-menu{
+            & .menu-items{      
+                  & li{      
+                        & a{
+                              color: #7a8395;
+                              @include transition(0.3s);
+
+                              &:hover{
+                                    color: $theme-color;
+                              }
+                        }
+                  }
+            }
+      }
+
+      & .footer-text{
+            border-top: 1px solid rgba(122, 131, 149, 0.15);
+      }
+
+      & .footer-copyright{
+            & p{
+                  color: #7a8395;
+      
+                  & a{
+                        color: $white;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }                  
+                  }
+            }
+      }
+
+      & .footer-social{
+            & .label{
+                  color: #7a8395;
+            }
+      
+            & .socia{      
+                  & li{
+                        & a{
+                              color: #7a8395;
+                              @include transition(0.3s);
+
+                              &:hover{
+                                    color: $theme-color;
+                              }
+                        }
+                  }
+            }
+      }
+
+      
+      & .footer-menu-language{
+            & li{
+                  & a{
+                        color: #7a8395;
+                        @include transition(0.3s);
+
+                        &:hover{
+                              color: $theme-color;
+                        }
+                  }
+            }
+      }
+}
+
+
+
+
+
+
+
+
+
+
+

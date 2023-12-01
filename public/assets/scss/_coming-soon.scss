@@ -1,0 +1,155 @@
+
+
+
+/*===========================
+     30.Coming Soon css 
+===========================*/
+
+.coming-soon{
+     height: 100vh;
+}
+
+
+.coming-soon-wrapper{
+     & .coming-logo{
+          & img{
+               width: 170px;
+          }
+     }
+
+     & .coming-soon-content{
+          max-width: 570px;
+          margin: 0 auto;
+          padding-top: 120px;
+
+          @media #{$laptop}{
+               padding-top: 80px;
+          }
+          @media #{$lg}{
+               padding-top: 80px;
+          }
+          @media #{$md}{
+               padding-top: 80px;
+          }
+          @media #{$xs}{
+               padding-top: 50px;
+          }
+
+          & .title{
+               font-size: 48px;
+               font-weight: 700;
+               text-transform: uppercase;
+
+               @media #{$xs}{
+                    font-size: 30px;
+               }
+
+          }
+          & p{
+               margin-top: 10px;
+          }
+     }
+     
+     & .coming-soon-count{
+          padding-top: 70px;
+
+          @media #{$laptop}{
+               padding-top: 80px;
+          }
+          @media #{$lg}{
+               padding-top: 80px;
+          }
+          @media #{$md}{
+               padding-top: 80px;
+          }
+          @media #{$xs}{
+               padding-top: 50px;
+          }
+
+          & .count-title{
+               font-size: 16px;
+               font-weight: 700;
+               color: $white;
+               text-transform: uppercase;
+
+               @media #{$xs}{
+                    font-size: 14px;
+               }
+          }
+
+          & .count-items{
+               padding-top: 30px;
+
+               @media #{$xs}{
+                    padding-top: 10px;
+               }
+
+               & .single-count{
+                    padding: 0 25px;
+                    margin-top: 30px;
+
+                    @media #{$xs}{
+                         padding: 0 15px;
+                    }
+                    
+                    & .count{
+                         font-size: 48px;
+                         font-weight: 700;
+                         color: $white;
+                         line-height: 45px;
+                         font-family: $font-1;
+
+                         @media #{$xs}{
+                              font-size: 24px;
+                         }
+                    }
+                    & p{
+                         color: $white;
+                    }
+               }
+          }
+     }
+
+     & .coming-soon-social{
+          padding-top: 110px;
+
+          @media #{$laptop}{
+               padding-top: 70px;
+          }
+          @media #{$lg}{
+               padding-top: 70px;
+          }
+          @media #{$md}{
+               padding-top: 70px;
+          }
+          @media #{$xs}{
+               padding-top: 40px;
+          }
+          
+          & .social{
+               display: -webkit-flex;
+               display: -moz-flex;
+               display: -ms-flex;
+               display: -o-flex;
+               display: flex;
+               -webkit-box-pack: center;
+               -ms-flex-pack: center;
+               justify-content: center;
+
+               & li{
+                    margin-left: 27px;
+
+                    & a{
+                         font-size: 18px;
+                         color: $white;
+                         @include transition(0.3s);
+
+                         &:hover{
+                              color: $heading-color;
+                         }
+                    }
+               }
+          }
+     }     
+}
+

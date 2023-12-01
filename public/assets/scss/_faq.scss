@@ -1,0 +1,257 @@
+
+
+
+/*===========================
+         32.FAQ css 
+===========================*/
+
+
+.faq-page{
+   padding-top: 115px;
+   padding-bottom: 120px;
+
+   @media #{$lg}{
+      padding-top: 95px;
+      padding-bottom: 100px;
+   }
+   @media #{$md}{
+      padding-top: 75px;
+      padding-bottom: 80px;
+   }
+   @media #{$xs}{
+      padding-top: 55px;
+      padding-bottom: 60px;
+   }
+}
+
+
+
+.faq-sidebar{
+   padding-top: 20px;
+
+   & .sidebar-menu{
+      margin-top: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid rgba($heading-color, 0.15);
+      padding: 30px;
+
+      & .menu-items{
+         & li{
+            & + li{
+               margin-top: 10px;
+            }
+            & a{
+               font-size: 18px;
+               font-weight: 700;
+               font-family: $font-1;
+               color: $heading-color;
+               @include transition(0.3s);
+
+               @media #{$lg}{
+                  font-size: 16px;
+               }
+
+               &.active,
+               &:hover{
+                  color: $theme-color;
+               }
+            }
+         }
+      }
+   }
+
+   & .sidebar-call-to-action{
+      margin-top: 30px;
+      background-color: #f9f9f9;
+      border: 1px solid rgba($heading-color, 0.15);
+      padding: 30px;
+
+      & i{
+         font-size: 48px;
+         line-height: 50px;
+         color: $theme-color;
+      }
+      & .title{
+         font-weight: 700;
+         font-size: 22px;
+         color: $heading-color;
+         margin-top: 15px;
+
+         @media #{$lg}{
+            font-size: 18px;
+         }
+      }
+      & p{
+         margin-top: 15px;
+      }
+      & .main-btn{
+         margin-top: 30px;
+      }
+   }
+   
+}
+
+
+
+.faq-accordion{
+   margin-top: 50px;
+   padding-left: 15px;
+
+   @media #{$md}{
+      padding-left: 0;
+   }
+   @media #{$xs}{
+      padding-left: 0;
+   }
+
+   & .accordion{
+      & .card{
+         border: 0;
+         border-radius: 0;
+         
+         & .card-header{
+            background: none;
+            display: block;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba($heading-color, 0.15);
+
+            & a{
+               font-size: 18px;
+               font-weight: 700;
+               color: $theme-color;
+               position: relative;
+               display: block;
+               padding-right: 25px;
+
+               @media #{$xs}{
+                  font-size: 16px;
+               }
+
+               &::before{
+                  position: absolute;
+                  content: '';
+                  width: 15px;
+                  height: 2px;
+                  background-color: $theme-color;
+                  top: 50%;
+                  @include transform(translateY(-50%));
+                  @include transition(0.3s);
+                  right: 0;
+               }
+               &::after{
+                  position: absolute;
+                  content: '';
+                  width: 2px;
+                  height: 0;
+                  background-color: $theme-color;
+                  top: 50%;
+                  @include transform(translateY(-50%));
+                  @include transition(0.3s);
+                  right: 6px;
+               }
+
+               &.collapsed{
+                  color: $heading-color;
+
+                  &::before{
+                     background-color: $heading-color;
+                  }
+                  &::after{
+                     height: 15px;
+                     background-color: $heading-color;
+                  }
+               }
+            }
+         }
+         & .card-body{
+            padding: 0;
+            padding-left: 15px;
+            padding-bottom: 15px;
+            padding-top: 15px;
+
+            @media #{$xs}{
+               padding-left: 0;
+            }
+         }
+
+         &:last-child{
+            & .card-header{
+               border-bottom: 0;
+            }
+         }
+      }
+   }
+}
+
+
+
+/*===== FAQ =====*/
+
+
+.faq-area{}
+
+.faq-wrapper{
+   border-top: 1px solid rgba($heading-color, 0.15);
+   padding-top: 112px;
+   padding-bottom: 120px;
+
+   @media #{$lg}{
+      padding-top: 92px;
+      padding-bottom: 100px;
+   }
+   @media #{$md}{
+      padding-top: 72px;
+      padding-bottom: 80px;
+   }
+   @media #{$xs}{
+      padding-top: 52px;
+      padding-bottom: 60px;
+   }
+}
+
+
+.single-faq{
+   margin-top: 45px;
+
+   & .title{
+      font-size: 22px;
+      font-weight: 700;
+      font-family: $font-2;
+      color: $heading-color;
+
+      @media #{$xs}{
+         font-size: 18px;
+      }
+   }
+   & p{
+      margin-top: 20px;
+      line-height: 30px;
+   }
+}
+
+
+.faq-contact{
+   margin-top: 70px;
+
+   & p{
+      text-transform: uppercase;
+      font-size: 24px;
+      color: $heading-color;
+
+      @media #{$md}{
+         font-size: 20px;
+      }
+      @media #{$xs}{
+         font-size: 18px;
+      }
+
+      & a{
+         color: $theme-color;
+         text-decoration: underline;
+         font-weight: 700;
+      }
+   }
+}
+
+
+

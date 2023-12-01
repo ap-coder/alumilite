@@ -1,0 +1,188 @@
+
+
+
+/*===========================
+     28.Contact Page css 
+===========================*/
+
+.contact-map-area{
+     & #contact-map{
+          height: 640px;
+          width: 100%;
+
+          @media #{$lg}{
+               height: 500px;
+          }
+          @media #{$md}{
+               height: 480px;
+          }
+          @media #{$xs}{
+               height: 480px;
+          }
+     }
+}
+
+
+.form-message{
+     &.success,
+     &.error{
+         font-size: 16px;
+         color: $black;
+         background: #ddd;
+         padding: 10px 15px;
+         margin-left: 15px;
+         margin-top: 15px;
+         display: inline-block;
+     }
+     &.error{
+         color: #f00;
+     }
+ }
+ 
+
+.contact-area{
+     padding-top: 115px;
+     padding-bottom: 120px;
+
+     @media #{$lg}{
+          padding-top: 95px;
+          padding-bottom: 100px;
+     }
+     @media #{$md}{
+          padding-top: 75px;
+          padding-bottom: 80px;
+     }
+     @media #{$xs}{
+          padding-top: 55px;
+          padding-bottom: 60px;
+     }
+}
+
+.contact-info{
+     padding: 0 100px;
+
+     @media #{$lg}{
+          padding: 0 70px;
+     }
+     @media #{$md}{
+          padding: 0 50px;
+     }
+     @media #{$xs}{
+          padding: 0;
+     }
+
+     & .contact-title{
+          font-size: 30px;
+          font-weight: 700;
+          font-family: $font-2;
+
+          @media #{$xs}{
+               font-size: 20px;
+          }
+
+          & br{
+               @media #{$md}{
+                    display: none;
+               }
+               @media #{$xs}{
+                    display: none;
+               }
+          }
+     }
+}
+
+
+.contact-info-wrapper{
+     padding-top: 20px;
+}
+
+.single-contact-info{
+     margin-top: 50px;
+
+     & .info-title{
+          font-size: 18px;
+          font-weight: 700;
+          color: $heading-color;
+          font-family: $font-2;
+          text-transform: uppercase;
+          border-bottom: 1px solid rgba($heading-color, 0.15);
+          padding-bottom: 10px;
+          margin-bottom: 25px;
+
+          & i{
+               float: right;
+               display: block;
+               color: $body-color;
+          }
+     }
+
+     & p{
+          font-size: 16px;
+
+          & a{
+               color: $body-color;
+          }
+
+          & br{
+               @media #{$lg}{
+                    display: none;
+               }
+          }
+     }
+}
+
+
+
+.contact-form{
+     background-color: #f5f6f6;
+     border: 1px solid rgba($heading-color, 0.15);
+     padding: 100px;
+     margin-top: 90px;
+
+     @media #{$lg}{
+          padding: 70px;
+     }
+     @media #{$md}{
+          padding: 50px;
+     }
+     @media #{$xs}{
+          padding: 30px;
+     }
+
+     & .form-title{
+          font-size: 30px;
+          font-weight: 700;
+          color: $heading-color;
+          font-family: $font-2;
+
+          @media #{$xs}{
+               font-size: 24px;
+          }
+     }
+
+     & .single-form{
+          margin-top: 30px;
+
+          & textarea,
+          & input{
+               width: 100%;
+               height: 45px;
+               padding: 0 20px;
+               border: 1px solid rgba($heading-color, 0.15);
+               color: $heading-color;
+               @include transition(0.3s);
+               border-radius: 3px;
+
+               &:focus{
+                    border-color: $heading-color;
+               }
+          }
+          & textarea{
+               height: 120px;
+               padding-top: 15px;
+               resize: none;
+          }
+     }
+}
+
+

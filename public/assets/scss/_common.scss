@@ -1,0 +1,431 @@
+
+
+/*===========================
+    1. COMMON css 
+===========================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+ body {
+	font-family: $font-2;
+	font-weight: normal;
+	font-style: normal;
+	color: $body-color;
+	overflow-x: hidden;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    @include box-sizing (border-box);
+}
+
+img {
+	max-width: 100%;
+}
+
+a:focus,
+input:focus,
+textarea:focus,
+button:focus {
+	text-decoration: none;
+	outline: none;
+}
+
+a:focus,
+a:hover{
+	text-decoration: none;
+}
+
+i,
+span,
+a{
+	display: inline-block;
+	text-decoration: none;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-1;
+	font-weight: 800;
+	color: $heading-color;
+	margin: 0px;
+}
+
+h1 {
+	font-size: 48px;
+}
+h2 {
+	font-size: 30px;
+}
+h3 {
+	font-size: 24px;
+}
+h4 {
+	font-size: 20px;
+}
+h5 {
+	font-size: 18px;
+}
+h6 {
+	font-size: 16px;
+}
+
+ul,ol {
+	margin: 0px;
+	padding: 0px;
+    list-style-type: none;
+}
+
+p {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: $body-color;
+	margin: 0px;
+}
+
+.bg_cover{
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+// others common css here
+
+
+// @media only screen and (min-width: 1200px) {
+//     .container {
+//         max-width: 1200px;
+//     }
+// }
+
+
+/*===== All Button Style =====*/
+
+.main-btn {
+	display: inline-block;
+	font-weight: 700;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	@include user-select(none);
+	border: 0;
+	padding: 0 20px;
+	font-size: 16px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 2px;
+	color: $white;
+	cursor: pointer;
+	z-index: 5;
+	@include transition(0.3s);
+	text-transform: uppercase;
+	background-color: $theme-color;
+	letter-spacing: 1px;
+
+	& i{
+		margin-right: 10px;
+	}
+
+	&.main-btn-2{
+		background-color: $white;
+		color: $heading-color;
+	}
+	&.main-btn-3{
+		color: $white;
+		background-color: $heading-color;
+
+		&:hover{
+			background-color: $white;
+			color: $heading-color;
+		}
+	}
+	
+	&:hover{
+		background-color: $heading-color;
+		color: $white;
+	}
+}
+
+
+/*===== All Slick Slide Outline Style =====*/
+
+.slick-slide {
+	outline: 0; 
+}
+
+
+/*===== All tab content Custom Style =====*/
+
+.tab-content{
+    & .tab-pane{
+        display: block;
+        overflow: hidden;
+        height: 0;
+        visibility: hidden;
+        max-width: 100%;
+        opacity: 0;
+        
+        &.active{
+            height: auto;
+            visibility: visible;
+            opacity: 1;
+            overflow: visible;
+        }
+    }
+}
+
+
+/*===== All Slick Slide Outline Style =====*/
+
+.section-title {
+	padding-right: 70px;
+
+	& .title{
+		text-transform: uppercase;
+		font-weight: 800;
+		font-size: 24px;
+
+		@media #{$xs}{
+			font-size: 18px;
+		}
+	}
+}
+
+
+.section-title-2{
+	text-align: left;
+	
+	& .title{
+		font-size: 30px;
+		font-weight: 800;
+		font-style: italic;
+		text-transform: uppercase;
+
+		@media #{$xs}{
+			font-size: 20px;
+		}
+	}
+}
+
+
+.section-title-3{
+	& .sub-title{
+		font-size: 18px;
+		text-transform: uppercase;
+		color: $body-color;
+		font-weight: 700;
+
+		@media #{$xs}{
+            font-size: 14px;
+        }
+	}
+	& .main-title{
+		font-size: 36px;
+		font-weight: 800;
+		text-transform: uppercase;
+		color: $heading-color;
+		margin-top: 15px;
+
+		@media #{$lg}{
+			font-size: 30px;
+		}
+		@media #{$xs}{
+            font-size: 24px;
+        }
+	}
+}
+
+
+/*===== All Pagination ======*/
+
+.all-pagination{
+	padding-top: 50px;
+
+	& .pagination{
+		& li{
+			margin: 0 5px;
+
+			& a{
+				background-color: #edeff1;
+				color: $heading-color;
+				font-size: 14px;
+				text-transform: uppercase;
+				font-weight: 700;
+				width: 36px;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+				@include transition(0.3s);
+
+				@media #{$xs}{
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+				}
+
+				&.active{
+					background-color: $theme-color;
+					color: $white;
+				}
+
+				&.previous,
+				&.next{
+					width: auto;
+					padding: 0 20px;
+
+					@media #{$xs}{
+						padding: 0;
+						width: 30px;
+						height: 30px;
+						line-height: 30px;
+					}
+					@media #{$sm}{
+						padding: 0 20px;
+						width: auto;
+					}
+
+					& span{
+						@media #{$xs}{
+							display: none;
+						}
+						@media #{$sm}{
+							display: inline-block;
+						}
+					}
+				}				
+			}
+
+			&:hover{
+				& a{
+					background-color: $theme-color;
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+
+
+.page-breadcrumb-area{
+	background-color: #f5f6f6;
+
+	@media #{$md}{
+		  padding-top: 80px;
+	}
+	@media #{$xs}{
+		  padding-top: 80px;
+	}
+	
+	& .page-breadcrumb{
+		  & .breadcrumb{
+				margin-bottom: 0;
+				border-radius: 0;
+				padding: 18px 0;
+				background: none;
+	
+				& .breadcrumb-item{
+					  & + .breadcrumb-item{
+	
+					  }
+					  font-size: 16px;
+					  color: $body-color;
+					  text-transform: capitalize;
+	
+					  @media #{$xs}{
+							font-size: 14px;
+					  }
+	
+					  & a{
+							color: $body-color;
+							@include transition(0.3s);
+	
+							&:hover{
+								  color: $theme-color;
+								  text-decoration: underline;
+							}
+					  }
+					  &.active{
+							color: $heading-color;
+					  }
+				}
+		  }
+	}
+}
+
+
+.page-title{
+	max-width: 930px;
+
+	& .title{
+			font-size: 30px;
+			font-weight: 700;
+			color: $heading-color;
+
+			@media #{$xs}{
+					font-size: 20px;
+			}
+			@media #{$sm}{
+					font-size: 24px;
+			}
+	}
+	& p{
+			font-size: 16px;
+			margin-top: 20px;
+	}
+}
+
+
+/*===== Slick ZoomIn ======*/
+
+
+@-webkit-keyframes slickZoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        -moz-transform: scale3d(0.3, 0.3, 0.3);
+        -ms-transform: scale3d(0.3, 0.3, 0.3);
+        -o-transform: scale3d(0.3, 0.3, 0.3);
+    }
+  
+    50% {
+        opacity: 1;
+    }
+}
+  
+@keyframes slickZoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        -moz-transform: scale3d(0.3, 0.3, 0.3);
+        -ms-transform: scale3d(0.3, 0.3, 0.3);
+        -o-transform: scale3d(0.3, 0.3, 0.3);
+    }
+    
+    50% {
+        opacity: 1;
+    }
+}
+

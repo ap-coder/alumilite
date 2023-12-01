@@ -1,0 +1,338 @@
+
+
+
+/*===========================
+      19.Inventory css 
+===========================*/
+
+.inventory-area{
+      padding-top: 70px;
+      padding-bottom: 120px;
+
+      @media #{$lg}{
+            padding-top: 50px;
+            padding-bottom: 100px;
+      }
+      @media #{$md}{
+            padding-top: 30px;
+            padding-bottom: 80px;
+      }
+      @media #{$xs}{
+            padding-top: 10px;
+            padding-bottom: 60px;
+      }
+
+      & .tab-content{
+            & .grid{
+                  &.show{
+                        padding-bottom: 50px;
+                  }
+            }
+      }
+      
+}
+
+
+.inventory-top{
+      padding-top: 20px;
+
+      & .inventory-top-right{
+            margin-top: 30px;
+
+            & p{
+                  font-size: 16px;
+                  font-weight: 700;
+                  color: $theme-color;
+                  text-transform: uppercase;
+
+                  & span{
+                        color: $heading-color;
+                  }
+            }
+      }
+
+      & .inventory-select{
+            margin-top: 30px;
+
+            & .SumoSelect {
+                  width: 300px;
+
+                  @media #{$xs}{
+                        width: 100%;
+                  }
+                  @media #{$sm}{
+                        width: 300px;
+                  }
+
+                  & > .CaptionCont {
+                        background: #edeff1;
+                        border-radius: 1px;
+                        border: 0;
+                        padding: 0 24px;
+                        font-size: 16px;
+                        cursor: pointer;                        
+                        height: 50px;
+                        line-height: 50px;
+                        color: $heading-color;
+                        font-weight: 700;
+                        @include transition(0.3s);
+                        @include box-shadow (none !important);
+
+                        & > span {
+                              display: block;
+                              padding-right: 30px;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
+                              overflow: hidden;
+                              cursor: pointer; 
+                        }
+
+                        & > label {
+                              cursor: pointer; 
+
+                              & > i {
+                                    width: 32px;
+                                    height: 32px;
+                                    line-height: 32px;
+                                    background: 0 0;
+                                    font-weight: 400;
+
+                                    &::after {
+                                          content: '\f123';
+                                          display: inline-block;
+                                          font-family: "Ionicons";
+                                          font-style: normal;
+                                          line-height: 1;
+                                          -webkit-font-smoothing: antialiased;
+                                          -moz-osx-font-smoothing: grayscale;
+                                    }
+                              }
+                        }
+                        &:hover{
+                              background-color: $theme-color;
+                              color: $white;                              
+                        }
+                  }
+                  
+                  & .optWrapper{
+                        top: 50px;
+
+                        @media #{$xs}{
+                              top: 82px;
+                        }
+
+                        & .options{
+                              & .opt{
+                                    padding: 8px 0 8px 20px;
+                                    color: $heading-color;
+                              }
+                        }
+                  }
+            }
+      }
+      & .inventory-switcher{
+            margin-top: 25px;
+            margin-left: 60px;
+
+            @media #{$xs}{
+                  margin-left: 0;
+            }
+            @media #{$sm}{
+                  margin-left: 40px;
+            }
+            
+            & .nav{
+                  & li{
+                        & + li{
+                              margin-left: 10px;
+                        }
+                        & a{
+                              width: 50px;
+                              height: 50px;
+                              line-height: 50px;
+                              background-color: #edeff1;
+                              color: $heading-color;
+                              text-align: center;
+                              font-size: 34px;
+
+                              &.active{
+                                    color: $white;
+                                    background-color: $theme-color;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+
+
+.inventory-sidebar{
+      border: 1px solid #d7dce6;
+      padding: 25px;
+      border-radius: 3px;
+      margin-top: 50px;
+
+      & .title{
+            font-size: 16px;
+            font-weight: 800;
+            color: $heading-color;
+            text-transform: uppercase;
+      }
+      & .sidebar-select{
+            padding-top: 20px;
+
+            & .single-field{
+                  position: relative;
+                  margin-top: 10px;
+
+                  & .SumoSelect{
+                         width: 100%;
+
+                         & .SumoUnder{
+                                right: 0;
+                                height: 100%;
+                                width: 100%;
+                                border: none;
+                                opacity: 0;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                         }
+                         
+                         & .CaptionCont {
+                                width: 100%;
+                                line-height: 1.875;
+                                padding: 5px 13px;
+                                background: #f9f9f9;
+                                box-shadow: none;
+                                border-color: #d7dce6;
+                                @include box-shadow (none !important);
+
+                                & .placeholder{
+                                       font-style: normal;
+                                       color: $body-color;
+                                       font-size: 16px;
+                                       padding-right: 5px;
+                                }
+                                & > label{
+                                       & > i{
+                                              font-style: normal;
+                                              opacity: 1;
+                                              color: #293957;
+                                              background-image: none;
+                                              text-align: center;
+                                              margin: auto auto 12px;
+                                              font-size: 18px;
+                                              width: 18px;
+                                              height: 18px;
+                                              line-height: 18px;
+
+                                              &::before {
+                                                     content: '\f3d0';
+                                                     display: inline-block;
+                                                     font-family: 'Ionicons';
+                                                     font-style: normal;
+                                                     line-height: 1;
+                                                     -webkit-font-smoothing: antialiased;
+                                                     -moz-osx-font-smoothing: grayscale;
+                                              }
+                                       }
+                                }
+                         }
+
+                         & .optWrapper {
+                                top: 42px;
+                         }
+
+                         &.open{
+                                & .CaptionCont {
+                                       border-color: $theme-color;
+                                }
+                         }
+                  }
+
+                  & input{
+                         height: 100%;
+                         width: 100%;
+                         padding: 24px 13px 10px;
+                         background: #f9f9f9;
+                         border-radius: 2px;
+                         color: #666;
+                         border: 1px solid #dedede;
+                         border-radius: 0;
+                         transition: .3s ease all;       
+                         font-style: normal;
+                         color: #666;
+                         font-size: 16px; 
+                         font-weight: 500;   
+                         @include transition(0.3s);  
+                         
+                         &:focus{
+                                border-color: $theme-color;
+                         }
+                  }
+
+                  & .main-btn{
+                        &::before {
+                              content: '\f21c';
+                              display: inline-block;
+                              font-family: 'Ionicons';
+                              font-style: normal;
+                              line-height: 1;
+                              -webkit-font-smoothing: antialiased;
+                              -moz-osx-font-smoothing: grayscale;
+                              margin-right: 10px;
+                              font-weight: 400;
+                       }
+                  }
+           }
+
+           & .field-selected{
+                  padding-bottom: 15px;
+                  padding-top: 10px;                  
+
+                  & .field-selected-item{
+                        margin-top: 5px;
+
+                        & i{
+                              cursor: pointer;
+                              margin-right: 8px;     
+                              font-size: 16px;  
+                              color: $heading-color;                     
+                        }
+                        & .label{
+                              font-size: 16px;
+                              color: #9fa7b5;
+
+                              @media #{$lg}{
+                                    font-size: 14px;
+                              }
+                        }
+                        & .value{
+                              font-size: 16px;
+                              color: $heading-color;
+                              
+                              @media #{$lg}{
+                                    font-size: 14px;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+.sidebar-banner{
+      margin-top: 30px;
+
+      & a{
+            display: block;
+
+            & img{
+                  width: 100%;
+            }
+      }
+}
+
+
+

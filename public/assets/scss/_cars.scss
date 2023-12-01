@@ -1,0 +1,1551 @@
+
+
+
+/*===========================
+        07.cars css 
+===========================*/
+
+
+.cars-area{
+    padding-top: 115px;
+    padding-bottom: 120px;
+
+        @media #{$lg}{
+                padding-top: 95px;
+                padding-bottom: 100px;
+        }
+        @media #{$md}{
+                padding-top: 75px;
+                padding-bottom: 80px;
+        }
+        @media #{$xs}{
+                padding-top: 55px;
+                padding-bottom: 60px;
+        }
+}
+
+
+.cars-2-area{
+        padding-top: 115px;
+        padding-bottom: 115px;
+        
+        @media #{$lg}{
+                padding-top: 95px;
+                padding-bottom: 95px;
+        }
+        @media #{$md}{
+                padding-top: 75px;
+                padding-bottom: 75px;
+        }
+        @media #{$xs}{
+                padding-top: 55px;
+                padding-bottom: 55px;
+        }
+}
+
+.cars-wrapper{
+        & .cars-tab-menu{
+                padding-top: 13px;
+
+                & .nav{
+                        & li{
+                                margin-top: 10px;
+
+                                @media #{$xs}{
+                                        width: 100%;
+                                }
+                                @media #{$sm}{
+                                        width: auto;
+                                }
+                                
+                                & a{
+                                        display: block;
+                                        padding: 8px 15px;
+                                        font-size: 14px;
+                                        line-height: 14px;
+                                        font-weight: 700;
+                                        color: $heading-color;
+                                        margin-right: 5px;
+                                        border-radius: 3px;
+                                        @include transition(0.3s);
+                                        text-transform: uppercase; 
+
+                                        @media #{$xs}{
+                                                padding: 8px 12px;
+                                        }
+                                        
+                                        &:hover,
+                                        &.active{
+                                                color: $white;
+                                                background-color: $theme-color;
+                                        }
+                                }
+                        }
+                }
+        }
+
+        & .tab-content{}
+}
+
+.car-row{
+        margin-left: -15px;
+        margin-right: -15px;
+
+        & .car-col{
+                padding: 0 15px;
+        }
+}
+
+.single-car-item{
+        & .car-image{
+                position: relative;
+
+                & a{
+                        display: block;
+
+                        & img{
+                                width: 100%;
+                        }
+                }
+
+                & .car-meta{
+                        position: absolute;
+                        right: 8px;
+                        bottom: 8px;
+                        @include transition(0.3s);
+                        opacity: 0;
+                        visibility: hidden;
+
+                        & li{
+                                display: inline-block;
+
+                                & button{
+                                        color: $white;
+                                        font-size: 22px;
+                                        margin-left: 1px;
+                                        background: $heading-color;
+                                        @include transition(0.3s);
+                                        width: 30px;
+                                        height: 30px;
+                                        line-height: 30px;
+                                        position: relative;
+                                        padding: 0;
+                                        border: 0;
+
+                                        & .car-tooltip{
+                                                position: absolute;
+                                                color: $white;
+                                                background: $heading-color;
+                                                font-size: 12px;
+                                                font-weight: 400;
+                                                text-transform: none;
+                                                padding: 6px 7px;
+                                                top: -33px;
+                                                white-space: nowrap;
+                                                z-index: 5;
+                                                line-height: 15px;
+                                                opacity: 0;
+                                                visibility: hidden;
+                                                @include transition(0.2s);
+
+                                                &::after {
+                                                        content: '';
+                                                        position: absolute;
+                                                        top: calc(100% - 2px);
+                                                        display: block;
+                                                        width: 0;
+                                                        height: 0;
+                                                        border-left: 5px solid transparent;
+                                                        border-right: 5px solid transparent;
+                                                        border-top: 10px solid $heading-color;
+                                                }
+
+                                                &.compare{
+                                                        left: 0;
+
+                                                        &::after {
+                                                                left: 10px;
+                                                        }
+                                                }
+                                                &.View{
+                                                        left: 50%;
+                                                        @include transform(translateX(-50%));
+
+                                                        &::after{
+                                                                left: 50%;
+                                                                @include transform(translateX(-50%));
+                                                        }
+                                                }
+                                                &.favourite{
+                                                        right: 0;
+
+                                                        &::after{
+                                                                right: 10px;
+                                                        }
+                                                }
+                                        }
+
+                                        &:hover{
+                                                background-color: $theme-color;
+
+                                                & .car-tooltip{
+                                                        opacity: 1;
+                                                        visibility: visible;
+                                                }
+                                        }
+                                }
+                        }
+                }
+
+                & .status {
+                        color: $white;
+                        font-size: 14px;
+                        line-height: 26px;
+                        margin: 0;
+                        padding: 0 8px;
+                        border-radius: 3px;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        position: absolute;
+                        bottom: 8px;
+                        left: 8px;
+
+                        &.special{
+                                background-color: #fa9900;
+                        }
+                        &.condition{
+                                background-color: #0086cc;
+                        }
+                }
+
+                & .sale-badge{
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        color: $white;
+                        background: #ec3922;
+                        padding: 5px;
+                        line-height: 1;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        font-weight: 700;                        
+                }
+        }
+        & .car-content{ 
+                padding-top: 10px;
+
+                & .body-type{
+                        & a{
+                                color: $body-color;
+                                text-transform: none;
+                                font-size: 14px;                
+                        }
+                }
+                & .car-title{
+                        & a{
+                                font-size: 20px;
+                                font-weight: 700;
+                                font-family: $font-2;
+                                color: $heading-color;
+                                position: relative;
+                                overflow: hidden;
+                                @include transition(0.3s);
+
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+
+                                &:hover{
+                                        color: $theme-color;
+                                        text-decoration: underline;
+                                }
+                        }
+                }
+                & .price{
+                        & .price-amount{
+                                font-size: 24px;
+                                color: $theme-color;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+                                margin-top: 5px;
+
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                        & .sale-price{
+                                font-size: 24px;
+                                color: #ec3922;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+                                margin-top: 5px;
+
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                        & .regular-price {
+                                color: #737f96;
+                                text-decoration: line-through;
+                                font-size: 16px;
+                                margin-left: 10px;
+                                font-weight: 400;
+                                position: relative;
+                                top: 3px;
+                                font-style: italic;
+                        }
+                        & .discount-percentage {                                
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                color: $white;
+                                padding: 2px 7px;
+                                background: #690;
+                                margin-left: 20px;
+                                margin-right: 20px;
+                                position: relative;
+                                border-radius: 2px;
+                                font-style: normal;
+                                letter-spacing: -.025em;
+                                font-weight: 700;
+
+                                @media #{$xs}{
+                                        margin-left: 10px;
+                                        margin-right: 10px;
+                                }
+                        }
+                }
+                & .listing-colors{
+                        padding-top: 10px;
+
+                        & .title{
+                                font-size: 14px;
+                                color: $heading-color;
+                        }
+                        & .color-items{
+                                display: -webkit-flex;
+                                display: -moz-flex;
+                                display: -ms-flex;
+                                display: -o-flex;
+                                display: flex;
+                                padding-left: 10px;
+
+                                & li{
+                                        & span{
+                                                width: 16px;
+                                                height: 16px;
+                                                display: inline-block;
+                                                border-radius: 2px;
+                                                border: 1px solid rgba(119,119,119,.2);
+                                                margin-right: 5px;                                                
+                                        }
+                                }
+                        }
+                }
+        }
+
+        &:hover{
+                & .car-image{        
+                        & .car-meta{
+                                opacity: 1;
+                                visibility: visible;
+                        }
+                }   
+        }
+}
+
+.cars-active-2,
+.cars-active{
+        & .slick-active{
+                @include animation(slickZoomIn 1s);
+        }
+
+        & .slick-arrow{
+                font-size: 16px;
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;              
+                border-radius: 2px;
+                color: $white;
+                background: #c2cad9;
+                cursor: pointer;
+                @include transition(0.3s);
+                position: absolute;
+                top: -30px;
+                right: 15px;
+                z-index: 5;
+                padding: 0;
+
+                @media #{$xs}{                        
+                        top: -235px;
+                }
+                
+                &.prev{
+                       right: 47px;
+                }
+
+                &:hover{
+                        background-color: $theme-color;
+                        color: $white;
+                }
+        }
+}
+
+
+
+/*===== Cars Dark =====*/
+
+.cars-dark{
+        background-color: $black;
+
+        & .section-title {
+                & .title{
+                       color: $white;
+                }
+        } 
+
+        & .cars-wrapper{
+                & .cars-tab-menu{        
+                        & .nav{
+                                & li{                                        
+                                        & a{
+                                                color: #7a8395;
+                                                
+                                                &:hover,
+                                                &.active{
+                                                        color: $white;
+                                                        background-color: $theme-color;
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+
+        & .single-car-item{                
+                & .car-content{ 
+                        padding-top: 10px;
+        
+                        & .body-type{
+                                & a{
+                                        color: #7a8395;               
+                                }
+                        }
+                        & .car-title{
+                                & a{                                        
+                                        color: $white;
+        
+                                        &:hover{
+                                                color: $theme-color;
+                                                text-decoration: underline;
+                                        }
+                                }
+                        }
+                        & .price{
+                                & .regular-price {
+                                        color: #7a8395;  
+                                }
+                        }
+                        & .listing-colors{        
+                                & .title{
+                                        color: #7a8395;  
+                                }
+                        }
+                }
+        }
+
+        & .cars-active{
+                & .slick-arrow{
+                        color: $white;
+                        background: #4b6363;
+          
+                        &:hover{
+                               background-color: $theme-color;
+                               color: $white;
+                        }
+                }
+        }
+
+        & .cars-more{
+                & .main-btn{
+                        &:hover{
+                                background-color: $white;
+                                color: $heading-color;
+                        }
+                }
+        }
+}
+
+
+
+/*===== Cars 2 =====*/
+
+
+.cars-area-2{
+
+}
+
+.cars-container{
+        @media #{$desktop}{
+                max-width: 1720px;
+        }
+}
+
+.single-car-item-2{
+        & .car-image{
+                position: relative;
+
+                & a{
+                        display: block;
+
+                        & img{
+                                width: 100%;
+                        }
+                }
+
+                & .car-meta{
+                        position: absolute;
+                        right: 8px;
+                        bottom: 8px;
+                        @include transition(0.3s);
+                        opacity: 0;
+                        visibility: hidden;
+
+                        & li{
+                                display: inline-block;
+
+                                & button{
+                                        color: $white;
+                                        font-size: 22px;
+                                        margin-left: 1px;
+                                        background: $heading-color;
+                                        @include transition(0.3s);
+                                        width: 30px;
+                                        height: 30px;
+                                        line-height: 30px;
+                                        position: relative;
+                                        padding: 0;
+                                        border: 0;
+
+                                        & .car-tooltip{
+                                                position: absolute;
+                                                color: $white;
+                                                background: $heading-color;
+                                                font-size: 12px;
+                                                font-weight: 400;
+                                                text-transform: none;
+                                                padding: 6px 7px;
+                                                top: -33px;
+                                                white-space: nowrap;
+                                                z-index: 5;
+                                                line-height: 15px;
+                                                opacity: 0;
+                                                visibility: hidden;
+                                                @include transition(0.2s);
+
+                                                &::after {
+                                                        content: '';
+                                                        position: absolute;
+                                                        top: calc(100% - 2px);
+                                                        display: block;
+                                                        width: 0;
+                                                        height: 0;
+                                                        border-left: 5px solid transparent;
+                                                        border-right: 5px solid transparent;
+                                                        border-top: 10px solid $heading-color;
+                                                }
+
+                                                &.compare{
+                                                        left: 0;
+
+                                                        &::after {
+                                                                left: 10px;
+                                                        }
+                                                }
+                                                &.View{
+                                                        left: 50%;
+                                                        @include transform(translateX(-50%));
+
+                                                        &::after{
+                                                                left: 50%;
+                                                                @include transform(translateX(-50%));
+                                                        }
+                                                }
+                                                &.favourite{
+                                                        right: 0;
+
+                                                        &::after{
+                                                                right: 10px;
+                                                        }
+                                                }
+                                        }
+
+                                        &:hover{
+                                                background-color: $theme-color;
+
+                                                & .car-tooltip{
+                                                        opacity: 1;
+                                                        visibility: visible;
+                                                }
+                                        }
+                                }
+                        }
+                }
+
+                & .status {
+                        color: $white;
+                        font-size: 14px;
+                        line-height: 26px;
+                        margin: 0;
+                        padding: 0 8px;
+                        border-radius: 3px;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        position: absolute;
+                        bottom: 8px;
+                        left: 8px;
+
+                        &.special{
+                                background-color: #fa9900;
+                        }
+                        &.new{
+                                background-color: #0086cc;
+                        }
+                        &.certified{
+                                background-color: #669900;
+                        }
+                        &.condition{
+                                background-color: #0086cc;
+                        }
+                }
+
+                & .sale-badge{
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        color: $white;
+                        background: #ec3922;
+                        padding: 5px;
+                        line-height: 1;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        font-weight: 700;                        
+                }
+        }
+        & .car-content{
+                padding-top: 10px;
+
+                & .price{
+                        display: block;
+                        
+                        & .price-amount{
+                                font-size: 24px;
+                                color: $theme-color;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+                                margin-top: 5px;
+
+                                @media #{$laptop}{
+                                        font-size: 18px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                        & .sale-price{
+                                font-size: 24px;
+                                color: #ec3922;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+                                margin-top: 5px;
+
+                                @media #{$laptop}{
+                                        font-size: 18px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                        & .regular-price {
+                                color: #737f96;
+                                text-decoration: line-through;
+                                font-size: 16px;
+                                margin-left: 10px;
+                                font-weight: 400;
+                                position: relative;
+                                top: 3px;
+                                font-style: italic;
+                        }
+                        & .discount-percentage {                                
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                color: $white;
+                                padding: 2px 7px;
+                                background: #690;
+                                margin-left: 20px;
+                                margin-right: 20px;
+                                position: relative;
+                                border-radius: 2px;
+                                font-style: normal;
+                                letter-spacing: -.025em;
+                                font-weight: 700;
+
+                                @media #{$laptop}{
+                                        margin-left: 10px;
+                                        margin-right: 10px;
+                                }
+                                @media #{$xs}{
+                                        margin-left: 10px;
+                                        margin-right: 10px;
+                                }
+                        }
+                        & .sold{
+                                font-size: 24px;
+                                color: $body-color;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+                                margin-top: 5px;
+
+                                @media #{$laptop}{
+                                        font-size: 18px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                }
+
+                & .body-type{
+                        & a{
+                                color: $body-color;
+                                text-transform: none;
+                                font-size: 14px;   
+                                margin-top: 10px;             
+                        }
+                }
+                & .car-title{
+                        & a{
+                                font-size: 20px;
+                                font-weight: 700;
+                                font-family: $font-2;
+                                color: $heading-color;
+                                position: relative;
+                                overflow: hidden;
+                                @include transition(0.3s);
+
+                                @media #{$laptop}{
+                                        font-size: 18px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+
+                                &:hover{
+                                        color: $theme-color;
+                                        text-decoration: underline;
+                                }
+                        }
+
+                        & i{
+                                font-size: 20px;
+                                color: $theme-color;
+                        }
+                }    
+                & .author-meta{
+                        & span{
+                                font-size: 14px;
+                                color: #737f96;
+
+                                & a{
+                                        color: #0084c8;
+                                        @include transition(0.3s);
+                                        
+                                        &:hover{
+                                                text-decoration: underline;
+                                        }
+                                }
+                                & i{
+                                        font-size: 16px;
+                                }
+                        }
+                }  
+                & .car-meta{
+                        border-top: 1px solid rgba($heading-color, .2);
+                        margin-top: 25px;
+
+                        & li{
+                                display: inline-block;
+                                position: relative;
+                                margin-top: 10px;
+                                
+                                & + li{
+                                        padding-left: 25px;
+
+                                        @media #{$laptop}{
+                                                padding-left: 20px;
+                                        }
+
+                                        &::before{
+                                                position: absolute;
+                                                top: -1px;
+                                                left: 10px;
+                                                content: '|';
+                                                color: #d1d5dd;
+                                                font-size: 16px;
+
+                                                @media #{$laptop}{
+                                                        left: 7px;
+                                                }                                                
+                                        }
+
+
+                                }
+
+                                & a{
+                                        color: $heading-color;
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        @include transition(0.3s);
+
+                                        @media #{$laptop}{
+                                                font-size: 13px;
+                                        }
+
+                                        & i{
+                                                font-size: 16px;
+                                                margin-right: 5px;
+                                                color: #737f96;
+                                                @include transition(0.3s);
+                                        }
+
+                                        &:hover{
+                                                color: $theme-color;
+
+                                                & i{
+                                                        color: $theme-color;
+                                                }
+                                        }
+                                }
+                        }
+                }         
+        }
+
+        &:hover{
+                & .car-image{        
+                        & .car-meta{
+                                opacity: 1;
+                                visibility: visible;
+                        }
+                }   
+        }
+}
+
+
+.single-car-item-list{
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        padding: 50px 0;
+
+        @media #{$md}{
+                display: block;
+        }
+        @media #{$xs}{
+                display: block;
+        }
+
+        & + .single-car-item-list{
+                border-top: 1px solid rgba($heading-color, 0.15);
+        }
+
+        & .car-image{
+                position: relative;
+                max-width: 370px;
+                height: 100%;
+
+                @media #{$lg}{
+                        max-width: 270px;
+                }
+                @media #{$md}{
+                        max-width: inherit;
+                        width: 100%;
+                }
+                @media #{$xs}{
+                        max-width: inherit;
+                        width: 100%;
+                }
+
+                & a{
+                        display: block;
+
+                        & img{
+                                width: 100%;
+                        }
+                }
+
+                & .car-meta{
+                        position: absolute;
+                        right: 8px;
+                        bottom: 8px;
+                        @include transition(0.3s);
+                        opacity: 0;
+                        visibility: hidden;
+
+                        & li{
+                                display: inline-block;
+
+                                & button{
+                                        color: $white;
+                                        font-size: 22px;
+                                        margin-left: 1px;
+                                        background: $heading-color;
+                                        @include transition(0.3s);
+                                        width: 30px;
+                                        height: 30px;
+                                        line-height: 30px;
+                                        position: relative;
+                                        padding: 0;
+                                        border: 0;
+
+                                        & .car-tooltip{
+                                                position: absolute;
+                                                color: $white;
+                                                background: $heading-color;
+                                                font-size: 12px;
+                                                font-weight: 400;
+                                                text-transform: none;
+                                                padding: 6px 7px;
+                                                top: -33px;
+                                                white-space: nowrap;
+                                                z-index: 5;
+                                                line-height: 15px;
+                                                opacity: 0;
+                                                visibility: hidden;
+                                                @include transition(0.2s);
+
+                                                &::after {
+                                                        content: '';
+                                                        position: absolute;
+                                                        top: calc(100% - 2px);
+                                                        display: block;
+                                                        width: 0;
+                                                        height: 0;
+                                                        border-left: 5px solid transparent;
+                                                        border-right: 5px solid transparent;
+                                                        border-top: 10px solid $heading-color;
+                                                }
+
+                                                &.compare{
+                                                        left: 0;
+
+                                                        &::after {
+                                                                left: 10px;
+                                                        }
+                                                }
+                                                &.View{
+                                                        left: 50%;
+                                                        @include transform(translateX(-50%));
+
+                                                        &::after{
+                                                                left: 50%;
+                                                                @include transform(translateX(-50%));
+                                                        }
+                                                }
+                                                &.favourite{
+                                                        right: 0;
+
+                                                        &::after{
+                                                                right: 10px;
+                                                        }
+                                                }
+                                        }
+
+                                        &:hover{
+                                                background-color: $theme-color;
+
+                                                & .car-tooltip{
+                                                        opacity: 1;
+                                                        visibility: visible;
+                                                }
+                                        }
+                                }
+                        }
+                }
+
+                & .status {
+                        color: $white;
+                        font-size: 14px;
+                        line-height: 26px;
+                        margin: 0;
+                        padding: 0 8px;
+                        border-radius: 3px;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        position: absolute;
+                        bottom: 8px;
+                        left: 8px;
+
+                        &.special{
+                                background-color: #fa9900;
+                        }
+                        &.new{
+                                background-color: #0086cc;
+                        }
+                        &.certified{
+                                background-color: #669900;
+                        }
+                        &.condition{
+                                background-color: #0086cc;
+                        }
+                }
+
+                & .sale-badge{
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        color: $white;
+                        background: #ec3922;
+                        padding: 5px;
+                        line-height: 1;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        font-weight: 700;                        
+                }
+        }
+        & .car-content{
+                -webkit-flex: 1;
+                -moz-flex: 1;
+                -ms-flex: 1;
+                flex: 1;
+                padding-left: 30px;
+                position: relative;
+
+                @media #{$md}{
+                        padding-left: 0;
+                        margin-top: 25px;
+                }
+                @media #{$xs}{
+                        padding-left: 0;
+                        margin-top: 25px;
+                }
+
+                & .content-title{
+                        & .body-type{
+                                & a{
+                                        color: $body-color;
+                                        text-transform: none;
+                                        font-size: 14px;
+                                }
+                        }
+                        & .car-title{
+                                margin-bottom: 0;
+
+                                & a{
+                                        font-size: 20px;
+                                        font-weight: 700;
+                                        font-family: $font-2;
+                                        color: $heading-color;
+                                        position: relative;
+                                        overflow: hidden;
+                                        @include transition(0.3s);                                        
+        
+                                        @media #{$laptop}{
+                                                font-size: 18px;
+                                        }
+                                        @media #{$xs}{
+                                                font-size: 18px;
+                                        }
+        
+                                        &:hover{
+                                                color: $theme-color;
+                                                text-decoration: underline;
+                                        }
+                                }
+        
+                                & i{
+                                        font-size: 20px;
+                                        color: $theme-color;
+                                }
+                        }
+                }
+
+                & .price{
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        text-align: right;
+
+                        @media #{$xs}{
+                                position: relative;
+                                text-align: left;
+                        }
+                        @media #{$sm}{
+                                position: absolute;
+                                text-align: right;
+                        }
+                        
+                        & .price-amount{
+                                font-size: 24px;
+                                line-height: 30px;
+                                color: $theme-color;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+
+                                @media #{$laptop}{
+                                        font-size: 18px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                        & .sale-price{
+                                font-size: 24px;
+                                line-height: 30px;
+                                color: #ec3922;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+
+                                @media #{$laptop}{
+                                        font-size: 18px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+                        & .regular-price {
+                                color: #737f96;
+                                text-decoration: line-through;
+                                font-size: 16px;
+                                margin-left: 10px;
+                                font-weight: 400;
+                                position: relative;
+                                top: 3px;
+                                font-style: italic;
+                        }
+                        & .discount-percentage {                                
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                color: $white;
+                                padding: 2px 7px;
+                                background: #690;
+                                margin-left: 20px;
+                                margin-right: 20px;
+                                position: relative;
+                                border-radius: 2px;
+                                font-style: normal;
+                                letter-spacing: -.025em;
+                                font-weight: 700;
+
+                                @media #{$laptop}{
+                                        margin-left: 10px;
+                                        margin-right: 10px;
+                                }
+                                @media #{$xs}{
+                                        margin-left: 10px;
+                                        margin-right: 10px;
+                                }
+                        }
+                        & .sold{
+                                font-size: 24px;
+                                line-height: 30px;
+                                color: $body-color;
+                                font-weight: 700;
+                                font-style: italic;
+                                font-family: $font-1;
+
+                                @media #{$laptop}{
+                                        font-size: 18px;
+                                }
+                                @media #{$xs}{
+                                        font-size: 18px;
+                                }
+                        }
+
+                        & .msrp{
+                                font-size: 14px;
+                                color: $body-color;
+                                text-align: right;
+                                margin-top: 5px;
+
+                                @media #{$xs}{
+                                        text-align: left;
+                                }
+
+                                & strong{
+                                        font-size: 16px;
+                                        font-weight: 700;
+                                        color: $heading-color;
+                                }
+                        }
+                }
+
+                & .car-meta{
+                        padding: 5px 0 15px;
+                        border-bottom: 1px solid rgba($heading-color, 0.15);
+
+                        & li{
+                                display: inline-block;
+                                
+                                @media #{$xs}{
+                                        display: block;
+                                }
+                                @media #{$sm}{
+                                        display: inline-block;
+                                }
+
+                                & + li{
+                                        margin-left: 30px;
+                                        padding-left: 30px;
+                                        border-left: 1px solid rgba($heading-color, 0.15);
+                                        margin-top: 10px;
+                                        
+                                        @media #{$xs}{
+                                                margin-left: 0;
+                                                padding-left: 0;
+                                                margin-top: 15px;
+                                                padding-top: 15px;
+                                                border-top: 1px solid rgba($heading-color, 0.15);
+                                                border-left: 0;
+                                        }
+                                        @media #{$sm}{
+                                                margin-left: 15px;
+                                                padding-left: 15px;
+                                                margin-top: 0;
+                                                padding-top: 0;
+                                                border-top: 0;
+                                                border-left: 1px solid rgba($heading-color, 0.15);
+                                        }
+                                }
+                                
+                                & .glance{
+                                        position: relative;   
+                                        padding-left: 30px;
+
+                                        & i{
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                font-size: 24px;
+                                                line-height: 28px;
+                                                color: $body-color;
+                                        }
+                                        & .label{
+                                                font-size: 14px;
+                                                line-height: 28px;
+                                                font-weight: 400;
+                                                color: $body-color;
+                                                text-transform: uppercase;
+                                                display: block;
+                                        }
+                                        & .value{
+                                                font-size: 14px;
+                                                font-weight: 700;
+                                                color: $heading-color;
+                                                display: block;
+                                        }
+                                }
+                        }
+                }
+
+                & .dealer-certificates{
+                        & .dealer-author{
+                                display: -webkit-flex;
+                                display: -moz-flex;
+                                display: -ms-flex;
+                                display: -o-flex;
+                                display: flex;
+                                -webkit-box-align: center;
+                                -ms-flex-align: center;
+                                align-items: center;
+                                margin-top: 20px;
+
+                                & .author-image{
+                                        & a{
+                                                & img{
+                                                        border-radius: 50%;
+                                                }
+                                        }
+                                }
+                                & .author-content{
+                                        -webkit-flex: 1;
+                                        -moz-flex: 1;
+                                        -ms-flex: 1;
+                                        flex: 1;
+                                        padding-left: 20px;
+
+                                        & .name{
+                                                & a{
+                                                        font-size: 16px;
+                                                        color: #0084c8;
+                                                        font-weight: 700;
+                                                        @include transition(0.3s);
+
+                                                        &:hover{
+                                                                text-decoration: underline;
+                                                        }
+                                                }
+                                        }
+                                        & .rating{
+                                                display: -webkit-flex;
+                                                display: -moz-flex;
+                                                display: -ms-flex;
+                                                display: -o-flex;
+                                                display: flex;
+
+                                                & .rating-star{
+                                                        display: -webkit-flex;
+                                                        display: -moz-flex;
+                                                        display: -ms-flex;
+                                                        display: -o-flex;
+                                                        display: flex;
+
+                                                        & li{
+                                                                font-size: 14px;
+                                                                color: #fa9900;
+                                                        }
+                                                }
+                                                & span{
+                                                        font-size: 14px;
+                                                        color: $body-color;
+                                                        margin-left: 5px;
+                                                }
+                                        }
+                                        & p{
+                                                color: $heading-color;
+                                                font-size: 14px;
+                                                margin-top: 3px;
+
+                                                & i{
+                                                        color: $body-color;
+                                                        margin-right: 5px;
+                                                }
+                                        }
+                                }
+                        }
+                        & .certificates{
+                                display: -webkit-flex;
+                                display: -moz-flex;
+                                display: -ms-flex;
+                                display: -o-flex;
+                                display: flex;
+                                -webkit-box-align: center;
+                                -ms-flex-align: center;
+                                align-items: center;
+                                margin-top: 20px;
+
+                                & li{
+                                        width: 100px;
+
+                                        @media #{$sm}{
+                                                width: 80px;
+                                        }
+
+                                        & + li{
+                                                margin-left: 20px;
+                                        }
+
+                                        img{
+                                                
+                                        }
+                                }
+                        }
+                }
+        }
+ 
+        &:hover{
+                & .car-image{        
+                        & .car-meta{
+                                opacity: 1;
+                                visibility: visible;
+                        }
+                }   
+        }
+}
+
+
+.car-list-items{
+        & .single-car-item-list{
+                & .car-image{        
+                        @media #{$lg}{
+                                max-width: 270px;
+                        }
+                }
+                & .car-content{
+                                
+                        & .content-title{                                
+                                & .car-title{
+                                        & a{
+                                                @media #{$lg}{
+                                                        font-size: 18px;
+                                                }
+                                        }
+                
+                                        & i{
+                                                @media #{$lg}{
+                                                        font-size: 18px;
+                                                }
+                                        }
+                                }
+                        }
+        
+                        & .price{                                
+                                
+                                & .price-amount{                                        
+                                        @media #{$lg}{
+                                                font-size: 18px;
+                                        }
+                                }
+                                & .sale-price{                                        
+                                        @media #{$lg}{
+                                                font-size: 18px;
+                                        }
+                                }
+                                & .regular-price {
+                                        
+                                }
+                                & .discount-percentage {
+                                        @media #{$lg}{
+                                                margin-left: 10px;
+                                                margin-right: 10px;
+                                        }
+                                }
+                                & .sold{
+                                        @media #{$lg}{
+                                                font-size: 18px;
+                                        }
+                                }
+        
+                                & .msrp{}
+                        }
+        
+                        & .car-meta{        
+                                & li{        
+                                        & + li{
+        
+                                                @media #{$lg}{
+                                                        padding-left: 20px;
+                                                        margin-left: 20px;
+                                                }
+                                        }
+                                        
+                                        & .glance{        
+                                                & i{
+                                                        @media #{$lg}{
+                                                                font-size: 20px;
+                                                        }
+                                                }
+                                                & .label{}
+                                                & .value{}
+                                        }
+                                }
+                        }
+        
+                        & .dealer-certificates{
+                                
+                                @media #{$lg}{
+                                        display: block !important; 
+                                }
+                        }
+                }
+        }
+}
+
+
+
+/*===== Cars Dark 2 =====*/
+
+.cars-dark-2{
+        background-color: #1a1f28;
+
+        & .section-title-2{
+                & .title{
+                     color: $white;
+                }
+         }
+
+         & .cars-wrapper{
+                & .cars-tab-menu{        
+                        & .nav{
+                                & li{                                        
+                                        & a{
+                                                color: $white;
+                                                
+                                                &:hover,
+                                                &.active{
+                                                        color: $white;
+                                                        background-color: $theme-color;
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+
+        & .single-car-item-2{               
+                & .car-content{
+                        & .car-title{
+                                & a{
+                                        color: $white;
+        
+                                        &:hover{
+                                                color: $theme-color;
+                                                text-decoration: underline;
+                                        }
+                                }
+        
+                                & i{
+                                        font-size: 20px;
+                                        color: $theme-color;
+                                }
+                        } 
+                        & .car-meta{
+                                border-top: 1px solid #253146;
+        
+                                & li{                                        
+                                        & + li{
+                                                &::before{
+                                                        color: #3e485a;
+                                                }
+                                        }
+        
+                                        & a{
+                                                color: $white;
+
+                                                & i{
+                                                        color: #737f96;
+                                                }
+        
+                                                &:hover{
+                                                        color: $theme-color;
+        
+                                                        & i{
+                                                                color: $theme-color;
+                                                        }
+                                                }
+                                        }
+                                }
+                        }         
+                }
+        
+                &:hover{
+                        & .car-image{        
+                                & .car-meta{
+                                        opacity: 1;
+                                        visibility: visible;
+                                }
+                        }   
+                }
+        }
+}
+
+

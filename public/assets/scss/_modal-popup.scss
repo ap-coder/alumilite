@@ -1,0 +1,409 @@
+
+
+
+/*===========================
+     39.Modal Popup css 
+===========================*/
+
+.modal-backdrop{
+   &.show{
+      opacity: 0.75;
+   }
+}
+
+.test-drive-modal{
+   &.modal{
+      & .modal-dialog{
+         max-width: 570px;
+
+         @media #{$xs}{
+            width: 90%;
+            margin: 0 auto;
+         }
+         @media #{$sm}{
+            max-width: 470px;
+         }
+
+         & .modal-content{
+            border-radius: 0;
+            border: 1px solid $white; 
+            padding: 93px 100px 100px;
+            position: relative;
+            z-index: 5;
+
+            &::before{
+               position: absolute;
+               content: '';
+               background-color: rgba(0, 0, 0, 0.25);
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               z-index: -1;
+            }
+
+            @media #{$md}{
+               padding: 43px 50px 50px;
+            }
+            @media #{$xs}{
+               padding: 18px 20px 20px;
+            }
+            @media #{$sm}{
+               padding: 40px 40px;
+            }
+
+            & .test-drive-title{
+               font-size: 24px;
+               font-weight: 800;
+               color: $white;
+               text-transform: uppercase;
+
+               @media #{$xs}{
+                  font-size: 18px;
+               }
+            }
+            & p{
+               color: $white;
+               margin-top: 10px;
+            }
+            
+            & .test-drive-form{
+               padding-top: 20px;
+
+               & .single-form{
+                  margin-top: 15px;
+
+                  & label{
+                     font-size: 14px;
+                     text-transform: uppercase;
+                     color: $white;
+                     font-weight: 700;
+                     margin-bottom: 5px;
+                  }
+                  & textarea,
+                  & input{
+                     width: 100%;
+                     height: 45px;
+                     padding: 0 15px;
+                     border: 1px solid $white;
+                     border-radius: 3px;
+                     color: $heading-color;
+                     background-color: $white;
+                     @include transition(0.3s);
+                     font-size: 14px;
+
+                     &:focus{
+                        border-color: $theme-color;
+                     }
+                  }
+
+                  & textarea{
+                     height: 70px;
+                     padding-top: 10px;
+                     resize: none;
+                  }
+               }
+               & .form-btn{
+                  margin-top: 40px;
+
+                  & .main-btn{
+                     font-size: 20px;
+                     height: 60px;
+                     line-height: 60px;
+
+                     @media #{$md}{
+                        font-size: 16px;
+                        height: 50px;
+                        line-height: 50px;
+                     }
+                     @media #{$xs}{
+                        font-size: 14px;
+                        height: 50px;
+                        line-height: 50px;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+
+.make-offer-modal{
+   &.modal{
+      & .modal-dialog{
+         max-width: 570px;
+
+         @media #{$xs}{
+            width: 90%;
+            margin: 0 auto;
+         }
+         @media #{$sm}{
+            max-width: 470px;
+         }
+
+         & .modal-content{
+            border-radius: 0;
+            border: 0; 
+            padding: 93px 100px 100px;
+            position: relative;
+            z-index: 5;
+            background-color: #e9ecee;
+
+            @media #{$md}{
+               padding: 43px 50px 50px;
+            }
+            @media #{$xs}{
+               padding: 18px 20px 20px;
+            }
+            @media #{$sm}{
+               padding: 40px 40px;
+            }
+
+            & .test-drive-title{
+               font-size: 24px;
+               font-weight: 800;
+               color: $heading-color;
+               text-transform: uppercase;
+
+               @media #{$xs}{
+                  font-size: 18px;
+               }
+            }
+            & p{
+               margin-top: 10px;
+            }
+            
+            & .test-drive-form{
+               padding-top: 20px;
+
+               & .single-form{
+                  margin-top: 15px;
+
+                  & label{
+                     font-size: 14px;
+                     text-transform: uppercase;
+                     color: $heading-color;
+                     font-weight: 700;
+                     margin-bottom: 5px;
+                  }
+                  & textarea,
+                  & input{
+                     width: 100%;
+                     height: 45px;
+                     padding: 0 15px;
+                     border: 1px solid $white;
+                     border-radius: 3px;
+                     color: $heading-color;
+                     background-color: $white;
+                     @include transition(0.3s);
+                     font-size: 14px;
+
+                     &:focus{
+                        border-color: $heading-color;
+                     }
+                  }
+
+                  & textarea{
+                     height: 70px;
+                     padding-top: 10px;
+                     resize: none;
+                  }
+               }
+               & .form-btn{
+                  margin-top: 40px;
+
+                  & .main-btn{
+                     font-size: 20px;
+                     height: 60px;
+                     line-height: 60px;
+
+                     @media #{$md}{
+                        font-size: 16px;
+                        height: 50px;
+                        line-height: 50px;
+                     }
+                     @media #{$xs}{
+                        font-size: 14px;
+                        height: 50px;
+                        line-height: 50px;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+
+
+
+.newsletter-popup{
+   position: fixed;
+   max-width: 830px;
+   height: auto;
+   @include transform(translate(-50%, -50%));
+   top: 50%;
+   left: 50%;
+   z-index: 9999;
+   border-radius: 4px;
+   background-color: $gray;
+
+   @media #{$md}{
+      max-width: 670px;
+   }
+   @media #{$xs}{
+      max-width: 90%;
+   }
+   @media #{$sm}{
+      max-width: 470px;
+   }
+
+   & .newsletter-close{
+      position: absolute;
+      top: -45px;
+      right: -35px;
+
+      @media #{$xs}{
+         right: 0;
+      }
+
+      & button{
+         border: 0;
+         background: none;
+         cursor: pointer;
+         padding: 0;
+         opacity: 0.7;
+
+         & i{
+            color: $white;
+            font-size: 30px;
+            line-height: 35px;
+
+            @media #{$xs}{
+               font-size: 22px;
+            }
+         }
+      }
+   }
+
+   & .newsletter-content{
+      max-width: 475px;
+      padding: 55px 60px 30px;
+
+      @media #{$md}{
+         padding: 45px 50px 30px;
+      }
+      @media #{$xs}{
+         padding: 18px 20px 20px;
+      }
+      @media #{$sm}{
+         max-width: 375px;
+      }
+
+      & .newsletter-title{
+
+         & .title{
+            font-size: 24px;
+            font-weight: 700;
+            color: $heading-color;
+            text-transform: uppercase;
+
+            @media #{$xs}{
+               font-size: 18px;
+            }
+         }
+         & p{
+            margin-top: 16px;
+         }
+      }
+      & .newsletter-form{
+         margin-top: 35px;
+
+         & input{
+            width: 100%;
+            height: 45px;
+            padding: 0 15px;
+            border: 1px solid rgba($heading-color, 0.15);
+            border-radius: 3px;
+            color: $heading-color;
+            background-color: $white;
+            @include transition(0.3s);
+            font-size: 14px;
+
+            &:focus{
+               border-color: $theme-color;
+            }
+         }
+         & .main-btn{
+            margin-top: 20px;
+         }
+      }
+      & .newsletter-show{
+         margin-top: 32px;
+
+         & input[type="checkbox"]{
+            display: none;
+
+            & + label{
+               width: 13px;
+               height: 13px;
+               border-radius: 2px;
+               background-color: $white;
+               border: 1px solid rgba($heading-color, 0.15);
+               position: relative;
+               margin-right: 10px;
+               @include transition(0.3s);
+
+               &::before{
+                  content: '\f121';
+                  font-family: "Ionicons";
+                  display: inline-block;
+                  font-size: 11px;
+                  color: $white;
+                  position: absolute;
+                  top: -2px;
+                  left: 1px;
+                  opacity: 0;
+                  visibility: hidden;
+                  @include transition(0.3s);
+               }
+            }
+
+            &:checked{
+               & + label{
+                  background-color: $theme-color;
+                  border-color: $theme-color;
+
+                  &::before{
+                     opacity: 1;
+                     visibility: visible;
+                  }
+               }
+            }
+         }
+
+         & span{
+            font-size: 16px;
+            font-weight: 400;
+            color: $heading-color;
+         }
+      }
+   }
+}
+
+.newsletter-overlay{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.8);
+   z-index: 999;   
+}
+
+
+
+
