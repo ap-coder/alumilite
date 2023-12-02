@@ -6,7 +6,7 @@
                 <div class="header-main-wrapper d-flex justify-content-between align-items-center">
                     <div class="header-brand">
                         <a href="index-dark.html">
-                            <img class="custom-logo" src="{{ asset('assets/images/logo-2.png') }}" alt="">
+                            <img class="custom-logo" src="{{ asset('assets/images/aa-horizontal-533x100.png') }}" alt="">
                         </a>
                     </div>
                     <div class="header-main-content d-flex">
@@ -15,7 +15,7 @@
                                 <i class="ion-android-pin"></i>
                             </div>
                             <div class="block-content media-body">
-                                <span class="text">192 Orchard st, Ohio,<br>Ca, 90002, USA</span>
+                                <span class="text">PAROWAN<br>UT, 84761, USA</span>
                             </div>
                         </div>
                         <div class="single-content-block d-flex">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="block-content media-body">
                                 <span class="label">Hotline</span>
-                                <span class="text-2"><a href="tel:05683458868">056 83 458 868</a></span>
+                                <span class="text-2"><a href="tel:4359901012">435-990-1012</a></span>
                             </div>
                         </div>
                         <div class="single-content-block d-flex">
@@ -33,13 +33,13 @@
                             </div>
                             <div class="block-content media-body">
                                 <span class="label">Working Hours</span>
-                                <span class="text">Mon-Fri: 8.00 - 17.00</span>
+                                <span class="text">Mon-Fri: 8.00 - 5.00</span>
                             </div>
                         </div>
                     </div>
-                    <div class="header-main-btn">
+        {{--             <div class="header-main-btn">
                         <a href="add-car.html" class="main-btn"><i class="ion-model-s"></i> Add Car </a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>        
