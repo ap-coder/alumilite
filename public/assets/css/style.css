@@ -15471,3 +15471,37 @@ p {
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
 }
+
+/* phillips custom css */
+
+.header-brand a .custom-logo {
+  width: 20rem!important;
+}
+
+[class*="only-brands"] 
+{
+    display:block;
+    height: 15%!important;
+}
+ 
+
+[class*="brand-area-only"] 
+{ 
+  padding-bottom: 10px!important; 
+}
+
+[class*="only-brand-wrapper"] 
+{
+    border-top:0!important;
+    padding-top: 10px!important;
+}
+
+[class*="only-brands"] [class*="slick-slide"]
+{
+
+    height: 100%!important;
+}
+
+[class*="-dark"]  {
+  background-color: #1b1e1e!important;
+}

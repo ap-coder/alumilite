@@ -439,6 +439,8 @@ return [
             'updated_at_helper'              => ' ',
             'deleted_at'                     => 'Deleted at',
             'deleted_at_helper'              => ' ',
+            'location'                       => 'Location',
+            'location_helper'                => 'select what slider location to add image',
         ],
     ],
 

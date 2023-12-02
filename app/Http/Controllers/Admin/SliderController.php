@@ -47,6 +47,9 @@ class SliderController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->editColumn('location', function ($row) {
+                return $row->location ? Slider::LOCATION_SELECT[$row->location] : '';
+            });
             $table->editColumn('image', function ($row) {
                 if ($photo = $row->image) {
                     return sprintf(

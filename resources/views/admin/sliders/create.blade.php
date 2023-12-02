@@ -10,6 +10,21 @@
         <form method="POST" action="{{ route("admin.sliders.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label>{{ trans('cruds.slider.fields.location') }}</label>
+                <select class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" name="location" id="location">
+                    <option value disabled {{ old('location', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Slider::LOCATION_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('location', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('location'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('location') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.slider.fields.location_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="image">{{ trans('cruds.slider.fields.image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
                 </div>

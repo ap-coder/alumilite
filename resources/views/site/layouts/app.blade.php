@@ -22,7 +22,7 @@
 
 <body>
 @include('site.partials.header')
-{{-- @include('site.partials.header-menu') --}}
+@include('site.partials.header-menu')
 {{-- @include('site.partials.mobile-menu') --}}
 
 @yield('content')

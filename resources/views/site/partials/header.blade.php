@@ -1,12 +1,12 @@
     <!--====== Header Start ======-->
 
-    <header class="header-area header-dark d-none d-lg-block">
+    <header class="header-area  d-none d-lg-block">
         <div class="header-main">
             <div class="container">
                 <div class="header-main-wrapper d-flex justify-content-between align-items-center">
                     <div class="header-brand">
                         <a href="index-dark.html">
-                            <img class="custom-logo" src="{{ asset('assets/images/aa-horizontal-533x100.png') }}" alt="">
+                            <img class="custom-logo" src="{{ asset('assets/images/aa-horizontal-800x150.png') }}" alt="">
                         </a>
                     </div>
                     <div class="header-main-content d-flex">

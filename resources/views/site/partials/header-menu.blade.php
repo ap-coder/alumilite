@@ -7,16 +7,16 @@
                     <ul class="main-menu">
                         <li>
                             <a class="active" href="#">Home </a>
-                            <ul class="sub-menu">
+                 {{--            <ul class="sub-menu">
                                 <li><a href="index.html">Home 01</a></li>
                                 <li><a href="index-2.html">Home 02</a></li>
                                 <li><a href="index-3.html">Home 03</a></li>
                                 <li><a href="index-dark.html">Home 01 Dark</a></li>
                                 <li><a href="index-2-dark.html">Home 02 Dark</a></li>
                                 <li><a href="index-3-dark.html">Home 03 Dark</a></li>
-                            </ul>
+                            </ul> --}}
                         </li>
-                        <li>
+                   {{--      <li>
                             <a href="#">Inventory</a>
                             <ul class="sub-menu">
                                 <li><a href="inventory-with-sidebar-grid.html">Grid With Sidebar </a></li>
@@ -59,7 +59,7 @@
                                 <li><a href="dealer-details.html">Dealer Details</a></li>
                                 <li><a href="dealer-register.html">Dealer Register</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
@@ -73,7 +73,7 @@
                             <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
                         </ul>
                     </div>
-                    <div class="header-compare-login">
+                    {{-- <div class="header-compare-login">
                         <ul class="compare-login">
                             <li>
                                 <a href="vehicle-compare.html">
@@ -84,7 +84,7 @@
                             </li>
                             <li><a href="login-register.html"><i class="ion-ios-contact-outline"></i> <span>Log in</span></a></li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

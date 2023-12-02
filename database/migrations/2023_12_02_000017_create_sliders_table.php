@@ -10,6 +10,7 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('location')->nullable();
             $table->string('sub_title')->nullable();
             $table->string('main_title')->nullable();
             $table->string('sub_title_2')->nullable();

@@ -1,8 +1,10 @@
         <!--====== Brand Ends ======-->
-    <section class="testimonial-brand-area testimonial-brand-dark">
-        <div class="brand-area">
+
+     {{-- TAPAS ADD BRANDS LOOP HERE  --}}
+    <section class="testimonial-brand-area testimonial-brand only-brands">
+        <div class="brand-area brand-area-only">
             <div class="container">
-                <div class="brand-wrapper">
+                <div class="brand-wrapper only-brand-wrapper">
                     <div class="row brand-active">
                         <div class="col-lg-2 col-sm-4 col-6 brand-col">
                             <div class="single-brand">

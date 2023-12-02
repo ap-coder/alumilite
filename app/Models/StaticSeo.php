@@ -35,13 +35,8 @@ class StaticSeo extends Model implements HasMedia
     public const CONTENT_TYPE_SELECT = [
         'custom'     => 'Pages Builder',
         'post'       => 'Blog Post',
-        'news'       => 'Press',
-        'casestudy'  => 'Case Study',
-        'whitepaper' => 'White Paper',
-        'promo'      => 'Promo',
         'product'    => 'Product',
-        'event'      => 'Event',
-        'faq'        => 'FAQ',
+  
     ];
 
     protected $fillable = [

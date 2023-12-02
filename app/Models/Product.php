@@ -16,24 +16,37 @@ class Product extends Model implements HasMedia
 
     public $table = 'products';
 
-    protected $appends = [
-        'photo',
-    ];
-
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    protected $appends = [
+        'photo',
+        'additional_photos',
+        'documents',
+    ];
+
     protected $fillable = [
+        'published',
         'name',
         'description',
         'price',
+        'msrp',
+        'product_type_id',
+        'slug',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    protected $with = ['media', 'product_categories', 'product_tags'];
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -44,16 +57,6 @@ class Product extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
-    }
-
-    public function categories()
-    {
-        return $this->belongsToMany(ProductCategory::class);
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(ProductTag::class);
     }
 
     public function getPhotoAttribute()
@@ -67,4 +70,56 @@ class Product extends Model implements HasMedia
 
         return $file;
     }
+
+    public function getAdditionalPhotosAttribute()
+    {
+        $files = $this->getMedia('additional_photos');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+            $item->preview   = $item->getUrl('preview');
+        });
+
+        return $files;
+    }
+
+    public function getDocumentsAttribute()
+    {
+        return $this->getMedia('documents');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(ProductCategory::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(ProductTag::class);
+    }
+
+    public function technical_specs()
+    {
+        return $this->belongsToMany(TechnicalSpec::class);
+    }
+
+    public function product_type()
+    {
+        return $this->belongsTo(ProductType::class, 'product_type_id');
+    }
+
+    public static function getBySlug($slug)
+    {
+        return self::query()->where('slug', $slug)->first();
+    }
+
+    // public function staticSeo()
+    // {
+    //     return $this->hasOne(StaticSeo::class);
+    // }
+
+    // public function productStaticSeos()
+    // {
+    //     return $this->hasMany(StaticSeo::class, 'product_id', 'id');
+    // }
 }

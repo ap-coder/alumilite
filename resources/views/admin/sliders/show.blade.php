@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.location') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Slider::LOCATION_SELECT[$slider->location] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.image') }}
                         </th>
                         <td>

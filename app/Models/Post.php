@@ -16,6 +16,12 @@ class Post extends Model implements HasMedia
 
     public $table = 'posts';
 
+    protected $with = ['categories', 'tags', 'media'];
+
+    protected $casts = [
+        'published' => 'boolean',
+    ];
+
     protected $appends = [
         'featured_image',
     ];
@@ -36,6 +42,37 @@ class Post extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+
+    public static function getBySlug($slug)
+    {
+        return self::query()->where('slug', $slug)->first();
+    }
+
+    public function togglePublish($id)
+    {
+        $post = $this->find($id);
+
+        $post->published = ($post->published) ? false : true;
+
+        $post->save();
+
+        return response()->json(['result' => 'success', 'changed' => ($post->published) ? 1 : 0]);
+    }
+
+    public static function last()
+    {
+        return static::all()->last();
+    }
+
+    public function scopeLatest($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -69,4 +106,14 @@ class Post extends Model implements HasMedia
 
         return $file;
     }
+
+    // public function postStaticSeos()
+    // {
+    //     return $this->hasMany(StaticSeo::class, 'post_id', 'id');
+    // }
+
+    // public function staticSeo()
+    // {
+    //     return $this->hasOne(StaticSeo::class);
+    // }
 }

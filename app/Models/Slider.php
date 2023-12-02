@@ -26,7 +26,14 @@ class Slider extends Model implements HasMedia
         'deleted_at',
     ];
 
+    public const LOCATION_SELECT = [
+        '1' => 'HomePage',
+        '2' => 'Blog',
+        '3' => 'Products',
+    ];
+
     protected $fillable = [
+        'location',
         'sub_title',
         'main_title',
         'sub_title_2',
@@ -47,6 +54,11 @@ class Slider extends Model implements HasMedia
         'deleted_at',
     ];
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+    
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

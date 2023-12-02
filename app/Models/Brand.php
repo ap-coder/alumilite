@@ -20,6 +20,10 @@ class Brand extends Model implements HasMedia
         'logo',
     ];
 
+    protected $casts = [
+        'published' => 'boolean',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -34,6 +38,16 @@ class Brand extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+
+    public static function last()
+    {
+        return static::all()->last();
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -57,4 +71,6 @@ class Brand extends Model implements HasMedia
 
         return $file;
     }
+
+
 }

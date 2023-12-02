@@ -1,22 +1,22 @@
     <!--====== Footer Start ======-->
 
-    <footer class="footer-area footer-dark">
+    <footer class="footer-area">
         <div class="footer-widget">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-4">
                         <div class="text-widget mt-50">
                             <a href="#">
-                                <img src="assets/images/logo-2.png" alt="">
+                                <img src="assets/images/aalogo-horizontal.png" alt="alumilite armor footer logo">
                             </a>
                             <div class="text-content">
                                 <div class="single-text">
-                                    <p>166 Main Street, Beverly Hills <br> CA, 90210</p>
+                                    <p>Parowan, UT 84761</p>
                                 </div>
                                 <div class="single-text">
                                     <p>
-                                        <span><a href="mailto:support@corify.com.uk">support@corify.com.uk</a></span>
-                                        <span><a href="tel:00853462188">+0085 346 2188</a></span>
+                                        {{-- <span><a href="mailto:tkatwyk@gmail.com">tkatwyk@gmail.com</a></span> --}}
+                                        <span><a href="tel:4359901012">435-990-1012</a></span>
                                     </p>
                                 </div>
                             </div>
@@ -27,11 +27,8 @@
                             <h3 class="footer-title">Links</h3>
 
                             <ul class="menu-items">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="#">Testimonials</a></li>
-                                <li><a href="blog-with-sidebar.html">Blog</a></li>
-                                <li><a href="#">Career</a></li>
+                                <li><a href="{{ url('contact') }}">Contact</a></li>
+                                <li><a href="{{ url('blog') }}">Blog</a></li>
                             </ul>
                         </div>
                     </div>
@@ -40,13 +37,10 @@
                             <h3 class="footer-title">Help Center</h3>
 
                             <ul class="menu-items">
-                                <li><a href="faq.html">FAQs</a></li>
-                                <li><a href="#">Pricing & Plan</a></li>
+        
                                 <li><a href="#">Privacy Policy</a></li>
                                 <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Affiliate Program</a></li>
-                                <li><a href="#">How It Works</a></li>
-                                <li><a href="#">Helps</a></li>
+         
                             </ul>
                         </div>
                     </div>
@@ -55,7 +49,7 @@
                             <h3 class="footer-title">Newsletter</h3>
 
                             <div class="newsletter-wrapper">
-                                <p>Subscribe to our newsletter to get the latest cars discount promotions and other latest news stay updated.</p>
+                                <p>Subscribe to our newsletter to get the latest discount promotions and latest news.</p>
 
                                 <div class="newsletter-form">
                                     <form action="#">
@@ -75,7 +69,7 @@
             <div class="container">
                 <div class="footer-text-wrapper d-flex flex-wrap align-items-center justify-content-between">
                     <div class="footer-copyright">
-                        <p>&copy; 2021 <span> Corify </span> Made with <i class="fa fa-heart"></i> by <a href="#">Bootxperts</a></p>
+                        <p>&copy; 2023 <span> Alumilite Armor </span> Made with <i class="fa fa-heart"></i> by <a href="#">WeCodeLaravel</a></p>
                     </div>
                     <div class="footer-social">
                         <span class="label">Follow us</span>
@@ -87,11 +81,7 @@
                             <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
                         </ul>
                     </div>
-                    <ul class="footer-menu-language">
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">French</a></li>
-                        <li><a href="#">German</a></li>
-                    </ul>
+                    
                 </div>
             </div>
         </div>

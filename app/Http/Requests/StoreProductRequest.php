@@ -24,6 +24,12 @@ class StoreProductRequest extends FormRequest
             'price' => [
                 'required',
             ],
+            'additional_photos' => [
+                'array',
+            ],
+            'documents' => [
+                'array',
+            ],
             'categories.*' => [
                 'integer',
             ],
@@ -35,6 +41,16 @@ class StoreProductRequest extends FormRequest
             ],
             'tags' => [
                 'array',
+            ],
+            'technical_specs.*' => [
+                'integer',
+            ],
+            'technical_specs' => [
+                'array',
+            ],
+            'slug' => [
+                'string',
+                'nullable',
             ],
         ];
     }

@@ -25,6 +25,9 @@
                         {{ trans('cruds.slider.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.slider.fields.location') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.slider.fields.image') }}
                     </th>
                     <th>
@@ -129,6 +132,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'location', name: 'location' },
 { data: 'image', name: 'image', sortable: false, searchable: false },
 { data: 'sub_title', name: 'sub_title' },
 { data: 'main_title', name: 'main_title' },
