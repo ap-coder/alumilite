@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('site.index');
+    return view('site.home.index');
 })->name('site.home');
 
 
