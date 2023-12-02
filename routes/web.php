@@ -53,7 +53,7 @@ Route::get('/admin', function () {
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
-    Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -81,6 +81,58 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
     Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
     Route::resource('products', 'ProductController');
+
+    // Static Seo
+    Route::delete('static-seos/destroy', 'StaticSeoController@massDestroy')->name('static-seos.massDestroy');
+    Route::post('static-seos/media', 'StaticSeoController@storeMedia')->name('static-seos.storeMedia');
+    Route::post('static-seos/ckmedia', 'StaticSeoController@storeCKEditorImages')->name('static-seos.storeCKEditorImages');
+    Route::resource('static-seos', 'StaticSeoController');
+
+    // Technical Spec
+    Route::delete('technical-specs/destroy', 'TechnicalSpecController@massDestroy')->name('technical-specs.massDestroy');
+    Route::resource('technical-specs', 'TechnicalSpecController');
+
+    // Brands
+    Route::delete('brands/destroy', 'BrandsController@massDestroy')->name('brands.massDestroy');
+    Route::post('brands/media', 'BrandsController@storeMedia')->name('brands.storeMedia');
+    Route::post('brands/ckmedia', 'BrandsController@storeCKEditorImages')->name('brands.storeCKEditorImages');
+    Route::resource('brands', 'BrandsController');
+
+    // Features
+    Route::delete('features/destroy', 'FeaturesController@massDestroy')->name('features.massDestroy');
+    Route::resource('features', 'FeaturesController');
+
+    // Product Types
+    Route::delete('product-types/destroy', 'ProductTypesController@massDestroy')->name('product-types.massDestroy');
+    Route::post('product-types/media', 'ProductTypesController@storeMedia')->name('product-types.storeMedia');
+    Route::post('product-types/ckmedia', 'ProductTypesController@storeCKEditorImages')->name('product-types.storeCKEditorImages');
+    Route::resource('product-types', 'ProductTypesController');
+
+    // Content Category
+    Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
+    Route::resource('content-categories', 'ContentCategoryController');
+
+    // Content Tag
+    Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
+    Route::resource('content-tags', 'ContentTagController');
+
+    // Content Page
+    Route::delete('content-pages/destroy', 'ContentPageController@massDestroy')->name('content-pages.massDestroy');
+    Route::post('content-pages/media', 'ContentPageController@storeMedia')->name('content-pages.storeMedia');
+    Route::post('content-pages/ckmedia', 'ContentPageController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
+    Route::resource('content-pages', 'ContentPageController');
+
+    // Post
+    Route::delete('posts/destroy', 'PostController@massDestroy')->name('posts.massDestroy');
+    Route::post('posts/media', 'PostController@storeMedia')->name('posts.storeMedia');
+    Route::post('posts/ckmedia', 'PostController@storeCKEditorImages')->name('posts.storeCKEditorImages');
+    Route::resource('posts', 'PostController');
+
+    // Slider
+    Route::delete('sliders/destroy', 'SliderController@massDestroy')->name('sliders.massDestroy');
+    Route::post('sliders/media', 'SliderController@storeMedia')->name('sliders.storeMedia');
+    Route::post('sliders/ckmedia', 'SliderController@storeCKEditorImages')->name('sliders.storeCKEditorImages');
+    Route::resource('sliders', 'SliderController');
 });
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {

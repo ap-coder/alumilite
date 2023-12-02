@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.product.fields.published') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $product->published ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.product.fields.name') }}
                         </th>
                         <td>
@@ -49,6 +57,50 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.product.fields.msrp') }}
+                        </th>
+                        <td>
+                            {{ $product->msrp }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.photo') }}
+                        </th>
+                        <td>
+                            @if($product->photo)
+                                <a href="{{ $product->photo->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $product->photo->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.additional_photos') }}
+                        </th>
+                        <td>
+                            @foreach($product->additional_photos as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $media->getUrl('thumb') }}">
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.documents') }}
+                        </th>
+                        <td>
+                            @foreach($product->documents as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.product.fields.category') }}
                         </th>
                         <td>
@@ -69,14 +121,28 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.product.fields.photo') }}
+                            {{ trans('cruds.product.fields.technical_specs') }}
                         </th>
                         <td>
-                            @if($product->photo)
-                                <a href="{{ $product->photo->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $product->photo->getUrl('thumb') }}">
-                                </a>
-                            @endif
+                            @foreach($product->technical_specs as $key => $technical_specs)
+                                <span class="label label-info">{{ $technical_specs->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.product_type') }}
+                        </th>
+                        <td>
+                            {{ $product->product_type->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.product.fields.slug') }}
+                        </th>
+                        <td>
+                            {{ $product->slug }}
                         </td>
                     </tr>
                 </tbody>

@@ -26,6 +26,9 @@
                             {{ trans('cruds.productCategory.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.productCategory.fields.published') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.productCategory.fields.name') }}
                         </th>
                         <th>
@@ -33,6 +36,9 @@
                         </th>
                         <th>
                             {{ trans('cruds.productCategory.fields.photo') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.productCategory.fields.slug') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,6 +55,10 @@
                                 {{ $productCategory->id ?? '' }}
                             </td>
                             <td>
+                                <span style="display:none">{{ $productCategory->published ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $productCategory->published ? 'checked' : '' }}>
+                            </td>
+                            <td>
                                 {{ $productCategory->name ?? '' }}
                             </td>
                             <td>
@@ -60,6 +70,9 @@
                                         <img src="{{ $productCategory->photo->getUrl('thumb') }}">
                                     </a>
                                 @endif
+                            </td>
+                            <td>
+                                {{ $productCategory->slug ?? '' }}
                             </td>
                             <td>
                                 @can('product_category_show')
