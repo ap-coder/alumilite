@@ -71,6 +71,7 @@ return [
     'reply'                          => 'Reply',
     'body'                           => 'Body',
     'discard'                        => 'Discard',
+    'menu'                        => 'Menu Mgmt',
     'datatables'                     => [
         'copy'          => 'Copy',
         'csv'           => 'CSV',

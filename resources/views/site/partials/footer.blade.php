@@ -22,7 +22,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4">
+                    @if(isset($footer_menu))
+                        @foreach($footer_menu as $menu)
+                            <div class="col-lg-3 col-md-3 col-sm-4">
+                                <div class="footer-menu mt-50">
+                                    @if ($menu['link']=='')
+                                        <h3 class="footer-title">{{ $menu['label'] }}</h3>
+                                    @else
+                                        <h3 class="footer-title">
+                                            <a href="{{ preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode(strpos($menu['link'], "http") === 0 ? $menu['link'] : url('', $menu['link']))) }}">{{ $menu['label'] }}</a>
+                                        </h3>
+                                    @endif
+
+                                    @if( $menu['child'] )
+                                        <ul class="menu-items">
+                                            @foreach( $menu['child'] as $child )
+                                                <li>
+                                                    <a href="{{  preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode(strpos($child['link'], "http") === 0 ? $child['link'] : url('',$child['link']))) }}" title="{{ $child['label'] }}">{{ $child['label'] }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                    {{-- <div class="col-lg-3 col-md-3 col-sm-4">
                         <div class="footer-menu mt-50">
                             <h3 class="footer-title">Links</h3>
 
@@ -43,8 +68,8 @@
          
                             </ul>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
+                    </div> --}}
+                    <div class="col-lg-3">
                         <div class="footer-newsletter mt-50">
                             <h3 class="footer-title">Newsletter</h3>
 

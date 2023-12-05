@@ -16,17 +16,12 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
- 
-use Wecodelaravel\Menu\Facades\Menu;
-use Wecodelaravel\Menu\Models\MenuItems;
-use Wecodelaravel\Menu\Models\Menus;
 
 class SiteController extends Controller
 {
 
     public function index(Request $request)
     {
-
         $posts = Post::published()->latest()->take(6)->get();
         $products = Product::published()->latest()->get();
  
