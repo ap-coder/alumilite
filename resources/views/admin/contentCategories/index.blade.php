@@ -29,9 +29,6 @@
                             {{ trans('cruds.contentCategory.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.contentCategory.fields.slug') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -47,9 +44,6 @@
                             </td>
                             <td>
                                 {{ $contentCategory->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $contentCategory->slug ?? '' }}
                             </td>
                             <td>
                                 @can('content_category_show')

@@ -37,15 +37,6 @@
                         {{ trans('cruds.contentPage.fields.tag') }}
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.excerpt') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.contentPage.fields.featured_image') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.contentPage.fields.slug') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -106,9 +97,6 @@
 { data: 'title', name: 'title' },
 { data: 'category', name: 'categories.name' },
 { data: 'tag', name: 'tags.name' },
-{ data: 'excerpt', name: 'excerpt' },
-{ data: 'featured_image', name: 'featured_image', sortable: false, searchable: false },
-{ data: 'slug', name: 'slug' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

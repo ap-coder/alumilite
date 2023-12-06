@@ -31,21 +31,6 @@
                         {{ trans('cruds.post.fields.title') }}
                     </th>
                     <th>
-                        {{ trans('cruds.post.fields.category') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.post.fields.tag') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.post.fields.excerpt') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.post.fields.featured_image') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.post.fields.slug') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -104,11 +89,6 @@
 { data: 'id', name: 'id' },
 { data: 'published', name: 'published' },
 { data: 'title', name: 'title' },
-{ data: 'category', name: 'categories.name' },
-{ data: 'tag', name: 'tags.name' },
-{ data: 'excerpt', name: 'excerpt' },
-{ data: 'featured_image', name: 'featured_image', sortable: false, searchable: false },
-{ data: 'slug', name: 'slug' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

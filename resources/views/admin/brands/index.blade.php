@@ -31,12 +31,6 @@
                         {{ trans('cruds.brand.fields.name') }}
                     </th>
                     <th>
-                        {{ trans('cruds.brand.fields.description') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.brand.fields.logo') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -95,8 +89,6 @@
 { data: 'id', name: 'id' },
 { data: 'published', name: 'published' },
 { data: 'name', name: 'name' },
-{ data: 'description', name: 'description' },
-{ data: 'logo', name: 'logo', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
