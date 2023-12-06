@@ -76,6 +76,6 @@
             "url": "https://github.com/wecodelaravel/laravel-menu"
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
