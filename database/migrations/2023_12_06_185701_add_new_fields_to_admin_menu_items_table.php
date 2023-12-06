@@ -16,7 +16,11 @@ return new class extends Migration
             $table->boolean('development')->default(1)->nullable();
             $table->boolean('stage')->default(0)->nullable();
             $table->boolean('production')->default(0)->nullable();
+            $table->boolean('marketing')->default(0)->nullable();
+            $table->boolean('logged_in_only')->default(0)->nullable();
+            $table->boolean('icon_only_menu')->default(0)->nullable();
             $table->string('link')->nullable()->change();
+            $table->string('menu_icon_class')->nullable();
         });
     }
 
@@ -30,6 +34,10 @@ return new class extends Migration
             $table->dropColumn('development');
             $table->dropColumn('stage');
             $table->dropColumn('production');
+            $table->dropColumn('marketing')->default(0)->nullable();
+            $table->dropColumn('logged_in_only')->default(0)->nullable();
+            $table->dropColumn('icon_only_menu')->default(0)->nullable();
+            $table->dropColumn('menu_icon_class')->nullable();
         });
     }
 };

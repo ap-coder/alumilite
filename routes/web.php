@@ -1,56 +1,7 @@
 <?php
 use Illuminate\Http\Request;
-// need to move these routes to site.php but its having issues to i put them here for now. 
 
-// Route::get('/', function () {
-//     return view('site.home.index');
-// })->name('site.home');
-
-// Route::get('contact', 'SiteController@contact')->name('contact');
-// Route::get('menu', 'MenuController@index')->name('menu');
-// Route::resource('blog', 'BlogController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
-
-// Route::get('load-more-data', 'BlogController@more_data');
-// Route::get('load-more-blog', 'BlogController@more_press_blog')->name('load-more-blog');
-
-// Route::resource('products', 'ProductsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
-
-Route::get('r', function () {
-    function philsroutes()
-    {
-        $routeCollection = Route::getRoutes();
-        echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">';
-        echo "<div class='container'><div class='col-md-12'><a target='_blank' href='".url('/')."' type='button' class='btn btn-primary' style='position: fixed;top:5rem;right:13rem;'>Live Site</a><table class='table table-striped' style='width:100%'>";
-        echo '<tr><td>'.\App::environment().'</td></tr>';
-        echo '<tr>';
-        //  echo '<td><h4>Domain</h4></td>';
-        echo "<td width='10%'><h4>HTTP Method</h4></td>";
-        echo "<td width='30%'><h4>URL</h4></td>";
-        echo "<td width='30%'><h4>Route</h4></td>";
-        echo "<td width='30%'><h4>Corresponding Action</h4></td>";
-        echo '</tr>';
-
-        foreach ($routeCollection as $value) {
-            echo '<tr>';
-            //    echo '<td>lcadashboard.com</td>';
-            echo '<td>'.$value->methods()[0].'</td>';
-            echo "<td><a href='".$value->uri()."' target='_blank'>".$value->uri().'</a> </td>';
-            echo '<td>'.$value->getName().'</td>';
-            echo '<td>'.$value->getActionName().'</td>';
-            echo '</tr>';
-        }
-
-        echo '</table></div></div>';
-        echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>';
-    }
-
-    return philsroutes();
-})->name('assigned-routes');
-
-
-
-
-Route::redirect('/login', '/login');
+// Route::redirect('/login', '/login');
 
 Route::get('/admin', function () {
     if (session('status')) {
@@ -158,44 +109,44 @@ Route::get('/', 'HomeController@index')->name('home');
    })->name('add_env_conditionals');
 
    Route::post('logged_in_only', function (Request $request) {
-    \DB::table('admin_menu_items')->where('id', $request->menu_id)->update(['logged_in_only' => $request->check]);
-})->name('logged_in_only');
+        \DB::table('admin_menu_items')->where('id', $request->menu_id)->update(['logged_in_only' => $request->check]);
+    })->name('logged_in_only');
 
-Route::post('icon_only_menu', function (Request $request) {
-    \DB::table('admin_menu_items')->where('id', $request->menu_id)->update(['icon_only_menu' => $request->check]);
-})->name('icon_only_menu');
+    Route::post('icon_only_menu', function (Request $request) {
+        \DB::table('admin_menu_items')->where('id', $request->menu_id)->update(['icon_only_menu' => $request->check]);
+    })->name('icon_only_menu');
 
-Route::post('add_menu_icon_class', function (Request $request) {
-    \DB::table('admin_menu_items')->where('id', $request->menu_id)->update(['menu_icon_class' => $request->icon]);
-})->name('add_menu_icon_class');
+    Route::post('add_menu_icon_class', function (Request $request) {
+        \DB::table('admin_menu_items')->where('id', $request->menu_id)->update(['menu_icon_class' => $request->icon]);
+    })->name('add_menu_icon_class');
 
-Route::post('MenuUsers', function (Request $request) {
-    \DB::table('user_admin_menu_item')->where('admin_menu_item_id', $request->menu_id)->delete();
-    if ($request->users) {
-        foreach ($request->users as $key => $user) {
-            \DB::table('user_admin_menu_item')->insert(
-                [
-                    'user_id' => $user,
-                    'admin_menu_item_id' => $request->menu_id,
-                ]
-            );
+    Route::post('MenuUsers', function (Request $request) {
+        \DB::table('user_admin_menu_item')->where('admin_menu_item_id', $request->menu_id)->delete();
+        if ($request->users) {
+            foreach ($request->users as $key => $user) {
+                \DB::table('user_admin_menu_item')->insert(
+                    [
+                        'user_id' => $user,
+                        'admin_menu_item_id' => $request->menu_id,
+                    ]
+                );
+            }
         }
-    }
-})->name('MenuUsers');
+    })->name('MenuUsers');
 
-Route::post('MenuRoles', function (Request $request) {
-    \DB::table('role_admin_menu_item')->where('admin_menu_item_id', $request->menu_id)->delete();
-    if ($request->roles) {
-        foreach ($request->roles as $key => $role) {
-            \DB::table('role_admin_menu_item')->insert(
-                [
-                    'role_id' => $role,
-                    'admin_menu_item_id' => $request->menu_id,
-                ]
-            );
+    Route::post('MenuRoles', function (Request $request) {
+        \DB::table('role_admin_menu_item')->where('admin_menu_item_id', $request->menu_id)->delete();
+        if ($request->roles) {
+            foreach ($request->roles as $key => $role) {
+                \DB::table('role_admin_menu_item')->insert(
+                    [
+                        'role_id' => $role,
+                        'admin_menu_item_id' => $request->menu_id,
+                    ]
+                );
+            }
         }
-    }
-})->name('MenuRoles');
+    })->name('MenuRoles');
 
 });
 

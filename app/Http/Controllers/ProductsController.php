@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
 
     public function index()
