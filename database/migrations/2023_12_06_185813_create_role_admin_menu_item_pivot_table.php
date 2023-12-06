@@ -4,14 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoleAdminMenuItemPivotTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('role_admin_menu_item', function (Blueprint $table) {
             $table->unsignedBigInteger('admin_menu_item_id');
@@ -20,4 +18,4 @@ class CreateRoleAdminMenuItemPivotTable extends Migration
             $table->foreign('role_id', 'role_id_fk_233187500')->references('id')->on('roles')->onDelete('cascade');
         });
     }
-}
+};

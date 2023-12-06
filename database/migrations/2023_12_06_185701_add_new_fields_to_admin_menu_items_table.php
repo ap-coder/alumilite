@@ -4,14 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNewFieldsToAdminMenuItemsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('admin_menu_items', function (Blueprint $table) {
             $table->boolean('local')->default(1)->nullable();
@@ -24,10 +22,8 @@ class AddNewFieldsToAdminMenuItemsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('admin_menu_items', function (Blueprint $table) {
             $table->dropColumn('local');
@@ -36,4 +32,4 @@ class AddNewFieldsToAdminMenuItemsTable extends Migration
             $table->dropColumn('production');
         });
     }
-}
+};
