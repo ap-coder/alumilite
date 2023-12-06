@@ -34,48 +34,6 @@
                         {{ trans('cruds.slider.fields.sub_title') }}
                     </th>
                     <th>
-                        {{ trans('cruds.slider.fields.main_title') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.sub_title_2') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.slider_description') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.text_heading') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.heading_1') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.heading_2') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.heading_3') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.text') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.main_button_text') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.main_button_link') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.main_button_tab_index') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.second_button_text') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.second_button_link') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.second_button_tab_index') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -135,20 +93,6 @@
 { data: 'location', name: 'location' },
 { data: 'image', name: 'image', sortable: false, searchable: false },
 { data: 'sub_title', name: 'sub_title' },
-{ data: 'main_title', name: 'main_title' },
-{ data: 'sub_title_2', name: 'sub_title_2' },
-{ data: 'slider_description', name: 'slider_description' },
-{ data: 'text_heading', name: 'text_heading' },
-{ data: 'heading_1', name: 'heading_1' },
-{ data: 'heading_2', name: 'heading_2' },
-{ data: 'heading_3', name: 'heading_3' },
-{ data: 'text', name: 'text' },
-{ data: 'main_button_text', name: 'main_button_text' },
-{ data: 'main_button_link', name: 'main_button_link' },
-{ data: 'main_button_tab_index', name: 'main_button_tab_index' },
-{ data: 'second_button_text', name: 'second_button_text' },
-{ data: 'second_button_link', name: 'second_button_link' },
-{ data: 'second_button_tab_index', name: 'second_button_tab_index' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
