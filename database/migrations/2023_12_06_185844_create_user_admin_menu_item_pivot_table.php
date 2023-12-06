@@ -4,14 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAdminMenuItemPivotTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('user_admin_menu_item', function (Blueprint $table) {
             $table->unsignedBigInteger('admin_menu_item_id');
@@ -20,4 +18,4 @@ class CreateUserAdminMenuItemPivotTable extends Migration
             $table->foreign('user_id', 'user_id_fk_233187511')->references('id')->on('users')->onDelete('cascade');
         });
     }
-}
+};
