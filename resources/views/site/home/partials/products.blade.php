@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-title">
-                        <h2 class="title">Our Work</h2>
+                        <h2 class="title">MODELS</h2>
                     </div>
                 </div>
             </div>
