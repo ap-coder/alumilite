@@ -7,6 +7,8 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
+use App\Models\BrandModel;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
@@ -27,7 +29,7 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Product::with(['categories', 'tags', 'technical_specs', 'product_type'])->select(sprintf('%s.*', (new Product)->table));
+            $query = Product::with(['brand', 'brand_model', 'categories', 'tags', 'technical_specs', 'product_type'])->select(sprintf('%s.*', (new Product)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -57,48 +59,17 @@ class ProductController extends Controller
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
-            $table->editColumn('description', function ($row) {
-                return $row->description ? $row->description : '';
-            });
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
             });
-            $table->editColumn('msrp', function ($row) {
-                return $row->msrp ? $row->msrp : '';
+            $table->addColumn('brand_name', function ($row) {
+                return $row->brand ? $row->brand->name : '';
             });
-            $table->editColumn('photo', function ($row) {
-                if ($photo = $row->photo) {
-                    return sprintf(
-                        '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
-                        $photo->url,
-                        $photo->thumbnail
-                    );
-                }
 
-                return '';
+            $table->addColumn('brand_model_model', function ($row) {
+                return $row->brand_model ? $row->brand_model->model : '';
             });
-            $table->editColumn('additional_photos', function ($row) {
-                if (! $row->additional_photos) {
-                    return '';
-                }
-                $links = [];
-                foreach ($row->additional_photos as $media) {
-                    $links[] = '<a href="' . $media->getUrl() . '" target="_blank"><img src="' . $media->getUrl('thumb') . '" width="50px" height="50px"></a>';
-                }
 
-                return implode(' ', $links);
-            });
-            $table->editColumn('documents', function ($row) {
-                if (! $row->documents) {
-                    return '';
-                }
-                $links = [];
-                foreach ($row->documents as $media) {
-                    $links[] = '<a href="' . $media->getUrl() . '" target="_blank">' . trans('global.downloadFile') . '</a>';
-                }
-
-                return implode(', ', $links);
-            });
             $table->editColumn('category', function ($row) {
                 $labels = [];
                 foreach ($row->categories as $category) {
@@ -107,31 +78,8 @@ class ProductController extends Controller
 
                 return implode(' ', $labels);
             });
-            $table->editColumn('tag', function ($row) {
-                $labels = [];
-                foreach ($row->tags as $tag) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $tag->name);
-                }
 
-                return implode(' ', $labels);
-            });
-            $table->editColumn('technical_specs', function ($row) {
-                $labels = [];
-                foreach ($row->technical_specs as $technical_spec) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $technical_spec->name);
-                }
-
-                return implode(' ', $labels);
-            });
-            $table->addColumn('product_type_name', function ($row) {
-                return $row->product_type ? $row->product_type->name : '';
-            });
-
-            $table->editColumn('slug', function ($row) {
-                return $row->slug ? $row->slug : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'published', 'photo', 'additional_photos', 'documents', 'category', 'tag', 'technical_specs', 'product_type']);
+            $table->rawColumns(['actions', 'placeholder', 'published', 'brand', 'brand_model', 'category']);
 
             return $table->make(true);
         }
@@ -143,15 +91,19 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $brand_models = BrandModel::pluck('model', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $categories = ProductCategory::pluck('name', 'id');
-        $technical_specs = TechnicalSpec::pluck('name', 'id');
-        $product_types = ProductType::pluck('name', 'id');
+
         $tags = ProductTag::pluck('name', 'id');
+
         $technical_specs = TechnicalSpec::pluck('name', 'id');
+
         $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.products.create', compact('categories', 'product_types', 'tags', 'technical_specs'));
-
+        return view('admin.products.create', compact('brand_models', 'brands', 'categories', 'product_types', 'tags', 'technical_specs'));
     }
 
     public function store(StoreProductRequest $request)
@@ -183,16 +135,21 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $brand_models = BrandModel::pluck('model', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $categories = ProductCategory::pluck('name', 'id');
-        $technical_specs = TechnicalSpec::pluck('name', 'id');
-        $product_types = ProductType::pluck('name', 'id');
+
         $tags = ProductTag::pluck('name', 'id');
+
         $technical_specs = TechnicalSpec::pluck('name', 'id');
+
         $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $product->load('categories', 'tags', 'technical_specs', 'product_type');
 
-        return view('admin.products.edit', compact('categories', 'product', 'product_types', 'tags', 'technical_specs'));
+        $product->load('brand', 'brand_model', 'categories', 'tags', 'technical_specs', 'product_type');
 
+        return view('admin.products.edit', compact('brand_models', 'brands', 'categories', 'product', 'product_types', 'tags', 'technical_specs'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
@@ -247,7 +204,7 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $product->load('categories', 'tags', 'technical_specs', 'product_type');
+        $product->load('brand', 'brand_model', 'categories', 'tags', 'technical_specs', 'product_type');
 
         return view('admin.products.show', compact('product'));
     }

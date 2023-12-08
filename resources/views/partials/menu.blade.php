@@ -16,7 +16,7 @@
             </a>
         </li>
         @can('product_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/products*") ? "c-show" : "" }} {{ request()->is("admin/product-categories*") ? "c-show" : "" }} {{ request()->is("admin/product-tags*") ? "c-show" : "" }} {{ request()->is("admin/technical-specs*") ? "c-show" : "" }} {{ request()->is("admin/brands*") ? "c-show" : "" }} {{ request()->is("admin/features*") ? "c-show" : "" }} {{ request()->is("admin/product-types*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/products*") ? "c-show" : "" }} {{ request()->is("admin/product-categories*") ? "c-show" : "" }} {{ request()->is("admin/product-tags*") ? "c-show" : "" }} {{ request()->is("admin/technical-specs*") ? "c-show" : "" }} {{ request()->is("admin/brands*") ? "c-show" : "" }} {{ request()->is("admin/brand-models*") ? "c-show" : "" }} {{ request()->is("admin/features*") ? "c-show" : "" }} {{ request()->is("admin/product-types*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-shopping-cart c-sidebar-nav-icon">
 
@@ -74,6 +74,16 @@
                             </a>
                         </li>
                     @endcan
+                    @can('brand_model_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.brand-models.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/brand-models") || request()->is("admin/brand-models/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-plus-square c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.brandModel.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('feature_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.features.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/features") || request()->is("admin/features/*") ? "c-active" : "" }}">
@@ -91,6 +101,28 @@
 
                                 </i>
                                 {{ trans('cruds.productType.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
+        @can('build_management_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/builds*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.buildManagement.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('build_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.builds.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/builds") || request()->is("admin/builds/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-car c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.build.title') }}
                             </a>
                         </li>
                     @endcan
@@ -157,6 +189,16 @@
                         </li>
                     @endcan
                 </ul>
+            </li>
+        @endcan
+        @can('review_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.reviews.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/reviews") || request()->is("admin/reviews/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-star-half-alt c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.review.title') }}
+                </a>
             </li>
         @endcan
         @can('static_seo_access')

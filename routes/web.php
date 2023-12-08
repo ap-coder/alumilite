@@ -102,7 +102,23 @@ Route::get('/', 'HomeController@index')->name('admin.home');
     Route::post('settings/media', 'SettingsController@storeMedia')->name('settings.storeMedia');
     Route::post('settings/ckmedia', 'SettingsController@storeCKEditorImages')->name('settings.storeCKEditorImages');
     Route::resource('settings', 'SettingsController');
-    
+
+    // Review
+    Route::delete('reviews/destroy', 'ReviewController@massDestroy')->name('reviews.massDestroy');
+    Route::post('reviews/media', 'ReviewController@storeMedia')->name('reviews.storeMedia');
+    Route::post('reviews/ckmedia', 'ReviewController@storeCKEditorImages')->name('reviews.storeCKEditorImages');
+    Route::resource('reviews', 'ReviewController');
+
+    // Build
+    Route::delete('builds/destroy', 'BuildController@massDestroy')->name('builds.massDestroy');
+    Route::post('builds/media', 'BuildController@storeMedia')->name('builds.storeMedia');
+    Route::post('builds/ckmedia', 'BuildController@storeCKEditorImages')->name('builds.storeCKEditorImages');
+    Route::resource('builds', 'BuildController');
+
+    // Brand Model
+    Route::delete('brand-models/destroy', 'BrandModelController@massDestroy')->name('brand-models.massDestroy');
+    Route::resource('brand-models', 'BrandModelController');
+        
     Route::post('add_env_conditionals', function(Request $request) {
 
 		if($request->evnsData){

@@ -70,6 +70,30 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#brand_products" role="tab" data-toggle="tab">
+                {{ trans('cruds.product.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#brand_builds" role="tab" data-toggle="tab">
+                {{ trans('cruds.build.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="brand_products">
+            @includeIf('admin.brands.relationships.brandProducts', ['products' => $brand->brandProducts])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="brand_builds">
+            @includeIf('admin.brands.relationships.brandBuilds', ['builds' => $brand->brandBuilds])
+        </div>
+    </div>
+</div>
 
 @endsection

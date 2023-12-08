@@ -10,14 +10,15 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Brand extends Model implements HasMedia
+class Review extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia, HasFactory;
 
-    public $table = 'brands';
+    public $table = 'reviews';
 
     protected $appends = [
-        'logo',
+        'avatar',
+        'photo',
     ];
 
     protected $dates = [
@@ -28,8 +29,13 @@ class Brand extends Model implements HasMedia
 
     protected $fillable = [
         'published',
-        'name',
-        'description',
+        'title',
+        'body',
+        'website',
+        'rating',
+        'signiture',
+        'signiture_company',
+        'build_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -46,19 +52,9 @@ class Brand extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function brandProducts()
+    public function getAvatarAttribute()
     {
-        return $this->hasMany(Product::class, 'brand_id', 'id');
-    }
-
-    public function brandBuilds()
-    {
-        return $this->hasMany(Build::class, 'brand_id', 'id');
-    }
-
-    public function getLogoAttribute()
-    {
-        $file = $this->getMedia('logo')->last();
+        $file = $this->getMedia('avatar')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
@@ -66,5 +62,22 @@ class Brand extends Model implements HasMedia
         }
 
         return $file;
+    }
+
+    public function getPhotoAttribute()
+    {
+        $files = $this->getMedia('photo');
+        $files->each(function ($item) {
+            $item->url       = $item->getUrl();
+            $item->thumbnail = $item->getUrl('thumb');
+            $item->preview   = $item->getUrl('preview');
+        });
+
+        return $files;
+    }
+
+    public function build()
+    {
+        return $this->belongsTo(Build::class, 'build_id');
     }
 }

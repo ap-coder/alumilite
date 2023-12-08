@@ -344,6 +344,90 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 84,
+                'title' => 'setting_create',
+            ],
+            [
+                'id'    => 85,
+                'title' => 'setting_edit',
+            ],
+            [
+                'id'    => 86,
+                'title' => 'setting_show',
+            ],
+            [
+                'id'    => 87,
+                'title' => 'setting_delete',
+            ],
+            [
+                'id'    => 88,
+                'title' => 'setting_access',
+            ],
+            [
+                'id'    => 89,
+                'title' => 'review_create',
+            ],
+            [
+                'id'    => 90,
+                'title' => 'review_edit',
+            ],
+            [
+                'id'    => 91,
+                'title' => 'review_show',
+            ],
+            [
+                'id'    => 92,
+                'title' => 'review_delete',
+            ],
+            [
+                'id'    => 93,
+                'title' => 'review_access',
+            ],
+            [
+                'id'    => 94,
+                'title' => 'build_create',
+            ],
+            [
+                'id'    => 95,
+                'title' => 'build_edit',
+            ],
+            [
+                'id'    => 96,
+                'title' => 'build_show',
+            ],
+            [
+                'id'    => 97,
+                'title' => 'build_delete',
+            ],
+            [
+                'id'    => 98,
+                'title' => 'build_access',
+            ],
+            [
+                'id'    => 99,
+                'title' => 'brand_model_create',
+            ],
+            [
+                'id'    => 100,
+                'title' => 'brand_model_edit',
+            ],
+            [
+                'id'    => 101,
+                'title' => 'brand_model_show',
+            ],
+            [
+                'id'    => 102,
+                'title' => 'brand_model_delete',
+            ],
+            [
+                'id'    => 103,
+                'title' => 'brand_model_access',
+            ],
+            [
+                'id'    => 104,
+                'title' => 'build_management_access',
+            ],
+            [
+                'id'    => 105,
                 'title' => 'profile_password_edit',
             ],
         ];

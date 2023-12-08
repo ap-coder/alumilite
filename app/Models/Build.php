@@ -10,11 +10,11 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Product extends Model implements HasMedia
+class Build extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia, HasFactory;
 
-    public $table = 'products';
+    public $table = 'builds';
 
     protected $dates = [
         'created_at',
@@ -32,21 +32,18 @@ class Product extends Model implements HasMedia
         'published',
         'name',
         'description',
-        'price',
-        'msrp',
-        'product_type_id',
+        'brand_id',
+        'brand_model_id',
+        'timeframe',
         'slug',
+        'customer_company',
+        'customer_name',
+        'customer_link',
+        'customer_website',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
-
-    protected $with = ['media', 'categories', 'tags'];
-
-    public function scopePublished($query)
-    {
-        return $query->where('published', true);
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -57,6 +54,11 @@ class Product extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
+    public function buildReviews()
+    {
+        return $this->hasMany(Review::class, 'build_id', 'id');
     }
 
     public function getPhotoAttribute()
@@ -102,34 +104,4 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(ProductCategory::class);
     }
-
-    public function tags()
-    {
-        return $this->belongsToMany(ProductTag::class);
-    }
-
-    public function technical_specs()
-    {
-        return $this->belongsToMany(TechnicalSpec::class);
-    }
-
-    public function product_type()
-    {
-        return $this->belongsTo(ProductType::class, 'product_type_id');
-    }
-
-    public static function getBySlug($slug)
-    {
-        return self::query()->where('slug', $slug)->first();
-    }
-
-    // public function staticSeo()
-    // {
-    //     return $this->hasOne(StaticSeo::class);
-    // }
-
-    // public function productStaticSeos()
-    // {
-    //     return $this->hasMany(StaticSeo::class, 'product_id', 'id');
-    // }
 }

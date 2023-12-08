@@ -53,22 +53,8 @@ class BrandsController extends Controller
             $table->editColumn('name', function ($row) {
                 return $row->name ? $row->name : '';
             });
-            $table->editColumn('description', function ($row) {
-                return $row->description ? $row->description : '';
-            });
-            $table->editColumn('logo', function ($row) {
-                if ($photo = $row->logo) {
-                    return sprintf(
-                        '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
-                        $photo->url,
-                        $photo->thumbnail
-                    );
-                }
 
-                return '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'published', 'logo']);
+            $table->rawColumns(['actions', 'placeholder', 'published']);
 
             return $table->make(true);
         }
@@ -126,6 +112,8 @@ class BrandsController extends Controller
     public function show(Brand $brand)
     {
         abort_if(Gate::denies('brand_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $brand->load('brandProducts', 'brandBuilds');
 
         return view('admin.brands.show', compact('brand'));
     }
