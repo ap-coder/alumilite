@@ -146,6 +146,12 @@ Route::get('/', 'HomeController@index')->name('home');
     Route::post('sliders/ckmedia', 'SliderController@storeCKEditorImages')->name('sliders.storeCKEditorImages');
     Route::resource('sliders', 'SliderController');
 
+    // Settings
+    Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
+    Route::post('settings/media', 'SettingsController@storeMedia')->name('settings.storeMedia');
+    Route::post('settings/ckmedia', 'SettingsController@storeCKEditorImages')->name('settings.storeCKEditorImages');
+    Route::resource('settings', 'SettingsController');
+    
     Route::post('add_env_conditionals', function(Request $request) {
 
 		if($request->evnsData){
