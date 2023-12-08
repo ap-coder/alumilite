@@ -58,24 +58,24 @@
                 }
         }
         & .main-title{
-                font-size: 100px;
+                font-size: 4rem;
                 font-weight: 800;
-                letter-spacing: -5px;
+                letter-spacing: normal;
                 margin: 15px 0 32px -5px;
                 color: $white;
                 line-height: 60px;
 
                 @media #{$laptop}{
-                        font-size: 90px;
+                        font-size: 4rem;
                 }
                 @media #{$lg}{
-                        font-size: 80px;
+                        font-size: 3rem;
                 }
                 @media #{$md}{
-                        font-size: 80px;
+                        font-size: 3rem;
                 }
                 @media #{$xs}{
-                        font-size: 44px;
+                        font-size: 2.5rem;
                         letter-spacing: 0px;
                         line-height: 48px;
                 }
@@ -83,21 +83,21 @@
         }
         & .sub-title-2{
                 font-family: "Great Vibes",Sans-serif;
-                letter-spacing: -1.2px;
+                letter-spacing: normal;
                 margin: -45px 0 0 30px;
-                font-size: 48px;
+                font-size: 2.5rem;
                 font-style: italic;
                 font-family: $font-3;
                 color: $white;
 
                 @media #{$lg}{
-                        font-size: 36px;
+                        font-size: 2rem;
                 }
                 @media #{$md}{
-                        font-size: 36px;
+                        font-size: 2rem;
                 }
                 @media #{$xs}{
-                        font-size: 36px;
+                        font-size: 2rem;
                         margin-left: 5px;
                 }
 
@@ -123,18 +123,18 @@
                 }
                 & .text-heading{
                         & .heading-1{
-                                font-size: 52px;
+                                font-size: 3rem;
                                 color: #03fe97;
                                 font-weight: 700;
 
                                 @media #{$lg}{
-                                        font-size: 42px;
+                                        font-size: 2.5rem;
                                 }
                                 @media #{$md}{
-                                        font-size: 42px;
+                                        font-size: 2.5rem;
                                 }
                                 @media #{$xs}{
-                                        font-size: 40px;
+                                        font-size: 2rem;
                                 }
                         }
                         & .heading-2{
