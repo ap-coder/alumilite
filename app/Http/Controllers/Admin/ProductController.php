@@ -144,14 +144,14 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $categories = ProductCategory::pluck('name', 'id');
-
-        $tags = ProductTag::pluck('name', 'id');
-
         $technical_specs = TechnicalSpec::pluck('name', 'id');
-
+        $product_types = ProductType::pluck('name', 'id');
+        $tags = ProductTag::pluck('name', 'id');
+        $technical_specs = TechnicalSpec::pluck('name', 'id');
         $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.products.create', compact('categories', 'product_types', 'tags', 'technical_specs'));
+
     }
 
     public function store(StoreProductRequest $request)
@@ -184,16 +184,15 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $categories = ProductCategory::pluck('name', 'id');
-
-        $tags = ProductTag::pluck('name', 'id');
-
         $technical_specs = TechnicalSpec::pluck('name', 'id');
-
+        $product_types = ProductType::pluck('name', 'id');
+        $tags = ProductTag::pluck('name', 'id');
+        $technical_specs = TechnicalSpec::pluck('name', 'id');
         $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $product->load('categories', 'tags', 'technical_specs', 'product_type');
 
         return view('admin.products.edit', compact('categories', 'product', 'product_types', 'tags', 'technical_specs'));
+
     }
 
     public function update(UpdateProductRequest $request, Product $product)

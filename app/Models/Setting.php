@@ -10,14 +10,14 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class ProductType extends Model implements HasMedia
+class Setting extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia, HasFactory;
 
-    public $table = 'product_types';
+    public $table = 'settings';
 
     protected $appends = [
-        'photos',
+        'avatar',
     ];
 
     protected $dates = [
@@ -27,18 +27,16 @@ class ProductType extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'published',
-        'name',
-        'slug',
+        'facebook_link',
+        'twitter_link',
+        'youtube_link',
+        'short_bio',
+        'phone',
+        'address',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
-
-    public function scopePublished($query)
-    {
-        return $query->where('published', true);
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -51,9 +49,9 @@ class ProductType extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function getPhotosAttribute()
+    public function getAvatarAttribute()
     {
-        $file = $this->getMedia('photos')->last();
+        $file = $this->getMedia('avatar')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
@@ -61,10 +59,5 @@ class ProductType extends Model implements HasMedia
         }
 
         return $file;
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
     }
 }

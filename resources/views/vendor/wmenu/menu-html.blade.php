@@ -86,9 +86,9 @@ p.indented { margin-left: 5px 0 5px 1.25rem!important; }
 				<ul class="outer-border">
 
 
-					@includeIf('admin.menu._menu_builder_partials.posts', ['posts' => $posts])
-					@includeIf('admin.menu._menu_builder_partials.landing_pages', ['landingPages' => $landingPages])
-					@includeIf('admin.menu._menu_builder_partials.products', ['products' => $products])
+					@includeIf('admin.menu._menu_builder_partials.posts', ['posts' => $menuProducts])
+					@includeIf('admin.menu._menu_builder_partials.landing_pages', ['landingPages' => $menuProducts])
+					@includeIf('admin.menu._menu_builder_partials.products', ['products' => $menuProducts])
 					@include('admin.menu._menu_builder_partials.custom_links') 
 
 

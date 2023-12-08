@@ -4142,8 +4142,8 @@ p {
   transition: all 0.3s linear;
 }
 .single-brand:hover .brand {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
 }
 .single-brand:hover .brand-hover {
   opacity: 1;

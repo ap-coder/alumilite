@@ -67,7 +67,7 @@
                     @can('brand_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.brands.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/brands") || request()->is("admin/brands/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-audio-description c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.brand.title') }}
@@ -77,7 +77,7 @@
                     @can('feature_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.features.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/features") || request()->is("admin/features/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-arrow-right c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.feature.title') }}
@@ -166,6 +166,16 @@
 
                     </i>
                     {{ trans('cruds.staticSeo.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('setting_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-address-card c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.setting.title') }}
                 </a>
             </li>
         @endcan
