@@ -1,8 +1,14 @@
 </html>
 <!doctype html>
 <html class="no-js" lang="en">
+{{-- class="@yield('layout', 'boxed app-layout ') @hasSection('htmlClasses') @yield('htmlClasses') @endif @if($staticseo) @foreach($staticseo->where('page_path',request()->path()) as $seo) @if($seo->html_classes) {{ $seo->html_classes }} @endif @endforeach @endif" @if($staticseo) @foreach($staticseo->where('page_path',request()->path()) as $seo)
+@if($seo->html_schema_1) itemscope itemtype="https://schema.org/{{ $seo->html_schema_1 }}" @endif
+@if($seo->html_schema_2) itemtype="https://schema.org/{{ $seo->html_schema_2 }}" @endif
+@if($seo->html_schema_3) itemtype="https://schema.org/{{ $seo->html_schema_3 }}" @endif
+@endforeach @endif --}}
 
 <head>
+    @if(app()->environment() === 'production') @endif
     <meta charset="utf-8">
     
     <!--====== Title ======-->
@@ -13,6 +19,8 @@
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
+
+    {{-- @includeIf('site.static-seo', ['static-seo' => $seo])) --}}
     
 @yield('headcss')    
 @include('site.partials.head-assets')

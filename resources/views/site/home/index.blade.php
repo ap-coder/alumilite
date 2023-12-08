@@ -6,12 +6,15 @@
 {{-- @include('site.home.partials.search') --}}
 {{-- @include('site.home.partials.trending') --}}
 {{-- @include('site.home.partials.browse-types') --}}
-@include('site.home.partials.products')
-{{-- @include('site.home.partials.testimonial') --}}
-@include('site.home.partials.brands')
+
+@includeIf('site.home.partials.products', ['products' => $products ]))
+@includeIf('site.home.partials.builds', ['builds' => $builds ]))
+@includeIf('site.home.partials.brands', ['brands' => $brands ])
+@includeIf('site.home.partials.news-section', ['posts' => $posts ])
+
 {{-- @include('site.home.partials.dealer') --}}
+{{-- @include('site.home.partials.reviews') --}}
 {{-- @include('site.home.partials.choose') --}}
-@include('site.home.partials.news-section')
 
 @endsection
 
