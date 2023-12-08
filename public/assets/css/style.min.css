@@ -351,20 +351,20 @@ from{opacity:0;transform:scale3d(.3,.3,.3);-webkit-transform:scale3d(.3,.3,.3);-
 @media (max-width:767px){
 .slider-content .sub-title{font-size:16px;line-height:22px}
 }
-.slider-content .main-title{font-size:100px;font-weight:800;letter-spacing:-5px;margin:15px 0 32px -5px;color:#fff;line-height:60px}
+.slider-content .main-title{font-size:4rem;font-weight:800;letter-spacing:normal;margin:15px 0 32px -5px;color:#fff;line-height:60px}
 @media only screen and (min-width:1200px) and (max-width:1399px){
-.slider-content .main-title{font-size:90px}
+.slider-content .main-title{font-size:3rem;}
 }
 @media only screen and (min-width:992px) and (max-width:1199px){
-.slider-content .main-title{font-size:80px}
+.slider-content .main-title{font-size:3rem;}
 }
 @media only screen and (min-width:768px) and (max-width:991px){
-.slider-content .main-title{font-size:80px}
+.slider-content .main-title{font-size:3rem;}
 }
 @media (max-width:767px){
 .slider-content .main-title{font-size:44px;letter-spacing:0;line-height:48px}
 }
-.slider-content .sub-title-2{font-family:"Great Vibes",Sans-serif;letter-spacing:-1.2px;margin:-45px 0 0 30px;font-size:48px;font-style:italic;font-family:"Great Vibes",cursive;color:#fff}
+.slider-content .sub-title-2{font-family:"Great Vibes",Sans-serif;letter-spacing:normal;margin:-45px 0 0 30px;font-size:48px;font-style:italic;font-family:"Great Vibes",cursive;color:#fff}
 @media only screen and (min-width:992px) and (max-width:1199px){
 .slider-content .sub-title-2{font-size:36px}
 }
