@@ -42,12 +42,18 @@
                                         <span class="heading-3">{{ $slider->heading_3 }}</span>
                                         @endif
                                     </p>
+                                    @if($slider->slider_description)
                                     <p>{{ $slider->slider_description }}</p>
+                                    @endif
                                 </div>
+                                @if($slider->main_button_text)
                                 <ul class="slider-btn">
                                     <li><a class="main-btn main-btn-2" target="_blank" href="{{ $slider->main_button_link }}">{{ $slider->main_button_text }}</a></li>
+                                    @if($slider->second_button_text)
                                     <li><a class="main-btn" target="_blank" href="{{ $slider->second_button_link }}"><i class="ion-speedometer"></i> {{ $slider->second_button_text }}</a></li>
+                                    @endif
                                 </ul>
+                                @endif
                             </div>
                         </div>
                     </div>
