@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-title">
-                        <h2 class="title">Our Cars</h2>
+                        <h2 class="title">Our Work</h2>
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@
                 </div>
                 
                 <div class="cars-more mt-50 text-center">
-                    <a href="{{ route('products.index') }}" class="main-btn">See All Cars </a>
+                    <a href="{{ route('products.index') }}" class="main-btn">See All</a>
                 </div>
             </div>
         </div>
