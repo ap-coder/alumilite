@@ -25,18 +25,18 @@ class Controller extends BaseController
             $footer_menu = Menu::getByName('Footer Widget Menu');
             $copywrite_menu = Menu::getByName('Copywrite Menu');
 
-            $posts = Post::all();
-		    $landingPages = ContentPage::all();
-		    $products = Product::all();
+            $menuposts = Post::all();
+		    $menuLandingPages = ContentPage::all();
+		    $menuProducts = Product::all();
 
             View::share('env', $env);
             View::share('main_menu', $main_menu);
             View::share('footer_menu', $footer_menu);
             View::share('copywrite_menu', $copywrite_menu);
 
-            View::share('posts', $posts);
-            View::share('landingPages', $landingPages);
-            View::share('products', $products);
+            View::share('menuposts', $menuposts);
+            View::share('menuLandingPages', $menuLandingPages);
+            View::share('menuProducts', $menuProducts);
 
             return $next($request);
         });
