@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductType;
 use App\Models\Brand;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Slider;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,8 +26,11 @@ class SiteController extends Controller
     {
         $posts = Post::published()->latest()->take(6)->get();
         $products = Product::published()->latest()->get();
+        $sliders = Slider::get();
+        $productTypes = ProductType::published()->get();
+        $brands = Brand::published()->get();
  
-        return view('site.home.index', compact( 'posts', 'products'));
+        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes'));
     }
 
     public function about()

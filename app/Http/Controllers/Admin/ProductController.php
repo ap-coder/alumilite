@@ -10,6 +10,8 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
+use App\Models\TechnicalSpec;
+use App\Models\ProductType;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -33,10 +35,12 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $categories = ProductCategory::pluck('name', 'id');
+        $technical_specs = TechnicalSpec::pluck('name', 'id');
+        $product_types = ProductType::pluck('name', 'id');
 
         $tags = ProductTag::pluck('name', 'id');
 
-        return view('admin.products.create', compact('categories', 'tags'));
+        return view('admin.products.create', compact('categories', 'tags','technical_specs','product_types'));
     }
 
     public function store(StoreProductRequest $request)
@@ -60,12 +64,14 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $categories = ProductCategory::pluck('name', 'id');
+        $technical_specs = TechnicalSpec::pluck('name', 'id');
+        $product_types = ProductType::pluck('name', 'id');
 
         $tags = ProductTag::pluck('name', 'id');
 
         $product->load('categories', 'tags');
 
-        return view('admin.products.edit', compact('categories', 'product', 'tags'));
+        return view('admin.products.edit', compact('categories', 'product', 'tags','technical_specs','product_types'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)

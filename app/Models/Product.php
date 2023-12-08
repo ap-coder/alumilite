@@ -41,7 +41,7 @@ class Product extends Model implements HasMedia
         'deleted_at',
     ];
 
-    protected $with = ['media', 'product_categories', 'product_tags'];
+    protected $with = ['media', 'categories', 'tags'];
 
     public function scopePublished($query)
     {
