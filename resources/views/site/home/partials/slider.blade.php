@@ -20,15 +20,27 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="slider-content">
+                                
+                                @if($slider->sub_title)
                                 <h4 class="sub-title">{{ $slider->sub_title }}</h4>
+                                @endif
+                                @if($slider->main_title)
                                 <h2 class="main-title">{{ $slider->main_title }}</h2>
+                                @endif
+                                @if($slider->sub_title_2)
                                 <p class="sub-title-2">{{ $slider->sub_title_2 }}</p>
-
+                                @endif
                                 <div class="slider-description">
                                     <p class="text-heading">
+                                        @if($slider->heading_1)
                                         <span class="heading-1">{{ $slider->heading_1 }}</span>
+                                        @endif
+                                        @if($slider->heading_2)
                                         <span class="heading-2">{{ $slider->heading_2 }}</span>
+                                        @endif
+                                        @if($slider->heading_3)
                                         <span class="heading-3">{{ $slider->heading_3 }}</span>
+                                        @endif
                                     </p>
                                     <p>{{ $slider->slider_description }}</p>
                                 </div>
