@@ -46,6 +46,11 @@ class Brand extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+    
     public function brandProducts()
     {
         return $this->hasMany(Product::class, 'brand_id', 'id');

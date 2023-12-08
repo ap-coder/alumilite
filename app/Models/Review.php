@@ -46,6 +46,11 @@ class Review extends Model implements HasMedia
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('published', true);
+    }
+    
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
