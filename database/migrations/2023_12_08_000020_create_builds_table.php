@@ -14,6 +14,7 @@ class CreateBuildsTable extends Migration
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
             $table->string('timeframe')->nullable();
+            $table->string('subtitle')->nullable();
             $table->string('slug')->nullable();
             $table->string('customer_company')->nullable();
             $table->string('customer_name')->nullable();

@@ -31,6 +31,7 @@ class Build extends Model implements HasMedia
     protected $fillable = [
         'published',
         'name',
+        'subtitle',
         'description',
         'brand_id',
         'brand_model_id',

@@ -41,10 +41,18 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.build.fields.subtitle') }}
+                        </th>
+                        <td>
+                            {{ $build->subtitle }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.build.fields.description') }}
                         </th>
                         <td>
-                            {{ $build->description }}
+                            {!! $build->description !!}
                         </td>
                     </tr>
                     <tr>
