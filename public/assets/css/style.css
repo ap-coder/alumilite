@@ -15505,3 +15505,7 @@ p {
 [class*="-dark"]  {
   background-color: #1b1e1e!important;
 }
+
+.single-brand [class*="brand"]  {
+  max-width:150px!important;
+}
