@@ -1,11 +1,11 @@
     <!--====== News Start ======-->
-
+@if($posts->count() > 0)
     <section class="news-area news-dark">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-title">
-                        <h2 class="title">News & Reviews</h2>
+                        <h2 class="title">Blog & News</h2>
                     </div>
                 </div>
             </div>
@@ -52,5 +52,5 @@
             </div>
         </div>
     </section>
-
+@endif
     <!--====== News Ends ======-->
