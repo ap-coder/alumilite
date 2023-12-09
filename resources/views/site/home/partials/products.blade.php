@@ -153,9 +153,9 @@
                     
                 </div>
                 
-                <div class="cars-more mt-50 text-center">
+                {{-- <div class="cars-more mt-50 text-center">
                     <a href="{{ route('products.index') }}" class="main-btn">See All</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
