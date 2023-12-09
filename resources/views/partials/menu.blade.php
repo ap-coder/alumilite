@@ -276,9 +276,7 @@
         @endif
         <li class="c-sidebar-nav-item">
             <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
-
-                </i>
+                <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt"></i>
                 {{ trans('global.logout') }}
             </a>
         </li>
