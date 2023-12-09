@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             RoleUserTableSeeder::class,
         ]);
 
+        // \App\Models\ContentCategory::factory()->count(10)->create();
         // \App\Models\Product::factory()->count(10)->create();
         // \App\Models\ProductType::factory()->count(10)->create();
         // \App\Models\Build::factory()->count(10)->create();
