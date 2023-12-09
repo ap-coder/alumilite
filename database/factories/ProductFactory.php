@@ -5,11 +5,19 @@ namespace Database\Factories;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ */
 class ProductFactory extends Factory
 {
     protected $model = Product::class;
 
-    public function definition()
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
     {
         return [
             'published' => $this->faker->boolean,
@@ -22,4 +30,6 @@ class ProductFactory extends Factory
             // 'created_at' and 'updated_at' will be automatically set by Eloquent
         ];
     }
+
+    // Add any additional methods or states you require here
 }
