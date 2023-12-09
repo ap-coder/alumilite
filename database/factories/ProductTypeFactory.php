@@ -27,5 +27,4 @@ class ProductTypeFactory extends Factory
         ];
     }
 
-    // Add any additional methods or states you require here
 }
