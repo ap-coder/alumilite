@@ -13,9 +13,11 @@ Route::get('/admin', function () {
 
 Auth::routes(['register' => false]);
 
-Route::get('/', 'HomeController@index')->name('admin');
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+
+Route::get('/', 'HomeController@index')->name('home');
 
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
