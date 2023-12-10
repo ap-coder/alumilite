@@ -221,6 +221,15 @@
                 </a>
             </li>
         @endcan
+        @can('menu_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.menu.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/menu") || request()->is("admin/menu/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-bell c-sidebar-nav-icon">
+                    </i>
+                    {{ trans('cruds.menu.title') }}
+                </a>
+            </li>
+        @endcan
         @can('user_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/permissions*") ? "c-show" : "" }} {{ request()->is("admin/roles*") ? "c-show" : "" }} {{ request()->is("admin/users*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
