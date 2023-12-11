@@ -30,7 +30,7 @@
                 <div class="title-price">
                     <div class="title-excerpt">
                         <h3 class="entry-title">{{ $product->name }} <i class="ion-android-checkmark-circle"></i></h3>
-                        <p class="entry-excerpt">The Audi S8 is a high-performance version of the Audi Series</p>
+                        <p class="entry-excerpt">{{ $product->excerpt }}</p>
                     </div>
                     <div class="price">
                         <span class="price">
