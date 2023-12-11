@@ -5,7 +5,7 @@
                                     <div class="single-news mt-30">
                                         <div class="news-image">
                                             <a href="blog-single-with-sidebar.html">
-                                                <img src="assets/images/blog/blog-1.jpg" alt="">
+                                                <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
                                             </a>
                                         </div>
                                         <div class="news-content">
@@ -23,7 +23,7 @@
                                     <div class="single-news mt-30">
                                         <div class="news-image">
                                             <a href="blog-single-with-sidebar.html">
-                                                <img src="assets/images/blog/blog-2.jpg" alt="">
+                                                <img src="{{ asset('assets/images/blog/blog-2.jpg') }}" alt="">
                                             </a>
                                         </div>
                                         <div class="news-content">

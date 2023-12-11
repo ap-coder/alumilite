@@ -16,12 +16,8 @@
                                 <div class="single-news mt-50">
                                     <div class="news-image">
                                         <a href="blog-single-with-sidebar.html">
-                                            @if ($env=='local')
-                                                <img src="assets/images/blog/blog-1.jpg" alt="{{ $post->title }}">
-                                            @elseif($post->featured_image)
+                                            @if($post->featured_image)
                                                 <img src="{{ $post->featured_image->getUrl() }}" alt="{{ $post->title }}">
-                                            @else
-                                                <img src="assets/images/blog/blog-1.jpg" alt="{{ $post->title }}">
                                             @endif
                                         </a>
                                     </div>

@@ -5,8 +5,8 @@
 {{-- @include('site.products.show.partials.sidebar.dealer-info') --}}
 {{-- @include('site.products.show.partials.sidebar.consultants') --}}
 {{-- @include('site.products.show.partials.sidebar.calculater') --}}
-@include('site.products.show.partials.sidebar.related-posts')
-@include('site.products.show.partials.sidebar.similar-listings')
+{{-- @include('site.products.show.partials.sidebar.related-posts') --}}
+@includeIf('site.products.show.partials.sidebar.similar-listings',['products'=>$similarProducts])
 
                         </div>
                     </div>

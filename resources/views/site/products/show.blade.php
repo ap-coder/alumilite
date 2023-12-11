@@ -9,9 +9,11 @@
             <div class="row">
                 <div class="page-breadcrumb">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Inventory</a></li>
-                        <li class="breadcrumb-item active">TAPAS PRODUCT NAME HERE</li>
+                        <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
+                        @if ($product->categories->count()>0)
+                            <li class="breadcrumb-item"><a href="{{ $product->categories->first()->slug }}">{{ $product->categories->first()->name }}</a></li>
+                        @endif
+                        <li class="breadcrumb-item active">{{ $product->name }}</li>
                     </ul>
                 </div>
             </div>
@@ -27,13 +29,13 @@
             <div class="inventory-single-dealership-content d-lg-flex justify-content-between">
                 <div class="title-price">
                     <div class="title-excerpt">
-                        <h3 class="entry-title">Used 2018 Audi S8 <i class="ion-android-checkmark-circle"></i></h3>
+                        <h3 class="entry-title">{{ $product->name }} <i class="ion-android-checkmark-circle"></i></h3>
                         <p class="entry-excerpt">The Audi S8 is a high-performance version of the Audi Series</p>
                     </div>
                     <div class="price">
                         <span class="price">
-                            <span class="price-amount">$5,500</span>
-                            <span class="msrp">MSRP: <strong>$6,200</strong></span>
+                            <span class="price-amount">${{ number_format($product->price) }}</span>
+                            <span class="msrp">MSRP: <strong>${{ number_format($product->msrp) }}</strong></span>
                         </span>
                     </div>
                 </div>
@@ -76,7 +78,7 @@
                             </div>
                         </div>
 
-@include('site.products.show.partials.similar-listings')
+@includeIf('site.products.show.partials.similar-listings',['products'=>$similarProducts])
 
                     </div>
 @include('site.products.show.partials.sidebar')

@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-4">
                         <div class="text-widget mt-50">
                             <a href="#">
-                                <img src="assets/images/aalogo-horizontal.png" alt="alumilite armor footer logo">
+                                <img src="{{ asset('assets/images/aalogo-horizontal.png') }}" alt="alumilite armor footer logo">
                             </a>
                             <div class="text-content">
                                 <div class="single-text">

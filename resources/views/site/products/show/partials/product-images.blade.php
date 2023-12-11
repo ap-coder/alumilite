@@ -1,54 +1,33 @@
                         <div class="inventory-single-dealership-gallery">
                             <div class="dealership-gallery-active">
-                                <div class="single-dealership-gallery">
-                                    <img src="assets/images/inventory-single-dealership/dealership-1.jpg" alt="">
-                                </div>
-                                <div class="single-dealership-gallery">
-                                    <img src="assets/images/inventory-single-dealership/dealership-2.jpg" alt="">
-                                </div>
-                                <div class="single-dealership-gallery">
-                                    <img src="assets/images/inventory-single-dealership/dealership-3.jpg" alt="">
-                                </div>
-                                <div class="single-dealership-gallery">
-                                    <img src="assets/images/inventory-single-dealership/dealership-4.jpg" alt="">
-                                </div>
-                                <div class="single-dealership-gallery">
-                                    <img src="assets/images/inventory-single-dealership/dealership-5.jpg" alt="">
-                                </div>
-                                <div class="single-dealership-gallery">
-                                    <img src="assets/images/inventory-single-dealership/dealership-6.jpg" alt="">
-                                </div>
+                                @if($product->photo)
+                                    <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
+                                @endif
+
+                                @if($product->additional_photos->count()>0)
+                                    @foreach ($product->additional_photos as $photos)
+                                        <img src="{{ $photos->getUrl() }}" alt="{{ $product->name }}">
+                                    @endforeach
+                                @endif
+                               
                             </div>
                             <div class="dealership-gallery-thumb-active">
-                                <div class="thumb-col">
-                                    <div class="single-dealership-thumb">
-                                        <img src="assets/images/inventory-single-dealership/dealership-1.jpg" alt="">
+                                @if($product->photo)
+                                    <div class="thumb-col">
+                                        <div class="single-dealership-thumb">
+                                            <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="thumb-col">
-                                    <div class="single-dealership-thumb">
-                                        <img src="assets/images/inventory-single-dealership/dealership-2.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="thumb-col">
-                                    <div class="single-dealership-thumb">
-                                        <img src="assets/images/inventory-single-dealership/dealership-3.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="thumb-col">
-                                    <div class="single-dealership-thumb">
-                                        <img src="assets/images/inventory-single-dealership/dealership-4.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="thumb-col">
-                                    <div class="single-dealership-thumb">
-                                        <img src="assets/images/inventory-single-dealership/dealership-5.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="thumb-col">
-                                    <div class="single-dealership-thumb">
-                                        <img src="assets/images/inventory-single-dealership/dealership-6.jpg" alt="">
-                                    </div>
-                                </div>
+                                @endif
+                                
+                                @if($product->additional_photos->count()>0)
+                                    @foreach ($product->additional_photos as $photos)
+                                        <div class="thumb-col">
+                                            <div class="single-dealership-thumb">
+                                                <img src="{{ $photos->getUrl() }}" alt="{{ $product->name }}">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>

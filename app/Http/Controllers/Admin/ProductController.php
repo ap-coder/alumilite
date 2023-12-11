@@ -14,6 +14,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductTag;
 use App\Models\ProductType;
 use App\Models\TechnicalSpec;
+use App\Models\Feature;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -62,13 +63,16 @@ class ProductController extends Controller
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
             });
-            $table->addColumn('brand_name', function ($row) {
-                return $row->brand ? $row->brand->name : '';
+            $table->editColumn('msrp', function ($row) {
+                return $row->msrp ? $row->msrp : '';
             });
+            // $table->addColumn('brand_name', function ($row) {
+            //     return $row->brand ? $row->brand->name : '';
+            // });
 
-            $table->addColumn('brand_model_model', function ($row) {
-                return $row->brand_model ? $row->brand_model->model : '';
-            });
+            // $table->addColumn('brand_model_model', function ($row) {
+            //     return $row->brand_model ? $row->brand_model->model : '';
+            // });
 
             $table->editColumn('category', function ($row) {
                 $labels = [];
@@ -79,7 +83,7 @@ class ProductController extends Controller
                 return implode(' ', $labels);
             });
 
-            $table->rawColumns(['actions', 'placeholder', 'published', 'brand', 'brand_model', 'category']);
+            $table->rawColumns(['actions', 'placeholder', 'published', 'category']);
 
             return $table->make(true);
         }
@@ -101,9 +105,11 @@ class ProductController extends Controller
 
         $technical_specs = TechnicalSpec::pluck('name', 'id');
 
+        $features = Feature::pluck('name', 'id');
+
         $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.products.create', compact('brand_models', 'brands', 'categories', 'product_types', 'tags', 'technical_specs'));
+        return view('admin.products.create', compact('brand_models', 'brands', 'categories', 'product_types', 'tags', 'technical_specs','features'));
     }
 
     public function store(StoreProductRequest $request)
@@ -112,6 +118,7 @@ class ProductController extends Controller
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
         $product->technical_specs()->sync($request->input('technical_specs', []));
+        $product->features()->sync($request->input('features', []));
         if ($request->input('photo', false)) {
             $product->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
         }
@@ -145,11 +152,13 @@ class ProductController extends Controller
 
         $technical_specs = TechnicalSpec::pluck('name', 'id');
 
+        $features = Feature::pluck('name', 'id');
+
         $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $product->load('brand', 'brand_model', 'categories', 'tags', 'technical_specs', 'product_type');
 
-        return view('admin.products.edit', compact('brand_models', 'brands', 'categories', 'product', 'product_types', 'tags', 'technical_specs'));
+        return view('admin.products.edit', compact('brand_models', 'brands', 'categories', 'product', 'product_types', 'tags', 'technical_specs','features'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
@@ -158,6 +167,7 @@ class ProductController extends Controller
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
         $product->technical_specs()->sync($request->input('technical_specs', []));
+        $product->features()->sync($request->input('features', []));
         if ($request->input('photo', false)) {
             if (! $product->photo || $request->input('photo') !== $product->photo->file_name) {
                 if ($product->photo) {
@@ -204,7 +214,7 @@ class ProductController extends Controller
     {
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $product->load('brand', 'brand_model', 'categories', 'tags', 'technical_specs', 'product_type');
+        $product->load('brand', 'brand_model', 'categories', 'tags', 'technical_specs', 'product_type','features');
 
         return view('admin.products.show', compact('product'));
     }

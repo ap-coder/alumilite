@@ -30,16 +30,16 @@
                     <th>
                         {{ trans('cruds.product.fields.name') }}
                     </th>
-                    <th>
+                    {{-- <th>
                         {{ trans('cruds.product.fields.description') }}
-                    </th>
+                    </th> --}}
                     <th>
                         {{ trans('cruds.product.fields.price') }}
                     </th>
                     <th>
                         {{ trans('cruds.product.fields.msrp') }}
                     </th>
-                    <th>
+                    {{-- <th>
                         {{ trans('cruds.product.fields.photo') }}
                     </th>
                     <th>
@@ -47,22 +47,22 @@
                     </th>
                     <th>
                         {{ trans('cruds.product.fields.documents') }}
-                    </th>
+                    </th> --}}
                     <th>
                         {{ trans('cruds.product.fields.category') }}
                     </th>
-                    <th>
+                    {{-- <th>
                         {{ trans('cruds.product.fields.tag') }}
                     </th>
                     <th>
                         {{ trans('cruds.product.fields.technical_specs') }}
-                    </th>
-                    <th>
+                    </th> --}}
+                    {{-- <th>
                         {{ trans('cruds.product.fields.product_type') }}
-                    </th>
-                    <th>
+                    </th> --}}
+                    {{-- <th>
                         {{ trans('cruds.product.fields.slug') }}
-                    </th>
+                    </th> --}}
                     <th>
                         &nbsp;
                     </th>
@@ -122,17 +122,17 @@
 { data: 'id', name: 'id' },
 { data: 'published', name: 'published' },
 { data: 'name', name: 'name' },
-{ data: 'description', name: 'description' },
+// { data: 'description', name: 'description' },
 { data: 'price', name: 'price' },
 { data: 'msrp', name: 'msrp' },
-{ data: 'photo', name: 'photo', sortable: false, searchable: false },
-{ data: 'additional_photos', name: 'additional_photos', sortable: false, searchable: false },
-{ data: 'documents', name: 'documents', sortable: false, searchable: false },
+// { data: 'photo', name: 'photo', sortable: false, searchable: false },
+// { data: 'additional_photos', name: 'additional_photos', sortable: false, searchable: false },
+// { data: 'documents', name: 'documents', sortable: false, searchable: false },
 { data: 'category', name: 'categories.name' },
-{ data: 'tag', name: 'tags.name' },
-{ data: 'technical_specs', name: 'technical_specs.name' },
-{ data: 'product_type_name', name: 'product_type.name' },
-{ data: 'slug', name: 'slug' },
+// { data: 'tag', name: 'tags.name' },
+// { data: 'technical_specs', name: 'technical_specs.name' },
+// { data: 'product_type_name', name: 'product_type.name' },
+// { data: 'slug', name: 'slug' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

@@ -8,14 +8,9 @@
                         @foreach ($brands as $brand)
                             <div class="col-lg-2 col-sm-4 col-6 brand-col">
                                 <div class="single-brand">
-                                    @if ($env=='local')
-                                        <img class="brand" src="assets/images/brand/partner-dark-1.png" alt="{{ $brand->name }}">
-                                    @elseif($brand->logo)
+                                    @if($brand->logo)
                                         <img class="brand" src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}">
-                                    @else
-                                        <img class="brand" src="assets/images/brand/partner-dark-1.png" alt="{{ $brand->name }}">
                                     @endif
-                                    
                                     {{-- <img class="brand-hover" src="assets/images/brand/partner-hover-1.png" alt=""> --}}
                                 </div>
                             </div>

@@ -13,6 +13,7 @@ Route::resource('blog', 'BlogController', ['except' => ['create', 'store', 'edit
 // // Route::get('load-more-blog', 'BlogController@more_press_blog')->name('load-more-blog');
 
 Route::resource('products', 'ProductsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
+Route::get('products/{product:slug}', 'ProductsController@show')->name('products.show');
 
 
 

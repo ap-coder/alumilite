@@ -34,6 +34,16 @@
                 <span class="help-block">{{ trans('cruds.product.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="excerpt">{{ trans('cruds.product.fields.excerpt') }}</label>
+                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $product->excerpt) }}</textarea>
+                @if($errors->has('excerpt'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('excerpt') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.description_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="description">{{ trans('cruds.product.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $product->description) }}</textarea>
                 @if($errors->has('description'))
@@ -131,6 +141,24 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.tag_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="features">{{ trans('cruds.product.fields.feature') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('features') ? 'is-invalid' : '' }}" name="features[]" id="features" multiple>
+                    @foreach($features as $id => $feature)
+                        <option value="{{ $id }}" {{ (in_array($id, old('features', [])) || $product->features->contains($id)) ? 'selected' : '' }}>{{ $feature }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('features'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('features') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.feature_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="technical_specs">{{ trans('cruds.product.fields.technical_specs') }}</label>

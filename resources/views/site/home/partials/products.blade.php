@@ -30,12 +30,8 @@
                                         <div class="single-car-item mt-50">
                                             <div class="car-image">
                                                 <a href="{{ route('products.show',$product->slug) }}">
-                                                    @if ($env=='local')
-                                                        <img src="assets/images/cars/car-5.jpg" alt="{{ $product->name }}">
-                                                    @elseif($product->photo)
+                                                    @if($product->photo)
                                                         <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
-                                                    @else
-                                                        <img src="assets/images/cars/car-5.jpg" alt="{{ $product->name }}">
                                                     @endif
                                                 </a>
                                                 {{-- <ul class="car-meta">
@@ -64,8 +60,12 @@
                                                 <span class="body-type"><a href="javacript:void(0);">{{ $product->product_type->name }}</a></span>
                                                 <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                                                 <span class="price">
-                                                    <span class="sale-price">${{ number_format($product->price) }}</span>
-                                                    <span class="regular-price">${{ number_format($product->msrp) }}</span>
+                                                    @if ($product->price && $product->msrp)
+                                                            <span class="sale-price">${{ number_format($product->price) }}</span>
+                                                            <span class="regular-price">${{ number_format($product->msrp) }}</span>
+                                                        @else
+                                                            <span class="price-amount">${{ number_format($product->price) }}</span>
+                                                        @endif
                                                     {{-- <span class="discount-percentage">Save 35%</span> --}}
                                                 </span>
                                                 {{-- <div class="listing-colors d-flex align-items-center">
@@ -94,12 +94,8 @@
                                             <div class="single-car-item mt-50">
                                                 <div class="car-image">
                                                     <a href="{{ route('products.show',$product->slug) }}">
-                                                        @if ($env=='local')
-                                                            <img src="assets/images/cars/car-5.jpg" alt="{{ $product->name }}">
-                                                        @elseif($product->photo)
+                                                        @if($product->photo)
                                                             <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
-                                                        @else
-                                                            <img src="assets/images/cars/car-5.jpg" alt="{{ $product->name }}">
                                                         @endif
                                                     </a>
                                                     {{-- <ul class="car-meta">

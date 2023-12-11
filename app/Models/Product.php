@@ -113,6 +113,11 @@ class Product extends Model implements HasMedia
         return $this->belongsToMany(TechnicalSpec::class);
     }
 
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class,'product_features');
+    }
+
     public function product_type()
     {
         return $this->belongsTo(ProductType::class, 'product_type_id');

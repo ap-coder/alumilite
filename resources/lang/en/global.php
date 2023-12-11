@@ -25,6 +25,7 @@ return [
     'login_password_confirmation'    => 'Password confirmation',
     'logout'                         => 'Logout',
     'month'                          => 'Month',
+    'menu'                          => 'Menu Mgmt',
     'no'                             => 'No',
     'pleaseSelect'                   => 'Please select',
     'register'                       => 'Register',

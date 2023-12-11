@@ -226,7 +226,7 @@
                 <a href="{{ route("admin.menu.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/menu") || request()->is("admin/menu/*") ? "c-active" : "" }}">
                     <i class="fa-fw far fa-bell c-sidebar-nav-icon">
                     </i>
-                    {{ trans('cruds.menu.title') }}
+                    {{ trans('global.menu') }}
                 </a>
             </li>
         @endcan
