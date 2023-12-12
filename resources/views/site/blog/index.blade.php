@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('site.blog.partials.blog-feature-start')
+    @include('site.blog.partials.blog-slider')
     <!--====== Blog Start ======-->
     <section class="blog-area-2">
         <div class="container">
