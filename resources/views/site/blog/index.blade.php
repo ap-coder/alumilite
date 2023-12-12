@@ -11,15 +11,17 @@
                     <div class="news-list-wrapper">
 
                         @foreach($articles as $i => $article)
+             
                         <div class="single-news news-list">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="news-image">
                                         @if($article->featured_image)
-                                        <a href="#">
-                                            <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
-                                            {{--   {{ $article->getFirstMedia('featured_image')('responsive') }} --}}
-                                           </a>
+                                        <a href="{{ route('blog.show', $article->slug ) }}">    
+                                            {{ $article->getFirstMedia('featured_image')('responsive') }}
+                                        </a>
+                                        @else 
+                                         <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
                                         @endif
                                        </div>
                                    </div>
