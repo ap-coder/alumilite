@@ -10,7 +10,7 @@
 	<label class="howto" for="custom-menu-item-name"> 
 		<select class="custom-select custom-select">
 			<option value="0">Select Product</option>
-			@foreach($products as $product)
+			@foreach($menuProducts as $product)
 				<option value="{{ $product->id }}" label="{{ $product->name }}" url="products/{{ $product->slug }}">{{ ucfirst($product->name) }}</option>
 			@endforeach
 		</select>

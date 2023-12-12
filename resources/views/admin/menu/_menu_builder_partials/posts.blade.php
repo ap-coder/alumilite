@@ -9,7 +9,7 @@
 				<label class="howto" for="custom-menu-item-name">
 					<select class="custom-select">
 						<option value="0">Select Post</option>
-						@foreach($posts as $post)
+						@foreach($menuposts as $post)
 						<option value="{{ $post->slug }}" label="{{ $post->title }}" url="blog/{{ $post->slug }}">{{ ucfirst($post->title) }}</option>
 						@endforeach
 					</select>
