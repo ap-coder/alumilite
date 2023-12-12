@@ -37,12 +37,12 @@ class SiteController extends Controller
     {
         $latest_posts = Post::published()->latest()->take(3)->get();
 
-        return view('site.pages.about.index', compact('latest_posts'));
+       // return view('site.about.index', compact('latest_posts'));
     }
 
     public function contact()
     {
-        return view('site.pages.contact.index');
+        return view('site.contact.index');
     }
 
 }
