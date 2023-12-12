@@ -3,10 +3,7 @@
 @section('content')
 
 @include('site.blog.partials.blog-feature-start')
-
-
     <!--====== Blog Start ======-->
-
     <section class="blog-area-2">
         <div class="container">
             <div class="row justify-content-between">
@@ -64,7 +61,6 @@
 
         </div>
     </section>
-
     <!--====== Blog Ends ======-->
 
 @endsection
