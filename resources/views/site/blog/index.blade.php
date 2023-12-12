@@ -89,6 +89,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
                     </div>
 {{--                    <div class="all-pagination">--}}
