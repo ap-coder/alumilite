@@ -35,8 +35,8 @@ body {
         <div class="container">
             <div class="content">
                 <img src="{{ asset('alumilitearmor.png')}}" />
-                <div class="title" style="color:#0b0b0b;">New website coming early 2024.</div>
-                <p style="color:#0b0b0b;"> You can still check us out on Facebook until then. Contact: 435-990-1012</p>
+                <div class="title" style="color:#0b0b0b;font-weight:700;">New website coming early 2024.</div>
+                <h2 style="color:#0b0b0b;"> You can still check us out on Facebook until then. Contact: 435-990-1012</h2>
             </div>
         </div>
     </body>
