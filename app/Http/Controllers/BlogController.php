@@ -62,7 +62,7 @@ class BlogController extends Controller
     public function show(Post $post, $slug)
     {
 
-        $post = Post::where('slug', $slug)->with('categories', 'tags')->first();
+        $article = Post::where('slug', $slug)->with('categories', 'tags')->first();
 
         // $post = Cache::remember('published-post-'.$slug, 1440, function () use ($slug) {
         //    return Post::where('slug', $slug)->with('categories', 'tags')->first();
@@ -80,7 +80,7 @@ class BlogController extends Controller
         //         ->get();
         // });
 
-        return view('site.blog.show', compact('post'));
+        return view('site.blog.show', compact('article'));
     }
 
     /**
