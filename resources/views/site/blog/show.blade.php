@@ -60,8 +60,8 @@
 
                                 <figure class="post-gallery">
                                     <ul class="blocks-gallery-item">
-                                        <li><img src="assets/images/blog-single/blog-1.jpg" alt=""></li>
-                                        <li><img src="assets/images/blog-single/blog-2.jpg" alt=""></li>
+                                        <li><img src="{{ asset('assets/images/blog-single/blog-1.jpg') }}" alt=""></li>
+                                        <li><img src="{{ asset('assets/images/blog-single/blog-2.jpg') }}" alt=""></li>
                                     </ul>
                                 </figure>
 
