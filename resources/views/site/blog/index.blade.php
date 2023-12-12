@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('site.blog.partials.blog-feature-start')
+    @include('site.blog.partials.blog-feature-start')
     <!--====== Blog Start ======-->
     <section class="blog-area-2">
         <div class="container">
@@ -51,10 +51,10 @@
                 </div>
                 <div class="col-xxl-3 col-lg-4">
                     <div class="blog-sidebar">
-@include('site.blog.partials.search')
-@include('site.blog.partials.categories')
-@include('site.blog.partials.popular-posts')
-@include('site.blog.partials.newsletters')
+                        @include('site.blog.partials.search')
+                        @include('site.blog.partials.categories')
+                        @include('site.blog.partials.popular-posts')
+                        @include('site.blog.partials.newsletters')
                     </div>
                 </div>
             </div>
