@@ -35,7 +35,8 @@ body {
         <div class="container">
             <div class="content">
                 <img src="{{ asset('alumilitearmor.png')}}" />
-                <div class="title">Be right back.</div>
+                <div class="title">New website coming early 2024.</div>
+                <p> You can still check us out on Facebook until then. Contact: 435-990-1012</p>
             </div>
         </div>
     </body>
