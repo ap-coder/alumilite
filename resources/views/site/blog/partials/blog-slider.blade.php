@@ -21,13 +21,13 @@
                 <div class="single-blog-feature bg_cover d-flex align-items-center" style="background-image: url({!! $sliderImage !!});">
                     <div class="container">
                         <div class="blog-feature-content">
-                            <ul class="meta">
+                            {{-- <ul class="meta">
                                 <li><a href="#">News</a></li>
                                 <li><a href="#">August 24th, 2019</a></li>
                                 <li><a href="#">24 comments</a></li>
-                            </ul>
+                            </ul> --}}
                             <h2 class="title"><a href="#">ATV's 2023, The Change of Interior</a></h2>
-                            <p>Here’s a quick recap of the important aspects engineers touched in the all-new 2 Honda ATV started with a larger and lighter frame using more...</p>
+                            {{-- <p>Here’s a quick recap of the important aspects engineers touched in the all-new 2 Honda ATV started with a larger and lighter frame using more...</p> --}}
                         </div>
                     </div>
                 </div>
