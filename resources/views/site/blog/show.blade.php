@@ -98,7 +98,7 @@
                         <div class="entry-author-box">
                             <div class="author-avatar">
                                 <div class="avatar-image">
-                                    <img src="assets/images/blog-single/author.jpg" alt="">
+                                    <img src="{{ asset('assets/images/blog-single/author.jpg') }}" alt="">
                                 </div>
                                 <div class="avatar-info">
                                     <span class="sub-title">the author</span>
@@ -118,7 +118,7 @@
                                     <div class="single-news mt-50">
                                         <div class="news-image">
                                             <a href="#">
-                                                <img src="assets/images/blog/blog-1.jpg" alt="">
+                                                <img src="{{ asset('assets/images/blog/blog-1.jpg')}}" alt="">
                                             </a>
                                         </div>
                                         <div class="news-content">
@@ -126,7 +126,7 @@
                                                 <span class="meta-cat"><a href="#">News</a></span>
                                                 <span class="meta-date"><a href="#">July 31, 2020</a></span>
                                             </div>
-                                            <h3 class="news-title"><a href="blog-single-with-sidebar.html">Price list of Toyota Cars 2019, The Change of Interior & Exterior</a></h3>
+                                            <h3 class="news-title"><a href="#">Price list of Toyota Cars 2019, The Change of Interior & Exterior</a></h3>
                                             <ul class="news-meta-bottom">
                                                 <li><a href="#"><i class="ion-chatboxes"></i> 0 Comments </a></li>
                                                 <li><span><i class="ion-eye"></i> 83 Viewed</span></li>
@@ -139,7 +139,7 @@
                                     <div class="single-news mt-50">
                                         <div class="news-image">
                                             <a href="#">
-                                                <img src="assets/images/blog/blog-2.jpg" alt="">
+                                                <img src="{{ asset('assets/images/blog/blog-2.jpg')}}" alt="">
                                             </a>
                                         </div>
                                         <div class="news-content">
@@ -147,7 +147,7 @@
                                                 <span class="meta-cat"><a href="#">Inspiration</a></span>
                                                 <span class="meta-date"><a href="#">July 31, 2020</a></span>
                                             </div>
-                                            <h3 class="news-title"><a href="blog-single-with-sidebar.html">BMW X6, The Car Trending in 2019, Best Choice in Price Range</a></h3>
+                                            <h3 class="news-title"><a href="#">BMW X6, The Car Trending in 2019, Best Choice in Price Range</a></h3>
                                             <ul class="news-meta-bottom">
                                                 <li><a href="#"><i class="ion-chatboxes"></i> 0 Comments </a></li>
                                                 <li><span><i class="ion-eye"></i> 83 Viewed</span></li>
@@ -167,7 +167,7 @@
                                     <li>
                                         <div class="single-comment">
                                             <div class="comment-author">
-                                                <img src="assets/images/author-3.jpg" alt="">
+                                                <img src="{{ asset('assets/images/author-3.jpg')}}" alt="">
                                             </div>
                                             <div class="comment-content">
                                                 <ul class="meta">
@@ -182,7 +182,7 @@
                                     <li>
                                         <div class="single-comment">
                                             <div class="comment-author">
-                                                <img src="assets/images/author-4.jpg" alt="">
+                                                <img src="{{ asset('assets/images/author-4.jpg')}}"" alt="">
                                             </div>
                                             <div class="comment-content">
                                                 <ul class="meta">
@@ -238,114 +238,10 @@
                     </div>
                     <div class="col-xxl-3 col-lg-4">
                         <div class="blog-sidebar">
-                            <div class="blog-sidebar-search">
-                                <h3 class="sidebar-title">Search</h3>
-
-                                <div class="search-form">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search">
-                                        <button><i class="ion-android-search"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div class="blog-sidebar-category">
-                                <h3 class="sidebar-title">categories</h3>
-
-                                <div class="category-list">
-                                    <ul class="list">
-                                        <li><a href="#">News<span>(12)</span></a></li>
-                                        <li><a href="#">Inspiration<span>(6)</span></a></li>
-                                        <li><a href="#">Review<span>(24)</span></a></li>
-                                        <li><a href="#">Technology<span>(5)</span></a></li>
-                                        <li><a href="#">Community<span>(9)</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="blog-sidebar-post">
-                                <h3 class="sidebar-title">Popular posts</h3>
-
-                                <ul class="post-items">
-                                    <li>
-                                        <div class="single-post">
-                                            <div class="post-image">
-                                                <a href="#">
-                                                    <img src="assets/images/blog/blog-4.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content">
-                                                <div class="news-meta">
-                                                    <span class="meta-cat"><a href="#">News</a></span>
-                                                    <span class="meta-date"><a href="#">July 31, 2020</a></span>
-                                                </div>
-                                                <h6 class="post-title"><a href="#">Ford Focus 2016 - New Catalog from Carify’s expert, Brian O’Nel</a></h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-post">
-                                            <div class="post-image">
-                                                <a href="#">
-                                                    <img src="assets/images/blog/blog-10.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content">
-                                                <div class="news-meta">
-                                                    <span class="meta-cat"><a href="#">Review</a></span>
-                                                    <span class="meta-date"><a href="#">July 31, 2020</a></span>
-                                                </div>
-                                                <h6 class="post-title"><a href="#">BMW X3 White 2018, Powerful with Sport Level</a></h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-post">
-                                            <div class="post-image">
-                                                <a href="#">
-                                                    <img src="assets/images/blog/blog-9.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content">
-                                                <div class="news-meta">
-                                                    <span class="meta-cat"><a href="#">Inspiration</a></span>
-                                                    <span class="meta-date"><a href="#">July 31, 2020</a></span>
-                                                </div>
-                                                <h6 class="post-title"><a href="#">Danoh ABR 2019, The Attraction from Traditional Brand</a></h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="blog-sidebar-newsletter">
-                                <h3 class="sidebar-title">newsletter</h3>
-
-                                <div class="newsletter-form">
-                                    <p>Subscribe to our newsletter to get  the latest cars discount promotions, and other latest news.</p>
-                                    <form action="#">
-                                        <input type="text" placeholder="Email address">
-                                        <button class="main-btn">subscribe</button>
-                                    </form>
-                                    <span>Don’t worry ! we not spam.</span>
-
-                                </div>
-                            </div>
-
-                            <div class="blog-sidebar-tags">
-                                <h3 class="sidebar-title">Popular tags</h3>
-
-                                <div class="sidebar-tags">
-                                    <a href="#">vehicle</a>
-                                    <a href="#">inventory</a>
-                                    <a href="#">wordpress</a>
-                                    <a href="#">technology</a>
-                                    <a href="#">dealership</a>
-                                    <a href="#">mileage</a>
-                                    <a href="#">car</a>
-                                    <a href="#">automatic</a>
-                                </div>
-                            </div>
+                            @include('site.blog.partials.show.search')
+                            @include('site.blog.partials.show.categories')
+                            @include('site.blog.partials.show.popular-posts')
+                            @include('site.blog.partials.show.newsletter')
                         </div>
                     </div>
                 </div>
