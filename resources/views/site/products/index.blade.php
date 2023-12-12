@@ -76,9 +76,9 @@
                                     @endif
                                     <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                                     
-                                    <div class="author-meta">
+                                    {{-- <div class="author-meta">
                                         <span><i class="ion-android-person"></i> Dealer:  <a href="#">Eden Hazard</a></span>
-                                    </div>
+                                    </div> --}}
                                     <ul class="car-meta">
                                         @if ($product->technical_specs->count()>0)
                                             @foreach ($product->technical_specs->take(3) as $specification)
