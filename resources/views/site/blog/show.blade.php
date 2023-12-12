@@ -2,24 +2,28 @@
 
 @section('content')
 
+    <meta itemprop="datePublished" content="{{date('yyyy-m-d', strtotime($article->created_at)) }}">
+    <meta itemprop="dateModified" content="{{date('yyyy-m-d', strtotime($article->updated_at)) }}">
     <!--====== Blog Single Start ======-->
     @if($article->featured_image)
     <section class="blog-single-area blog-dark">
-        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url(assets/images/blog-single/blog-single-2.jpg);">
+{{--        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ asset('assets/images/blog-single/blog-single-2.jpg') }}');">--}}
+        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ asset('{{ $article->getFirstMedia('featured_image')('responsive') }}');">
             <div class="container">
                 <div class="single-post-header-inner-2">
                     <div class="entry-meta">
                         <ul class="meta-items">
                             <li><a href="#">Review</a></li>
-                            <li><a href="#">August 24th, 2019</a></li>
-                            <li><a href="#">by mcgregor</a></li>
-                            <li><a href="#">2.4K Viewed</a></li>
+                            <li><a href="#">{{date('F j, Y', strtotime($article->created_at)) }}</a></li>
+                            <li><a href="#"> </a></li>
+                            <li><a href="#"> </a></li>
                         </ul>
                     </div>
                     <h2 class="entry-title">Audi in town 2019 - the festival of  audior in florencia, italy</h2>
                 </div>
             </div>
         </div>
+        @endif
 
         <div class="single-post-main-content">
             <div class="container">
@@ -27,9 +31,9 @@
                     <div class="col-lg-8">
                         <div class="post-content-inner single-post-left">
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="blog-with-sidebar.html">Blog</a></li>
-                                <li class="breadcrumb-item active">Review The Evolutions Of CMB, Stronger & Faster!</li>
+                                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ url('blog') }}">Blog</a></li>
+                                <li class="breadcrumb-item active">{{ $article->title ?? '' }}</li>
                             </ul>
                             <div class="body-content">
                                 <p class="has-text">On the off chance that you have an escalated stop, mull over a short taking a ander at outing. This especially is shrewd in urban areas with brilliant open transportation decisions.</p>
