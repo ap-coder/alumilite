@@ -18,6 +18,8 @@
                                         <a href="blog-single-with-sidebar.html">
                                             @if($post->featured_image)
                                                 <img src="{{ $post->featured_image->getUrl() }}" alt="{{ $post->title }}">
+                                            @else
+                                                <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $post->title }}">
                                             @endif
                                         </a>
                                     </div>

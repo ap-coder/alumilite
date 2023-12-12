@@ -17,9 +17,9 @@ class ProductsController extends Controller
     public function index()
     {
 
-        $products = Product::published()->with(['categories', 'tags', 'media'])->get();
+        $products = Product::published()->get();
 
-        return view('site.products.index-list', compact('products'));
+        return view('site.products.index', compact('products'));
     }
 
     public function show(Product $product)

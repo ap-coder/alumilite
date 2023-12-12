@@ -11,7 +11,7 @@
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
                         @if ($product->categories->count()>0)
-                            <li class="breadcrumb-item"><a href="{{ $product->categories->first()->slug }}">{{ $product->categories->first()->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $product->categories->first()->name }}</a></li>
                         @endif
                         <li class="breadcrumb-item active">{{ $product->name }}</li>
                     </ul>

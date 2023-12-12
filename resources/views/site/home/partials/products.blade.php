@@ -32,6 +32,8 @@
                                                 <a href="{{ route('products.show',$product->slug) }}">
                                                     @if($product->photo)
                                                         <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
+                                                    @else
+                                                        <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                                     @endif
                                                 </a>
                                                 {{-- <ul class="car-meta">
@@ -96,6 +98,8 @@
                                                     <a href="{{ route('products.show',$product->slug) }}">
                                                         @if($product->photo)
                                                             <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
+                                                        @else
+                                                            <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                                         @endif
                                                     </a>
                                                     {{-- <ul class="car-meta">
@@ -149,9 +153,9 @@
                     
                 </div>
                 
-                {{-- <div class="cars-more mt-50 text-center">
+                <div class="cars-more mt-50 text-center">
                     <a href="{{ route('products.index') }}" class="main-btn">See All</a>
-                </div> --}}
+                </div>
             </div>
         </div>
     </section>
