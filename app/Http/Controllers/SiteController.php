@@ -22,21 +22,21 @@ use Spatie\MediaLibrary\Models\Media;
 class SiteController extends Controller
 {
 
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         $posts = Post::published()->latest()->take(3)->get();
         $products = Product::published()->latest()->get();
         $sliders = Slider::get();
         $productTypes = ProductType::published()->get();
         $brands = Brand::published()->get();
- 
+
         return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes'));
     }
 
     public function about()
     {
         $latest_posts = Post::published()->latest()->take(3)->get();
-        
+
         return view('site.pages.about.index', compact('latest_posts'));
     }
 

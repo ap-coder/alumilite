@@ -46,7 +46,7 @@
                         @endforeach
 
                     </div>
-                    
+
                     {{-- @include('site.blog.partials.pagination') --}}
 
                 </div>

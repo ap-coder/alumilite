@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContentCategory;
 use App\Models\ContentTag;
 use App\Models\Post;
+use App\Models\Slider;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -24,6 +25,7 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
+        $sliders = Slider::get();
         // $minutes = 360;
 
         // $articles = Cache::remember('blog-articles', $minutes, function () {
@@ -32,7 +34,7 @@ class BlogController extends Controller
 
         $articles = Post::where('published', 1)->orderBy('id', 'DESC')->paginate(6);
 
-        return view('site.blog.index', compact('articles'));
+        return view('site.blog.index', compact('articles', 'sliders'));
     }
 
     /**
