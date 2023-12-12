@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContentCategory;
+use App\Models\ContentTag;
 use App\Models\Post;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Request;
@@ -22,7 +24,7 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        // $minutes = 360; 
+        // $minutes = 360;
 
         // $articles = Cache::remember('blog-articles', $minutes, function () {
         //     return Post::where('published', 1)->orderBy('id', 'DESC')->paginate(6);
@@ -57,9 +59,12 @@ class BlogController extends Controller
      */
     public function show(Post $post, $slug)
     {
-        $post = Cache::remember('published-post-'.$slug, 1440, function () use ($slug) {
-            return Post::where('slug', $slug)->with('categories', 'tags')->first();
-        });
+
+        $post = Post::where('slug', $slug)->with('categories', 'tags')->first();
+
+        // $post = Cache::remember('published-post-'.$slug, 1440, function () use ($slug) {
+        //    return Post::where('slug', $slug)->with('categories', 'tags')->first();
+        // });
 
         // if (app()->environment() === 'production') {
         //     views($post)->record();
@@ -71,18 +76,6 @@ class BlogController extends Controller
         //         ->orderByUniqueViews()
         //         ->take(4)
         //         ->get();
-        // });
-
-        // $total_views = Cache::remember('total-views', 60, function () {
-        //     return views(new Post())->count();
-        // });
-
-        // $total_views2 = Cache::remember('total-views-'.$post->id, 60, function () use ($post) {
-        //     return views($post)->unique()->count();
-        // });
-
-        // $most_popular = Cache::remember('most-popular', 60, function () {
-        //     return Post::orderByUniqueViews('asc')->take(3)->get();
         // });
 
         return view('site.blog.show', compact('post'));
