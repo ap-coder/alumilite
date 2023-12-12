@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="header-main-wrapper d-flex justify-content-between align-items-center">
                     <div class="header-brand">
-                        <a href="{{ url('/') }}">
+                        <a href="{{ url('') }}">
                             <img class="custom-logo" src="{{ asset('assets/images/aa-horizontal-800x150.png') }}" alt="alumilite armor logo">
                         </a>
                     </div>

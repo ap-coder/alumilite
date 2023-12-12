@@ -1,4 +1,3 @@
-  @if(!empty($posts))
 <li class="control-section accordion-section add-post" id="add-post">
 	<h3 class="accordion-section-title hndle" tabindex="0"> 
 		Post Link <span class="screen-reader-text">Press return or enter to expand</span>
@@ -25,4 +24,3 @@
 		</div>
 	</div>
 </li>
-@endif 
