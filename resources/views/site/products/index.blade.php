@@ -10,14 +10,20 @@
         <div class="container">
             <div class="inventory-top d-sm-flex justify-content-between align-items-center">
                 <div class="inventory-select">
-                    <form action="#">
+                    {{-- <form action="#">
                         <select class="optgroup_test">
                             <option value="" selected="selected">SORT BY: Date Last Added </option>
                             <option value="">SORT BY: Date First Added </option>
                             <option value="">SORT BY: Price (Low To High) </option>
                             <option value="">SORT BY: Price (High To Low) </option>
                         </select>
-                    </form>
+                    </form> --}}
+                    <select class="optgroup_test" id="categoryFilter">
+                        <option value="">Filter By: Category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->slug }}" @if(Request::get('category') && Request::get('category') == $category->slug) selected @endif>{{ $category->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="inventory-switcher">
                     <ul class="nav" role="tablist">
@@ -72,8 +78,11 @@
                                         {{-- <span class="discount-percentage">Save 35%</span> --}}
                                     </span>
                                     @if ($product->categories->count()>0)
-                                        <span class="body-type"><a href="javascript:void(0);">{{ $product->categories->first()->name }}</a></span>
+                                        @foreach ($product->categories as $key => $category)
+                                            <span class="body-type"><a href="javascript:void(0);">{{ $category->name }}</a></span> @if($product->categories->count() != $key+1) | @endif
+                                        @endforeach
                                     @endif
+
                                     <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                                     
                                     {{-- <div class="author-meta">
@@ -130,7 +139,9 @@
                         <div class="car-content">
                             <div class="content-title">
                                 @if ($product->categories->count()>0)
-                                    <span class="body-type"><a href="javascript:void(0);">{{ $product->categories->first()->name }}</a></span>
+                                    @foreach ($product->categories as $key => $category)
+                                        <span class="body-type"><a href="javascript:void(0);">{{ $category->name }}</a></span> @if($product->categories->count() != $key+1) | @endif
+                                    @endforeach
                                 @endif
                                 <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                             </div>
@@ -192,7 +203,16 @@
                                        
                 </div>
             </div>
-
+            {{-- <div class="all-pagination">
+                <div class="pagination justify-content-center">
+                    {{ $products->links() }}
+                </div>
+            </div> --}}
+            {{-- /home/tapas78/alumalite/resources/views/vendor/pagination/default.blade.php --}}
+            <div class="all-pagination">
+            {{ $products->links('vendor.pagination.default') }}
+        </div>
+            
             {{-- <div class="all-pagination">
                 <ul class="pagination justify-content-center">
                     <li><a class="previous" href="#"><i class="ion-ios-arrow-back"></i> <span>Previous</span></a></li>
@@ -215,4 +235,17 @@
 
 @section('headcss') @endsection
 @section('headjs') @endsection
-@section('footjs') @endsection    
+@section('footjs') 
+
+<script>
+    $(function () {
+    
+        $('#categoryFilter').change(function(){
+            var category = $(this).val();
+            window.location.href = "{{ url('products') }}?category="+category;
+        });
+
+    });
+</script>
+
+@endsection    

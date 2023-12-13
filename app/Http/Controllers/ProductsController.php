@@ -14,12 +14,19 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $category=$request->category;
+        $products = Product::published()->paginate(2);
 
-        $products = Product::published()->get();
+        $products = Product::published()->whereHas('categories', function ($query) use ($category) {
+            $query->where('slug', $category);
+        })
+        ->paginate(2);
 
-        return view('site.products.index', compact('products'));
+        $categories = ProductCategory::published()->get();
+
+        return view('site.products.index', compact('products','categories'));
     }
 
     public function show(Product $product)
