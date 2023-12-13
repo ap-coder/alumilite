@@ -1,6 +1,25 @@
+<style>
+    .all-pagination .pagination li.active {
+    background-color: #ce8339;
+    color: #fff;
+}
+.all-pagination .pagination li {
+    background-color: #edeff1;
+    color: #293957;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+</style>
 @if ($paginator->hasPages())
     <nav>
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
