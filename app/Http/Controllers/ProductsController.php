@@ -17,12 +17,15 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $category=$request->category;
-        $products = Product::published()->paginate(2);
 
-        $products = Product::published()->whereHas('categories', function ($query) use ($category) {
-            $query->where('slug', $category);
-        })
-        ->paginate(2);
+        if ($category) {
+            $products = Product::published()->whereHas('categories', function ($query) use ($category) {
+                $query->where('slug', $category);
+            })
+            ->paginate(12);
+        } else {
+            $products = Product::published()->paginate(12);
+        }
 
         $categories = ProductCategory::published()->get();
 
