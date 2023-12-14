@@ -42,7 +42,7 @@ class Controller extends BaseController
 
             $main_menu = Menu::getByName('Main Menu');
             $footer_menu = Menu::getByName('Footer Widget Menu');
-            $footer_Links = Menu::getByName('Footer Links');
+            $footer_links = Menu::getByName('Footer Links');
             $copywright_menu = Menu::getByName('Copyright Menu');
             $blog_menu = Menu::getByName('Blog Sidebar Menu');
             $products_menu = Menu::getByName('Products Sidebar Menu');

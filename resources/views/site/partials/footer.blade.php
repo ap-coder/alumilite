@@ -47,17 +47,24 @@
                             </div>
                         @endforeach
                     @endif
-                    {{-- <div class="col-lg-3 col-md-3 col-sm-4">
-                        <div class="footer-menu mt-50">
-                            <h3 class="footer-title">Links</h3>
 
-                            <ul class="menu-items">
-                                <li><a href="{{ url('contact') }}">Contact</a></li>
-                                <li><a href="{{ url('blog') }}">Blog</a></li>
-                            </ul>
+                    @if(isset($footer_links))
+                        
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                            <div class="footer-menu mt-50">
+                                <h3 class="footer-title">Links</h3>
+
+                                <ul class="menu-items">
+                                    @foreach($copywright_menu as $menu)
+                                    <li><a href="{{ preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode(strpos($menu['link'], "http") === 0 ? $menu['link'] : url('', $menu['link']))) }}">{{ $menu['label'] }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-4">
+ 
+                    @endif
+
+                   {{--  <div class="col-lg-3 col-md-3 col-sm-4">
                         <div class="footer-menu mt-50">
                             <h3 class="footer-title">Help Center</h3>
 
@@ -69,6 +76,7 @@
                             </ul>
                         </div>
                     </div> --}}
+
                     <div class="col-lg-3">
                         <div class="footer-newsletter mt-50">
                             <h3 class="footer-title">Newsletter</h3>
@@ -96,16 +104,17 @@
                     <div class="footer-copyright">
                         <p>&copy; 2023 <span> Alumilite Armor </span> Made with <i class="fa fa-heart"></i> by <a href="#">WeCodeLaravel</a></p>
                     </div>
-                    
+                    @if(isset($copywright_menu))
                     <div class="footer-social">
                         <ul class="socia">
-                            @if(isset($copywright_menu))
-                                @foreach($copywright_menu as $menu)
+                           
+                            @foreach($copywright_menu as $menu)
                             <li><a href="{{ preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode(strpos($menu['link'], "http") === 0 ? $menu['link'] : url('', $menu['link']))) }}">{{ $menu['label'] }}</a></li>
-                                @endforeach
-                            @endif
+                            @endforeach
+                            
                         </ul>
                     </div>
+                    @endif
 
 
 
