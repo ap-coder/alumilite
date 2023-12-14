@@ -31,4 +31,14 @@ class ContentCategory extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', 1);
+    }
+
+    public function scopeBySlug($query, $slug)
+    {
+        return $query->where('slug', $slug);
+    }
 }
