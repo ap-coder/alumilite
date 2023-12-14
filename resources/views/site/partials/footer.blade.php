@@ -96,6 +96,19 @@
                     <div class="footer-copyright">
                         <p>&copy; 2023 <span> Alumilite Armor </span> Made with <i class="fa fa-heart"></i> by <a href="#">WeCodeLaravel</a></p>
                     </div>
+                    
+                    <div class="footer-social">
+                        <ul class="socia">
+                            @if(isset($copywright_menu))
+                                @foreach($copywright_menu as $menu)
+                            <li><a href="{{ preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode(strpos($menu['link'], "http") === 0 ? $menu['link'] : url('', $menu['link']))) }}">{{ $menu['label'] }}</a></li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+
+
+
                     <div class="footer-social">
                         <span class="label">Follow us</span>
                         <ul class="socia">
