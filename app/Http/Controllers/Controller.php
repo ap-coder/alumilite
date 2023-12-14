@@ -39,7 +39,6 @@ class Controller extends BaseController
             // $products = Product::all();
             // $builds = Build::all();
 
-
             $main_menu = Menu::getByName('Main Menu');
             $footer_menu = Menu::getByName('Footer Widget Menu');
             $copywrite_menu = Menu::getByName('Copywrite Menu');
