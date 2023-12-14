@@ -15,7 +15,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="single-news mt-50">
                                     <div class="news-image">
-                                        <a href="blog-single-with-sidebar.html">
+                                        <a href="{{ route('blog.show',$post->slug) }}">
                                             @if($post->featured_image)
                                                 <img src="{{ $post->featured_image->getUrl() }}" alt="{{ $post->title }}">
                                             @else
