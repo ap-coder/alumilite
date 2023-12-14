@@ -11,9 +11,9 @@
         <div class="container">
             <div class="inventory-single-content ">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Builds</a></li>
-                    <li class="breadcrumb-item active">tapas build name here </li>
+                    <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('builds.index') }}">Builds</a></li>
+                    <li class="breadcrumb-item active">{{ $build->name }}</li>
                 </ul>
                 <div class="listing-social d-lg-flex justify-content-between">
                    {{--  <div class="listing-btn">
@@ -34,8 +34,8 @@
                 </div>
                 <div class="title-price">
                     <div class="title-excerpt">
-                        <h3 class="entry-title">tapas build name here <i class="ion-android-checkmark-circle"></i></h3>
-                        <p class="entry-excerpt">tapas build subtitle here</p>
+                        <h3 class="entry-title">{{ $build->name }} <i class="ion-android-checkmark-circle"></i></h3>
+                        <p class="entry-excerpt">{{ $build->subtitle }}</p>
                     </div>
                      
                 </div>
@@ -44,6 +44,7 @@
                         <div class="overview">
                             <h5 class="singe-title">Build Overview</h5>
 
+                            {!! $build->description !!}
                             {{-- tapas build description here --}}
                         </div>
 
@@ -51,7 +52,7 @@
 {{-- @include('site.builds.partials.show.features') --}}
 
                         <div class="consumer-reviews">
-                            <h5 class="singe-title">reviews</h5>
+                            <h5 class="singe-title">Reviews</h5>
 
 @include('site.builds.partials.show.reviews-stats')
 @include('site.builds.partials.show.review')

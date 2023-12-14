@@ -1,12 +1,12 @@
                         <div class="features-car">
-                            <h5 class="singe-title">Other Builds Of This Brand<a href="#">TAPAS BRAND BUILD NAME HERE</a></h5>
+                            <h5 class="singe-title">Other Builds Of This Brand <a href="{{ route('builds.show',$build->slug) }}"> {{ $build->name }}</a></h5>
 
                             <div class="row car-row cars-active-3">
                                 <div class="car-col col-lg-3">
                                     <div class="single-car-item-2 mt-50">
                                         <div class="car-image">
                                             <a href="inventory-single-classified.html">
-                                                <img src="assets/images/car-2/car-1.jpg" alt="">
+                                                <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="">
                                             </a>
                                             <ul class="car-meta">
                                                 <li>
@@ -54,7 +54,7 @@
                                     <div class="single-car-item-2 mt-50">
                                         <div class="car-image">
                                             <a href="inventory-single-classified.html">
-                                                <img src="assets/images/car-2/car-2.jpg" alt="">
+                                                <img src="{{ asset('assets/images/car-2/car-2.jpg') }}" alt="">
                                             </a>
                                             <ul class="car-meta">
                                                 <li>
@@ -99,7 +99,7 @@
                                     <div class="single-car-item-2 mt-50">
                                         <div class="car-image">
                                             <a href="inventory-single-classified.html">
-                                                <img src="assets/images/car-2/car-3.jpg" alt="">
+                                                <img src="{{ asset('assets/images/car-2/car-3.jpg') }}" alt="">
                                             </a>
                                             <ul class="car-meta">
                                                 <li>
@@ -146,7 +146,7 @@
                                     <div class="single-car-item-2 mt-50">
                                         <div class="car-image">
                                             <a href="inventory-single-classified.html">
-                                                <img src="assets/images/car-2/car-4.jpg" alt="">
+                                                <img src="{{ asset('assets/images/car-2/car-4.jpg') }}" alt="">
                                             </a>
                                             <ul class="car-meta">
                                                 <li>
