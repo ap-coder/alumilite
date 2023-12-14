@@ -32,12 +32,15 @@ class BlogController extends Controller
         //     return Post::where('published', 1)->orderBy('id', 'DESC')->paginate(6);
         // });
 
-        $articles = Post::where('published', 1)
-            ->whereHas('category', function ($query) {
-                $query->published();
-            })
-            ->orderBy('id', 'DESC')
-            ->paginate(6);
+        $category=$request->category;
+        if ($category) {
+            $articles = Post::published()->whereHas('categories', function ($query) use ($category) {
+                $query->where('slug', $category);
+            })->orderBy('id', 'DESC')->paginate(6);
+        } else {
+            $articles = Post::published()->orderBy('id', 'DESC')->paginate(6);
+        }
+ 
 
         $categories = ContentCategory::published()->get();
 
