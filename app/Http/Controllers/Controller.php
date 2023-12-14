@@ -42,7 +42,11 @@ class Controller extends BaseController
 
             $main_menu = Menu::getByName('Main Menu');
             $footer_menu = Menu::getByName('Footer Widget Menu');
-            $copywrite_menu = Menu::getByName('Copywrite Menu');
+            $footer_Links = Menu::getByName('Footer Links');
+            $copywright_menu = Menu::getByName('Copyright Menu');
+            $blog_menu = Menu::getByName('Blog Sidebar Menu');
+            $products_menu = Menu::getByName('Products Sidebar Menu');
+            $builds_menu = Menu::getByName('Builds Sidebar Menu');
 
             $menuposts = Post::all();
 		    $menuLandingPages = ContentPage::all();
@@ -51,7 +55,11 @@ class Controller extends BaseController
             View::share('env', $env);
             View::share('main_menu', $main_menu);
             View::share('footer_menu', $footer_menu);
-            View::share('copywrite_menu', $copywrite_menu);
+            View::share('footer_links', $footer_links);
+            View::share('copywright_menu', $copywright_menu);
+            View::share('blog_menu', $blog_menu);
+            View::share('builds_menu', $builds_menu);
+            View::share('products_menu', $products_menu);
 
             View::share('menuposts', $menuposts);
             View::share('menuLandingPages', $menuLandingPages);
