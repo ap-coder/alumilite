@@ -33,6 +33,7 @@ class BlogController extends Controller
         // });
 
         $category=$request->category;
+
         if ($category) {
             $articles = Post::published()->whereHas('categories', function ($query) use ($category) {
                 $query->where('slug', $category);
@@ -40,9 +41,9 @@ class BlogController extends Controller
         } else {
             $articles = Post::published()->orderBy('id', 'DESC')->paginate(6);
         }
- 
 
-        $categories = ContentCategory::published()->get();
+
+        $categories = ContentCategory::all();
 
         return view('site.blog.index', compact('articles', 'sliders'));
     }
