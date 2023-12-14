@@ -48,7 +48,7 @@
                         @endforeach
                     @endif
 
-                    @if(isset($footer_links))
+                   {{--  @if(isset($footer_links))
                         
                         <div class="col-lg-3 col-md-3 col-sm-4">
                             <div class="footer-menu mt-50">
@@ -62,20 +62,9 @@
                             </div>
                         </div>
  
-                    @endif
+                    @endif --}}
 
-                   {{--  <div class="col-lg-3 col-md-3 col-sm-4">
-                        <div class="footer-menu mt-50">
-                            <h3 class="footer-title">Help Center</h3>
-
-                            <ul class="menu-items">
-        
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-         
-                            </ul>
-                        </div>
-                    </div> --}}
+ 
 
                     <div class="col-lg-3">
                         <div class="footer-newsletter mt-50">
