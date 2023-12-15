@@ -25,7 +25,7 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $sliders = Slider::get();
+
         // $minutes = 360;
 
         // $articles = Cache::remember('blog-articles', $minutes, function () {
@@ -33,6 +33,7 @@ class BlogController extends Controller
         // });
 
         $category=$request->category;
+        $sliders = Slider::get();
 
         if ($category) {
             $articles = Post::published()->whereHas('categories', function ($query) use ($category) {
@@ -45,7 +46,7 @@ class BlogController extends Controller
 
         $categories = ContentCategory::all();
 
-        return view('site.blog.index', compact('articles', 'sliders'));
+        return view('site.blog.index', compact('articles', 'sliders', 'categories'));
     }
 
 
@@ -84,7 +85,7 @@ class BlogController extends Controller
         //     views($post)->record();
         // }
 
-        // $recent_posts = Cache::remember('recent-posts-'.$post->id, 60, function () use ($post) {
+        //$recent_posts = Cache::remember('recent-posts-'.$post->id, 60, function () use ($post) {
         //     return Post::where('published', true)
         //         ->whereNotIn('id', [$post->id])
         //         ->orderByUniqueViews()
