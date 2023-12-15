@@ -3,9 +3,9 @@
 @section('content')
     <!--====== Contact Map Start ======-->
 
-    <div class="contact-map-area">
-        <div id="contact-map"></div>
-    </div>
+{{--    <div class="contact-map-area">--}}
+{{--        <div id="contact-map"></div>--}}
+{{--    </div>--}}
 
     <!--====== Contact Map Ends ======-->
 
