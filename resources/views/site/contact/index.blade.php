@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="single-contact-info">
-                                <h4 class="info-title">work with us <i class="ion-briefcase"></i></h4>
+                                {{-- <h4 class="info-title">work with us <i class="ion-briefcase"></i></h4>--}}
 
                                 <p>Send us an email: <br> </p>
                             </div>
