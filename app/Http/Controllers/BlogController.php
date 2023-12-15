@@ -38,9 +38,9 @@ class BlogController extends Controller
         if ($category) {
             $articles = Post::published()->whereHas('categories', function ($query) use ($category) {
                 $query->where('slug', $category);
-            })->orderBy('id', 'DESC')->paginate(6);
+            })->orderBy('id', 'DESC')->paginate(12);
         } else {
-            $articles = Post::published()->orderBy('id', 'DESC')->paginate(6);
+            $articles = Post::published()->orderBy('id', 'DESC')->paginate(12);
         }
 
 

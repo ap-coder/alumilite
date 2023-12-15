@@ -9,7 +9,8 @@
                             <div class="col-lg-2 col-sm-4 col-6 brand-col">
                                 <div class="single-brand">
                                     @if($brand->logo)
-                                        <img class="brand" src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}">
+                                        {{-- <img class="brand" src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}"> --}}
+                                        {{ $brand->getFirstMedia('logo')('responsive') }}
                                     @endif
                                     {{-- <img class="brand-hover" src="assets/images/brand/partner-hover-1.png" alt=""> --}}
                                 </div>
