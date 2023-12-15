@@ -5,10 +5,11 @@
     <meta itemprop="datePublished" content="{{date('yyyy-m-d', strtotime($article->created_at)) }}">
     <meta itemprop="dateModified" content="{{date('yyyy-m-d', strtotime($article->updated_at)) }}">
     <!--====== Blog Single Start ======-->
-    @if($article->featured_image)
-    <section class="blog-single-area blog ">
+
+    <section class="blog-single-area blog">
 {{--        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ asset('assets/images/blog-single/blog-single-2.jpg') }}');">--}}
 {{--        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ $article->getFirstMedia('featured_image')('responsive') }}');">--}}
+        @if($article->featured_image)
         <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ $article->featured_image->getUrl() }}');">
             <div class="container">
                 <div class="single-post-header-inner-2">
