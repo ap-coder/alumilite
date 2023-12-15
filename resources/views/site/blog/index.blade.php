@@ -18,7 +18,8 @@
                                     <div class="news-image">
                                         @if($article->featured_image)
                                         <a href="{{ route('blog.show', $article->slug ) }}">
-                                            {{ $article->getFirstMedia('featured_image')('responsive') }}
+{{--                                            {{ $article->getFirstMedia('featured_image')('responsive') }}--}}
+                                            <img src="{{ $article->photo->getUrl() }}" alt="{{ $article->title }}">
                                         </a>
                                         @else
                                             <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
