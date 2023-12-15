@@ -12,7 +12,7 @@
 
                 @if($build->additional_photos->count()>0)
                     @foreach ($build->additional_photos as $photos)
-                        {{ $photos->getFirstMedia('photo')('responsive') }}
+                        {{ $photos('responsive') }}
                     @endforeach
                 @else
                     <div class="single-image-gallery">
@@ -44,7 +44,7 @@
                 @if($build->additional_photos->count()>0)
                     @foreach ($build->additional_photos as $photos)
                         <div class="single-image-thumb">
-                            {{ $photos->getFirstMedia('photo')('responsive') }}
+                            {{ $photos('responsive') }}
                         </div>
                     @endforeach
                 @else
