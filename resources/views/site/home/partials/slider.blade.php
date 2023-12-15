@@ -6,9 +6,7 @@
         @foreach ($sliders as $slider)
             @if ($slider->location == '1')
                 @php
-                if($env=='local'){
-                    $sliderImage = 'assets/images/slider/slider-3.jpg';
-                }elseif ($slider->image) {
+                if ($slider->image) {
                     $sliderImage = $slider->image->getUrl();
                 } else {
                     $sliderImage = 'assets/images/slider/slider-3.jpg';

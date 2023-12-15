@@ -18,8 +18,8 @@
                                     <div class="news-image">
                                         @if($article->featured_image)
                                         <a href="{{ route('blog.show', $article->slug ) }}">
-                                            {{--  {{ $article->getFirstMedia('featured_image')('responsive') }}--}}
-                                            <img src="{{ $article->featured_image->getUrl() }}" alt="{{ $article->title }}">
+                                             {{ $article->getFirstMedia('featured_image')('responsive') }}
+                                            {{-- <img src="{{ $article->featured_image->getUrl() }}" alt="{{ $article->title }}"> --}}
                                         </a>
                                         @else
                                             <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
@@ -30,7 +30,7 @@
                                        <div class="news-content">
                                            <div class="news-meta">
                                                <span class="meta-cat">{{ $article->categories->pluck('name')->first() }}</span>
-                                               <span class="meta-date"><a href="#">{{date('F j, Y', strtotime($article->created_at)) }}</a></span>
+                                               <span class="meta-date"><a href="javascript:void(0);">{{date('F j, Y', strtotime($article->created_at)) }}</a></span>
                                                <meta itemprop="datePublished" content="{{date('yyyy-m-d', strtotime($article->created_at)) }}">
                                                <meta itemprop="dateModified" content="{{date('yyyy-m-d', strtotime($article->updated_at)) }}">
                                            </div>
@@ -49,6 +49,10 @@
                        @endforeach
 
                    </div>
+
+                   <div class="all-pagination">
+                    {{ $articles->links('vendor.pagination.default') }}
+                </div>
 
                    {{-- @include('site.blog.partials.pagination') --}}
 

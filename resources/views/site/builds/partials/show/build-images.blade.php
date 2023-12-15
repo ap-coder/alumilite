@@ -2,7 +2,7 @@
             <div class="inventory-gallery-active">
                 @if ($build->photo)
                     <div class="single-image-gallery">
-                        <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
+                        {{ $build->getFirstMedia('photo')('responsive') }}
                     </div>
                 @else
                     <div class="single-image-gallery">
@@ -12,7 +12,7 @@
 
                 @if($build->additional_photos->count()>0)
                     @foreach ($build->additional_photos as $photos)
-                        <img src="{{ $photos->getUrl() }}" alt="{{ $build->name }}">
+                        {{ $photos->getFirstMedia('photo')('responsive') }}
                     @endforeach
                 @else
                     <div class="single-image-gallery">
@@ -33,7 +33,7 @@
 
                 @if ($build->photo)
                     <div class="single-image-thumb">
-                        <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
+                        {{ $build->getFirstMedia('photo')('responsive') }}
                     </div>
                 @else
                     <div class="single-image-thumb">
@@ -44,7 +44,7 @@
                 @if($build->additional_photos->count()>0)
                     @foreach ($build->additional_photos as $photos)
                         <div class="single-image-thumb">
-                            <img src="{{ $photos->getUrl() }}" alt="{{ $build->name }}">
+                            {{ $photos->getFirstMedia('photo')('responsive') }}
                         </div>
                     @endforeach
                 @else
