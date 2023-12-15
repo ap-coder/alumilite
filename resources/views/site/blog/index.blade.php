@@ -11,24 +11,24 @@
                     <div class="news-list-wrapper">
 
                         @foreach($articles as $i => $article)
-             
+
                         <div class="single-news news-list">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="news-image">
                                         @if($article->featured_image)
-                                        <a href="{{ route('blog.show', $article->slug ) }}">    
+                                        <a href="{{ route('blog.show', $article->slug ) }}">
                                             {{ $article->getFirstMedia('featured_image')('responsive') }}
                                         </a>
-                                        @else 
-                                         <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
+                                        @else
+                                            <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
                                         @endif
                                        </div>
                                    </div>
                                    <div class="col-md-6">
                                        <div class="news-content">
                                            <div class="news-meta">
-                                               <span class="meta-cat"><a href="#">{{ $article->categories->pluck('name')->first() }}</a></span>
+                                               <span class="meta-cat">{{ $article->categories->pluck('name')->first() }}</span>
                                                <span class="meta-date"><a href="#">{{date('F j, Y', strtotime($article->created_at)) }}</a></span>
                                                <meta itemprop="datePublished" content="{{date('yyyy-m-d', strtotime($article->created_at)) }}">
                                                <meta itemprop="dateModified" content="{{date('yyyy-m-d', strtotime($article->updated_at)) }}">
@@ -39,25 +39,25 @@
                                         <ul class="news-meta-bottom">
                                             <li><a href="#"><i class="ion-chatboxes"></i> 0 Comments </a></li>
                                             <li><span><i class="ion-eye"></i> 83 Viewed</span></li>
-                                            <li><a href="#"><i class="ion-android-share-alt"></i> Share</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                                           {{-- <li><a href="#"><i class="ion-android-share-alt"></i> Share</a></li> --}}
+                                       </ul>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       @endforeach
 
-                    </div>
+                   </div>
 
-                    {{-- @include('site.blog.partials.pagination') --}}
+                   {{-- @include('site.blog.partials.pagination') --}}
 
                 </div>
                 <div class="col-xxl-3 col-lg-4">
                     <div class="blog-sidebar">
                         @include('site.blog.partials.search')
                         @include('site.blog.partials.categories')
-                        @include('site.blog.partials.popular-posts')
-                        @include('site.blog.partials.newsletters')
+{{--                        @include('site.blog.partials.popular-posts')--}}
+{{--                        @include('site.blog.partials.newsletters')--}}
                     </div>
                 </div>
             </div>
