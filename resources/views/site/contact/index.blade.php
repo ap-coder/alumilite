@@ -22,22 +22,24 @@
                             <div class="single-contact-info">
                                 <h4 class="info-title">Contact Directly <i class="ion-android-mail"></i></h4>
 
-                                <p><a href="mailto:hello@corify.com">hello@corify.com</a></p>
-                                <p><a href="tel:+05683458-868">(+056) 83-458-868</a></p>
+                                <p><a href="mailto:tkatwyk@gmail.com">tkatwyk@gmail.com</a></p>
+                                <p><a href="tel:+05683458-868">(+1) 435-990-1012</a></p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="single-contact-info">
-                                <h4 class="info-title">visit our office <i class="ion-android-pin"></i></h4>
+                                <h4 class="info-title">Visit our Office <i class="ion-android-pin"></i></h4>
+                                Parowan, UT 84761
 
-                                <p>192 Orchard Street, Ohio, California, <br> 90002, Unite State</p>
+
+                                <p> Parowan, UT <br> 84761, United States</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="single-contact-info">
                                 <h4 class="info-title">work with us <i class="ion-briefcase"></i></h4>
 
-                                <p>Send your CV to our email: <br> career@corify.com</p>
+                                <p>Send us an email: <br> </p>
                             </div>
                         </div>
                     </div>
@@ -47,7 +49,7 @@
             <div class="contact-form">
                 <h2 class="form-title">Get In Touch</h2>
 
-                <form id="contact-form" action="assets/contact.php" method="post">
+                <form id="contact-form" action="" method="post">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="single-form">
@@ -78,6 +80,7 @@
                     </div>
                 </form>
             </div>
+
         </div>
     </section>
 
@@ -86,4 +89,14 @@
 
 @section('headcss') @endsection
 @section('headjs') @endsection
-@section('footjs') @endsection    
+
+@section('footjs')
+    <SCRIPT LANGUAGE="JavaScript">
+        user = 'tkatwyk';site = 'gmail.com';
+        document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+        document.write(user + '@' + site + '</a>');
+    </SCRIPT>
+    <!--====== Google Map js ======-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ5y0EF8dE6qwc03FcbXHJfXr4vEa7z54"></script>
+    <script src="{{asset('assets/js/map-script.js')}}"></script>
+@endsection
