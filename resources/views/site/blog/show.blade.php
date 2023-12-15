@@ -77,8 +77,8 @@
                     </div>
                     <div class="col-xxl-3 col-lg-4">
                         <div class="blog-sidebar">
-                            @include('site.blog.partials.show.search')
-                            @include('site.blog.partials.show.blog-menu')
+                            @include('site.blog.partials.search')
+                            @include('site.blog.partials.blog-menu')
 {{--                            @include('site.blog.partials.show.categories')--}}
 {{--                            @include('site.blog.partials.show.popular-posts')--}}
 {{--                            @include('site.blog.partials.show.newsletter')--}}
