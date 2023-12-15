@@ -1,3 +1,4 @@
+@if($categories)
                             <div class="blog-sidebar-category">
                                 <h3 class="sidebar-title">categories</h3>
 
