@@ -18,7 +18,7 @@
                                     <div class="news-image">
                                         @if($article->featured_image)
                                         <a href="{{ route('blog.show', $article->slug ) }}">
-{{--                                            {{ $article->getFirstMedia('featured_image')('responsive') }}--}}
+                                            {{--  {{ $article->getFirstMedia('featured_image')('responsive') }}--}}
                                             <img src="{{ $article->photo->getUrl() }}" alt="{{ $article->title }}">
                                         </a>
                                         @else
@@ -37,11 +37,11 @@
                                            <h3 class="news-title"><a href="{{ route('blog.show', $article->slug ) }}">{{ $article->title }}</a></h3>
                                             {{-- {!! Str::words($article->title, $limit = 15, $end = '...') !!}--}}
                                         <p>{{ $article->excerpt }}</p>
-                                        <ul class="news-meta-bottom">
-                                            <li><a href="#"><i class="ion-chatboxes"></i> 0 Comments </a></li>
-                                            <li><span><i class="ion-eye"></i> 83 Viewed</span></li>
-                                           {{-- <li><a href="#"><i class="ion-android-share-alt"></i> Share</a></li> --}}
-                                       </ul>
+                                           {{--<ul class="news-meta-bottom">
+                                               <li><a href="#"><i class="ion-chatboxes"></i> 0 Comments </a></li>
+                                               <li><span><i class="ion-eye"></i> 83 Viewed</span></li>
+                                               <li><a href="#"><i class="ion-android-share-alt"></i> Share</a></li>
+                                       </ul>--}}
                                    </div>
                                </div>
                            </div>
