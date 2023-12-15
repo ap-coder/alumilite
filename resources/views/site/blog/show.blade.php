@@ -38,7 +38,7 @@
                                 <li class="breadcrumb-item active">{{ $article->title ?? '' }}</li>
                             </ul>
                             <div class="body-content">
-                                {{ $article->page_text ?? '' }}
+                                {!! $article->page_text ?? '' !!}
                             </div>
                             <div class="footer-content d-flex flex-wrap justify-content-between align-items-center">
 {{--                                <ul class="tags">--}}
