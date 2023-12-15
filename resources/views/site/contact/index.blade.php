@@ -29,9 +29,6 @@
                         <div class="col-lg-4">
                             <div class="single-contact-info">
                                 <h4 class="info-title">Visit our Office <i class="ion-android-pin"></i></h4>
-                                Parowan, UT 84761
-
-
                                 <p> Parowan, UT <br> 84761, United States</p>
                             </div>
                         </div>
@@ -68,7 +65,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="single-form">
-                                <textarea name="message" placeholder="Write your review here..."></textarea>
+                                <textarea name="message" placeholder="Write your message here..."></textarea>
                             </div>
                         </div>
                         <p class="form-message"></p>
