@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Build::factory()->count(10)->create();
         // \App\Models\Post::factory()->count(10)->create();
 
+        $this->call(PostsTableSeeder::class);
+        $this->call(MediaTableSeeder::class);
+        $this->call(ContentCategoriesTableSeeder::class);
+        $this->call(ProductCategoriesTableSeeder::class);
     }
 }
