@@ -63,7 +63,7 @@ class Build extends Model implements HasMedia
         $this->addMediaConversion('original')->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(50)->height(50)->nonQueued();
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
-//        $this->addMediaConversion('excerpt')->format(Manipulations::FORMAT_WEBP)->width(400)->height(580)->nonQueued();
+        $this->addMediaConversion('excerpt')->crop('crop-center',400,580)->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('responsive')->crop('crop-center',400,580)->format(Manipulations::FORMAT_WEBP)->withResponsiveImages()->nonQueued();
     }
 
@@ -95,6 +95,7 @@ class Build extends Model implements HasMedia
             $item->original = $item->getUrl('original');
             $item->thumbnail = $item->getUrl('thumb');
             $item->preview = $item->getUrl('preview');
+            $item->excerpt = $item->getUrl('excerpt');
             $item->responsive = $item->getUrl('responsive');
         });
 

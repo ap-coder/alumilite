@@ -29,14 +29,14 @@
             </div>
 
             <div class="services-items">
-                
+
                 @foreach ($builds as $i => $build)
                     <div class="services-item">
                         <div class="row g-0 align-items-center {{ $direction = $i % 2 === 0 ? '' : 'flex-row-reverse' }}">
                             <div class="col-lg-4">
-                                
+
                                     @if ($build->photo)
-                                        <a href="{{ route('builds.show',$build->slug) }}" class="services-image bg_cover" style="background-image: url({{ $build->photo->getUrl() }});"></a>
+                                        <a href="{{ route('builds.show',$build->slug) }}" class="services-image bg_cover" style="background-image: url({{ $build->photo->getUrl('excerpt') }});"></a>
                                     @else
                                         <a href="{{ route('builds.show',$build->slug) }}" class="services-image bg_cover" style="background-image: url(assets/images/services-item-1.jpg);"></a>
                                     @endif
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 @endforeach
-                 
+
             </div>
         </div>
     </section>
@@ -80,4 +80,4 @@
 
 @section('headcss') @endsection
 @section('headjs') @endsection
-@section('footjs') @endsection    
+@section('footjs') @endsection
