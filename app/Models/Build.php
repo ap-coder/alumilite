@@ -63,8 +63,8 @@ class Build extends Model implements HasMedia
         $this->addMediaConversion('original')->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(50)->height(50)->nonQueued();
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
-        $this->addMediaConversion('excerpt')->format(Manipulations::FORMAT_WEBP)->width(400)->height(580)->withResponsiveImages()->nonQueued();
-        $this->addMediaConversion('responsive')->format(Manipulations::FORMAT_WEBP)->width(1200)->height(500)->withResponsiveImages()->nonQueued();
+//        $this->addMediaConversion('excerpt')->format(Manipulations::FORMAT_WEBP)->width(400)->height(580)->nonQueued();
+        $this->addMediaConversion('responsive')->crop('crop-center',400,580)->format(Manipulations::FORMAT_WEBP)->withResponsiveImages()->nonQueued();
     }
 
     public function buildReviews()
