@@ -18,7 +18,7 @@
                                     <div class="news-image">
                                         @if($article->featured_image)
                                         <a href="{{ route('blog.show', $article->slug ) }}">
-                                             {{ $article->getFirstMedia('featured_image')('responsive') }}
+                                             {{ $article->getFirstMedia('featured_image')('excerpt') }}
                                             {{-- <img src="{{ $article->featured_image->getUrl() }}" alt="{{ $article->title }}"> --}}
                                         </a>
                                         @else
