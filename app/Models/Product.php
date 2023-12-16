@@ -61,8 +61,9 @@ class Product extends Model implements HasMedia
         $this->addMediaConversion('original')->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(50)->height(50)->nonQueued();
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
-        $this->addMediaConversion('responsive')->format(Manipulations::FORMAT_WEBP)->width(321)->height(195)->withResponsiveImages()->nonQueued();
-        $this->addMediaConversion('responsive')->format(Manipulations::FORMAT_WEBP)->width(1200)->height(500)->withResponsiveImages()->nonQueued();
+        $this->addMediaConversion('excerpt')->format(Manipulations::FORMAT_WEBP)->width(321)->height(195)->nonQueued();
+        $this->addMediaConversion('product')->format(Manipulations::FORMAT_WEBP)->width(770)->height(428)->nonQueued();
+        $this->addMediaConversion('responsive')->crop('crop-center',1200,500)->format(Manipulations::FORMAT_WEBP)->withResponsiveImages()->nonQueued();
     }
 
     public function getPhotoAttribute()
@@ -74,6 +75,7 @@ class Product extends Model implements HasMedia
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview = $file->getUrl('preview');
             $file->excerpt = $file->getUrl('excerpt');
+            $file->product = $file->getUrl('product');
             $file->responsive = $file->getUrl('responsive');
         }
 
@@ -87,6 +89,8 @@ class Product extends Model implements HasMedia
             $item->url       = $item->getUrl();
             $item->thumbnail = $item->getUrl('thumb');
             $item->preview   = $item->getUrl('preview');
+            $item->excerpt = $item->getUrl('excerpt');
+            $item->responsive = $item->getUrl('responsive');
         });
 
         return $files;
