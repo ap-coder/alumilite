@@ -37,11 +37,11 @@
                                         <h3 class="news-title">
                                             <a href="{{ route('blog.show',$post->slug) }}">{{ $post->title }}</a>
                                         </h3>
-                                        <ul class="news-meta-bottom">
+                                        {{--<ul class="news-meta-bottom"> --}}
                                             {{--    <li><a href="javascript:void(0);"><i class="ion-chatboxes"></i> 0 Comments </a></li>--}}
-                                            <li><span><i class="ion-eye"></i>{!! $post->viewcount ?? '0' !!} Views </span></li>
+                                            {{--   <li><span><i class="ion-eye"></i>{!! $post->viewcount ?? '0' !!} Views </span></li>--}}
                                             {{--   <li><a href="javascript:void(0);"><i class="ion-android-share-alt"></i> Share</a></li>--}}
-                                        </ul>
+                                        {{--  </ul>--}}
                                     </div>
                                 </div>
                             </div>
