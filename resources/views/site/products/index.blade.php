@@ -148,9 +148,12 @@
 
                             </ul>
                              <div class="dealer-certificates d-sm-flex justify-content-between">
+                            @if($product->excerpt)
+                                {!! $product->excerpt ?? '' !!}
+                            @else
+                                {!! \Str::limit($product->description, $limit = 200, $end = '...') !!}
+                            @endif
 
-                                 {!! $product->excerpt ?? '' !!}
-{{--                                 {!! \Str::limit($build->excerpt, $limit = 200, $end = '...') !!}--}}
 
                             </div>
 
