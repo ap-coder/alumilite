@@ -22,6 +22,10 @@ class BuildsController extends Controller
      */
     public function show(Build $build)
     {
-        return view('site.builds.show', compact('build'));
+        views($build)->record();
+
+        $viewcount = views($build)->unique()->count();
+
+        return view('site.builds.show', compact('build','viewcount'));
     }
 }

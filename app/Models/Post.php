@@ -12,14 +12,18 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Intervention\Image\ImageManager;
 use Spatie\Image\Image;
 use Spatie\Image\Manipulations;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class Post extends Model implements HasMedia
+class Post extends Model implements HasMedia, Viewable
 {
-    use SoftDeletes, InteractsWithMedia, HasFactory;
+    use SoftDeletes, InteractsWithMedia, HasFactory, InteractsWithViews;
 
     public $table = 'posts';
 
     protected $with = ['categories', 'tags', 'media'];
+
+    protected $removeViewsOnDelete = true;
 
     protected $casts = [
         'published' => 'boolean',

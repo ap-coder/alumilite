@@ -74,6 +74,9 @@ class BlogController extends Controller
      */
     public function show(Post $post, $slug)
     {
+        views($post)->record();
+
+        $viewcount = views($post)->unique()->remember()->count();
 
         $article = Post::where('slug', $slug)->with('categories', 'tags')->first();
 
@@ -93,7 +96,7 @@ class BlogController extends Controller
         //         ->get();
         // });
 
-        return view('site.blog.show', compact('article'));
+        return view('site.blog.show', compact('article', 'viewcount'));
     }
 
     /**

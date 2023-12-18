@@ -11,12 +11,16 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Image\Image;
 use Spatie\Image\Manipulations;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class Build extends Model implements HasMedia
+class Build extends Model implements HasMedia, Viewable
 {
-    use SoftDeletes, InteractsWithMedia, HasFactory;
+    use SoftDeletes, InteractsWithMedia, HasFactory, InteractsWithViews;
 
     public $table = 'builds';
+
+    protected $removeViewsOnDelete = true;
 
     protected $dates = [
         'created_at',
