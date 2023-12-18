@@ -84,7 +84,7 @@
                                     @endif
 
                                     <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
-                                    
+
                                     {{-- <div class="author-meta">
                                         <span><i class="ion-android-person"></i> Dealer:  <a href="#">Eden Hazard</a></span>
                                     </div> --}}
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         @endforeach
-                        
+
                     </div>
                 </div>
                 <div class="tab-pane fade list show active" id="list" role="tabpanel">
@@ -111,30 +111,10 @@
                                 @if ($product->photo)
                                     {{ $product->getFirstMedia('photo')('responsive') }}
                                 @else
-                                    <img src="{{ asset('assets/images/car-list/car-1.jpg') }}" alt="{{ $product->name }}">                                
+                                    <img src="{{ asset('assets/images/car-list/car-1.jpg') }}" alt="{{ $product->name }}">
                                 @endif
                             </a>
-                            {{-- <ul class="car-meta">
-                                <li>
-                                    <button type="button">
-                                        <i class="ion-ios-loop-strong"></i>
-                                        <span class="car-tooltip compare">Add To Compare </span>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button">
-                                        <i class="ion-arrow-expand"></i>
-                                        <span class="car-tooltip View">Click To View</span>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button">
-                                        <i class="ion-android-favorite-outline"></i>
-                                        <span class="car-tooltip favourite">Add To Favourite</span>
-                                    </button>
-                                </li>
-                            </ul>
-                            <span class="status special"><i class="ion-flash"></i> special</span> --}}
+
                         </div>
                         <div class="car-content">
                             <div class="content-title">
@@ -158,49 +138,26 @@
                                     @foreach ($product->technical_specs->take(3) as $specification)
                                         <li>
                                             <span class="glance">
-                                                <i class="{{ $specification->icon_class }}"></i> 
+                                                <i class="{{ $specification->icon_class }}"></i>
                                                 <span class="label">{{ $specification->name }}</span>
                                                 <span class="value">{{ $specification->value }}</span>
                                             </span>
                                         </li>
                                     @endforeach
                                 @endif
-                                
+
                             </ul>
-                            {{-- <div class="dealer-certificates d-sm-flex justify-content-between">
-                                <div class="dealer-author">
-                                    <div class="author-image">
-                                        <a href="#"><img src="assets/images/author-1.jpg" alt=""></a>
-                                    </div>
-                                    <div class="author-content">
-                                        <h4 class="name"><a href="#">Eden Hazard</a></h4>
-                                        <div class="rating">
-                                            <ul class="rating-star">
-                                                <li><i class="ion-star"></i></li>
-                                                <li><i class="ion-star"></i></li>
-                                                <li><i class="ion-star"></i></li>
-                                                <li><i class="ion-star"></i></li>
-                                                <li><i class="ion-star"></i></li>
-                                            </ul>
-                                            <span>(8 Rating)</span>
-                                        </div>
-                                        <p><i class="ion-android-pin"></i> Los Angelles, CA, United States</p>
-                                    </div>
-                                </div>
-                                <ul class="certificates">
-                                    <li>
-                                        <img src="assets/images/auto-check.png" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="assets/images/bestcar.png" alt="">
-                                    </li>
-                                </ul>
-                            </div> --}}
-                            
+                             <div class="dealer-certificates d-sm-flex justify-content-between">
+
+                                 {!! $product->excerpt ?? '' !!}
+{{--                                 {!! \Str::limit($build->excerpt, $limit = 200, $end = '...') !!}--}}
+
+                            </div>
+
                         </div>
                     </div>
                     @endforeach
-                                       
+
                 </div>
             </div>
             {{-- <div class="all-pagination">
@@ -210,9 +167,9 @@
             </div> --}}
             {{-- /home/tapas78/alumalite/resources/views/vendor/pagination/default.blade.php --}}
             <div class="all-pagination">
-            {{ $products->links('vendor.pagination.default') }}
-        </div>
-            
+                {{ $products->links('vendor.pagination.default') }}
+            </div>
+
             {{-- <div class="all-pagination">
                 <ul class="pagination justify-content-center">
                     <li><a class="previous" href="#"><i class="ion-ios-arrow-back"></i> <span>Previous</span></a></li>
@@ -228,18 +185,18 @@
     </section>
 
     <!--====== Inventory Ends ======-->
-    
+
    @include('site.products.partials.call-to-action')
 
 @endsection
 
 @section('headcss') @endsection
 @section('headjs') @endsection
-@section('footjs') 
+@section('footjs')
 
 <script>
     $(function () {
-    
+
         $('#categoryFilter').change(function(){
             var category = $(this).val();
             window.location.href = "{{ url('products') }}?category="+category;
@@ -248,4 +205,4 @@
     });
 </script>
 
-@endsection    
+@endsection
