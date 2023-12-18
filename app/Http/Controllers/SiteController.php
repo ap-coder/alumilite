@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Slider;
+use App\Models\Build;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,11 +27,12 @@ class SiteController extends Controller
     {
         $posts = Post::published()->latest()->take(3)->get();
         $products = Product::published()->latest()->get();
+        $builds = Build::published()->latest()->get();
         $sliders = Slider::get();
         $productTypes = ProductType::published()->get();
         $brands = Brand::published()->get();
 
-        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes'));
+        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds'));
     }
 
     public function about()
