@@ -15,15 +15,16 @@
                                                         <li><i class="ion-android-star"></i></li>
                                                     </ul>
                                                     <div class="author-name">
-                                                        <h4 class="name">Nicest car I have ever owned</h4>
+                                                        <h4 class="name">{{ TITLE }}</h4>
                                                     </div>
                                                 </div>
                                                 <ul class="meta">
-                                                    <li>by <a href="#">Ron Wteasley</a></li>
-                                                    <li>15 hours ago</li>
+                                                    <li>by <a href="#">{{ SIGNITURE }}  | {{ SIGNITURE_COMPANY }}</a></li>
+                                                    <li>{{ CREATED_AT HUMAN READABLE }}</li>
                                                 </ul>
-                                                <p>This car has been a blessing to me and my family so far. I will be returning to buy my second car. Go see him at Carify Center</p>
-                                                <a href="#" class="replay">Replay</a>
+                                                <img src="{{ review->photo }}" alt="">
+                                                <p>{{ BODY }}</p>
+
                                             </div>
                                         </div>
                                     </li>
