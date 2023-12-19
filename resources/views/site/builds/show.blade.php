@@ -45,7 +45,6 @@
                             <h5 class="singe-title">Build Overview</h5>
 
                             {!! $build->description !!}
-                            {{-- tapas build description here --}}
                         </div>
 
 {{-- @include('site.builds.partials.show.tech-specs') --}}

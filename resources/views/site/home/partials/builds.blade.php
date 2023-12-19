@@ -39,7 +39,7 @@
 
                                             </div>
                                             <div class="car-content">
-                                                <span class="body-type"><a href="javacript:void(0);">{{ $build->product_type->name }}</a></span>
+                                                <span class="body-type"><a href="javacript:void(0);">{{ $build->product_type ? $build->product_type->name : '' }}</a></span>
                                                 <h4 class="car-title"><a href="{{ route('builds.show',$build->slug) }}">{{ $build->name }}</a></h4>
 
                                             </div>
@@ -50,41 +50,7 @@
                         </div>
                     </div>
 
-                    @foreach ($productTypes as $key => $productType)
-                        <div class="tab-pane" id="tab{{ $key }}" role="tabpanel">
-                            <div class="car-row cars-active">
-
-                                @foreach($productType->builds->chunk(2) as $buildSet)
-                                    <div class="car-col">
-                                        @foreach($buildSet as $build)
-                                            <div class="single-car-item mt-50">
-                                                <div class="car-image">
-                                                    <a href="{{ route('products.show',$product->slug) }}">
-                                                        @if($build->photo)
-                                                            {{ $build->getFirstMedia('photo')('responsive') }}
-                                                        @else
-                                                            <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
-                                                        @endif
-                                                    </a>
-
-                                                </div>
-                                                <div class="car-content">
-                                                    <span class="body-type"><a href="javacript:void(0);">{{ $build->product_type->name }}</a></span>
-                                                    <h4 class="car-title"><a href="{{ route('builds.show',$build->slug) }}">{{ $build->name }}</a></h4>
-{{--                                                    <span class="price">--}}
-{{--                                                        <span class="sale-price">${{ number_format($product->price) }}</span>--}}
-{{--                                                        <span class="regular-price">${{ number_format($product->msrp) }}</span>--}}
-{{--                                                        --}}{{-- <span class="discount-percentage">Save 35%</span> --}}
-{{--                                                    </span>--}}
-
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endforeach
+                   
 
 
 

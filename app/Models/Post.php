@@ -89,7 +89,7 @@ class Post extends Model implements HasMedia, Viewable
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('original')->format(Manipulations::FORMAT_WEBP)->nonQueued();
-        $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(50)->height(50)->nonQueued();
+        $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(150)->height(150)->nonQueued();
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
         // $this->addMediaConversion('excerpt')->format(Manipulations::FORMAT_WEBP)->width(370)->height(230)->withResponsiveImages()->nonQueued();
         $this->addMediaConversion('excerpt')->crop('crop-center',370, 230)->format(Manipulations::FORMAT_WEBP)->nonQueued();

@@ -46,7 +46,7 @@
                                     <a href="{{ route('builds.show',$build->slug) }}">
                                         <h2 class="title">{{ $build->name }}</h2>
                                     </a>
-                                    {!! \Str::limit($build->description, $limit = 200, $end = '...') !!}
+                                    {!! $build->excerpt !!}
 
                                     {{-- <div class="services-lists">
                                         <h5 class="lists-title">include:</h5>

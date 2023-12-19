@@ -1,5 +1,5 @@
                             <div class="reviews-form">
-                                <form action="#">
+                                <form action="{{ route('builds.review.store') }}">
                                     <h4 class="form-title">Submit your review</h4>
 
                                     <div class="your-rating">

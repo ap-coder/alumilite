@@ -28,4 +28,11 @@ class BuildsController extends Controller
 
         return view('site.builds.show', compact('build','viewcount'));
     }
+
+    public function review_store(Request $request)
+    {
+        $review = Review::create($request->all());
+
+        return redirect()->back()->with('success', 'Successfully submitted your review!');
+    }
 }

@@ -43,6 +43,16 @@
                 <span class="help-block">{{ trans('cruds.build.fields.subtitle_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="excerpt">{{ trans('cruds.build.fields.excerpt') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{!! old('excerpt') !!}</textarea>
+                @if($errors->has('excerpt'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('excerpt') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.build.fields.excerpt_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="description">{{ trans('cruds.build.fields.description') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description') !!}</textarea>
                 @if($errors->has('description'))

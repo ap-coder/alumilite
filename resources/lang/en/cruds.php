@@ -525,6 +525,8 @@ return [
             'name_helper'              => ' ',
             'description'              => 'Description',
             'description_helper'       => ' ',
+            'excerpt'              => 'Excerpt',
+            'excerpt_helper'       => ' ',
             'photo'                    => 'Photo',
             'photo_helper'             => 'use 1170 x 650 image size',
             'additional_photos'        => 'Additional Photos',
