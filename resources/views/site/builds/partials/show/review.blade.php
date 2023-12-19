@@ -3,7 +3,7 @@
                                     <li>
                                         <div class="single-reviews-comment">
                                             <div class="comment-author">
-                                                <img src="assets/images/author-1.jpg" alt="">
+                                                <img src="{{ AVATAR }}" alt="{{ SIGNITURE }}">
                                             </div>
                                             <div class="comment-content">
                                                 <div class="rating-name">
@@ -22,7 +22,7 @@
                                                     <li>by <a href="#">{{ SIGNITURE }}  | {{ SIGNITURE_COMPANY }}</a></li>
                                                     <li>{{ CREATED_AT HUMAN READABLE }}</li>
                                                 </ul>
-                                                <img src="{{ review->photo }}" alt="">
+                                                <img src="{{ review->photo }}" alt="Check out my vehicle">
                                                 <p>{{ BODY }}</p>
 
                                             </div>
