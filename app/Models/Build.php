@@ -74,7 +74,27 @@ class Build extends Model implements HasMedia, Viewable
 
     public function buildReviews()
     {
-        return $this->hasMany(Review::class, 'build_id', 'id');
+        return $this->hasMany(Review::class, 'build_id', 'id')->where('published',1);
+    }
+
+    public function averageRating()
+    {
+        return $this->buildReviews->avg('rating');
+    }
+
+    public function getRatingPercentages()
+    {
+        $ratings = [1, 2, 3, 4, 5];
+        $percentages = [];
+
+        foreach ($ratings as $rating) {
+            $count = $this->buildReviews->where('rating', $rating)->count();
+            $total = $this->buildReviews->count();
+
+            $percentages[$rating] = $total > 0 ? ($count / $total) * 100 : 0;
+        }
+
+        return $percentages;
     }
 
     public function getPhotoAttribute()

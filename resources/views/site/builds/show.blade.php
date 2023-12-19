@@ -84,4 +84,13 @@
 
 @section('headcss') @endsection
 @section('headjs') @endsection
-@section('footjs') @endsection    
+@section('footjs')
+
+<script>
+    $('#stars li').click(function(){
+        var rating = $(this).data('value');
+        $('#rating').val(rating);
+    });
+</script>
+
+@endsection    

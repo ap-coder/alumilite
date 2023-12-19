@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Build;
+use App\Models\Review;
 
 class BuildsController extends Controller
 {
@@ -32,6 +33,14 @@ class BuildsController extends Controller
     public function review_store(Request $request)
     {
         $review = Review::create($request->all());
+
+        if ($request->input('avatar', false)) {
+            $review->addMedia(storage_path('tmp/uploads/' . basename($request->input('avatar'))))->toMediaCollection('avatar');
+        }
+
+        if ($request->input('photo', false)) {
+            $review->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
+        }
 
         return redirect()->back()->with('success', 'Successfully submitted your review!');
     }

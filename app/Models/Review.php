@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Support\Carbon;
 
 class Review extends Model implements HasMedia
 {
@@ -19,6 +20,7 @@ class Review extends Model implements HasMedia
     protected $appends = [
         'avatar',
         'photo',
+        'time_ago',
     ];
 
     protected $dates = [
@@ -79,6 +81,22 @@ class Review extends Model implements HasMedia
         });
 
         return $files;
+    }
+
+    public function getTimeAgoAttribute()
+    {
+        // Assuming $review is an instance of your Review model
+        $created_at = $this->created_at;
+
+        // Convert the created_at timestamp to a Carbon instance
+        $created_at = Carbon::parse($created_at);
+
+        // Get the "time ago" representation
+        $timeAgo = $created_at->diffForHumans();
+
+        // Use $timeAgo as needed in your application
+        return $timeAgo;
+
     }
 
     public function build()
