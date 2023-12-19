@@ -27,17 +27,17 @@
                                         <div class="row gx-4">
                                             <div class="col-md-4">
                                                 <div class="single-input">
-                                                    <input type="text" placeholder="Full Name">
+                                                    <input type="text" placeholder="NAME">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="single-input">
-                                                    <input type="text" placeholder="Email Address">
+                                                    <input type="text" placeholder="WEBSITE">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="single-input">
-                                                    <input type="text" placeholder="Subject">
+                                                    <input type="text" placeholder="TITLE">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -50,6 +50,36 @@
                                                     <button class="main-btn">Submit Review</button>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="add-car-upload">
+                                                    <div class="add-car-title">
+                                                        <h4 class="title">Avatar</h4>
+                                                    </div>
+                                                    <p>Upload Author Avatar</p>
+
+                                                    <div class="single-upload file-input mt-40">
+                                                        <input name="avatar" type='file'>
+                                                        <span class='button'>Choose file</span>
+                                                        <span class='label' data-js-label>No file choosen</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="add-car-upload">
+                                                    <div class="add-car-title">
+                                                        <h4 class="title">Photo</h4>
+                                                    </div>
+                                                    <p>Upload a photo of your vehicle</p>
+
+                                                    <div class="single-upload file-input mt-40">
+                                                        <input name="photo" type='file'>
+                                                        <span class='button'>Choose file</span>
+                                                        <span class='label' data-js-label>No file choosen</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </form>
