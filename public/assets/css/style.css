@@ -15510,3 +15510,99 @@ p {
 .single-brand [class*="brand"]  {
   max-width:150px!important;
 }
+
+
+
+/* General styles for overview content */
+.contianer [class*="overview"] {
+    font-family: Arial, sans-serif!important;
+    line-height: 1.6!important;
+    color: #333!important;
+    font-size: 1rem!important; /* Base font size */
+}
+
+/* Style for unordered lists */
+.contianer [class*="overview"] ul {
+    list-style-type: disc!important;
+    margin: 0 0 1em 2em!important;
+    padding: 0!important;
+}
+
+/* Style for list items */
+.contianer [class*="overview"] li {
+    margin-bottom: 0.5em!important;
+}
+
+/* Style for nested lists */
+.contianer [class*="overview"] ul ul {
+    list-style-type: circle!important;
+    margin-left: 1em!important;
+}
+
+/* Style for blockquotes */
+.contianer [class*="overview"] blockquote {
+    border-left: 4px solid #ccc!important;
+    margin: 1em 0!important;
+    padding-left: 1em!important;
+    font-style: italic!important;
+    color: #555!important;
+}
+
+/* Style for headings */
+.contianer [class*="overview"] h2 {
+    font-size: 1.5rem!important;
+    margin-top: 1em!important;
+    margin-bottom: 0.5em!important;
+}
+
+.contianer [class*="overview"] h3 {
+    font-size: 1.3rem!important;
+    margin-top: 1em!important;
+    margin-bottom: 0.5em!important;
+}
+
+/* Style for paragraphs */
+.contianer [class*="overview"] p {
+    margin-bottom: 1em!important;
+}
+
+/* Style for links */
+.contianer [class*="overview"] a {
+    color: #0066cc!important;
+    text-decoration: none!important;
+}
+
+.contianer [class*="overview"] a:hover {
+    text-decoration: underline!important;
+}
+
+/* Additional styles for better appearance */
+.contianer [class*="overview"] hr {
+    border: 0!important;
+    height: 1px!important;
+    background: #ccc!important;
+    margin: 2em 0!important;
+}
+
+.contianer [class*="overview"] strong {
+    font-weight: bold!important;
+}
+
+.contianer [class*="overview"] em {
+    font-style: italic!important;
+}
+
+/* Responsive font sizes for smaller screens */
+@media screen and (max-width: 600px) {
+    .contianer [class*="overview"] {
+        font-size: 0.9rem!important;
+    }
+
+    .contianer [class*="overview"] h2 {
+        font-size: 1.4rem!important;
+    }
+
+    .contianer [class*="overview"] h3 {
+        font-size: 1.2rem!important;
+    }
+}
