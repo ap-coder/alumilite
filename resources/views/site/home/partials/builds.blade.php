@@ -19,7 +19,7 @@
                                             @if($build->photo)
                                                 {{ $build->getFirstMedia('featured_image')('excerpt') }}
                                             @else
-                                                <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->title }}">
+                                                <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
                                             @endif
                                         </a>
                                     </div>
@@ -35,7 +35,7 @@
                                             <span class="meta-date"><a href="javascript:void(0);"> {{ date('M d, Y',strtotime($build->created_at)) }}</a></span>
                                         </div>
                                         <h3 class="news-title">
-                                            <a href="{{ route('builds.show',$build->slug) }}">{{ $post->title }}</a>
+                                            <a href="{{ route('builds.show',$build->slug) }}">{{ $build->name }}</a>
                                         </h3>
 
                                     </div>
