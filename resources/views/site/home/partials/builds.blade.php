@@ -26,7 +26,7 @@
 
 {{--                            @foreach($builds as $buildSet)--}}
                                 <div class="car-col">
-                                    @foreach($buildSet as $build)
+                                    @foreach($builds as $build)
                                         <div class="single-car-item mt-50 col-lg-4 col-md-6">
                                             <div class="car-image">
                                                 <a href="{{ route('builds.show',$build->slug) }}">
