@@ -32,7 +32,7 @@
                                                         </div>
                                                     </div>
                                                     <ul class="meta">
-                                                        <li>by <a href="javascript:void(0);">{{ $review->signiture }}  
+                                                        <li>by <a href="javascript:void(0);">{{ $review->signiture }}
                                                             {{-- | SIGNITURE_COMPANY --}}
                                                         </a></li>
                                                         <li>{{ $review->time_ago }}</li>
@@ -40,9 +40,9 @@
                                                     @if ($review->photo->count()>0)
                                                         <img src="{{ $review->photo->getUrl() }}" alt="Check out my vehicle">
                                                     @endif
-                                                    
+
                                                     <p>{!! $review->body !!}</p>
-    
+
                                                 </div>
                                             </div>
                                         </li>

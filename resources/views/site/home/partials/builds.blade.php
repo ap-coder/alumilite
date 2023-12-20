@@ -29,9 +29,9 @@
                                     @foreach($buildSet as $build)
                                         <div class="single-car-item mt-50">
                                             <div class="car-image">
-                                                <a href="{{ route('products.show',$build->slug) }}">
+                                                <a href="{{ route('builds.show',$build->slug) }}">
                                                     @if($build->photo)
-                                                        {{ $build->getFirstMedia('photo')('responsive') }}
+                                                        {{ $build->getFirstMedia('photo')('excerpt') }}
                                                     @else
                                                         <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
                                                     @endif
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                   
+
 
 
 
