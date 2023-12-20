@@ -11,7 +11,7 @@
                 </div>
                 <div class="news-wrapper">
                     <div class="row">
-                        @foreach ($builds as $build)
+                        @foreach ($builds as $i => $build)
                             <div class="col-lg-4 col-md-6">
                                 <div class="single-news mt-50">
                                     <div class="news-image">
