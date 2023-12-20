@@ -24,7 +24,7 @@
                     <div class="tab-pane fade show active" id="tabAll" role="tabpanel">
                         <div class="car-row cars-active">
 
-                            @foreach($builds as $buildSet)
+{{--                            @foreach($builds as $buildSet)--}}
                                 <div class="car-col">
                                     @foreach($buildSet as $build)
                                         <div class="single-car-item mt-50 col-lg-4 col-md-6">
@@ -46,13 +46,9 @@
                                         </div>
                                         @endforeach
                                 </div>
-                            @endforeach
+{{--                            @endforeach--}}
                         </div>
                     </div>
-
-
-
-
 
                 </div>
 
