@@ -96,6 +96,20 @@
                 <span class="help-block">{{ trans('cruds.build.fields.documents_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="product_type_id">{{ trans('cruds.build.fields.product_type') }}</label>
+                <select class="form-control select2 {{ $errors->has('product_type') ? 'is-invalid' : '' }}" name="product_type_id" id="product_type_id">
+                    @foreach($product_types as $id => $entry)
+                        <option value="{{ $id }}" {{ old('product_type_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('product_type'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('product_type') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.build.fields.product_type_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="brand_id">{{ trans('cruds.build.fields.brand') }}</label>
                 <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
                     @foreach($brands as $id => $entry)

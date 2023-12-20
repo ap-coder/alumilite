@@ -73,4 +73,9 @@ class ProductType extends Model implements HasMedia
     {
         return $this->hasMany(Product::class);
     }
+
+    public function builds()
+    {
+        return $this->hasMany(Build::class);
+    }
 }

@@ -11,6 +11,7 @@ use App\Models\Brand;
 use App\Models\BrandModel;
 use App\Models\Build;
 use App\Models\ProductCategory;
+use App\Models\ProductType;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -97,7 +98,9 @@ class BuildController extends Controller
 
         $categories = ProductCategory::pluck('name', 'id');
 
-        return view('admin.builds.create', compact('brand_models', 'brands', 'categories'));
+        $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.builds.create', compact('brand_models', 'brands', 'categories','product_types'));
     }
 
     public function store(StoreBuildRequest $request)
@@ -133,9 +136,11 @@ class BuildController extends Controller
 
         $categories = ProductCategory::pluck('name', 'id');
 
+        $product_types = ProductType::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $build->load('brand', 'brand_model', 'categories');
 
-        return view('admin.builds.edit', compact('brand_models', 'brands', 'build', 'categories'));
+        return view('admin.builds.edit', compact('brand_models', 'brands', 'build', 'categories','product_types'));
     }
 
     public function update(UpdateBuildRequest $request, Build $build)

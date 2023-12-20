@@ -533,6 +533,8 @@ return [
             'additional_photos_helper' => 'use 1170 x 650 image size',
             'documents'                => 'Documents',
             'documents_helper'         => ' ',
+            'product_type'                 => 'Product Type',
+            'product_type_helper'          => ' ',
             'category'                 => 'Categories',
             'category_helper'          => ' ',
             'timeframe'                => 'Timeframe',

@@ -40,6 +40,7 @@ class Build extends Model implements HasMedia, Viewable
         'subtitle',
         'excerpt',
         'description',
+        'product_type_id',
         'brand_id',
         'brand_model_id',
         'timeframe',
