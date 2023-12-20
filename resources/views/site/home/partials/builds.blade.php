@@ -17,7 +17,7 @@
                                     <div class="news-image">
                                         <a href="{{ route('builds.show',$build->slug) }}">
                                             @if($build->photo)
-                                                {{ $build->getFirstMedia('featured_image')('excerpt') }}
+                                                {{ $build->getFirstMedia('photo')('excerpt') }}
                                             @else
                                                 <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
                                             @endif
