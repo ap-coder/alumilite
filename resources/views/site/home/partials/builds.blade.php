@@ -1,4 +1,57 @@
-    <!--====== Our Car Start ======-->
+    <!--====== News Start ======-->
+    @if($builds->count() > 0)
+        <section class="news-area news-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="section-title">
+                            <h2 class="title">Our Builds</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-wrapper">
+                    <div class="row">
+                        @foreach ($builds as $build)
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-news mt-50">
+                                    <div class="news-image">
+                                        <a href="{{ route('builds.show',$build->slug) }}">
+                                            @if($build->photo)
+                                                {{ $build->getFirstMedia('featured_image')('excerpt') }}
+                                            @else
+                                                <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->title }}">
+                                            @endif
+                                        </a>
+                                    </div>
+                                    <div class="news-content">
+                                        <div class="news-meta">
+                                                <span class="meta-cat">
+                                                    <a href="javascript:void(0);">
+                                                        @if($build->categories->isNotEmpty())
+                                                            {{ $build->categories->first()->name }}
+                                                        @endif
+                                                        </a>
+                                                </span>
+                                            <span class="meta-date"><a href="javascript:void(0);"> {{ date('M d, Y',strtotime($build->created_at)) }}</a></span>
+                                        </div>
+                                        <h3 class="news-title">
+                                            <a href="{{ route('builds.show',$build->slug) }}">{{ $post->title }}</a>
+                                        </h3>
+
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    <!--====== News Ends ======-->
+
+
+
+<!--====== Our Car Start ======-->
 
     <section class="cars-area cars-dark">
         <div class="container">
