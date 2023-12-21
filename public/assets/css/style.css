@@ -15604,3 +15604,11 @@ p {
         font-size: 1.2rem!important;
     }
 }
+
+.downloadable-documents ul li {
+  padding:10px;
+}
+
+.downloadable-documents ul {
+  padding-inline-start: 10px;
+}

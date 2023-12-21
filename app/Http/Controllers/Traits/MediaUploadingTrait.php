@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Traits;
 
 use Illuminate\Http\Request;
+use App\Helpers\Sanitize;
 
 trait MediaUploadingTrait
 {
@@ -11,9 +12,10 @@ trait MediaUploadingTrait
         // Validates file size
         if (request()->has('size')) {
             $this->validate(request(), [
-                'file' => 'max:' . request()->input('size') * 1024,
+                'file' => 'max:'.request()->input('size') * 1024,
             ]);
         }
+
         // If width or height is preset - we are validating it as an image
         if (request()->has('width') || request()->has('height')) {
             $this->validate(request(), [
@@ -36,7 +38,14 @@ trait MediaUploadingTrait
 
         $file = $request->file('file');
 
-        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+        $originname = trim($file->getClientOriginalName());
+
+        $filename = pathinfo($originname, PATHINFO_FILENAME);
+        $extension = pathinfo($originname, PATHINFO_EXTENSION);
+
+        $filtername = Sanitize::normalizeString($filename);
+
+        $name = $filtername.'.'.$extension;
 
         $file->move($path, $name);
 
@@ -44,5 +53,31 @@ trait MediaUploadingTrait
             'name'          => $name,
             'original_name' => $file->getClientOriginalName(),
         ]);
+    }
+
+    public static function normalizeString($string = '')
+    {
+        $string = strip_tags($string);
+        $string = preg_replace('/[\r\n\t ]+/', ' ', $string);
+        $string = preg_replace('/[\"\*\/\:\<\>\?\'\|]+/', ' ', $string);
+        $string = strtolower($string);
+        $string = html_entity_decode($string, ENT_QUOTES, 'utf-8');
+        $string = htmlentities($string, ENT_QUOTES, 'utf-8');
+        $string = str_replace('iso', '', $string);
+        $string = preg_replace('/.png|.jpg|.jpeg|.gif|\[(.*?)\]|\((.*?)\)+/', '', $string);
+        $string = str_replace('(', '', $string);
+        $string = str_replace(')', '', $string);
+        $string = str_replace('@', '', $string);
+        $string = str_replace('[', '', $string);
+        $string = str_replace(']', '', $string);
+        $string = preg_replace('/(&)([a-z])([a-z]+;)/i', '$2', $string);
+        $string = str_replace(' ', '_', $string);
+        $string = str_replace('.', '_', $string);
+        $string = str_replace('-', '_', $string);
+        $string = rawurlencode($string);
+        $string = str_replace('%', '_', $string);
+        $string = preg_replace('/_+/', '_', $string);
+
+        return preg_replace('/[.*?!@-_ ]+$/', '', $string);
     }
 }
