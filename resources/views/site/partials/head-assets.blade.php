@@ -19,6 +19,7 @@
 
     <!--====== Main Style CSS ======-->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/ck-content.css') }}">
 
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->

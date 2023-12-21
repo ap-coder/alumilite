@@ -46,7 +46,10 @@
                                     <a href="{{ route('builds.show',$build->slug) }}">
                                         <h2 class="title">{{ $build->name }}</h2>
                                     </a>
-                                    {!! $build->excerpt !!}
+                                    <div class="ck-content">
+                                        {!! $build->excerpt !!}
+                                    </div>
+                                    
 
                                     {{-- <div class="services-lists">
                                         <h5 class="lists-title">include:</h5>

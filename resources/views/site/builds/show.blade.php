@@ -44,7 +44,9 @@
                         <div class="overview">
                             <h5 class="singe-title">Build Overview</h5>
 
-                            {!! $build->description !!}
+                            <div class="ck-content">
+                                {!! $build->description !!}
+                            </div>
                         </div>
 
 {{-- @include('site.builds.partials.show.tech-specs') --}}

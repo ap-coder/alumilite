@@ -30,7 +30,9 @@
                 <div class="title-price">
                     <div class="title-excerpt">
                         <h3 class="entry-title">{{ $product->name }} <i class="ion-android-checkmark-circle"></i></h3>
-                        <p class="entry-excerpt">{{ $product->excerpt }}</p>
+                        <div class="ck-content">
+                            <p class="entry-excerpt">{{ $product->excerpt }}</p>
+                        </div>
                     </div>
                     <div class="price">
                         <span class="price">

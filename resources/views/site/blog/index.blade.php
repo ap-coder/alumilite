@@ -36,7 +36,10 @@
                                            </div>
                                            <h3 class="news-title"><a href="{{ route('blog.show', $article->slug ) }}">{{ $article->title }}</a></h3>
                                             {{-- {!! Str::words($article->title, $limit = 15, $end = '...') !!}--}}
-                                        <p>{{ $article->excerpt }}</p>
+                                            <div class="ck-content">
+                                                <p>{{ $article->excerpt }}</p>
+                                            </div>
+                                        
                                            {{--<ul class="news-meta-bottom">
                                                <li><a href="#"><i class="ion-chatboxes"></i> 0 Comments </a></li>
                                                <li><span><i class="ion-eye"></i> 83 Viewed</span></li>
