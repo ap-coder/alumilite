@@ -27,7 +27,14 @@ class BuildsController extends Controller
 
         $viewcount = views($build)->unique()->count();
 
-        return view('site.builds.show', compact('build','viewcount'));
+        $similarBuilds = Build::whereHas('brand', function ($query) use ($build) {
+            $query->where('id', $build->brand->id);
+        })
+        ->where('id', '!=', $build->id)
+        ->take(6)
+        ->get();
+
+        return view('site.builds.show', compact('build','viewcount','similarBuilds'));
     }
 
     public function review_store(Request $request)

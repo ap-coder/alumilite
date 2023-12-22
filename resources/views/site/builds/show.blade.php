@@ -16,7 +16,7 @@
                     <li class="breadcrumb-item active">{{ $build->name }}</li>
                 </ul>
                 <div class="listing-social d-lg-flex justify-content-between">
-                   {{--  <div class="listing-btn">
+                    {{--  <div class="listing-btn">
                         <ul class="listing-actions">
                             <li><a href="#"><i class="ion-ios-heart-outline"></i>  Save</a></li>
                             <li><a href="#"><i class="ion-checkmark"></i>  in compare list</a></li>
@@ -37,77 +37,67 @@
                         <h3 class="entry-title">{{ $build->name }} <i class="ion-android-checkmark-circle"></i></h3>
                         <p class="entry-excerpt">{{ $build->subtitle }}</p>
                     </div>
-                     
+
                 </div>
+                
                 <div class="row justify-content-between">
                     <div class="col-lg-8">
-                        <div class="overview">
-                            <h5 class="singe-title">Build Overview</h5>
+                        <div class="inventory-single-dealership-tab">
+                            @include('site.builds.partials.show.tab-list')
 
-                            <div class="ck-content">
-                                {!! $build->description !!}
-                            </div>
-
-                            @if ($build->documents->count()>0)
-                                <div class="downloadable-documents">
-                                    <h2>Documents</h2>
-                                    <ul class="mt-2">
-                                        @foreach ($build->documents as $document)
-                                            <li>
-                                                <a download href="{{ $document->getUrl() }}" target="_blank"><i class="ion-android-download"></i> {{ $document->name }}</a>
-                                            </li>
-                                        @endforeach
-                                        
-                                    </ul>
+                            <div class="tab-content">
+                                <div class="ck-content tab-pane fade show active" id="tab1" role="tabpanel">
+                                    {!! $build->description !!}
                                 </div>
-                            @endif
-                            
+                                @include('site.builds.partials.show.ducuments-tab')
+                                @include('site.builds.partials.show.review-form')
+                            </div>
                         </div>
 
-{{-- @include('site.builds.partials.show.tech-specs') --}}
-{{-- @include('site.builds.partials.show.features') --}}
+                        {{-- @include('site.builds.partials.show.tech-specs') --}}
+                        {{-- @include('site.builds.partials.show.features') --}}
 
                         <div class="consumer-reviews">
                             <h5 class="singe-title">Reviews</h5>
 
-@include('site.builds.partials.show.reviews-stats')
-@include('site.builds.partials.show.review')
-@include('site.builds.partials.show.review-form')
+                            @include('site.builds.partials.show.reviews-stats')
+                            @include('site.builds.partials.show.review')
+                            
 
                         </div>
 
-@include('site.builds.partials.show.brand-builds')
+                        @include('site.builds.partials.show.brand-builds')
 
                     </div>
 
                     <div class="col-xxl-3 col-lg-4">
                         <div class="sidebar">
-{{-- @include('site.builds.partials.show.sidebar.trusted') --}}
-{{-- @include('site.builds.partials.show.sidebar.dealer-info') --}}
-@include('site.builds.partials.show.sidebar.contact')
-{{-- @include('site.builds.partials.show.sidebar.similar-posts') --}}
-{{-- @include('site.builds.partials.show.sidebar.similar-listings') --}}
+                            {{-- @include('site.builds.partials.show.sidebar.trusted') --}}
+                            {{-- @include('site.builds.partials.show.sidebar.dealer-info') --}}
+                            @include('site.builds.partials.show.sidebar.contact')
+                            {{-- @include('site.builds.partials.show.sidebar.similar-posts') --}}
+                            {{-- @include('site.builds.partials.show.sidebar.similar-listings') --}}
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
 
     <!--====== Inventory Single Ends ======-->
 
 @endsection
 
-@section('headcss') @endsection
-@section('headjs') @endsection
+@section('headcss')
+@endsection
+@section('headjs')
+@endsection
 @section('footjs')
-
-<script>
-    $('#stars li').click(function(){
-        var rating = $(this).data('value');
-        $('#rating').val(rating);
-    });
-</script>
-
-@endsection    
+    <script>
+        $('#stars li').click(function() {
+            var rating = $(this).data('value');
+            $('#rating').val(rating);
+        });
+    </script>
+@endsection

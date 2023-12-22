@@ -8,7 +8,7 @@
 {{-- @include('site.home.partials.browse-types') --}}
 
 @includeIf('site.home.partials.products', ['products' => $products ])
-@includeIf('site.home.partials.builds', ['builds' => $builds ]))
+@includeIf('site.home.partials.builds', ['builds' => $builds ])
 @includeIf('site.home.partials.brands', ['brands' => $brands ])
 @includeIf('site.home.partials.news-section', ['posts' => $posts ])
 

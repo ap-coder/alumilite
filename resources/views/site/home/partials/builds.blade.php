@@ -31,7 +31,8 @@
                                             <div class="car-image">
                                                 <a href="{{ route('builds.show',$build->slug) }}">
                                                     @if($build->photo)
-                                                        {{ $build->getFirstMedia('photo')('excerpt') }}
+                                                        {{-- {{ $build->getFirstMedia('photo')('excerpt') }} --}}
+                                                        <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
                                                     @else
                                                         <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
                                                     @endif
@@ -61,7 +62,8 @@
                                             <div class="car-image">
                                                 <a href="{{ route('builds.show',$build->slug) }}">
                                                     @if($build->photo)
-                                                        {{ $build->getFirstMedia('photo')('excerpt') }}
+                                                        {{-- {{ $build->getFirstMedia('photo')('excerpt') }} --}}
+                                                        <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
                                                     @else
                                                         <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
                                                     @endif

@@ -1,14 +1,16 @@
                         <div class="inventory-single-dealership-gallery">
                             <div class="dealership-gallery-active">
                                 @if($product->photo)
-                                        {{ $product->getFirstMedia('photo')('responsive') }}
+                                        {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
+                                        <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                     @else
                                     <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
                                 @endif
 
                                 @if($product->additional_photos->count()>0)
                                     @foreach ($product->additional_photos as $photos)
-                                        {{ $photos('responsive') }}
+                                        {{-- {{ $photos('responsive') }} --}}
+                                        <img src="{{ $photos->getUrl() }}" alt="{{ $product->name }}">
                                     @endforeach
                                 @else
                                     <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
@@ -22,7 +24,8 @@
                                 @if($product->photo)
                                     <div class="thumb-col">
                                         <div class="single-dealership-thumb">
-                                            {{ $product->getFirstMedia('photo')('responsive') }}
+                                            {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
+                                            <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                         </div>
                                     </div>
                                 @else
@@ -33,7 +36,8 @@
                                     @foreach ($product->additional_photos as $photos)
                                         <div class="thumb-col">
                                             <div class="single-dealership-thumb">
-                                                {{ $photos('responsive') }}
+                                                {{-- {{ $photos('responsive') }} --}}
+                                                <img src="{{ $photos->getUrl() }}" alt="{{ $product->name }}">
                                             </div>
                                         </div>
                                     @endforeach

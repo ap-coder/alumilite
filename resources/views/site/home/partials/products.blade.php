@@ -28,11 +28,11 @@
                                 <div class="car-col">
                                     @foreach($productSet as $product)
                                         <div class="single-car-item mt-50">
-                                            <div class="car-image" style="width: 300px; height:300px;">
+                                            <div class="car-image">
                                                 <a href="{{ route('products.show',$product->slug) }}">
                                                     @if($product->photo)
-                                                        {{ $product->getFirstMedia('photo')('responsive') }}
-                                                        {{-- <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}"> --}}
+                                                        {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
+                                                        <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                                     @else
                                                         <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                                     @endif
@@ -98,7 +98,8 @@
                                                 <div class="car-image">
                                                     <a href="{{ route('products.show',$product->slug) }}">
                                                         @if($product->photo)
-                                                            {{ $product->getFirstMedia('photo')('responsive') }}
+                                                            {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
+                                                            <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                                         @else
                                                             <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                                         @endif

@@ -1,7 +1,6 @@
 @extends('site.layouts.app')
 
 @section('content')
-
     <!--====== Page Breadcrumb Start ======-->
 
     <div class="page-breadcrumb-area">
@@ -10,8 +9,9 @@
                 <div class="page-breadcrumb">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
-                        @if ($product->categories->count()>0)
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $product->categories->first()->name }}</a></li>
+                        @if ($product->categories->count() > 0)
+                            <li class="breadcrumb-item"><a
+                                    href="javascript:void(0);">{{ $product->categories->first()->name }}</a></li>
                         @endif
                         <li class="breadcrumb-item active">{{ $product->name }}</li>
                     </ul>
@@ -61,42 +61,45 @@
                             <li><a href="#"><i class="ion-speedometer"></i>  register test drive</a></li>
                             <li><a href="#"><i class="ion-document-text"></i>  brochure</a></li>
                         </ul>
-                    </div>  --}}                   
+                    </div>  --}}
                 </div>
             </div>
 
             <div class="inventory-single-dealership-main">
                 <div class="row justify-content-between">
                     <div class="col-lg-8">
-@include('site.products.show.partials.product-images')
+                        @include('site.products.show.partials.product-images')
 
 
                         <div class="inventory-single-dealership-tab">
-@include('site.products.show.partials.tab-list')
+                            @include('site.products.show.partials.tab-list')
 
                             <div class="tab-content">
-@include('site.products.show.partials.description-tab')
-@include('site.products.show.partials.tech-specs-tab')
-@include('site.products.show.partials.features-tab')
-{{-- @include('site.products.show.partials.reviews-tab') --}}
+                                @include('site.products.show.partials.description-tab')
+                                @include('site.products.show.partials.tech-specs-tab')
+                                @include('site.products.show.partials.features-tab')
+                                {{-- @include('site.products.show.partials.reviews-tab') --}}
                             </div>
                         </div>
 
-@includeIf('site.products.show.partials.similar-listings',['products'=>$similarProducts])
+                        @includeIf('site.products.show.partials.similar-listings', [
+                            'products' => $similarProducts,
+                        ])
 
                     </div>
-@include('site.products.show.partials.sidebar')
+                    @include('site.products.show.partials.sidebar')
 
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
 
     <!--====== Inventory Single Dealership Ends ======-->
-    
-
 @endsection
 
-@section('headcss') @endsection
-@section('headjs') @endsection
-@section('footjs') @endsection    
+@section('headcss')
+@endsection
+@section('headjs')
+@endsection
+@section('footjs')
+@endsection

@@ -8,7 +8,8 @@
                                                 <div class="listing-image">
                                                     <a href="{{ route('products.show',$product->slug) }}">
                                                         @if($product->photo)
-                                                            {{ $product->getFirstMedia('photo')('responsive') }}
+                                                            {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
+                                                            <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                                         @else
                                                             <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                                         @endif

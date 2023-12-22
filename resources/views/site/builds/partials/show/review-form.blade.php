@@ -1,3 +1,4 @@
+<div class="consumer-reviews tab-pane fade" id="tab3" role="tabpanel">
                             <div class="reviews-form">
                                 @if(session('success'))
                                 <div class="alert alert-success">
@@ -92,4 +93,5 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
                             </div>

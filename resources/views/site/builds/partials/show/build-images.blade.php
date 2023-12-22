@@ -33,7 +33,8 @@
 
                 @if ($build->photo)
                     <div class="single-image-thumb">
-                        {{ $build->getFirstMedia('photo')('responsive') }}
+                        {{-- {{ $build->getFirstMedia('photo')('responsive') }} --}}
+                        <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
                     </div>
                 @else
                     <div class="single-image-thumb">
@@ -44,7 +45,8 @@
                 @if($build->additional_photos->count()>0)
                     @foreach ($build->additional_photos as $photos)
                         <div class="single-image-thumb">
-                            {{ $photos('responsive') }}
+                            {{-- {{ $photos('responsive') }} --}}
+                            <img src="{{ $photos->getUrl() }}" alt="{{ $build->name }}">
                         </div>
                     @endforeach
                 @else
