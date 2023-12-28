@@ -18,45 +18,13 @@
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-StaticSeo">
             <thead>
                 <tr>
-                    <th width="10">
-
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.page_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.meta_title') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.content_type') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.open_graph_type') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.menu_name') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.noindex') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.nofollow') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.noimageindex') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.noarchive') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.staticSeo.fields.nosnippet') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
+                    <th width="10"></th>
+                    <th>{{ trans('cruds.staticSeo.fields.id') }}</th>
+                    <th>{{ trans('cruds.staticSeo.fields.menu_name') }} (click name to edit)</th>
+	                <th>{{ trans('cruds.staticSeo.fields.content_type') }}</th>
+	                <th>Seo Checks</th>
+                    <th></th>
+                </tr>
                 </tr>
             </thead>
         </table>
@@ -111,16 +79,9 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'page_name', name: 'page_name' },
-{ data: 'meta_title', name: 'meta_title' },
-{ data: 'content_type', name: 'content_type' },
-{ data: 'open_graph_type', name: 'open_graph_type' },
 { data: 'menu_name', name: 'menu_name' },
-{ data: 'noindex', name: 'noindex' },
-{ data: 'nofollow', name: 'nofollow' },
-{ data: 'noimageindex', name: 'noimageindex' },
-{ data: 'noarchive', name: 'noarchive' },
-{ data: 'nosnippet', name: 'nosnippet' },
+{ data: 'content_type', name: 'content_type' },
+{ data: 'seo_checks', name: 'seo_checks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

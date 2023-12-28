@@ -22,6 +22,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+    <link href="{{ asset('jquery-seo-preview/css/jquery-seopreview.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
 
@@ -111,6 +112,92 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/jquery-characters-caculator.js') }}"></script>
+    <script src="{{ asset('textcounter/textcounter.js') }}"></script>
+    <script src="{{ asset('jquery-seo-preview/js/jquery-seopreview.js') }}"></script>
+    <script>
+       $(document).ready(function () {
+            $('.seotitle').textcounter({
+
+                type                     : "character",            // "character" or "word"
+                min                      : 30,                      // minimum number of characters/words
+                max                      : 60,                    // maximum number of characters/words, -1 for unlimited, 'auto' to use maxlength attribute
+                countContainerElement    : "span",                  // HTML element to wrap the text count in
+                countContainerClass      : "text-count-wrapper",   // class applied to the countContainerElement
+                inputErrorClass          : "error",                // error class appended to the input element if error occurs
+                counterErrorClass        : "error",                // error class appended to the countContainerElement if error occurs
+                counterText              : "%d",        // counter text
+                errorTextElement         : "span",                  // error text element
+                minimumErrorText         : "Minimum not met",      // error message for minimum not met,
+                maximumErrorText         : "Maximum exceeded",     // error message for maximum range exceeded,
+                displayErrorText         : true,                   // display error text messages for minimum/maximum values
+                stopInputAtMaximum       : false,                   // stop further text input if maximum reached
+                countSpaces              : true,                  // count spaces as character (only for "character" type)
+                countDown                : false,                  // if the counter should deduct from maximum characters/words rather than counting up
+                countDownText            : "Remaining: %d",          // count down text
+                countExtendedCharacters  : false,                  // count extended UTF-8 characters as 2 bytes (such as Chinese characters)
+                maxcount                 : function(el){},         // Callback: function(element) - Fires when the counter hits the maximum word/character count
+                mincount                 : function(el){
+                    // $('#seoSave').prop('disabled',false);
+                },         // Callback: function(element) - Fires when the counter hits the minimum word/character count
+                minunder                 : function(el){
+                    // $('#seoSave').prop('disabled',true);
+                },         // Callback: function(element) - Fires when the counter hits the minimum word/character count
+                init                     : function(el){}          // Callback: function(element) - Fires after the counter is initially setup
+            });
+
+            $('.seodescription').textcounter({
+                type                     : "character",            // "character" or "word"
+                min                      : 120,                      // minimum number of characters/words
+                max                      : 320,                    // maximum number of characters/words, -1 for unlimited, 'auto' to use maxlength attribute
+                countContainerElement    : "span",                  // HTML element to wrap the text count in
+                countContainerClass      : "text-count-wrapper",   // class applied to the countContainerElement
+                inputErrorClass          : "error",                // error class appended to the input element if error occurs
+                counterErrorClass        : "error",                // error class appended to the countContainerElement if error occurs
+                counterText              : "%d",        // counter text
+                errorTextElement         : "span",                  // error text element
+                minimumErrorText         : "Minimum not met",      // error message for minimum not met,
+                maximumErrorText         : "Maximum exceeded",     // error message for maximum range exceeded,
+                displayErrorText         : true,                   // display error text messages for minimum/maximum values
+                stopInputAtMaximum       : false,                   // stop further text input if maximum reached
+                countSpaces              : true,                  // count spaces as character (only for "character" type)
+                countDown                : false,                  // if the counter should deduct from maximum characters/words rather than counting up
+                countDownText            : "Remaining: %d",          // count down text
+                countExtendedCharacters  : false,                  // count extended UTF-8 characters as 2 bytes (such as Chinese characters)
+                maxcount                 : function(el){},         // Callback: function(element) - Fires when the counter hits the maximum word/character count
+                mincount                 : function(el){
+                    // $('#seoSave').prop('disabled',false);
+                },         // Callback: function(element) - Fires when the counter hits the minimum word/character count
+                // minunder                 : function(el){
+                //     $('#seoSave').prop('disabled',true);
+                // },
+                init                     : function(el){}          // Callback: function(element) - Fires after the counter is initially setup
+            });
+        });
+
+       $(document).ready(function () {
+            $.seoPreview({
+                google_div: "#seopreview-google",
+                facebook_div: "#seopreview-facebook",
+                metadata: {
+                    title: $('#meta_title'),
+                    desc: $('#meta_description'),
+                    url: {
+                        full_url: $('#meta-url')
+                    }
+                },
+                google: {
+                    show: true,
+                    date: false
+                },
+                facebook: {
+                    show: true,
+                    featured_image: $('#meta-featured-image')
+                }
+            });
+        });
+    </script>
+    
     <script>
         $(function() {
   let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
@@ -223,6 +310,7 @@
 
   $.fn.dataTable.ext.classes.sPageButton = '';
 });
+
 
     </script>
     @yield('scripts')

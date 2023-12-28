@@ -15612,3 +15612,7 @@ p {
 .downloadable-documents ul {
   padding-inline-start: 10px;
 }
+
+.build-item{
+  padding: 0 15px;
+}

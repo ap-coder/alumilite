@@ -130,3 +130,13 @@ table.dataTable thead .sorting_desc {
 .custom-select.form-control-sm {
     padding: 0.25rem 1.5rem;
 }
+
+.form-group .text-count-wrapper {float:right;}
+.seo-title .text-count-wrapper .text-count:after {  content: ' / 60';}
+.seo-description .text-count-wrapper .text-count:after {  content: ' / 320';}
+.text-count-wrapper .text-count{margin-top: 2px!important;}
+.text-count-wrapper .text-count{color:green; font-weight: 700!important;}
+.text-count-wrapper.error .text-count{color:red;font-weight: 700!important;}
+.text-count-wrapper .error-text-min{margin-left:5px!important; }
+.text-count-wrapper .error-text-max{margin-left:5px!important; font-weight: 700;}
+[class*="no-rad"] input,[class*="no-rad"] textarea {    border-radius: 0 !important; }

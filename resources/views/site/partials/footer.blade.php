@@ -1,6 +1,6 @@
     <!--====== Footer Start ======-->
 
-    <footer class="footer-area">
+        <footer class="footer-area @if($staticseo) @foreach($staticseo->where('page_path',request()->path()) as $seo) @if($seo->footer_classes) {{ $seo->footer_classes }} @endif @endforeach @endif">
         <div class="footer-widget">
             <div class="container">
                 <div class="row">

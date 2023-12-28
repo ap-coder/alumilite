@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Image;
+use Spatie\Image\Manipulations;
 
 class StaticSeo extends Model implements HasMedia
 {
@@ -35,6 +37,7 @@ class StaticSeo extends Model implements HasMedia
     public const CONTENT_TYPE_SELECT = [
         'custom'     => 'Pages Builder',
         'post'       => 'Blog Post',
+        'build'    => 'Build',
         'product'    => 'Product',
   
     ];
@@ -42,6 +45,9 @@ class StaticSeo extends Model implements HasMedia
     protected $fillable = [
         'page_name',
         'page_path',
+        'post_id',
+        'product_id',
+        'build_id',
         'meta_title',
         'facebook_title',
         'twitter_title',
@@ -63,6 +69,16 @@ class StaticSeo extends Model implements HasMedia
         'noimageindex',
         'noarchive',
         'nosnippet',
+        'footer_classes',
+        'main_classes',
+        'body_classes',
+        'html_classes',
+        'meta_title_check',
+        'meta_desc_check',
+        'facebook_title_check',
+        'facebook_desc_check',
+        'twitter_title_check',
+        'twitter_desc_check',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -75,19 +91,59 @@ class StaticSeo extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')->fit('crop', 150, 150);
-        $this->addMediaConversion('preview')->fit('crop', 120, 120);
+        $this->addMediaConversion('preview')
+            ->format(Manipulations::FORMAT_WEBP)
+            ->width(120)
+            ->height(120)
+            ->nonQueued();
+
+        $this->addMediaConversion('twitter')
+            ->format(Manipulations::FORMAT_WEBP)
+            ->width(1200)
+            ->height(600)
+            ->withResponsiveImages()
+            ->nonQueued();
+
+        $this->addMediaConversion('fb')
+            ->format(Manipulations::FORMAT_WEBP)
+            ->width(1200)
+            ->height(600)
+            ->withResponsiveImages()
+            ->nonQueued();
+
+        $this->addMediaConversion('cover')
+            ->format(Manipulations::FORMAT_WEBP)
+            ->width(1200)
+            ->height(500)
+            ->withResponsiveImages()
+            ->nonQueued();
     }
 
     public function getSeoImageAttribute()
     {
         $file = $this->getMedia('seo_image')->last();
         if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
+            $file->preview = $file->getUrl('preview');
+            $file->twitter = $file->getUrl('twitter');
+            $file->fb = $file->getUrl('fb');
+            $file->cover = $file->getUrl('cover');
         }
 
         return $file;
+    }
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'post_id');
+    }
+
+    public function build()
+    {
+        return $this->belongsTo(Build::class, 'build_id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }
