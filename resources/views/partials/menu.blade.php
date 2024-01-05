@@ -130,7 +130,7 @@
             </li>
         @endcan
         @can('content_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/posts*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }} {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/sliders*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/posts*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }} {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/sliders*") ? "c-show" : "" }} {{ request()->is("admin/pagesections*") ? "c-show" : "" }} {{ request()->is("admin/content-sections*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-book c-sidebar-nav-icon">
 
@@ -155,6 +155,26 @@
 
                                 </i>
                                 {{ trans('cruds.contentPage.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('pagesection_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.pagesections.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pagesections") || request()->is("admin/pagesections/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-file c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.pagesection.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('content_section_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.content-sections.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/content-sections") || request()->is("admin/content-sections/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-file c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.contentSection.title') }}
                             </a>
                         </li>
                     @endcan

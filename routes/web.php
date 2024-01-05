@@ -17,7 +17,7 @@ Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
-Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
 
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -88,6 +88,26 @@ Route::get('/', 'HomeController@index')->name('home');
     Route::post('content-pages/media', 'ContentPageController@storeMedia')->name('content-pages.storeMedia');
     Route::post('content-pages/ckmedia', 'ContentPageController@storeCKEditorImages')->name('content-pages.storeCKEditorImages');
     Route::resource('content-pages', 'ContentPageController');
+    Route::post('GetPageContentSectionModalForm', 'ContentPageController@GetPageContentSectionModalForm');
+	Route::post('AddPageContentSection', 'ContentPageController@AddPageContentSection');
+	Route::post('ChangePageContentSectionOrder', 'ContentPageController@ChangePageContentSectionOrder');
+	Route::post('GetPageSectionModalForm', 'ContentPageController@GetPageSectionModalForm');
+	Route::post('AddPageSection', 'ContentPageController@AddPageSection');
+	Route::post('ChangePageSectionOrder', 'ContentPageController@ChangePageSectionOrder');
+	Route::post('AddExistingPageSection', 'ContentPageController@AddExistingPageSection');
+	Route::post('clearAllExistingPageSection', 'ContentPageController@clearAllExistingPageSection');
+	Route::post('getpreviewimage', 'ContentPageController@getpreviewimage');
+	Route::post('removeMedia', 'ContentPageController@removeMedia');
+
+    // Pagesection
+    Route::delete('pagesections/destroy', 'PageSectionController@massDestroy')->name('pagesections.massDestroy');
+    Route::post('pagesections/remove', 'PageSectionController@remove_section')->name('pagesections.remove_section');
+    Route::post('pagesections/media', 'PageSectionController@storeMedia')->name('pagesections.storeMedia');
+    Route::resource('pagesections', 'PageSectionController');
+
+    // Content Section
+    Route::delete('content-sections/destroy', 'ContentSectionController@massDestroy')->name('content-sections.massDestroy');
+    Route::resource('content-sections', 'ContentSectionController');
 
     // Post
     Route::delete('posts/destroy', 'PostController@massDestroy')->name('posts.massDestroy');

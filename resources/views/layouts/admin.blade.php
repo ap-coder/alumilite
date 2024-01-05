@@ -23,6 +23,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     <link href="{{ asset('jquery-seo-preview/css/jquery-seopreview.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('admin/css/prism.css') }}" rel="stylesheet" />
+	  <link href="{{ asset('admin/css/prism-live.css') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/css/prism-line-numbers.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/codemirror.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/css/monokai.css') }}" rel="stylesheet" type="text/css">
+
     @yield('styles')
 </head>
 
@@ -115,6 +122,15 @@
     <script src="{{ asset('js/jquery-characters-caculator.js') }}"></script>
     <script src="{{ asset('textcounter/textcounter.js') }}"></script>
     <script src="{{ asset('jquery-seo-preview/js/jquery-seopreview.js') }}"></script>
+
+    <script src="{{ asset('admin/js/bliss.shy.min.js') }}"></script>
+    <script src="{{ asset('admin/js/prism.js') }}"></script>
+    <script src="{{ asset('admin/js/prism-live.js') }}"></script>
+    <script src="{{ asset('admin/js/prism-live-css.js') }}"></script>
+    <script src="{{ asset('admin/js/prism-live-javascript.js') }}"></script>
+    <script src="{{ asset('admin/js/prism-live-markup.js') }}"></script>
+    <script src="{{ asset('admin/js/prism-line-numbers.js') }}"></script>
+    
     <script>
        $(document).ready(function () {
             $('.seotitle').textcounter({

@@ -10,11 +10,14 @@ use App\Http\Requests\UpdateContentPageRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentPage;
 use App\Models\ContentTag;
+use App\Models\Pagesection;
+use App\Models\ContentSection;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\File;
 
 class ContentPageController extends Controller
 {
@@ -101,59 +104,154 @@ class ContentPageController extends Controller
     {
         abort_if(Gate::denies('content_page_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = ContentCategory::pluck('name', 'id');
+        $photos = [];
 
-        $tags = ContentTag::pluck('name', 'id');
+        $photoDirectory = public_path('site/img/landing-pages');
 
-        return view('admin.contentPages.create', compact('categories', 'tags'));
+        if (is_dir($photoDirectory)) {
+            foreach (File::allFiles($photoDirectory) as $file) {
+
+                $photos[] = array(
+                    "filename" => $file->getFilename(),
+                    "filesize" => $file->getSize(), // returns size in bytes
+                    "fileext" => $file->getExtension()
+                );
+            }
+        }
+
+        $attachments = [];
+
+        $attachmentDirectory = public_path('site/attachments/landing-pages');
+
+        if (is_dir($attachmentDirectory)) {
+            foreach (File::allFiles($attachmentDirectory) as $attachment) {
+
+                $attachments[] = array(
+                    "filename" => $attachment->getFilename(),
+                    "filesize" => $attachment->getSize(), // returns size in bytes
+                    "fileext" => $attachment->getExtension()
+                );
+            }
+        }
+
+        return view('admin.contentPages.create', compact('photos','attachments'));
     }
 
     public function store(StoreContentPageRequest $request)
     {
-        $contentPage = ContentPage::create($request->all());
-        $contentPage->categories()->sync($request->input('categories', []));
-        $contentPage->tags()->sync($request->input('tags', []));
+        $page = ContentPage::create($request->all());
+
         if ($request->input('featured_image', false)) {
-            $contentPage->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+            $page->addMedia(storage_path('tmp/uploads/' . $request->input('featured_image')))->toMediaCollection('featured_image', 'public');
         }
 
-        if ($media = $request->input('ck-media', false)) {
-            Media::whereIn('id', $media)->update(['model_id' => $contentPage->id]);
+        foreach ($request->input('photos', []) as $file) {
+            File::ensureDirectoryExists('site/img/landing-pages');
+            File::move(storage_path('tmp/uploads/' . basename($file)), public_path('site/img/landing-pages/'.basename($file)));
+            File::delete(storage_path('tmp/uploads/' . basename($file)));
         }
 
-        return redirect()->route('admin.content-pages.index');
+        foreach ($request->input('attachments', []) as $file) {
+            File::ensureDirectoryExists('site/attachments/landing-pages');
+            File::move(storage_path('tmp/uploads/' . basename($file)), public_path('site/attachments/landing-pages/'.basename($file)));
+            File::delete(storage_path('tmp/uploads/' . basename($file)));
+        }
+
+        return redirect()->route('admin.content-pages.edit', $page->id);
     }
 
     public function edit(ContentPage $contentPage)
     {
         abort_if(Gate::denies('content_page_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = ContentCategory::pluck('name', 'id');
+        $page_sections=Pagesection::published()->get()->pluck('section_nickname','id')->prepend(trans('global.pleaseSelect'), '');
 
-        $tags = ContentTag::pluck('name', 'id');
+        $existing_crud = Pagesection::published()->where('use_crud_section', '!=', 0)->get()->pluck('section_nickname', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $contentPage->load('categories', 'tags');
+        $photoDirectory = public_path('site/img/landing-pages');
 
-        return view('admin.contentPages.edit', compact('categories', 'contentPage', 'tags'));
-    }
+        $photos = [];
 
-    public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
-    {
-        $contentPage->update($request->all());
-        $contentPage->categories()->sync($request->input('categories', []));
-        $contentPage->tags()->sync($request->input('tags', []));
-        if ($request->input('featured_image', false)) {
-            if (! $contentPage->featured_image || $request->input('featured_image') !== $contentPage->featured_image->file_name) {
-                if ($contentPage->featured_image) {
-                    $contentPage->featured_image->delete();
-                }
-                $contentPage->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+        if (is_dir($photoDirectory)) {
+            foreach (File::allFiles($photoDirectory) as $file) {
+
+                $photos[] = array(
+                    "filename" => $file->getFilename(),
+                    "filesize" => $file->getSize(), // returns size in bytes
+                    "fileext" => $file->getExtension()
+                );
             }
-        } elseif ($contentPage->featured_image) {
-            $contentPage->featured_image->delete();
         }
 
-        return redirect()->route('admin.content-pages.index');
+        $attachments = [];
+
+        $attachmentDirectory = public_path('site/attachments/landing-pages');
+
+        if (is_dir($attachmentDirectory)) {
+            foreach (File::allFiles($attachmentDirectory) as $attachment) {
+
+                $attachments[] = array(
+                    "filename" => $attachment->getFilename(),
+                    "filesize" => $attachment->getSize(), // returns size in bytes
+                    "fileext" => $attachment->getExtension()
+                );
+            }
+        }
+
+        return view('admin.contentPages.edit', compact('page_sections', 'contentPage', 'existing_crud','photos','attachments'));
+    }
+
+    public function update(UpdateContentPageRequest $request, ContentPage $page)
+    {
+        $page->update($request->all());
+
+        if ($request->input('featured_image', false)) {
+            if (!$page->featured_image || $request->input('featured_image') !== $page->featured_image->file_name) {
+                if ($page->featured_image) {
+                    $page->featured_image->delete();
+                }
+
+                $page->addMedia(storage_path('tmp/uploads/' . $request->input('featured_image')))->toMediaCollection('featured_image', 'public');
+            }
+        } elseif ($page->featured_image) {
+            $page->featured_image->delete();
+        }
+
+        foreach ($request->input('photos', []) as $file) {
+            File::ensureDirectoryExists('site/img/landing-pages');
+            File::move(storage_path('tmp/uploads/' . basename($file)), public_path('site/img/landing-pages/'.basename($file)));
+            File::delete(storage_path('tmp/uploads/' . basename($file)));
+        }
+
+        foreach ($request->input('attachments', []) as $file) {
+            File::ensureDirectoryExists('site/attachments/landing-pages');
+            File::move(storage_path('tmp/uploads/' . basename($file)), public_path('site/attachments/landing-pages/'.basename($file)));
+            File::delete(storage_path('tmp/uploads/' . basename($file)));
+        }
+        
+        if ($request->preview) {
+            if ($page->is_homepage == 1) {
+                if ($page->slug) {
+                    echo json_encode($page->slug);
+                } else {
+                    echo json_encode('homepage');
+                }
+            } else {
+                if ($page->path_segments == 1) {
+                    echo json_encode($page->path.'/'.$page->slug);
+                } elseif ($page->path_segments == 2) {
+                    echo json_encode($page->path.'/'.$page->path2.'/'.$page->slug);
+                } elseif ($page->path_segments == 3) {
+                    echo json_encode($page->path.'/'.$page->path2.'/'.$page->path3.'/'.$page->slug);
+                } elseif ($page->path_segments == 4) {
+                    echo json_encode($page->path.'/'.$page->path2.'/'.$page->path3.'/'.$page->path4.'/'.$page->slug);
+                } else {
+                    echo json_encode($page->slug);
+                }
+            }
+        } else {
+            return redirect()->route('admin.pages.index');
+        }
     }
 
     public function show(ContentPage $contentPage)
@@ -195,5 +293,141 @@ class ContentPageController extends Controller
         $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
+    }
+
+    public function GetPageContentSectionModalForm(Request $request)
+    {
+        $contentSection=ContentSection::find($request->id);
+        $html= view('admin.contentPages.partials.content-section-modal', compact('contentSection'))->render();
+
+        echo $html;
+    }
+
+    public function AddPageContentSection(Request $request)
+    {
+        
+        if($request->id){
+            $contentSection=ContentSection::find($request->id);
+            $contentSection->update($request->all());
+        }else{
+            $contentSection = ContentSection::create($request->all());
+        }
+
+        $contentSection->assign_contentPages()->sync($request->input('contentPages', []));
+
+        $ContentPage = ContentPage::where('id',$request->contentPages)->first();
+
+        $contentSections=$ContentPage->pagesContentSections;
+
+        $html= view('admin.contentPages.partials.content-section-loop', compact('contentSections'))->render();
+
+        echo $html;
+    }
+
+    public function ChangePageContentSectionOrder(Request $request)
+    {
+        $ids=$request->params;
+        foreach ($ids as $key => $id) {
+            ContentSection::where('id',$id['value'])->update([
+                'order' => $key+1,
+            ]);
+        }
+        echo 1;
+    }
+
+    public function GetPageSectionModalForm(Request $request)
+    {
+        $pageSection=PageSection::find($request->id);
+        $html= view('admin.contentPages.partials.page-section-modal', compact('pageSection'))->render();
+
+        echo $html;
+    }
+
+    public function AddPageSection(Request $request)
+    {
+        
+        if($request->id){
+            $pageSection=Pagesection::find($request->id);
+            $pageSection->update($request->all());
+        }else{
+            $pageSection = Pagesection::create($request->all());
+        }
+
+        $pageSection->assign_pages()->sync($request->input('contentPages', []));
+
+        $ContentPage = ContentPage::where('id',$request->contentPages)->first();
+
+        $pageSections=$ContentPage->pagesPagesections;
+
+        $html= view('admin.contentPages.partials.page-section-loop', compact('pageSections'))->render();
+
+        echo $html;
+    }
+
+    public function ChangePageSectionOrder(Request $request)
+    {
+        $ids=$request->params;
+        foreach ($ids as $key => $id) {
+            Pagesection::where('id',$id['value'])->update([
+                'order' => $key+1,
+            ]);
+        }
+        echo 1;
+    }
+
+    public function AddExistingPageSection(Request $request)
+    {
+        $updatePage = ContentPage::where('id',$request->pages)->first();
+
+        $updatePage->pagesPagesections()->toggle($request->input('page_sections', []));        
+
+        $ContentPage = ContentPage::where('id',$request->pages)->first();
+
+        $pageSections=$ContentPage->pagesPagesections;
+
+        $html= view('admin.contentPages.partials.page-section-loop', compact('pageSections'))->render();
+
+        echo $html;
+    }
+
+    public function clearAllExistingPageSection(Request $request)
+    {
+        $updatePage = ContentPage::where('id',$request->pages)->first();
+        $updatePage->pagesPagesections()->detach();
+        $page = ContentPage::where('id',$request->pages)->first();
+
+        $pageSections=$page->pagesPagesections;
+
+        $html= view('admin.contentPages.partials.page-section-loop', compact('pageSections'))->render();
+
+        echo $html;
+    }
+
+    public function getpreviewimage(Request $request)
+    {
+        $id = $request->id;
+
+        $section = Pagesection::where('id', $id)->first();
+
+        if ($section->section_preview) {
+            echo $section->section_preview->getUrl();
+        } else {
+            echo '';
+        }
+    }
+    
+    public function removeMedia(Request $request)
+    {
+        $name = $request->name;
+        $type = $request->type;
+
+        if ($type=='photo') {
+            File::delete(public_path('site/img/landing-pages/' . basename($name)));
+        } else {
+            File::delete(public_path('site/attachments/landing-pages/' . basename($name)));
+        }
+
+        echo 1;
+        
     }
 }

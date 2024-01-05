@@ -1,37 +1,37 @@
 @extends('layouts.admin')
 @section('content')
-@can('content_page_create')
+@can('pagesection_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.content-pages.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.pagesections.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.pagesection.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.contentPage.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.pagesection.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-ContentPage">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Pagesection">
             <thead>
                 <tr>
                     <th width="10">
 
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.id') }}
+                        {{ trans('cruds.pagesection.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.title') }}
+                        {{ trans('cruds.pagesection.fields.published') }}
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.nickname') }}
+                        {{ trans('cruds.pagesection.fields.section_nickname') }}
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.published') }}
+                        {{ trans('cruds.pagesection.fields.order') }}
                     </th>
                     <th>
                         &nbsp;
@@ -50,11 +50,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('content_page_delete')
+@can('pagesection_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.content-pages.massDestroy') }}",
+    url: "{{ route('admin.pagesections.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -86,20 +86,20 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.content-pages.index') }}",
+    ajax: "{{ route('admin.pagesections.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'title', name: 'title' },
-{ data: 'nickname', name: 'nickname' },
 { data: 'published', name: 'published' },
+{ data: 'section_nickname', name: 'section_nickname' },
+{ data: 'order', name: 'order' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   };
-  let table = $('.datatable-ContentPage').DataTable(dtOverrideGlobals);
+  let table = $('.datatable-Pagesection').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
