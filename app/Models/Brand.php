@@ -31,6 +31,7 @@ class Brand extends Model implements HasMedia
     protected $fillable = [
         'published',
         'name',
+        'slug',
         'description',
         'created_at',
         'updated_at',
@@ -54,7 +55,7 @@ class Brand extends Model implements HasMedia
     {
         return $query->where('published', true);
     }
-    
+
     public function brandProducts()
     {
         return $this->hasMany(Product::class, 'brand_id', 'id');

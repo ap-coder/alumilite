@@ -42,6 +42,18 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.brand.fields.description_helper') }}</span>
             </div>
+
+            <div class="form-group">
+                <label for="slug">{{ trans('cruds.brand.fields.slug') }}</label>
+                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
+                @if($errors->has('slug'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('slug') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.brand.fields.slug_helper') }}</span>
+            </div>
+
             <div class="form-group">
                 <label for="logo">{{ trans('cruds.brand.fields.logo') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="logo-dropzone">
