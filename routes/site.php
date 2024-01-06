@@ -19,6 +19,8 @@ Route::resource('builds', 'BuildsController', ['except' => ['create', 'store', '
 Route::get('builds/{build:slug}', 'BuildsController@show')->name('builds.show');
 Route::post('builds/review/store', 'BuildsController@review_store')->name('builds.review.store');
 
+Route::get('brands', 'BrandsController@index', ['except' => ['create', 'store', 'edit', 'update', 'destroy']])->name('brands');
+Route::get('brands/{brand:slug}', 'BrandsController@show')->name('brands.show');
 
 
 

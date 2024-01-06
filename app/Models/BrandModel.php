@@ -25,6 +25,7 @@ class BrandModel extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'published',
     ];
 
     public function scopePublished($query)
