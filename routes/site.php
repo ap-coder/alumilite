@@ -22,7 +22,7 @@ Route::post('builds/review/store', 'BuildsController@review_store')->name('build
 Route::get('brands', 'BrandsController@index', ['except' => ['create', 'store', 'edit', 'update', 'destroy']])->name('brands');
 Route::get('brands/{brand:slug}', 'BrandsController@show')->name('brands.show');
 
-
+Route::get('/{pagepath}/{pageslug?}/{pagepath2?}/{pagepath3?}/{pagepath4?}', 'PagesController@show')->name('page.show');
 
 
 
