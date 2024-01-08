@@ -201,20 +201,20 @@ class ContentPageController extends Controller
         return view('admin.contentPages.edit', compact('page_sections', 'contentPage', 'existing_crud','photos','attachments'));
     }
 
-    public function update(UpdateContentPageRequest $request, ContentPage $page)
+    public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
     {
-        $page->update($request->all());
+        $contentPage->update($request->all());
 
         if ($request->input('featured_image', false)) {
-            if (!$page->featured_image || $request->input('featured_image') !== $page->featured_image->file_name) {
-                if ($page->featured_image) {
-                    $page->featured_image->delete();
+            if (!$contentPage->featured_image || $request->input('featured_image') !== $contentPage->featured_image->file_name) {
+                if ($contentPage->featured_image) {
+                    $contentPage->featured_image->delete();
                 }
 
-                $page->addMedia(storage_path('tmp/uploads/' . $request->input('featured_image')))->toMediaCollection('featured_image', 'public');
+                $contentPage->addMedia(storage_path('tmp/uploads/' . $request->input('featured_image')))->toMediaCollection('featured_image', 'public');
             }
-        } elseif ($page->featured_image) {
-            $page->featured_image->delete();
+        } elseif ($contentPage->featured_image) {
+            $contentPage->featured_image->delete();
         }
 
         foreach ($request->input('photos', []) as $file) {
@@ -230,27 +230,27 @@ class ContentPageController extends Controller
         }
         
         if ($request->preview) {
-            if ($page->is_homepage == 1) {
-                if ($page->slug) {
-                    echo json_encode($page->slug);
+            if ($contentPage->is_homepage == 1) {
+                if ($contentPage->slug) {
+                    echo json_encode($contentPage->slug);
                 } else {
                     echo json_encode('homepage');
                 }
             } else {
-                if ($page->path_segments == 1) {
-                    echo json_encode($page->path.'/'.$page->slug);
-                } elseif ($page->path_segments == 2) {
-                    echo json_encode($page->path.'/'.$page->path2.'/'.$page->slug);
-                } elseif ($page->path_segments == 3) {
-                    echo json_encode($page->path.'/'.$page->path2.'/'.$page->path3.'/'.$page->slug);
-                } elseif ($page->path_segments == 4) {
-                    echo json_encode($page->path.'/'.$page->path2.'/'.$page->path3.'/'.$page->path4.'/'.$page->slug);
+                if ($contentPage->path_segments == 1) {
+                    echo json_encode($contentPage->path.'/'.$contentPage->slug);
+                } elseif ($contentPage->path_segments == 2) {
+                    echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->slug);
+                } elseif ($contentPage->path_segments == 3) {
+                    echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->path3.'/'.$contentPage->slug);
+                } elseif ($contentPage->path_segments == 4) {
+                    echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->path3.'/'.$contentPage->path4.'/'.$contentPage->slug);
                 } else {
-                    echo json_encode($page->slug);
+                    echo json_encode($contentPage->slug);
                 }
             }
         } else {
-            return redirect()->route('admin.pages.index');
+            return redirect()->route('admin.content-pages.index');
         }
     }
 

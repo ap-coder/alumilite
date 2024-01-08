@@ -1,7 +1,42 @@
 @can($viewGate)
+@if ($crudRoutePart=='content-pages')
+        @if ($row->is_homepage == 1)
+            @php
+                $url = url('');
+            @endphp
+        @else
+            @if ($path_segments=0)
+                @php
+                    $url = url($row->slug);
+                @endphp
+            @elseif ($path_segments=1)
+                @php
+                    $url = url($row->path.'/'.$row->slug);
+                @endphp
+            @elseif ($path_segments=2)
+                @php
+                    $url = url($row->path.'/'.$row->path2.'/'.$row->slug);
+                @endphp
+            @elseif ($path_segments=3)
+                @php
+                    $url = url($row->path.'/'.$row->path2.'/'.$row->path3.'/'.$row->slug);
+                @endphp
+            @elseif ($path_segments=4)
+                @php
+                    $url = url($row->path.'/'.$row->path2.'/'.$row->path3.'/'.$row->path4.'/'.$row->slug);
+                @endphp
+            @endif
+        @endif
+
+        
+        <a class="btn btn-xs btn-primary" href="{{ $url }}" target="_blank">
+            {{ trans('global.view') }}
+        </a>
+        @else
     <a class="btn btn-xs btn-primary" href="{{ route('admin.' . $crudRoutePart . '.show', $row->id) }}">
         {{ trans('global.view') }}
     </a>
+    @endif
 @endcan
 @can($editGate)
     <a class="btn btn-xs btn-info" href="{{ route('admin.' . $crudRoutePart . '.edit', $row->id) }}">
