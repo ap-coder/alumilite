@@ -263,6 +263,8 @@ return [
             'id_helper'          => ' ',
             'name'               => 'Name',
             'name_helper'        => ' ',
+            'slug'               => 'Slug',
+            'slug_helper'        => ' ',
             'description'        => 'Description',
             'description_helper' => ' ',
             'logo'               => 'Logo',

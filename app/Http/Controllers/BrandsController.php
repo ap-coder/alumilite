@@ -37,15 +37,18 @@ class BrandsController extends Controller
      * @param $slug
      *  @return \Illuminate\View\View
      */
-    public function show(Brand $brand, $slug)
+    public function show(Brand $brand)
     {
-        $brand = Brand::where('slug', $slug)->first();
+        // $brand = Brand::where('slug', $slug)->first();
  
-        views($brand)->record();
-
-        $viewcount = views($brand)->unique()->remember()->count();
-
-        return view('site.brands.show', compact('brand', 'viewcount'));
+        if (\App::environment()=='production') {
+            views($brand)->record();
+            $viewcount = views($brand)->unique()->remember()->count();
+        } else {
+            $viewcount = 0;
+        }
+        
+        return view('site.brands.brand', compact('brand', 'viewcount'));
     }
  
 }
