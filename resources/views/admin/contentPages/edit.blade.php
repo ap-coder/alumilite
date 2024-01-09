@@ -1,35 +1,35 @@
 @extends('layouts.admin')
 @section('content')
 
-<style>
-  .media-images .removeImage {
-    position: absolute;
-    right: 10px;
-    color: red;
-}
-body.loading .overlaymodal {
-    overflow: hidden;
-}
+  <style>
+    .media-images .removeImage {
+      position: absolute;
+      right: 10px;
+      color: red;
+    }
+    body.loading .overlaymodal {
+        overflow: hidden;
+    }
 
 
-body.loading .overlaymodal {
-    display: block;
-}
-.overlaymodal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba( 255, 255, 255, .8) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
-}
-</style>
+    body.loading .overlaymodal {
+      display: block;
+    }
+    .overlaymodal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba( 255, 255, 255, .8) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
+    }
+  </style>
 
-<div class="card">
+  <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.contentPage.title_singular') }}
+        {{ trans('global.edit') }} {{ trans('cruds.contentPage.title_singular') }}<a class="btn btn-success float-right" href="">SEO</a>
     </div>
 
     <div class="card-body">
@@ -40,7 +40,7 @@ body.loading .overlaymodal {
             <div class="row">
                 <div class="col-7 col-sm-9">
                   @include('admin.contentPages.partials.title')
-	                @include('admin.contentPages.partials.path')
+                  @include('admin.contentPages.partials.path')
                     <div class="tab-content" id="vert-tabs-right-tabContent">
                         <div class="tab-pane fade show active" id="vert-tabs-right-general" role="tabpanel" aria-labelledby="vert-tabs-right-general-tab">
                             @include('admin.contentPages.partials.general')
@@ -54,7 +54,7 @@ body.loading .overlaymodal {
                         <div class="tab-pane fade" id="vert-tabs-right-seo"      role="tabpanel" aria-labelledby="vert-tabs-right-seo-tab">
                             @include('admin.contentPages.partials.seo')
                         </div>
-  
+
                         <div class="tab-pane fade" id="vert-tabs-right-settings" role="tabpanel" aria-labelledby="vert-tabs-right-settings-tab">
                           @include('admin.contentPages.partials.settings')
                       </div>
@@ -62,7 +62,7 @@ body.loading .overlaymodal {
                         <div class="tab-pane fade" id="vert-tabs-right-content-section" role="tabpanel" aria-labelledby="vert-tabs-right-content-section-tab">
                           @includeIf('admin.contentPages.partials.content-section', ['contentSections' => $contentPage->pagesContentSections])
                         </div>
-  
+
                         <div class="tab-pane fade" id="vert-tabs-right-masthead" role="tabpanel" aria-labelledby="vert-tabs-right-masthead-tab">
                           @include('admin.contentPages.partials.masthead')
                         </div>
@@ -104,12 +104,12 @@ body.loading .overlaymodal {
           </div>
         </form>
     </div>
-</div>
+  </div>
 
 
 
-<!-- The add Content Section Modal -->
-<div class="modal" id="addContentSectionModal">
+  <!-- The add Content Section Modal -->
+  <div class="modal" id="addContentSectionModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
   
@@ -118,10 +118,10 @@ body.loading .overlaymodal {
   </div>
   
 
-<!-- The add Page Section Modal -->
-<div class="modal" id="addPageSectionModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <!-- The add Page Section Modal -->
+  <div class="modal" id="addPageSectionModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
 
 
             <form>
@@ -336,114 +336,114 @@ body.loading .overlaymodal {
 
 @section('scripts')
 <script>
-        $(document.body).on('click', '.removeImage', function() {
-            $this = $(this);
-            $body = $("body");
-            
-            if (confirm('Are you sure you want to remove?')) {
-              $body.addClass("loading");
-                var name = $this.attr('mid');
-                var mtype = $this.attr('mtype');
-                var _token = $('input[name="_token"]').val();
-                $.ajax({
-                    url: '{{ url("/admin/removeMedia") }}',
-                    method: "POST",
-                    data: { name: name, type: mtype, _token: _token },
-                    success: function(response) {
-                        $this.parents('.col-sm-3').remove();
-                        $body.removeClass("loading");
-                    }
-                })
-            }
-        });
+  $(document.body).on('click', '.removeImage', function() {
+    $this = $(this);
+    $body = $("body");
+    
+    if (confirm('Are you sure you want to remove?')) {
+      $body.addClass("loading");
+      var name = $this.attr('mid');
+      var mtype = $this.attr('mtype');
+      var _token = $('input[name="_token"]').val();
+      $.ajax({
+        url: '{{ url("/admin/removeMedia") }}',
+        method: "POST",
+        data: { name: name, type: mtype, _token: _token },
+        success: function(response) {
+          $this.parents('.col-sm-3').remove();
+          $body.removeClass("loading");
+        }
+      })
+    }
+  });
 
-    $('#path-segments').change(function(){
+  $('#path-segments').change(function(){
     var segments = $(this).val();
-      if(segments==0){
-        $('.path').hide();
-        $('.path2').hide();
-        $('.path3').hide();
-        $('.path4').hide();
-      }else if(segments==1){
-        $('.path').show();
-        $('.path2').hide();
-        $('.path3').hide();
-        $('.path4').hide();
-      }else if(segments==2){
-        $('.path').show();
-        $('.path2').show();
-        $('.path3').hide();
-        $('.path4').hide();
-      }else if(segments==3){
-        $('.path').show();
-        $('.path2').show();
-        $('.path3').show();
-        $('.path4').hide();
-      }else if(segments==4){
-        $('.path').show();
-        $('.path2').show();
-        $('.path3').show();
-        $('.path4').show();
-      }
+    if(segments==0){
+      $('.path').hide();
+      $('.path2').hide();
+      $('.path3').hide();
+      $('.path4').hide();
+    }else if(segments==1){
+      $('.path').show();
+      $('.path2').hide();
+      $('.path3').hide();
+      $('.path4').hide();
+    }else if(segments==2){
+      $('.path').show();
+      $('.path2').show();
+      $('.path3').hide();
+      $('.path4').hide();
+    }else if(segments==3){
+      $('.path').show();
+      $('.path2').show();
+      $('.path3').show();
+      $('.path4').hide();
+    }else if(segments==4){
+      $('.path').show();
+      $('.path2').show();
+      $('.path3').show();
+      $('.path4').show();
+    }
   }).change();
 
-    $('.changeview').click(function(){
-      var type=$(this).attr('vtype');
+  $('.changeview').click(function(){
+    var type=$(this).attr('vtype');
 
-      if(type=='list'){
-        $('#list').addClass('btn-dark active');
-        $('#grid').removeClass('btn-dark active');
-      }else{
-        $('#list').removeClass('btn-dark active');
-        $('#grid').addClass('btn-dark active');
-      }
-    });
-
-    $('.copyToClipboard').click(function () {
-        var key = $(this).attr('key');
-        let str = $(this).attr('link');
-        const el = document.createElement('textarea');
-        el.value = str;
-        el.setAttribute('readonly', '');
-        el.style.position = 'absolute';
-        el.style.left = '-9999px';
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-
-        var tooltip = document.getElementById("myTooltip"+key);
-        tooltip.innerHTML = "Copied";
-    })
-
-    function outFunc(key) {
-      var tooltip = document.getElementById("myTooltip"+key);
-      tooltip.innerHTML = "Copy to clipboard";
+    if(type=='list'){
+      $('#list').addClass('btn-dark active');
+      $('#grid').removeClass('btn-dark active');
+    }else{
+      $('#list').removeClass('btn-dark active');
+      $('#grid').addClass('btn-dark active');
     }
+  });
 
-    $('.copyToClipboardFile').click(function () {
-        var key = $(this).attr('key');
-        let str = $(this).attr('link');
-        const el = document.createElement('textarea');
-        el.value = str;
-        el.setAttribute('readonly', '');
-        el.style.position = 'absolute';
-        el.style.left = '-9999px';
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
+  $('.copyToClipboard').click(function () {
+    var key = $(this).attr('key');
+    let str = $(this).attr('link');
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
 
-        var tooltip = document.getElementById("myTooltipfile"+key);
-        tooltip.innerHTML = "Copied";
-    })
+    var tooltip = document.getElementById("myTooltip"+key);
+    tooltip.innerHTML = "Copied";
+  })
 
-    function outFuncFile(key) {
-      var tooltip = document.getElementById("myTooltipfile"+key);
-      tooltip.innerHTML = "Copy to clipboard";
-    }
+  function outFunc(key) {
+    var tooltip = document.getElementById("myTooltip"+key);
+    tooltip.innerHTML = "Copy to clipboard";
+  }
 
-    $('#use_textonly_header').click(function(){
+  $('.copyToClipboardFile').click(function () {
+    var key = $(this).attr('key');
+    let str = $(this).attr('link');
+    const el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    var tooltip = document.getElementById("myTooltipfile"+key);
+    tooltip.innerHTML = "Copied";
+  })
+
+  function outFuncFile(key) {
+    var tooltip = document.getElementById("myTooltipfile"+key);
+    tooltip.innerHTML = "Copy to clipboard";
+  }
+
+  $('#use_textonly_header').click(function(){
     if($(this).prop('checked') == true){
       $('#use_textonly_header_box').show();
       $('#use_featured_image_header_box').hide();
@@ -483,11 +483,11 @@ body.loading .overlaymodal {
       $('#use_svg_header_box').hide();
     }
   });
-  
+
   $(document.body).on('change', '.getpreviewimage' ,function(){
-  var type=$(this).attr('stype');
-  var id = $(this).find('option:selected').val();
-  var _token = $('input[name="_token"]').val();
+    var type=$(this).attr('stype');
+    var id = $(this).find('option:selected').val();
+    var _token = $('input[name="_token"]').val();
     $.ajax({
       url:'{{ url("/admin/getpreviewimage") }}',
       method:"POST",
@@ -502,24 +502,24 @@ body.loading .overlaymodal {
 
       }
     })
-});
+  });
 
-$(document.body).on('click', '#saveExistingCrud' ,function(){
+  $(document.body).on('click', '#saveExistingCrud' ,function(){
 
-$this=$(this);
-$loader='<div class="spinner-border text-dark" role="status">'+
+    $this=$(this);
+    $loader='<div class="spinner-border text-dark" role="status">'+
     '<span class="sr-only">Loading...</span>'+
     '</div>';
-$this.html($loader);
+    $this.html($loader);
 
-var pid=$('#page_id').val();
+    var pid=$('#page_id').val();
 // var pageSections=$("#page_sections").val();
-var existing_crud=$("#existing_crud").val();
+    var existing_crud=$("#existing_crud").val();
 
 // var page_sections = existing_crud.concat(pageSections);
 
 // console.log(existing_crud);
-var _token = $('input[name="_token"]').val();
+    var _token = $('input[name="_token"]').val();
     $.ajax({
       url:'{{ url("/admin/AddExistingPageSection") }}',
       method:"POST",
@@ -530,103 +530,101 @@ var _token = $('input[name="_token"]').val();
         $('#addExistingCrudModal').modal('hide');
         $('#addExistingCrudModal form')[0].reset();
       }
-})
+    })
 
-});
+  });
 
-    $('.saveContent').click(function(){
+  $('.saveContent').click(function(){
     
-      var slug=$('#slug').val();
-      var path=$('#path').val();
+    var slug=$('#slug').val();
+    var path=$('#path').val();
 
-      var is_homepage=$('#is_homepage').prop("checked");
-      var bType=$(this).attr('bType');
+    var is_homepage=$('#is_homepage').prop("checked");
+    var bType=$(this).attr('bType');
 
-      if (slug=='' && is_homepage==false) {
-        $('#errorMsg').text('Please enter slug if it is not homepage');
-      }
-      // else if (path=='' && is_homepage==false) {
-      //   $('#errorMsg').text('Please enter path if it is not homepage');
-      // }
-      else {
-        
-        $('#errorMsg').text('');
-
-        $this=$(this);
-        $loader='<div class="spinner-border text-dark" role="status">'+
-                  '<span class="sr-only">Loading...</span>'+
-                  '</div>';
-        $this.html($loader);
-        var formData = $('#submitPostForm').serializeArray();
-
-        formData.push({name: 'preview', value: 1});
-
-        $.ajax({
-            type: 'POST',
-            url: '{{ route("admin.content-pages.update", [$contentPage->id]) }}',
-            dataType: 'json',
-            data: formData,
-            success: function(resultData) {
-
-              if (resultData=='homepage') {
-                var url = "{{ url('') }}";
-              } else {
-                var url = "{{ url('') }}"+'/'+resultData;
-              }
-
-              if (bType=='save') {
-                $this.html("{{ trans('global.save') }}");
-              }else{
-                $this.html("{{ trans('global.save_and_preview') }}");
-                window.open(url, '_blank');
-              }
-
-            }
-        });
-
-      }
-    
-    
-    });
-    </script>
-
-
-
-<script>
-    $(document.body).on('blur', '#PageSectionTxt' ,function(){
-              var newSrc = $('#PageSectionTxt').val();
-              $('#dummy').html($('#PageSectionTxt').val());
-              // console.log(newSrc);
-              // $('#section').find('img').attr('src','hello tapas');
-              $('#dummy').find("img").each(function(k, el) {
-                  var src=$(el).attr("src");
-                  var result = src.split('/');
-                  var lastEl = result[result.length-1];
-                  // console.log(lastEl);
-                  console.log('result',result);
-                  var newSrc = $(el).attr("src").replace(src, "{{ asset('site/img/landing-pages') }}/"+lastEl);
-                  $(el).attr("src", newSrc);
-              });
-              $('#PageSectionTxt').val($('#dummy').html());
-          });
-      </script>
-
+    if (slug=='' && is_homepage==false) {
+      $('#errorMsg').text('Please enter slug if it is not homepage');
+    }
+    // else if (path=='' && is_homepage==false) {
+    //   $('#errorMsg').text('Please enter path if it is not homepage');
+    // }
+    else {
       
+      $('#errorMsg').text('');
+
+      $this=$(this);
+      $loader='<div class="spinner-border text-dark" role="status">'+
+      '<span class="sr-only">Loading...</span>'+
+      '</div>';
+      $this.html($loader);
+      var formData = $('#submitPostForm').serializeArray();
+
+      formData.push({name: 'preview', value: 1});
+
+      $.ajax({
+        type: 'POST',
+        url: '{{ route("admin.content-pages.update", [$contentPage->id]) }}',
+        dataType: 'json',
+        data: formData,
+        success: function(resultData) {
+
+          if (resultData=='homepage') {
+            var url = "{{ url('') }}";
+          } else {
+            var url = "{{ url('') }}"+'/'+resultData;
+          }
+
+          if (bType=='save') {
+            $this.html("{{ trans('global.save') }}");
+          }else{
+            $this.html("{{ trans('global.save_and_preview') }}");
+            window.open(url, '_blank');
+          }
+
+        }
+      });
+
+    }
+    
+    
+  });
+</script>
+
 <script>
-  
-$(document.body).on('click', '.clearAllExisting' ,function(){
-  
-  if (confirm('Are you sure you want to clear all existing page sections!')) {
-    $this=$(this);
-    $loader='<div class="spinner-border text-dark" role="status">'+
+  $(document.body).on('blur', '#PageSectionTxt' ,function(){
+    var newSrc = $('#PageSectionTxt').val();
+    $('#dummy').html($('#PageSectionTxt').val());
+// console.log(newSrc);
+// $('#section').find('img').attr('src','hello tapas');
+    $('#dummy').find("img").each(function(k, el) {
+      var src=$(el).attr("src");
+      var result = src.split('/');
+      var lastEl = result[result.length-1];
+    // console.log(lastEl);
+      console.log('result',result);
+      var newSrc = $(el).attr("src").replace(src, "{{ asset('site/img/landing-pages') }}/"+lastEl);
+      $(el).attr("src", newSrc);
+    });
+    $('#PageSectionTxt').val($('#dummy').html());
+  });
+</script>
+
+
+<script>
+
+  $(document.body).on('click', '.clearAllExisting' ,function(){
+
+    if (confirm('Are you sure you want to clear all existing page sections!')) {
+      $this=$(this);
+      $loader='<div class="spinner-border text-dark" role="status">'+
       '<span class="sr-only">Loading...</span>'+
       '</div>';
       $this.html($loader);
 
       var pid=$('#page_id').val();
 
-      
-    var _token = $('input[name="_token"]').val();
+
+      var _token = $('input[name="_token"]').val();
       $.ajax({
         url:'{{ url("/admin/clearAllExistingPageSection") }}',
         method:"POST",
@@ -638,302 +636,302 @@ $(document.body).on('click', '.clearAllExisting' ,function(){
           $('#addExistingPageSectionModal form')[0].reset();
         }
       })
-  }
+    }
 
-});
+  });
 
-    $(document.body).on('click', '#saveExistingPageSection' ,function(){
-    
+  $(document.body).on('click', '#saveExistingPageSection' ,function(){
+
     $this=$(this);
     $loader='<div class="spinner-border text-dark" role="status">'+
-        '<span class="sr-only">Loading...</span>'+
-        '</div>';
+    '<span class="sr-only">Loading...</span>'+
+    '</div>';
     $this.html($loader);
-    
+
     var pid=$('#page_id').val();
     var pageSections=$('#page_sections').val();
-    
+
     var _token = $('input[name="_token"]').val();
-        $.ajax({
-          url:'{{ url("/admin/AddExistingPageSection") }}',
-          method:"POST",
-          data: {pages:pid,page_sections:pageSections,_token:_token},
-          success:function(response) {
-            $this.html('Save');
-            $('#pageSectionBody').html(response);
-            $('#addExistingPageSectionModal').modal('hide');
-            $('#addExistingPageSectionModal form')[0].reset();
-          }
-        })
-    
-    });
-    
+    $.ajax({
+      url:'{{ url("/admin/AddExistingPageSection") }}',
+      method:"POST",
+      data: {pages:pid,page_sections:pageSections,_token:_token},
+      success:function(response) {
+        $this.html('Save');
+        $('#pageSectionBody').html(response);
+        $('#addExistingPageSectionModal').modal('hide');
+        $('#addExistingPageSectionModal form')[0].reset();
+      }
+    })
 
-    $(document.body).on('click', '.DeletePageSectionBtn' ,function(){
+  });
+
+
+  $(document.body).on('click', '.DeletePageSectionBtn' ,function(){
     $this=$(this);
-      var id=$(this).attr('myid');
-      var contentPageId=$('#page_id').val();
-        var _token = $('input[name="_token"]').val();
-        if (confirm('{{ trans('global.areYouSure') }}')) {
-            $.ajax({
-              url:"{{ route('admin.pagesections.remove_section') }}",
-              method:"POST",
-              data: {
-                id:id,_token:_token,contentPageId: contentPageId
-              },
-              success:function(response) {
-                $this.closest('tr').remove();
-              }
-            })
+    var id=$(this).attr('myid');
+    var contentPageId=$('#page_id').val();
+    var _token = $('input[name="_token"]').val();
+    if (confirm('{{ trans('global.areYouSure') }}')) {
+      $.ajax({
+        url:"{{ route('admin.pagesections.remove_section') }}",
+        method:"POST",
+        data: {
+          id:id,_token:_token,contentPageId: contentPageId
+        },
+        success:function(response) {
+          $this.closest('tr').remove();
         }
-    });
-      
-      // $(document.body).on('click', '.addPageSection' ,function(){
-      
-      // var _token = $('input[name="_token"]').val();
-      //       $.ajax({
-      //         url:'{{ url("/admin/GetPageSectionModalForm") }}',
-      //         method:"POST",
-      //         data: {_token:_token},
-      //         success:function(response) {
-      //           $('#addPageSectionModal .modal-content').html(response);
-      //           $('#addPageSectionModal').modal('show');
-      //         }
-      //       })
-      // });
-      
-      // $(document.body).on('click', '.editPageSection' ,function(){
-      
-      // var id=$(this).attr('myid');
-      // var _token = $('input[name="_token"]').val();
-      //         $.ajax({
-      //           url:'{{ url("/admin/GetPageSectionModalForm") }}',
-      //           method:"POST",
-      //           data: {id:id,_token:_token},
-      //           success:function(response) {
-      //             $('#addPageSectionModal .modal-content').html(response);
-      //             $('#addPageSectionModal').modal('show');
-      //           }
-      //         })
-      // });
-      
-        
-            $(document.body).on('click', '#savePageSection' ,function(){
-              $this=$(this);
-      $loader='<div class="spinner-border text-dark" role="status">'+
-                  '<span class="sr-only">Loading...</span>'+
-                  '</div>';
-          $this.html($loader);
-          
-      
-        var page_section_id=$(this).attr('pid');
-        var pid=$('#page_id').val();
-        var nickname=$('#nickname'+page_section_id).val();
-        var PageSectionTxt=$('#PageSectionTxt'+page_section_id).val();
-        var ps_cdn_css=$('#ps_cdn_css'+page_section_id).val();
-        var ps_cdn_js=$('#ps_cdn_js'+page_section_id).val();
-        var ps_js=$('#ps_js'+page_section_id).val();
-        var ps_css=$('#ps_css'+page_section_id).val();
-        var published=0;
-        if ($('#published'+page_section_id).prop("checked"))
-        {
-          var published=1;
-        }
-        var _token = $('input[name="_token"]').val();
+      })
+    }
+  });
 
-        var formdata={
-          id:page_section_id,
-          contentPages:pid,
-          section:PageSectionTxt,
-          ps_cdn_css:ps_cdn_css,
-          ps_cdn_js:ps_cdn_js,
-          ps_js:ps_js,
-          ps_css:ps_css,
-          section_nickname:nickname,
-          published:published,
-          _token:_token
-        };
+// $(document.body).on('click', '.addPageSection' ,function(){
 
-            if(nickname){
-              
-                  $.ajax({
-                    url:'{{ url("/admin/AddPageSection") }}',
-                    method:"POST",
-                    data: formdata,
-                    success:function(response) {
-                      $this.html('Save');
-                      $('#pageSectionBody').html(response);
-                      $('#editPageSectionModal'+page_section_id).modal('hide');
-                      location.reload();
-                    }
-                  })
-            }
-          });
-      
-          $(document.body).on('click', '#addsavePageSection' ,function(){
-          $this=$(this);
-          $loader='<div class="spinner-border text-dark" role="status">'+
-                  '<span class="sr-only">Loading...</span>'+
-                  '</div>';
-          $this.html($loader);
-      
-        var pid=$('#page_id').val();
-        var nickname=$('#addnickname').val();
-        var published=0;
-        if ($('#pageSectionpublished').prop("checked"))
-        {
-          var published=1;
-        }
-        var formdata=$('#addPageSectionModal form').serialize()+'&contentPages='+pid+'&published='+published;
-  
-        if(nickname){
-          var _token = $('input[name="_token"]').val();
-              $.ajax({
-                url:'{{ url("/admin/AddPageSection") }}',
-                method:"POST",
-                data: formdata,
-                success:function(response) {
-                  $this.html('Save');
-                  $('#pageSectionBody').html(response);
-                  $('#addPageSectionModal').modal('hide');
-                  $('#addPageSectionModal form')[0].reset();
-                  location.reload();
-                }
-              })
-        }
-      });
+// var _token = $('input[name="_token"]').val();
+//       $.ajax({
+//         url:'{{ url("/admin/GetPageSectionModalForm") }}',
+//         method:"POST",
+//         data: {_token:_token},
+//         success:function(response) {
+//           $('#addPageSectionModal .modal-content').html(response);
+//           $('#addPageSectionModal').modal('show');
+//         }
+//       })
+// });
 
-      </script>
-    
-  
+// $(document.body).on('click', '.editPageSection' ,function(){
+
+// var id=$(this).attr('myid');
+// var _token = $('input[name="_token"]').val();
+//         $.ajax({
+//           url:'{{ url("/admin/GetPageSectionModalForm") }}',
+//           method:"POST",
+//           data: {id:id,_token:_token},
+//           success:function(response) {
+//             $('#addPageSectionModal .modal-content').html(response);
+//             $('#addPageSectionModal').modal('show');
+//           }
+//         })
+// });
+
+
+  $(document.body).on('click', '#savePageSection' ,function(){
+    $this=$(this);
+    $loader='<div class="spinner-border text-dark" role="status">'+
+    '<span class="sr-only">Loading...</span>'+
+    '</div>';
+    $this.html($loader);
+
+
+    var page_section_id=$(this).attr('pid');
+    var pid=$('#page_id').val();
+    var nickname=$('#nickname'+page_section_id).val();
+    var PageSectionTxt=$('#PageSectionTxt'+page_section_id).val();
+    var ps_cdn_css=$('#ps_cdn_css'+page_section_id).val();
+    var ps_cdn_js=$('#ps_cdn_js'+page_section_id).val();
+    var ps_js=$('#ps_js'+page_section_id).val();
+    var ps_css=$('#ps_css'+page_section_id).val();
+    var published=0;
+    if ($('#published'+page_section_id).prop("checked"))
+    {
+      var published=1;
+    }
+    var _token = $('input[name="_token"]').val();
+
+    var formdata={
+      id:page_section_id,
+      contentPages:pid,
+      section:PageSectionTxt,
+      ps_cdn_css:ps_cdn_css,
+      ps_cdn_js:ps_cdn_js,
+      ps_js:ps_js,
+      ps_css:ps_css,
+      section_nickname:nickname,
+      published:published,
+      _token:_token
+    };
+
+    if(nickname){
+      
+      $.ajax({
+        url:'{{ url("/admin/AddPageSection") }}',
+        method:"POST",
+        data: formdata,
+        success:function(response) {
+          $this.html('Save');
+          $('#pageSectionBody').html(response);
+          $('#editPageSectionModal'+page_section_id).modal('hide');
+          location.reload();
+        }
+      })
+    }
+  });
+
+  $(document.body).on('click', '#addsavePageSection' ,function(){
+    $this=$(this);
+    $loader='<div class="spinner-border text-dark" role="status">'+
+    '<span class="sr-only">Loading...</span>'+
+    '</div>';
+    $this.html($loader);
+
+    var pid=$('#page_id').val();
+    var nickname=$('#addnickname').val();
+    var published=0;
+    if ($('#pageSectionpublished').prop("checked"))
+    {
+      var published=1;
+    }
+    var formdata=$('#addPageSectionModal form').serialize()+'&contentPages='+pid+'&published='+published;
+
+    if(nickname){
+      var _token = $('input[name="_token"]').val();
+      $.ajax({
+        url:'{{ url("/admin/AddPageSection") }}',
+        method:"POST",
+        data: formdata,
+        success:function(response) {
+          $this.html('Save');
+          $('#pageSectionBody').html(response);
+          $('#addPageSectionModal').modal('hide');
+          $('#addPageSectionModal form')[0].reset();
+          location.reload();
+        }
+      })
+    }
+  });
+
+</script>
+
+
 <script>
 
-    updateIndexPageSection = function(e, ui) {
-            $('td.index', ui.item.parent()).each(function (i) {
-                $(this).html(i + 1);
-            });
-        };
-        $('.PageSectionSort tbody').sortable({
-          cursor: 'move',
-          axis: 'y',
-          stop: updateIndexPageSection,
-          update: function(e, ui) {
-            $(this).sortable('refresh');
-            var params = {};
-            params = $('.PageSectionOrders').serializeArray();
-            var pid=$('#contentPage_id').val();
-            //console.log('params',params);
-            var _token = $('input[name="_token"]').val();
-              $.ajax({
-                url:'{{ url("/admin/ChangePageSectionOrder") }}',
-                method:"POST",
-                data: {
-                    params: params,pid:pid,_token:_token
-                },
-                success:function(response) {
-    
-                }
-              })
-            }
-        });
-  
-    updateIndexContentSection = function(e, ui) {
-            $('td.index', ui.item.parent()).each(function (i) {
-                $(this).html(i + 1);
-            });
-        };
-        $('.ContentSectionSort tbody').sortable({
-          cursor: 'move',
-          axis: 'y',
-          stop: updateIndexContentSection,
-          update: function(e, ui) {
-            $(this).sortable('refresh');
-            var params = {};
-            params = $('.ContentSectionOrders').serializeArray();
-            var pid=$('#contentPage_id').val();
-            //console.log('params',params);
-            var _token = $('input[name="_token"]').val();
-              $.ajax({
-                url:'{{ url("/admin/ChangePageContentSectionOrder") }}',
-                method:"POST",
-                data: {
-                    params: params,pid:pid,_token:_token
-                },
-                success:function(response) {
-    
-                }
-              })
-            }
-        });
-    
-    </script>
-  
-  <script>
-      $(document).ready(function () {
+  updateIndexPageSection = function(e, ui) {
+    $('td.index', ui.item.parent()).each(function (i) {
+      $(this).html(i + 1);
+    });
+  };
+  $('.PageSectionSort tbody').sortable({
+    cursor: 'move',
+    axis: 'y',
+    stop: updateIndexPageSection,
+    update: function(e, ui) {
+      $(this).sortable('refresh');
+      var params = {};
+      params = $('.PageSectionOrders').serializeArray();
+      var pid=$('#contentPage_id').val();
+  //console.log('params',params);
+      var _token = $('input[name="_token"]').val();
+      $.ajax({
+        url:'{{ url("/admin/ChangePageSectionOrder") }}',
+        method:"POST",
+        data: {
+          params: params,pid:pid,_token:_token
+        },
+        success:function(response) {
+
+        }
+      })
+    }
+  });
+
+  updateIndexContentSection = function(e, ui) {
+    $('td.index', ui.item.parent()).each(function (i) {
+      $(this).html(i + 1);
+    });
+  };
+  $('.ContentSectionSort tbody').sortable({
+    cursor: 'move',
+    axis: 'y',
+    stop: updateIndexContentSection,
+    update: function(e, ui) {
+      $(this).sortable('refresh');
+      var params = {};
+      params = $('.ContentSectionOrders').serializeArray();
+      var pid=$('#contentPage_id').val();
+  //console.log('params',params);
+      var _token = $('input[name="_token"]').val();
+      $.ajax({
+        url:'{{ url("/admin/ChangePageContentSectionOrder") }}',
+        method:"POST",
+        data: {
+          params: params,pid:pid,_token:_token
+        },
+        success:function(response) {
+
+        }
+      })
+    }
+  });
+
+</script>
+
+<script>
+  $(document).ready(function () {
     function SimpleUploadAdapter(editor) {
       editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
         return {
           upload: function() {
             return loader.file
-              .then(function (file) {
-                return new Promise(function(resolve, reject) {
-                  // Init request
-                  var xhr = new XMLHttpRequest();
-                  xhr.open('POST', '{{ route('admin.content-pages.storeCKEditorImages') }}', true);
-                  xhr.setRequestHeader('x-csrf-token', window._token);
-                  xhr.setRequestHeader('Accept', 'application/json');
-                  xhr.responseType = 'json';
-  
-                  // Init listeners
-                  var genericErrorText = `Couldn't upload file: ${ file.name }.`;
-                  xhr.addEventListener('error', function() { reject(genericErrorText) });
-                  xhr.addEventListener('abort', function() { reject() });
-                  xhr.addEventListener('load', function() {
-                    var response = xhr.response;
-  
-                    if (!response || xhr.status !== 201) {
-                      return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
-                    }
-  
-                    $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
-  
-                    resolve({ default: response.url });
-                  });
-  
-                  if (xhr.upload) {
-                    xhr.upload.addEventListener('progress', function(e) {
-                      if (e.lengthComputable) {
-                        loader.uploadTotal = e.total;
-                        loader.uploaded = e.loaded;
-                      }
-                    });
+            .then(function (file) {
+              return new Promise(function(resolve, reject) {
+      
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '{{ route('admin.content-pages.storeCKEditorImages') }}', true);
+                xhr.setRequestHeader('x-csrf-token', window._token);
+                xhr.setRequestHeader('Accept', 'application/json');
+                xhr.responseType = 'json';
+
+        
+                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
+                xhr.addEventListener('error', function() { reject(genericErrorText) });
+                xhr.addEventListener('abort', function() { reject() });
+                xhr.addEventListener('load', function() {
+                  var response = xhr.response;
+
+                  if (!response || xhr.status !== 201) {
+                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
                   }
-  
-                  // Send request
-                  var data = new FormData();
-                  data.append('upload', file);
-                  data.append('crud_id', '{{ $contentPage->id ?? 0 }}');
-                  xhr.send(data);
+
+                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
+
+                  resolve({ default: response.url });
                 });
-              })
+
+                if (xhr.upload) {
+                  xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                      loader.uploadTotal = e.total;
+                      loader.uploaded = e.loaded;
+                    }
+                  });
+                }
+
+        // Send request
+                var data = new FormData();
+                data.append('upload', file);
+                data.append('crud_id', '{{ $contentPage->id ?? 0 }}');
+                xhr.send(data);
+              });
+            })
           }
         };
       }
     }
-  
+
     var allEditors = document.querySelectorAll('.ckeditor');
     for (var i = 0; i < allEditors.length; ++i) {
       ClassicEditor.create(
         allEditors[i], {
           extraPlugins: [SimpleUploadAdapter]
         }
-      );
+        );
     }
   });
-  </script>
-  <script>
-    Dropzone.options.photosDropzone = {
-    url: '{{ route('admin.content-pages.storeMedia') }}',
+</script>
+<script>
+      Dropzone.options.photosDropzone = {
+        url: '{{ route('admin.content-pages.storeMedia') }}',
     maxFilesize: 10, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 10,
@@ -943,8 +941,8 @@ $(document.body).on('click', '.clearAllExisting' ,function(){
     },
     params: {
       size: 10,
-      // width: 1200,
-      // height: 500
+    // width: 1200,
+    // height: 500
     },
     success: function (file, response) {
       $('form').find('input[name="photos"]').remove()
@@ -958,37 +956,37 @@ $(document.body).on('click', '.clearAllExisting' ,function(){
       }
     },
     init: function () {
-  @if(isset($contentPage) && $contentPage->photos)
+      @if(isset($contentPage) && $contentPage->photos)
       var file = {!! json_encode($contentPage->photos) !!}
-          this.options.addedfile.call(this, file)
+      this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview)
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="photos[]" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
-  @endif
+      @endif
     },
     error: function (file, response) {
-        if ($.type(response) === 'string') {
-            var message = response //dropzone sends it's own error messages in string
-        } else {
-            var message = response.errors.file
-        }
-        file.previewElement.classList.add('dz-error')
-        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-        _results = []
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            node = _ref[_i]
-            _results.push(node.textContent = message)
-        }
-  
-        return _results
+      if ($.type(response) === 'string') {
+      var message = response //dropzone sends it's own error messages in string
+    } else {
+      var message = response.errors.file
     }
-  }
-  </script>
-  <script>
-    var uploadedAttachmentsMap = {}
-  Dropzone.options.attachmentsDropzone = {
-    url: '{{ route('admin.content-pages.storeMedia') }}',
+    file.previewElement.classList.add('dz-error')
+    _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+    _results = []
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      node = _ref[_i]
+      _results.push(node.textContent = message)
+    }
+
+    return _results
+    }
+    }
+</script>
+<script>
+      var uploadedAttachmentsMap = {}
+      Dropzone.options.attachmentsDropzone = {
+        url: '{{ route('admin.content-pages.storeMedia') }}',
     maxFilesize: 10, // MB
     addRemoveLinks: true,
     headers: {
@@ -1012,90 +1010,90 @@ $(document.body).on('click', '.clearAllExisting' ,function(){
       $('form').find('input[name="attachments[]"][value="' + name + '"]').remove()
     },
     init: function () {
-  @if(isset($contentPage) && $contentPage->attachments)
-          var files =
-            {!! json_encode($contentPage->attachments) !!}
-              for (var i in files) {
-              var file = files[i]
-              this.options.addedfile.call(this, file)
-              file.previewElement.classList.add('dz-complete')
-              $('form').append('<input type="hidden" name="attachments[]" value="' + file.file_name + '">')
-            }
-  @endif
-    },
-     error: function (file, response) {
-         if ($.type(response) === 'string') {
-             var message = response //dropzone sends it's own error messages in string
-         } else {
-             var message = response.errors.file
-         }
-         file.previewElement.classList.add('dz-error')
-         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-         _results = []
-         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-             node = _ref[_i]
-             _results.push(node.textContent = message)
-         }
-  
-         return _results
-     }
-  }
-  </script>
-  <script>
-      Dropzone.options.featuredImageDropzone = {
-      url: '{{ route('admin.content-pages.storeMedia') }}',
-      maxFilesize: 2, // MB
-      acceptedFiles: '.jpeg,.jpg,.png,.gif',
-      maxFiles: 1,
-      addRemoveLinks: true,
-      headers: {
-        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-      },
-      params: {
-        size: 2,
-        // width: 4096,
-        // height: 4096
-      },
-      success: function (file, response) {
-        $('form').find('input[name="featured_image"]').remove()
-        $('form').append('<input type="hidden" name="featured_image" value="' + response.name + '">')
-      },
-      removedfile: function (file) {
-        file.previewElement.remove()
-        if (file.status !== 'error') {
-          $('form').find('input[name="featured_image"]').remove()
-          this.options.maxFiles = this.options.maxFiles + 1
-        }
-      },
-      init: function () {
-  @if(isset($contentPage) && $contentPage->featured_image)
-        var file = {!! json_encode($contentPage->featured_image) !!}
-  
-        console.log('file',file);
-            this.options.addedfile.call(this, file)
-        this.options.thumbnail.call(this, file, file.preview)
+      @if(isset($contentPage) && $contentPage->attachments)
+      var files =
+      {!! json_encode($contentPage->attachments) !!}
+      for (var i in files) {
+        var file = files[i]
+        this.options.addedfile.call(this, file)
         file.previewElement.classList.add('dz-complete')
-        $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
-        this.options.maxFiles = this.options.maxFiles - 1
-  @endif
-      },
-      error: function (file, response) {
-          if ($.type(response) === 'string') {
-              var message = response //dropzone sends it's own error messages in string
-          } else {
-              var message = response.errors.file
-          }
-          file.previewElement.classList.add('dz-error')
-          _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-          _results = []
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-              node = _ref[_i]
-              _results.push(node.textContent = message)
-          }
-  
-          return _results
+        $('form').append('<input type="hidden" name="attachments[]" value="' + file.file_name + '">')
       }
-  }
-  </script>
+      @endif
+    },
+    error: function (file, response) {
+      if ($.type(response) === 'string') {
+       var message = response //dropzone sends it's own error messages in string
+     } else {
+       var message = response.errors.file
+     }
+     file.previewElement.classList.add('dz-error')
+     _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+     _results = []
+     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+       node = _ref[_i]
+       _results.push(node.textContent = message)
+     }
+
+     return _results
+    }
+    }
+</script>
+<script>
+      Dropzone.options.featuredImageDropzone = {
+        url: '{{ route('admin.content-pages.storeMedia') }}',
+    maxFilesize: 2, // MB
+    acceptedFiles: '.jpeg,.jpg,.png,.gif',
+    maxFiles: 1,
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2,
+    // width: 4096,
+    // height: 4096
+    },
+    success: function (file, response) {
+      $('form').find('input[name="featured_image"]').remove()
+      $('form').append('<input type="hidden" name="featured_image" value="' + response.name + '">')
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      if (file.status !== 'error') {
+        $('form').find('input[name="featured_image"]').remove()
+        this.options.maxFiles = this.options.maxFiles + 1
+      }
+    },
+    init: function () {
+      @if(isset($contentPage) && $contentPage->featured_image)
+      var file = {!! json_encode($contentPage->featured_image) !!}
+
+      console.log('file',file);
+      this.options.addedfile.call(this, file)
+      this.options.thumbnail.call(this, file, file.preview)
+      file.previewElement.classList.add('dz-complete')
+      $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
+      this.options.maxFiles = this.options.maxFiles - 1
+      @endif
+    },
+    error: function (file, response) {
+      if ($.type(response) === 'string') {
+        var message = response //dropzone sends it's own error messages in string
+      } else {
+        var message = response.errors.file
+      }
+      file.previewElement.classList.add('dz-error')
+      _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+      _results = []
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        node = _ref[_i]
+        _results.push(node.textContent = message)
+      }
+
+      return _results
+    }
+    }
+</script>
 
 @endsection

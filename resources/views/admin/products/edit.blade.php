@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.product.title_singular') }}
+        {{ trans('global.edit') }} {{ trans('cruds.product.title_singular') }}<a class="btn btn-success float-right" href="">SEO</a>
     </div>
 
     <div class="card-body">
