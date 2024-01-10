@@ -17,7 +17,8 @@ class Setting extends Model implements HasMedia
     public $table = 'settings';
 
     protected $appends = [
-        'avatar',
+        'header_logo',
+        'footer_logo',
     ];
 
     protected $dates = [
@@ -25,14 +26,18 @@ class Setting extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
-
+        
     protected $fillable = [
         'facebook_link',
         'twitter_link',
         'youtube_link',
+        'instagram_link',
+        'rss_link',
         'short_bio',
         'phone',
         'address',
+        'email',
+        'working_hours',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -49,9 +54,21 @@ class Setting extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function getAvatarAttribute()
+    public function getHeaderLogoAttribute()
     {
-        $file = $this->getMedia('avatar')->last();
+        $file = $this->getMedia('header_logo')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
+    }
+
+    public function getFooterLogoAttribute()
+    {
+        $file = $this->getMedia('footer_logo')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');

@@ -123,6 +123,33 @@ class BuildController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $build->id]);
         }
 
+        $build = Build::findOrFail($build->id);
+
+        $menuName = \Str::of($build->slug)->replace('-', ' ')->title();
+
+        if ($build->photo) {
+            $seo_image_url = $build->photo->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+
+        $build->staticSeo()->create(
+            [
+                'build_id' => $build->id,
+                'canonical' => '1',
+                'content_type' => 'build',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'builds/'.$build->slug,
+                'open_graph_type' => 'website',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'Build',
+                'html_schema_3' => '',
+                'body_schema' => 'Website',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
+
         return redirect()->route('admin.builds.index');
     }
 
@@ -185,6 +212,36 @@ class BuildController extends Controller
                 $build->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('documents');
             }
         }
+
+        $build = Build::findOrFail($build->id);
+
+        $menuName = \Str::of($build->slug)->replace('-', ' ')->title();
+
+        if ($build->photo) {
+            $seo_image_url = $build->photo->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+
+        $build->staticSeo()->updateOrCreate(
+            [
+                'build_id' => $build->id,
+            ],
+            [
+                'build_id' => $build->id,
+                'canonical' => '1',
+                'content_type' => 'build',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'builds/'.$build->slug,
+                'open_graph_type' => 'website',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'Build',
+                'html_schema_3' => '',
+                'body_schema' => 'Website',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
 
         return redirect()->route('admin.builds.index');
     }

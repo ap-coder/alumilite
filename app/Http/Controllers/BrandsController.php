@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BrandModel;
 use App\Models\Brand;
-use App\Models\Slider;
+use App\Models\ProductType;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -47,8 +47,10 @@ class BrandsController extends Controller
         } else {
             $viewcount = 0;
         }
+
+        $productTypes = ProductType::published()->get();
         
-        return view('site.brands.brand', compact('brand', 'viewcount'));
+        return view('site.brands.brand', compact('brand', 'viewcount','productTypes'));
     }
  
 }

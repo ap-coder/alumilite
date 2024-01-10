@@ -39,6 +39,7 @@ class StaticSeo extends Model implements HasMedia
         'post'       => 'Blog Post',
         'build'    => 'Build',
         'product'    => 'Product',
+        'brand'    => 'Brand',
   
     ];
 

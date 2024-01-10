@@ -3,7 +3,10 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.build.title_singular') }}<a class="btn btn-success float-right" href="">SEO</a>
+        {{ trans('global.edit') }} {{ trans('cruds.build.title_singular') }}
+        @if ($build->staticSeo)
+            <a class="btn btn-success float-right" href="{{ route('admin.static-seos.edit', $build->staticSeo->id) }}">SEO</a>
+        @endif
     </div>
 
     <div class="card-body">

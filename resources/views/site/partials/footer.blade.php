@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-4">
                         <div class="text-widget mt-50">
-                            <a href="#">
-                                <img src="{{ asset('assets/images/aalogo-horizontal.png') }}" alt="alumilite armor footer logo">
+                            <a href="{{ url('') }}">
+                                <img src="{{ $setting->footer_logo->getUrl() }}" alt="alumilite armor footer logo">
                             </a>
                             <div class="text-content">
                                 <div class="single-text">
@@ -15,8 +15,10 @@
                                 </div>
                                 <div class="single-text">
                                     <p>
-                                        {{-- <span><a href="mailto:tkatwyk@gmail.com">tkatwyk@gmail.com</a></span> --}}
-                                        <span><a href="tel:4359901012">435-990-1012</a></span>
+                                        @if ($setting->email)
+                                            <span><a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></span>
+                                        @endif
+                                        <span><a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></span>
                                     </p>
                                 </div>
                             </div>
@@ -109,13 +111,25 @@
 
                     <div class="footer-social">
                         <span class="label">Follow us</span>
+                        
                         <ul class="socia">
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                            @if ($setting->twitter_link)
+                                <li><a href="{{ $setting->twitter_link }}" target="_blank"><i class="ion-social-twitter"></i></a></li>
+                            @endif
+                            @if ($setting->facebook_link)
+                                <li><a href="{{ $setting->facebook_link }}" target="_blank"><i class="ion-social-facebook"></i></a></li>
+                            @endif
+                            @if ($setting->rss_link)
+                                <li><a href="{{ $setting->rss_link }}" target="_blank"><i class="ion-social-rss"></i></a></li>
+                            @endif
+                            @if ($setting->instagram_link)
+                                <li><a href="{{ $setting->instagram_link }}" target="_blank"><i class="ion-social-instagram-outline"></i></a></li>
+                            @endif
+                            @if ($setting->youtube_link)
+                                <li><a href="{{ $setting->youtube_link }}" target="_blank"><i class="ion-social-youtube-outline"></i></a></li>
+                            @endif
                         </ul>
+                        
                     </div>
                     
                 </div>
