@@ -33,6 +33,19 @@ class Controller extends BaseController
 	{
         $this->middleware(function ($request, $next) {
             $env = \App::environment();
+
+            $top_sections='';
+            $bottom_sections='';
+
+            $pagename=\Route::current()->getName();
+            if ($pagename=='page.show') {
+                $pageData=ContentPage::where('slug',request()->route('pageslug'))->first();
+                if ($pageData) {
+                    $top_sections=$pageData->pagesFrontContentSections;
+                    $bottom_sections=$pageData->pagesFrontContentSections;
+                }
+            }
+
             $pagename = \Route::current()->getName();
             $staticseo = StaticSeo::get();
             // $posts = Post::all();
@@ -65,6 +78,8 @@ class Controller extends BaseController
             View::share('menuProducts', $menuProducts);
 
             View::share('staticseo', $staticseo);
+            View::share('top_sections', $top_sections);
+            View::share('bottom_sections', $bottom_sections);
             // View::share('posts', $posts);
             // View::share('products', $products);
 
