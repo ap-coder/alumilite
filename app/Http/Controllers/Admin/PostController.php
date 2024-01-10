@@ -121,6 +121,33 @@ class PostController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $post->id]);
         }
 
+        $post = Post::findOrFail($post->id);
+
+        $menuName = \Str::of($post->slug)->replace('-', ' ')->title();
+
+        if ($post->featured_image) {
+            $seo_image_url = $post->featured_image->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+
+        $post->staticSeo()->create(
+            [
+                'post_id' => $post->id,
+                'canonical' => '1',
+                'content_type' => 'post',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'blog/'.$post->slug,
+                'open_graph_type' => 'article',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'CreativeWork',
+                'html_schema_3' => 'Blog',
+                'body_schema' => 'Article',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -152,6 +179,36 @@ class PostController extends Controller
         } elseif ($post->featured_image) {
             $post->featured_image->delete();
         }
+
+        $post = Post::findOrFail($post->id);
+
+        $menuName = \Str::of($post->slug)->replace('-', ' ')->title();
+
+        if ($post->featured_image) {
+            $seo_image_url = $post->featured_image->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+        
+        $post->staticSeo()->updateOrCreate(
+            [
+                'post_id' => $post->id,
+            ],
+            [
+                'post_id' => $post->id,
+                'canonical' => '1',
+                'content_type' => 'post',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'blog/'.$post->slug,
+                'open_graph_type' => 'article',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'CreativeWork',
+                'html_schema_3' => 'Blog',
+                'body_schema' => 'Article',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
 
         return redirect()->route('admin.posts.index');
     }

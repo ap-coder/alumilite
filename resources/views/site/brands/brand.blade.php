@@ -3,8 +3,8 @@
 @section('content')
 
     @include('site.brands.partials.gallery')
-    @includeIf('site.brands.partials.products', ['products' => $products ])
-    @includeIf('site.brands.partials.builds', ['builds' => $builds ])
+    @includeIf('site.brands.partials.products', ['products' => $brand->brandProducts ])
+    @includeIf('site.brands.partials.builds', ['builds' => $brand->brandBuilds ])
 
 @endsection
 

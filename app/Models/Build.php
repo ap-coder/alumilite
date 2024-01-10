@@ -149,4 +149,14 @@ class Build extends Model implements HasMedia, Viewable
     {
         return $this->belongsToMany(ProductCategory::class);
     }
+
+    public function buildStaticSeos()
+    {
+        return $this->hasMany(StaticSeo::class, 'build_id', 'id');
+    }
+
+    public function staticSeo()
+    {
+        return $this->hasOne(StaticSeo::class);
+    }
 }

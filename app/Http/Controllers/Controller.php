@@ -17,6 +17,7 @@ use App\Models\StaticSeo;
 use App\Models\Brand;
 use App\Models\BrandModel;
 use App\Models\Build;
+use App\Models\Setting;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,7 @@ class Controller extends BaseController
             $menuposts = Post::all();
 		    $menuLandingPages = ContentPage::all();
 		    $menuProducts = Product::all();
+		    $setting = Setting::orderBy('id','DESC')->first();
 
             View::share('env', $env);
             View::share('main_menu', $main_menu);
@@ -80,8 +82,8 @@ class Controller extends BaseController
             View::share('staticseo', $staticseo);
             View::share('top_sections', $top_sections);
             View::share('bottom_sections', $bottom_sections);
-            // View::share('posts', $posts);
-            // View::share('products', $products);
+
+            View::share('setting', $setting);
 
             return $next($request);
         });

@@ -106,6 +106,34 @@
                 <span class="help-block">{{ trans('cruds.product.fields.documents_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="brand_id">{{ trans('cruds.product.fields.brand') }}</label>
+                <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
+                    @foreach($brands as $id => $entry)
+                        <option value="{{ $id }}" {{ old('brand_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('brand'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('brand') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.brand_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="brand_model_id">{{ trans('cruds.product.fields.brand_model') }}</label>
+                <select class="form-control select2 {{ $errors->has('brand_model') ? 'is-invalid' : '' }}" name="brand_model_id" id="brand_model_id">
+                    @foreach($brand_models as $id => $entry)
+                        <option value="{{ $id }}" {{ old('brand_model_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('brand_model'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('brand_model') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.brand_model_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>

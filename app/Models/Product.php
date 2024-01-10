@@ -38,6 +38,8 @@ class Product extends Model implements HasMedia
         'price',
         'msrp',
         'product_type_id',
+        'brand_id',
+        'brand_model_id',
         'slug',
         'created_at',
         'updated_at',
@@ -146,13 +148,13 @@ class Product extends Model implements HasMedia
         return self::query()->where('slug', $slug)->first();
     }
 
-    // public function staticSeo()
-    // {
-    //     return $this->hasOne(StaticSeo::class);
-    // }
+    public function staticSeo()
+    {
+        return $this->hasOne(StaticSeo::class);
+    }
 
-    // public function productStaticSeos()
-    // {
-    //     return $this->hasMany(StaticSeo::class, 'product_id', 'id');
-    // }
+    public function productStaticSeos()
+    {
+        return $this->hasMany(StaticSeo::class, 'product_id', 'id');
+    }
 }

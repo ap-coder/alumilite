@@ -121,13 +121,13 @@ class Post extends Model implements HasMedia, Viewable
         return $file;
     }
 
-    // public function postStaticSeos()
-    // {
-    //     return $this->hasMany(StaticSeo::class, 'post_id', 'id');
-    // }
+    public function postStaticSeos()
+    {
+        return $this->hasMany(StaticSeo::class, 'post_id', 'id');
+    }
 
-    // public function staticSeo()
-    // {
-    //     return $this->hasOne(StaticSeo::class);
-    // }
+    public function staticSeo()
+    {
+        return $this->hasOne(StaticSeo::class);
+    }
 }

@@ -119,6 +119,7 @@ class ProductController extends Controller
         $product->tags()->sync($request->input('tags', []));
         $product->technical_specs()->sync($request->input('technical_specs', []));
         $product->features()->sync($request->input('features', []));
+
         if ($request->input('photo', false)) {
             $product->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
         }
@@ -134,6 +135,34 @@ class ProductController extends Controller
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $product->id]);
         }
+
+        $product = Product::findOrFail($product->id);
+
+        $menuName = \Str::of($product->slug)->replace('-', ' ')->title();
+
+        if ($product->photo) {
+            $seo_image_url = $product->photo->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+
+        $product->staticSeo()->create(
+            [
+                'product_id' => $product->id,
+                'canonical' => '1',
+                'content_type' => 'product',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'products/'.$product->slug,
+                'open_graph_type' => 'product',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'Product',
+                'html_schema_3' => '',
+                'body_schema' => 'IndividualProduct',
+                'body_schema_itemid' => '#product',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
 
         return redirect()->route('admin.products.index');
     }
@@ -206,6 +235,37 @@ class ProductController extends Controller
                 $product->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('documents');
             }
         }
+
+        $product = Product::findOrFail($product->id);
+
+        $menuName = \Str::of($product->slug)->replace('-', ' ')->title();
+
+        if ($product->photo) {
+            $seo_image_url = $product->photo->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+
+        $product->staticSeo()->updateOrCreate(
+            [
+                'product_id' => $product->id,
+            ],
+            [
+                'product_id' => $product->id,
+                'canonical' => '1',
+                'content_type' => 'product',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'products/'.$product->slug,
+                'open_graph_type' => 'product',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'Product',
+                'html_schema_3' => '',
+                'body_schema' => 'IndividualProduct',
+                'body_schema_itemid' => '#product',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
 
         return redirect()->route('admin.products.index');
     }

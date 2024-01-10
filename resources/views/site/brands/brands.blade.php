@@ -8,116 +8,25 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="section-title">
-                            <h2 class="title">{{ brand->name }}</h2>
+                            <h2 class="title">Brands</h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=Honda" alt="">
-
-
+                    @foreach ($brands as $brand)
+                        <a href="{{ route('brands.show',$brand->slug) }}" class="col-lg-3 team-col">
+                            <div class="single-team">
+                                <div class="team-image">
+                                    <img src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}">
+                                </div>
+                                <!--  <div class="team-content">
+                                    <h5 class="name"><a href="#">Alexander Arnold</a></h5>
+                                    <span class="designation">Senior Mechanic</span>
+                                </div> -->
                             </div>
-                            <!--  <div class="team-content">
-                                 <h5 class="name"><a href="#">Alexander Arnold</a></h5>
-                                 <span class="designation">Senior Mechanic</span>
-                             </div> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=CanAm" alt="">
-
-
-                            </div>
-                            <!-- <div class="team-content">
-                                <h5 class="name"><a href="#">Fesnandor Silva</a></h5>
-                                <span class="designation">Master Automotive Technician</span>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=Kawasaki" alt="">
-
-
-                            </div>
-                            <!-- <div class="team-content">
-                                <h5 class="name"><a href="#">Sadio Mane</a></h5>
-                                <span class="designation">Mechanic</span>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=Sizuki" alt="">
-
-
-                            </div>
-                            <!-- <div class="team-content">
-                                <h5 class="name"><a href="#">Edison Cavani</a></h5>
-                                <span class="designation">Mechanic</span>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=Yamaha" alt="">
-
-
-                            </div>
-                            <!-- <div class="team-content">
-                                <h5 class="name"><a href="#">Fesnandor Silva</a></h5>
-                                <span class="designation">Senior Mechanic</span>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=" alt="">
-
-
-                            </div>
-                            <!-- <div class="team-content">
-                                <h5 class="name"><a href="#">Fesnandor Silva</a></h5>
-                                <span class="designation">Master Automotive Technician</span>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=" alt="">
-
-
-                            </div>
-                            <!-- <div class="team-content">
-                                <h5 class="name"><a href="#">Fesnandor Silva</a></h5>
-                                <span class="designation">Master Automotive Technician</span>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-lg-3 team-col">
-                        <div class="single-team">
-                            <div class="team-image">
-                                <img src="https://fakeimg.pl/270x300/?text=" alt="">
-
-
-                            </div>
-                            <!-- <div class="team-content">
-                                <h5 class="name"><a href="#">Fesnandor Silva</a></h5>
-                                <span class="designation">Master Automotive Technician</span>
-                            </div> -->
-                        </div>
-                    </div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

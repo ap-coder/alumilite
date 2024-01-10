@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BrandModel;
 use App\Models\Brand;
-use App\Models\Slider;
+use App\Models\ProductType;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -37,15 +37,20 @@ class BrandsController extends Controller
      * @param $slug
      *  @return \Illuminate\View\View
      */
-    public function show(Brand $brand, $slug)
+    public function show(Brand $brand)
     {
-        $brand = Brand::where('slug', $slug)->first();
+        // $brand = Brand::where('slug', $slug)->first();
  
-        views($brand)->record();
+        if (\App::environment()=='production') {
+            views($brand)->record();
+            $viewcount = views($brand)->unique()->remember()->count();
+        } else {
+            $viewcount = 0;
+        }
 
-        $viewcount = views($brand)->unique()->remember()->count();
-
-        return view('site.brands.show', compact('brand', 'viewcount'));
+        $productTypes = ProductType::published()->get();
+        
+        return view('site.brands.brand', compact('brand', 'viewcount','productTypes'));
     }
  
 }

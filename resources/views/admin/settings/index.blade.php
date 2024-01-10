@@ -40,9 +40,9 @@
                         <th>
                             {{ trans('cruds.setting.fields.address') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.setting.fields.avatar') }}
-                        </th>
+                        </th> --}}
                         <th>
                             &nbsp;
                         </th>
@@ -72,13 +72,13 @@
                             <td>
                                 {{ $setting->address ?? '' }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if($setting->avatar)
                                     <a href="{{ $setting->avatar->getUrl() }}" target="_blank" style="display: inline-block">
                                         <img src="{{ $setting->avatar->getUrl('thumb') }}">
                                     </a>
                                 @endif
-                            </td>
+                            </td> --}}
                             <td>
                                 @can('setting_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.settings.show', $setting->id) }}">

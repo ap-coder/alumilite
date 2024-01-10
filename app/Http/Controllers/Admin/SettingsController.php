@@ -37,8 +37,12 @@ class SettingsController extends Controller
     {
         $setting = Setting::create($request->all());
 
-        if ($request->input('avatar', false)) {
-            $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('avatar'))))->toMediaCollection('avatar');
+        if ($request->input('header_logo', false)) {
+            $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('header_logo'))))->toMediaCollection('header_logo');
+        }
+
+        if ($request->input('footer_logo', false)) {
+            $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('footer_logo'))))->toMediaCollection('footer_logo');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -59,15 +63,26 @@ class SettingsController extends Controller
     {
         $setting->update($request->all());
 
-        if ($request->input('avatar', false)) {
-            if (! $setting->avatar || $request->input('avatar') !== $setting->avatar->file_name) {
-                if ($setting->avatar) {
-                    $setting->avatar->delete();
+        if ($request->input('header_logo', false)) {
+            if (! $setting->header_logo || $request->input('header_logo') !== $setting->header_logo->file_name) {
+                if ($setting->header_logo) {
+                    $setting->header_logo->delete();
                 }
-                $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('avatar'))))->toMediaCollection('avatar');
+                $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('header_logo'))))->toMediaCollection('header_logo');
             }
-        } elseif ($setting->avatar) {
-            $setting->avatar->delete();
+        } elseif ($setting->header_logo) {
+            $setting->header_logo->delete();
+        }
+
+        if ($request->input('footer_logo', false)) {
+            if (! $setting->footer_logo || $request->input('footer_logo') !== $setting->footer_logo->file_name) {
+                if ($setting->footer_logo) {
+                    $setting->footer_logo->delete();
+                }
+                $setting->addMedia(storage_path('tmp/uploads/' . basename($request->input('footer_logo'))))->toMediaCollection('footer_logo');
+            }
+        } elseif ($setting->footer_logo) {
+            $setting->footer_logo->delete();
         }
 
         return redirect()->route('admin.settings.index');

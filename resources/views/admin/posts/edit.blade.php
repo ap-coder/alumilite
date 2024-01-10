@@ -3,7 +3,11 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.post.title_singular') }} <a class="btn btn-success float-right" href="">SEO</a>
+        {{ trans('global.edit') }} {{ trans('cruds.post.title_singular') }} 
+        @if ($post->staticSeo)
+            <a class="btn btn-success float-right" href="{{ route('admin.static-seos.edit', $post->staticSeo->id) }}">SEO</a>
+        @endif
+        
     </div>
 
     <div class="card-body">

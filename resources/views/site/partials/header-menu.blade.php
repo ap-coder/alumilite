@@ -23,11 +23,21 @@
                 <div class="header-social-compare-login d-flex align-items-center">
                     <div class="header-social-menu">
                         <ul class="social">
-                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="ion-social-rss"></i></a></li>
-                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-                            <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                            @if ($setting->twitter_link)
+                                <li><a href="{{ $setting->twitter_link }}" target="_blank"><i class="ion-social-twitter"></i></a></li>
+                            @endif
+                            @if ($setting->facebook_link)
+                                <li><a href="{{ $setting->facebook_link }}" target="_blank"><i class="ion-social-facebook"></i></a></li>
+                            @endif
+                            @if ($setting->rss_link)
+                                <li><a href="{{ $setting->rss_link }}" target="_blank"><i class="ion-social-rss"></i></a></li>
+                            @endif
+                            @if ($setting->instagram_link)
+                                <li><a href="{{ $setting->instagram_link }}" target="_blank"><i class="ion-social-instagram-outline"></i></a></li>
+                            @endif
+                            @if ($setting->youtube_link)
+                                <li><a href="{{ $setting->youtube_link }}" target="_blank"><i class="ion-social-youtube-outline"></i></a></li>
+                            @endif
                         </ul>
                     </div>
                     {{-- <div class="header-compare-login">
