@@ -79,4 +79,14 @@ class Brand extends Model implements HasMedia
 
         return $file;
     }
+
+    public function brandStaticSeos()
+    {
+        return $this->hasMany(StaticSeo::class, 'brand_id', 'id');
+    }
+
+    public function staticSeo()
+    {
+        return $this->hasOne(StaticSeo::class);
+    }
 }

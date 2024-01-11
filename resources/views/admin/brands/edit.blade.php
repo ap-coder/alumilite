@@ -4,7 +4,9 @@
 <div class="card">
     <div class="card-header">
         {{ trans('global.edit') }} {{ trans('cruds.brand.title_singular') }}
-        {{-- <a class="btn btn-success float-right" href="">SEO</a> --}}
+        @if ($brand->staticSeo)
+            <a class="btn btn-success float-right" href="{{ route('admin.static-seos.edit', $brand->staticSeo->id) }}">SEO</a>
+        @endif
     </div>
 
     <div class="card-body">

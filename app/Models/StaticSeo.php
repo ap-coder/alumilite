@@ -49,6 +49,7 @@ class StaticSeo extends Model implements HasMedia
         'post_id',
         'product_id',
         'build_id',
+        'brand_id',
         'meta_title',
         'facebook_title',
         'twitter_title',
@@ -146,5 +147,10 @@ class StaticSeo extends Model implements HasMedia
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 }
