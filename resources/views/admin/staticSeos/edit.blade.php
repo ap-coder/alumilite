@@ -40,6 +40,7 @@
             @include('admin.staticSeos.partials.post')
             @include('admin.staticSeos.partials.product')
             @include('admin.staticSeos.partials.build')
+            @include('admin.staticSeos.partials.brand')
             
             @include('admin.staticSeos.partials.seo-meta')
 

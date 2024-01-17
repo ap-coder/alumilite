@@ -231,6 +231,8 @@ return [
             'product_helper'       => ' ',
             'build'              => 'Builds',
             'build_helper'       => ' ',
+            'brand'              => 'Brands',
+            'brand_helper'       => ' ',
         ],
     ],
     'technicalSpec' => [

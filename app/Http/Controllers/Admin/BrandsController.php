@@ -81,6 +81,33 @@ class BrandsController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $brand->id]);
         }
 
+        $brand = Brand::findOrFail($brand->id);
+
+        $menuName = \Str::of($brand->slug)->replace('-', ' ')->title();
+
+        if ($brand->logo) {
+            $seo_image_url = $brand->logo->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+
+        $brand->staticSeo()->create(
+            [
+                'brand_id' => $brand->id,
+                'canonical' => '1',
+                'content_type' => 'brand',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'brands/'.$brand->slug,
+                'open_graph_type' => 'website',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'Brand',
+                'html_schema_3' => '',
+                'body_schema' => 'Website',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
+
         return redirect()->route('admin.brands.index');
     }
 
@@ -105,6 +132,36 @@ class BrandsController extends Controller
         } elseif ($brand->logo) {
             $brand->logo->delete();
         }
+
+        $brand = Brand::findOrFail($brand->id);
+
+        $menuName = \Str::of($brand->slug)->replace('-', ' ')->title();
+
+        if ($brand->logo) {
+            $seo_image_url = $brand->logo->getUrl();
+        } else {
+            $seo_image_url = '';
+        }
+
+        $brand->staticSeo()->updateOrCreate(
+            [
+                'brand_id' => $brand->id,
+            ],
+            [
+                'brand_id' => $brand->id,
+                'canonical' => '1',
+                'content_type' => 'brand',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => 'brands/'.$brand->slug,
+                'open_graph_type' => 'website',
+                'html_schema_1' => 'Thing',
+                'html_schema_2' => 'Brand',
+                'html_schema_3' => '',
+                'body_schema' => 'Website',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
 
         return redirect()->route('admin.brands.index');
     }

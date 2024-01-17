@@ -11,6 +11,7 @@ use App\Models\StaticSeo;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Build;
+use App\Models\Brand;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -143,8 +144,9 @@ class StaticSeoController extends Controller
         $posts = Post::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
         $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $builds = Build::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $brands = Brand::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.staticSeos.edit', compact('staticSeo','posts','products','builds'));
+        return view('admin.staticSeos.edit', compact('staticSeo','posts','products','builds','brands'));
     }
 
     public function update(Request $request, StaticSeo $staticSeo)
