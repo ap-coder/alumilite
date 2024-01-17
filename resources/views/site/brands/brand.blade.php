@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('site.brands.partials.gallery')
+    @include('site.brands.partials.gallery', ['buildPhotos' => $brand->brandBuilds ])
     @includeIf('site.brands.partials.products', ['products' => $brand->brandProducts ])
     @includeIf('site.brands.partials.builds', ['builds' => $brand->brandBuilds ])
 

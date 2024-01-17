@@ -18,14 +18,16 @@
                             @foreach($builds->chunk(2) as $buildSet)
                                 <div class="car-col">
                                     @foreach($buildSet as $build)
+                                    @php
+                                        $additionalPhoto = $build->getMedia('additional_photos')->first();
+                                    @endphp
                                         <div class="single-car-item mt-50">
                                             <div class="car-image">
                                                 <a href="{{ route('builds.show',$build->slug) }}">
-                                                    @if($build->photo)
-                                                        {{-- {{ $build->getFirstMedia('photo')('excerpt') }} --}}
-                                                        <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
+                                                    @if($additionalPhoto)
+                                                        <img src="{{ $additionalPhoto->getUrl() }}" alt="{{ $build->name }}">
                                                     @else
-                                                        <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
+                                                        <img src="https://loremflickr.com/320/240/atv" alt="{{ $build->name }}">
                                                     @endif
                                                 </a>
 

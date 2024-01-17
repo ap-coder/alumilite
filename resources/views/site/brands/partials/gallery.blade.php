@@ -1,28 +1,21 @@
     <div class="gallery">
-        <div class="gallery__column">
-            <a href="https://unsplash.com/@jeka_fe" target="_blank" class="gallery__link">
-                <figure class="gallery__thumb">
-                    <img src="https://source.unsplash.com/_cvwXhGqG-o/300x300" alt="Portrait by Jessica Felicio" class="gallery__image">
-                    <figcaption class="gallery__caption">Portrait by Jessica Felicio</figcaption>
-                </figure>
-            </a>
+        @foreach ($buildPhotos->chunk(3) as $buildPhoto)
+            <div class="gallery__column">
+                @foreach ($buildPhoto as $photo)
+                    @if ($photo->photo)
+                        <a href="{{ route('builds.show',$photo->slug) }}" target="_blank" class="gallery__link">
+                            <figure class="gallery__thumb">
+                                <img src="{{ $photo->photo->getUrl() }}" alt="{{ $photo->name }}" class="gallery__image">
+                                <figcaption class="gallery__caption">{{ $photo->name }}</figcaption>
+                            </figure>
+                        </a>
+                    @endif
+                @endforeach
+            </div>
+        @endforeach
+        
 
-            <a href="https://unsplash.com/@oladimeg" target="_blank" class="gallery__link">
-                <figure class="gallery__thumb">
-                    <img src="https://source.unsplash.com/AHBvAIVqk64/300x500" alt="Portrait by Oladimeji Odunsi" class="gallery__image">
-                    <figcaption class="gallery__caption">Portrait by Oladimeji Odunsi</figcaption>
-                </figure>
-            </a>
-
-            <a href="https://unsplash.com/@a2eorigins" target="_blank" class="gallery__link">
-                <figure class="gallery__thumb">
-                    <img src="https://source.unsplash.com/VLPLo-GtrIE/300x300" alt="Portrait by Alex Perez" class="gallery__image">
-                    <figcaption class="gallery__caption">Portrait by Alex Perez</figcaption>
-                </figure>
-            </a>
-        </div>
-
-        <div class="gallery__column">
+         {{-- <div class="gallery__column">
             <a href="https://unsplash.com/@hikiapp" target="_blank" class="gallery__link">
                 <figure class="gallery__thumb">
                     <img src="https://source.unsplash.com/A9rQeI2AdR4/300x300" alt="Portrait by Hikiapp" class="gallery__image">
@@ -45,7 +38,7 @@
             </a>
         </div>
 
-        <div class="gallery__column">
+       <div class="gallery__column">
             <a href="https://unsplash.com/@marilezhava" target="_blank" class="gallery__link">
                 <figure class="gallery__thumb">
                     <img src="https://source.unsplash.com/Xm9-vA_bhm0/300x500" alt="Portrait by Mari Lezhava" class="gallery__image">
@@ -89,5 +82,5 @@
                     <figcaption class="gallery__caption">Portrait by Dima DallAcqua</figcaption>
                 </figure>
             </a>
-        </div>
+        </div> --}}
     </div>
