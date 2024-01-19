@@ -33,12 +33,15 @@ class BlogController extends Controller
         // });
 
         $category=$request->category;
+        $search=$request->search;
         $sliders = Slider::get();
 
         if ($category) {
             $articles = Post::published()->whereHas('categories', function ($query) use ($category) {
                 $query->where('slug', $category);
             })->orderBy('id', 'DESC')->paginate(12);
+        }elseif($search){
+            $articles = Post::where('title','LIKE','%' . $search . '%')->published()->orderBy('id', 'DESC')->paginate(12);
         } else {
             $articles = Post::published()->orderBy('id', 'DESC')->paginate(12);
         }

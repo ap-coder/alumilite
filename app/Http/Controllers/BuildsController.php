@@ -41,12 +41,12 @@ class BuildsController extends Controller
     {
         $review = Review::create($request->all());
 
-        if ($request->input('avatar', false)) {
-            $review->addMedia(storage_path('tmp/uploads/' . basename($request->input('avatar'))))->toMediaCollection('avatar');
+        if($request->hasFile('avatar')){
+            $review->addMediaFromRequest('avatar')->toMediaCollection('avatar');
         }
 
-        if ($request->input('photo', false)) {
-            $review->addMedia(storage_path('tmp/uploads/' . basename($request->input('photo'))))->toMediaCollection('photo');
+        if($request->hasFile('photo')){
+            $review->addMediaFromRequest('photo')->toMediaCollection('photo');
         }
 
         return redirect()->back()->with('success', 'Successfully submitted your review!');

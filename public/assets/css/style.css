@@ -7847,6 +7847,15 @@ p {
 .sidebar-dealer-info .dealer-info .social li a.rss {
   background-color: #f37214;
 }
+.sidebar-dealer-info .dealer-info .social li a.reddit {
+  background-color: #FF4500;
+}
+.sidebar-dealer-info .dealer-info .social li a.pinterest {
+  background-color: #cb2027;
+}
+.sidebar-dealer-info .dealer-info .social li a.linkedin {
+  background-color: #0077b5;
+}
 
 .sidebar-dealer-contact {
   padding: 25px;
@@ -8407,6 +8416,16 @@ p {
 .inventory-single-content .listing-social .social-share .social li a.rss {
   background-color: #f37214;
 }
+.inventory-single-content .listing-social .social-share .social li a.reddit {
+  background-color: #FF4500;
+}
+.inventory-single-content .listing-social .social-share .social li a.pinterest {
+  background-color: #cb2027;
+}
+.inventory-single-content .listing-social .social-share .social li a.linkedin {
+  background-color: #0077b5;
+}
+
 .inventory-single-content .title-price {
   border-top: 1px solid rgba(41, 57, 87, 0.15);
   padding-top: 40px;
@@ -9554,7 +9573,15 @@ p {
 .inventory-single-dealership-content .listing-social .social-share .social li a.rss {
   background-color: #f37214;
 }
-
+.inventory-single-dealership-content .listing-social .social-share .social li a.reddit {
+  background-color: #FF4500;
+}
+.inventory-single-dealership-content .listing-social .social-share .social li a.pinterest {
+  background-color: #cb2027;
+}
+.inventory-single-dealership-content .listing-social .social-share .social li a.linkedin {
+  background-color: #0077b5;
+}
 .inventory-single-dealership-main {
   padding-top: 50px;
   padding-bottom: 120px;
@@ -11280,6 +11307,15 @@ p {
 }
 .single-post-main-content .post-content-inner .footer-content .social li a.rss {
   background-color: #f37214;
+}
+.single-post-main-content .post-content-inner .footer-content .social li a.reddit {
+  background-color: #FF4500;
+}
+.single-post-main-content .post-content-inner .footer-content .social li a.pinterest {
+  background-color: #cb2027;
+}
+.single-post-main-content .post-content-inner .footer-content .social li a.linkedin {
+  background-color: #0077b5;
 }
 .single-post-main-content .post-content-inner.single-post-left {
   padding: 40px 0 100px;
@@ -13161,7 +13197,15 @@ p {
 .login-register .login-register-social .social li a.rss {
   background-color: #f37214;
 }
-
+.login-register .login-register-social .social li a.reddit {
+  background-color: #FF4500;
+}
+.login-register .login-register-social .social li a.pinterest {
+  background-color: #cb2027;
+}
+.login-register .login-register-social .social li a.linkedin {
+  background-color: #0077b5;
+}
 .login-register-form {
   padding-top: 40px;
 }
@@ -14214,7 +14258,15 @@ p {
 .dealer-details-title-social .dealer-social .social li a.rss {
   background-color: #f37214;
 }
-
+.dealer-details-title-social .dealer-social .social li a.reddit {
+  background-color: #FF4500;
+}
+.dealer-details-title-social .dealer-social .social li a.pinterest {
+  background-color: #cb2027;
+}
+.dealer-details-title-social .dealer-social .social li a.linkedin {
+  background-color: #0077b5;
+}
 .dealer-details-content {
   padding-top: 30px;
 }

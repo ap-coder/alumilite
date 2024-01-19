@@ -5,7 +5,7 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                                <form action="{{ route('builds.review.store') }}" method="post">
+                                <form action="{{ route('builds.review.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <h4 class="form-title">Submit your review</h4>
 

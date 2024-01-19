@@ -206,11 +206,11 @@
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
-    params: {
-      size: 2,
-      width: 300,
-      height: 300
-    },
+    // params: {
+    //   size: 2,
+    //   width: 300,
+    //   height: 300
+    // },
     success: function (file, response) {
       $('form').find('input[name="avatar"]').remove()
       $('form').append('<input type="hidden" name="avatar" value="' + response.name + '">')
@@ -261,11 +261,11 @@ Dropzone.options.photoDropzone = {
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
-    params: {
-      size: 2,
-      width: 4096,
-      height: 4096
-    },
+    // params: {
+    //   size: 2,
+    //   width: 4096,
+    //   height: 4096
+    // },
     success: function (file, response) {
       $('form').append('<input type="hidden" name="photo[]" value="' + response.name + '">')
       uploadedPhotoMap[file.name] = response.name

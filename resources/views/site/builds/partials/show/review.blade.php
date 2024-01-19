@@ -6,7 +6,7 @@
                                             <div class="single-reviews-comment">
                                                 <div class="comment-author">
                                                     @if ($review->avatar)
-                                                        <img src="{{ $review->avatar->getUrl() }}" alt="{{ $review->signiture }}">
+                                                        <img src="{{ $review->avatar->getUrl() }}" alt="{{ $review->signiture }}" width="100">
                                                     @else
                                                         <img src="{{ asset('assets/images/empty-testamonial.jpg') }}" alt="{{ $review->signiture }}" width="100">
                                                     @endif
@@ -38,7 +38,10 @@
                                                         <li>{{ $review->time_ago }}</li>
                                                     </ul>
                                                     @if ($review->photo->count()>0)
-                                                        <img src="{{ $review->photo->getUrl() }}" alt="Check out my vehicle">
+                                                    @php
+                                                        $photo = $review->getMedia('photo')->first();
+                                                    @endphp
+                                                        <img src="{{ $photo->getUrl() }}" alt="Check out my vehicle">
                                                     @endif
 
                                                     <p>{!! $review->body !!}</p>
