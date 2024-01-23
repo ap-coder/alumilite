@@ -16,7 +16,8 @@
                             </div>
                             <div class="block-content media-body">
                                 {{-- <span class="text">PAROWAN<br>UT, 84761, USA</span> --}}
-                                <span class="text">{{ $setting->address }}</span>
+                                <span class="label">Address</span>
+                                <span class="text">{!! $setting->address ?? '' !!}</span>
                             </div>
                         </div>
                         <div class="single-content-block d-flex">
@@ -25,7 +26,7 @@
                             </div>
                             <div class="block-content media-body">
                                 <span class="label">Hotline</span>
-                                <span class="text-2"><a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></span>
+                                <span class="text-2"><a href="tel:{{ $setting->phone ?? '' }}">{{ $setting->phone ?? '' }}</a></span>
                             </div>
                         </div>
                         @if ($setting->working_hours)
@@ -39,7 +40,7 @@
                                 </div>
                             </div>
                         @endif
-                        
+
                     </div>
         {{--             <div class="header-main-btn">
                         <a href="add-car.html" class="main-btn"><i class="ion-model-s"></i> Add Car </a>
