@@ -26,7 +26,7 @@
                             </div>
                             <div class="block-content media-body">
                                 <span class="label">Hotline</span>
-                                <span class="text-2"><a href="tel:{{ $setting->phone ?? '' }}">{{ $setting->phone ?? '' }}</a></span>
+                                <span class="text-2"><a href="tel:{{ str_replace('-', '', $setting->phone) }}">{{ $setting->phone ?? '' }}</a></span>
                             </div>
                         </div>
                         @if ($setting->working_hours)
