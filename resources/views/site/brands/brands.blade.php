@@ -18,7 +18,11 @@
                         <a href="{{ route('brands.show',$brand->slug) }}" class="col-lg-3 team-col">
                             <div class="single-team">
                                 <div class="team-image">
-                                    <img src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}">
+                                    @if ($brand->logo)
+                                        <img src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}">
+                                    @else
+                                        <img src="https://placehold.co/300x300?text=Brand+Logo" alt="{{ $brand->name }}">
+                                    @endif
                                 </div>
                                 <!--  <div class="team-content">
                                     <h5 class="name"><a href="#">Alexander Arnold</a></h5>
