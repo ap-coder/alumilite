@@ -21,9 +21,9 @@ class SettingsController extends Controller
     {
         abort_if(Gate::denies('setting_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $settings = Setting::with(['media'])->get();
+        $setting = Setting::first();
 
-        return view('admin.settings.index', compact('settings'));
+        return view('admin.settings.edit', compact('setting'));
     }
 
     public function create()

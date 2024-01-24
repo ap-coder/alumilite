@@ -7,12 +7,17 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.settings.update", [$setting->id]) }}" enctype="multipart/form-data">
-            @method('PUT')
+        @if ($setting)
+            <form method="POST" action="{{ route("admin.settings.update", [$setting->id]) }}" enctype="multipart/form-data">
+                @method('PUT')
+        @else
+            <form method="POST" action="{{ route("admin.settings.store") }}" enctype="multipart/form-data">
+        @endif
+        
             @csrf
             <div class="form-group">
                 <label for="facebook_link">{{ trans('cruds.setting.fields.facebook_link') }}</label>
-                <input class="form-control {{ $errors->has('facebook_link') ? 'is-invalid' : '' }}" type="text" name="facebook_link" id="facebook_link" value="{{ old('facebook_link', $setting->facebook_link) }}">
+                <input class="form-control {{ $errors->has('facebook_link') ? 'is-invalid' : '' }}" type="text" name="facebook_link" id="facebook_link" value="{{ old('facebook_link', @$setting->facebook_link) }}">
                 @if($errors->has('facebook_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('facebook_link') }}
@@ -22,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="twitter_link">{{ trans('cruds.setting.fields.twitter_link') }}</label>
-                <input class="form-control {{ $errors->has('twitter_link') ? 'is-invalid' : '' }}" type="text" name="twitter_link" id="twitter_link" value="{{ old('twitter_link', $setting->twitter_link) }}">
+                <input class="form-control {{ $errors->has('twitter_link') ? 'is-invalid' : '' }}" type="text" name="twitter_link" id="twitter_link" value="{{ old('twitter_link', @$setting->twitter_link) }}">
                 @if($errors->has('twitter_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('twitter_link') }}
@@ -32,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="youtube_link">{{ trans('cruds.setting.fields.youtube_link') }}</label>
-                <input class="form-control {{ $errors->has('youtube_link') ? 'is-invalid' : '' }}" type="text" name="youtube_link" id="youtube_link" value="{{ old('youtube_link', $setting->youtube_link) }}">
+                <input class="form-control {{ $errors->has('youtube_link') ? 'is-invalid' : '' }}" type="text" name="youtube_link" id="youtube_link" value="{{ old('youtube_link', @$setting->youtube_link) }}">
                 @if($errors->has('youtube_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('youtube_link') }}
@@ -42,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label for="instagram_link">{{ trans('cruds.setting.fields.instagram_link') }}</label>
-                <input class="form-control {{ $errors->has('instagram_link') ? 'is-invalid' : '' }}" type="text" name="instagram_link" id="instagram_link" value="{{ old('instagram_link', $setting->instagram_link) }}">
+                <input class="form-control {{ $errors->has('instagram_link') ? 'is-invalid' : '' }}" type="text" name="instagram_link" id="instagram_link" value="{{ old('instagram_link', @$setting->instagram_link) }}">
                 @if($errors->has('instagram_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('instagram_link') }}
@@ -52,7 +57,7 @@
             </div>
             <div class="form-group">
                 <label for="rss_link">{{ trans('cruds.setting.fields.rss_link') }}</label>
-                <input class="form-control {{ $errors->has('rss_link') ? 'is-invalid' : '' }}" type="text" name="rss_link" id="rss_link" value="{{ old('rss_link', $setting->rss_link) }}">
+                <input class="form-control {{ $errors->has('rss_link') ? 'is-invalid' : '' }}" type="text" name="rss_link" id="rss_link" value="{{ old('rss_link', @$setting->rss_link) }}">
                 @if($errors->has('rss_link'))
                     <div class="invalid-feedback">
                         {{ $errors->first('rss_link') }}
@@ -62,7 +67,7 @@
             </div>
             <div class="form-group">
                 <label for="short_bio">{{ trans('cruds.setting.fields.short_bio') }}</label>
-                <textarea class="form-control {{ $errors->has('short_bio') ? 'is-invalid' : '' }}" name="short_bio" id="short_bio">{{ old('short_bio', $setting->short_bio) }}</textarea>
+                <textarea class="form-control {{ $errors->has('short_bio') ? 'is-invalid' : '' }}" name="short_bio" id="short_bio">{{ old('short_bio', @$setting->short_bio) }}</textarea>
                 @if($errors->has('short_bio'))
                     <div class="invalid-feedback">
                         {{ $errors->first('short_bio') }}
@@ -72,7 +77,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">{{ trans('cruds.setting.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $setting->phone) }}">
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', @$setting->phone) }}">
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}
@@ -82,7 +87,7 @@
             </div>
             <div class="form-group">
                 <label for="email">{{ trans('cruds.setting.fields.email') }}</label>
-                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', $setting->email) }}">
+                <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', @$setting->email) }}">
                 @if($errors->has('email'))
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -92,7 +97,7 @@
             </div>
             <div class="form-group">
                 <label for="address">{{ trans('cruds.setting.fields.address') }}</label>
-                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $setting->address) }}">
+                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', @$setting->address) }}">
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}
@@ -102,7 +107,7 @@
             </div>
             <div class="form-group">
                 <label for="working_hours">{{ trans('cruds.setting.fields.working_hours') }}</label>
-                <input class="form-control {{ $errors->has('working_hours') ? 'is-invalid' : '' }}" type="text" name="working_hours" id="working_hours" value="{{ old('working_hours', $setting->working_hours) }}">
+                <input class="form-control {{ $errors->has('working_hours') ? 'is-invalid' : '' }}" type="text" name="working_hours" id="working_hours" value="{{ old('working_hours', @$setting->working_hours) }}">
                 @if($errors->has('working_hours'))
                     <div class="invalid-feedback">
                         {{ $errors->first('working_hours') }}
@@ -173,8 +178,8 @@
       }
     },
     init: function () {
-@if(isset($setting) && $setting->header_logo)
-      var file = {!! json_encode($setting->header_logo) !!}
+@if(isset($setting) && @$setting->header_logo)
+      var file = {!! json_encode(@$setting->header_logo) !!}
           this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
       file.previewElement.classList.add('dz-complete')
@@ -226,8 +231,8 @@
       }
     },
     init: function () {
-@if(isset($setting) && $setting->footer_logo)
-      var file = {!! json_encode($setting->footer_logo) !!}
+@if(isset($setting) && @$setting->footer_logo)
+      var file = {!! json_encode(@$setting->footer_logo) !!}
           this.options.addedfile.call(this, file)
       this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
       file.previewElement.classList.add('dz-complete')
