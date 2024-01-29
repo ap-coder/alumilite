@@ -7,7 +7,11 @@
                     <div class="col-lg-3 col-md-6 col-sm-4">
                         <div class="text-widget mt-50">
                             <a href="{{ url('') }}">
-                                <img src="{{ $setting->footer_logo->getUrl() }}" alt="alumilite armor footer logo">
+                                @if ($setting->footer_logo)
+                                    <img src="{{ $setting->footer_logo->getUrl() }}" alt="alumilite armor footer logo">
+                                @else
+                                    Logo
+                                @endif
                             </a>
                             <div class="text-content">
                                 <div class="single-text">

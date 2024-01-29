@@ -6,7 +6,11 @@
                 <div class="header-main-wrapper d-flex justify-content-between align-items-center">
                     <div class="header-brand">
                         <a href="{{ url('') }}">
-                            <img class="custom-logo" src="{{ $setting->header_logo->getUrl() }}" alt="alumilite armor logo">
+                            @if ($setting->header_logo)
+                                <img class="custom-logo" src="{{ $setting->header_logo->getUrl() }}" alt="alumilite armor logo">
+                            @else
+                                Logo
+                            @endif
                         </a>
                     </div>
                     <div class="header-main-content d-flex">
