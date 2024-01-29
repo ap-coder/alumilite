@@ -39,7 +39,6 @@
 <div role="main" class="@yield('main-classes') @if($staticseo) @foreach($staticseo->where('page_path',request()->path()) as $seo) @if($seo->main_classes) {{ $seo->main_classes }} @endif @endforeach @endif">
     @yield('page-title-section')
     @yield('masthead')
-    @yield('masthead')
     @include('site.layouts.partials.top_sections')
     @yield('above-content')
     @yield('content')
