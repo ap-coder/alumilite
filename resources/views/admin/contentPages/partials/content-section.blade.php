@@ -117,6 +117,7 @@ $loader='<div class="spinner-border text-dark" role="status">'+
                 $('#contentSectionBody').html(response);
                 $('#addContentSectionModal').modal('hide');
                 $('#addContentSectionModal form')[0].reset();
+                location.reload();
               }
             })
       }

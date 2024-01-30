@@ -530,6 +530,7 @@
         $('#pageSectionBody').html(response);
         $('#addExistingCrudModal').modal('hide');
         $('#addExistingCrudModal form')[0].reset();
+        location.reload();
       }
     })
 
@@ -602,7 +603,7 @@
       var result = src.split('/');
       var lastEl = result[result.length-1];
     // console.log(lastEl);
-      console.log('result',result);
+      //console.log('result',result);
       var newSrc = $(el).attr("src").replace(src, "{{ asset('site/img/landing-pages') }}/"+lastEl);
       $(el).attr("src", newSrc);
     });
@@ -662,6 +663,7 @@
         $('#pageSectionBody').html(response);
         $('#addExistingPageSectionModal').modal('hide');
         $('#addExistingPageSectionModal form')[0].reset();
+        location.reload();
       }
     })
 
