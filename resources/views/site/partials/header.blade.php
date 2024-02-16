@@ -6,7 +6,7 @@
                 <div class="header-main-wrapper d-flex justify-content-between align-items-center">
                     <div class="header-brand">
                         <a href="{{ url('') }}">
-                            @if ($setting->header_logo)
+                            @if (isset($setting->header_logo))
                                 <img class="custom-logo" src="{{ $setting->header_logo->getUrl() }}" alt="alumilite armor logo">
                             @else
                                 Logo
@@ -30,10 +30,10 @@
                             </div>
                             <div class="block-content media-body">
                                 <span class="label">Hotline</span>
-                                <span class="text-2"><a href="tel:{{ str_replace('-', '', $setting->phone) }}">{{ $setting->phone ?? '' }}</a></span>
+                                <span class="text-2"><a href="tel:{{ str_replace('-', '', @$setting->phone) }}">{{ $setting->phone ?? '' }}</a></span>
                             </div>
                         </div>
-                        @if ($setting->working_hours)
+                        @if (isset($setting->working_hours))
                             <div class="single-content-block d-flex">
                                 <div class="block-icon">
                                     <i class="ion-clock"></i>

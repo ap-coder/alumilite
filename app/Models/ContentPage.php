@@ -173,6 +173,16 @@ class ContentPage extends Model implements HasMedia
         return $this->belongsToMany(Pagesection::class,'page_pagesection','page_id','pagesection_id')->published()->orderBy('order', 'ASC');
     }
 
+    public function pageStaticSeos()
+    {
+        return $this->hasMany(StaticSeo::class, 'page_id', 'id');
+    }
+
+    public function staticSeo()
+    {
+        return $this->hasOne(StaticSeo::class, 'page_id', 'id');
+    }
+    
     public function getFeaturedImageAttribute()
     {
         $file = $this->getMedia('featured_image')->last();

@@ -229,28 +229,51 @@ class ContentPageController extends Controller
             File::delete(storage_path('tmp/uploads/' . basename($file)));
         }
         
-        if ($request->preview) {
-            if ($contentPage->is_homepage == 1) {
-                if ($contentPage->slug) {
-                    echo json_encode($contentPage->slug);
-                } else {
-                    echo json_encode('homepage');
-                }
+        $menuName = \Str::of($contentPage->slug)->replace('-', ' ')->title();
+        $seo_image_url = optional($contentPage->featured_image)->getUrl();
+
+        if ($contentPage->is_homepage == 1) {
+            if ($contentPage->slug) {
+                $data = $contentPage->slug;
             } else {
-                if ($contentPage->path_segments == 0) {
-                    echo json_encode($contentPage->slug);
-                }elseif ($contentPage->path_segments == 1) {
-                    echo json_encode($contentPage->path.'/'.$contentPage->slug);
-                }elseif ($contentPage->path_segments == 2) {
-                    echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->slug);
-                } elseif ($contentPage->path_segments == 3) {
-                    echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->path3.'/'.$contentPage->slug);
-                } elseif ($contentPage->path_segments == 4) {
-                    echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->path3.'/'.$contentPage->path4.'/'.$contentPage->slug);
-                } else {
-                    echo json_encode($contentPage->slug);
-                }
+                $data = 'homepage';
             }
+        } else {
+            if ($contentPage->path_segments == 1) {
+                $data = $contentPage->path.'/'.$contentPage->slug;
+            } elseif ($contentPage->path_segments == 2) {
+                $data = $contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->slug;
+            } elseif ($contentPage->path_segments == 3) {
+                $data = $contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->path3.'/'.$contentPage->slug;
+            } elseif ($contentPage->path_segments == 4) {
+                $data = $contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->path3.'/'.$contentPage->path4.'/'.$contentPage->slug;
+            } else {
+                $data = $contentPage->slug;
+            }
+        }
+
+        $contentPage->staticSeo()->updateOrCreate(
+            ['page_id' => $contentPage->id],
+            [
+                'page_id' => $contentPage->id,
+                'canonical' => '1',
+                'meta_title' => $request->meta_title,
+                'meta_description' => $request->meta_description,
+                'facebook_title' => $request->facebook_title,
+                'facebook_description' => $request->facebook_description,
+                'twitter_title' => $request->twitter_title,
+                'twitter_description' => $request->twitter_description,
+                'content_type' => 'custom',
+                'menu_name' => $menuName,
+                'page_name' => $menuName,
+                'page_path' => $data,
+                'open_graph_type' => 'website',
+                'seo_image_url' => $seo_image_url,
+            ]
+        );
+
+        if ($request->preview) {
+            echo json_encode($data);
         } else {
             return redirect()->route('admin.content-pages.index');
         }

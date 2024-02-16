@@ -17,7 +17,6 @@
                   <div class="tab-content" id="vert-tabs-right-tabContent">
                       <div class="tab-pane fade show active" id="vert-tabs-right-general" role="tabpanel" aria-labelledby="vert-tabs-right-general-tab">
                           @include('admin.contentPages.partials.general')
-                          
                       </div>
                       <div class="tab-pane fade" id="vert-tabs-right-images"    role="tabpanel" aria-labelledby="vert-tabs-right-images-tab">
                           @include('admin.contentPages.partials.images')
@@ -25,7 +24,6 @@
                       </div>
           
                       <div class="tab-pane fade" id="vert-tabs-right-seo"      role="tabpanel" aria-labelledby="vert-tabs-right-seo-tab">
-                          @include('admin.contentPages.partials.seo')
                       </div>
 
                       <div class="tab-pane fade" id="vert-tabs-right-settings" role="tabpanel" aria-labelledby="vert-tabs-right-settings-tab">

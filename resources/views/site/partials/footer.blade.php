@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-6 col-sm-4">
                         <div class="text-widget mt-50">
                             <a href="{{ url('') }}">
-                                @if ($setting->footer_logo)
+                                @if (isset($setting->footer_logo))
                                     <img src="{{ $setting->footer_logo->getUrl() }}" alt="alumilite armor footer logo">
                                 @else
                                     Logo
@@ -19,10 +19,10 @@
                                 </div>
                                 <div class="single-text">
                                     <p>
-                                        @if ($setting->email)
+                                        @if (isset($setting->email))
                                             <span><a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></span>
                                         @endif
-                                        <span><a href="tel:{{ str_replace('-', '', $setting->phone) }}">{{ $setting->phone }}</a></span>
+                                        <span><a href="tel:{{ str_replace('-', '', @$setting->phone) }}">{{ $setting->phone ?? '' }}</a></span>
                                     </p>
                                 </div>
                             </div>
@@ -117,19 +117,19 @@
                         <span class="label">Follow us</span>
                         
                         <ul class="socia">
-                            @if ($setting->twitter_link)
+                            @if (isset($setting->twitter_link))
                                 <li><a href="{{ $setting->twitter_link }}" target="_blank"><i class="ion-social-twitter"></i></a></li>
                             @endif
-                            @if ($setting->facebook_link)
+                            @if (isset($setting->facebook_link))
                                 <li><a href="{{ $setting->facebook_link }}" target="_blank"><i class="ion-social-facebook"></i></a></li>
                             @endif
-                            @if ($setting->rss_link)
+                            @if (isset($setting->rss_link))
                                 <li><a href="{{ $setting->rss_link }}" target="_blank"><i class="ion-social-rss"></i></a></li>
                             @endif
-                            @if ($setting->instagram_link)
+                            @if (isset($setting->instagram_link))
                                 <li><a href="{{ $setting->instagram_link }}" target="_blank"><i class="ion-social-instagram-outline"></i></a></li>
                             @endif
-                            @if ($setting->youtube_link)
+                            @if (isset($setting->youtube_link))
                                 <li><a href="{{ $setting->youtube_link }}" target="_blank"><i class="ion-social-youtube-outline"></i></a></li>
                             @endif
                         </ul>
