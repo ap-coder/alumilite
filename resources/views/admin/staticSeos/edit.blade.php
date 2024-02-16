@@ -41,14 +41,14 @@
             @include('admin.staticSeos.partials.product')
             @include('admin.staticSeos.partials.build')
             @include('admin.staticSeos.partials.brand')
-            
+
             @include('admin.staticSeos.partials.seo-meta')
 
             <div class="row">
-				@include('admin.staticSeos.partials.microdata')
-	            @include('admin.staticSeos.partials.jsonld')
+            @include('admin.staticSeos.partials.microdata')
+            @include('admin.staticSeos.partials.jsonld')
 
-			</div>
+            </div>
                 @include('admin.staticSeos.partials.seo-class')
 
             <div class="form-group">

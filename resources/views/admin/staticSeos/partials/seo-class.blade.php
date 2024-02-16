@@ -1,4 +1,4 @@
-<div class="form-row col-12 d-flex border border-dark align-baseline p-2 m-0 mb-2 bg-dark">
+<div class="form-row col-12 d-flex border border-dark align-baseline p-2 m-0 mb-2 bg-dark text-light">
     <div class="form-group col-3">
         <label for="html_classes">{{ trans('cruds.staticSeo.fields.html_classes') }}</label>
         <input class="form-control {{ $errors->has('html_classes') ? 'is-invalid' : '' }}" type="text" name="html_classes" id="html_classes" value="{{ old('html_classes', $staticSeo->html_classes ?? '') }}">
