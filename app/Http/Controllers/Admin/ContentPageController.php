@@ -237,9 +237,11 @@ class ContentPageController extends Controller
                     echo json_encode('homepage');
                 }
             } else {
-                if ($contentPage->path_segments == 1) {
+                if ($contentPage->path_segments == 0) {
+                    echo json_encode($contentPage->slug);
+                }elseif ($contentPage->path_segments == 1) {
                     echo json_encode($contentPage->path.'/'.$contentPage->slug);
-                } elseif ($contentPage->path_segments == 2) {
+                }elseif ($contentPage->path_segments == 2) {
                     echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->slug);
                 } elseif ($contentPage->path_segments == 3) {
                     echo json_encode($contentPage->path.'/'.$contentPage->path2.'/'.$contentPage->path3.'/'.$contentPage->slug);

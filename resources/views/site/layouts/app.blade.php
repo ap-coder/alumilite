@@ -10,9 +10,6 @@
     @if(app()->environment() === 'production') @endif
     <meta charset="utf-8">
     
-    <!--====== Title ======-->
-    <title>@yield('title')</title>
-    
     @include('site.static-seo')
 
     <!--====== Favicon Icon ======-->

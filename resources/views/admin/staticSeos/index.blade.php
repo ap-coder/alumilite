@@ -79,7 +79,11 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'menu_name', name: 'menu_name' },
+{ data: 'menu_name', name: 'menu_name',
+                    fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<a href='/admin/static-seos/"+oData.id+"/edit'><strong>"+oData.menu_name+"</strong></a>");
+                    }
+                },
 { data: 'content_type', name: 'content_type' },
 { data: 'seo_checks', name: 'seo_checks' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

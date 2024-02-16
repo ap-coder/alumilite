@@ -5,23 +5,23 @@
                 $url = url('');
             @endphp
         @else
-            @if ($path_segments=0)
+            @if ($row->path_segments==0)
                 @php
                     $url = url($row->slug);
                 @endphp
-            @elseif ($path_segments=1)
+            @elseif ($row->path_segments==1)
                 @php
                     $url = url($row->path.'/'.$row->slug);
                 @endphp
-            @elseif ($path_segments=2)
+            @elseif ($row->path_segments==2)
                 @php
                     $url = url($row->path.'/'.$row->path2.'/'.$row->slug);
                 @endphp
-            @elseif ($path_segments=3)
+            @elseif ($row->path_segments==3)
                 @php
                     $url = url($row->path.'/'.$row->path2.'/'.$row->path3.'/'.$row->slug);
                 @endphp
-            @elseif ($path_segments=4)
+            @elseif ($row->path_segments==4)
                 @php
                     $url = url($row->path.'/'.$row->path2.'/'.$row->path3.'/'.$row->path4.'/'.$row->slug);
                 @endphp

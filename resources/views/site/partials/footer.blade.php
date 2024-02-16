@@ -22,7 +22,7 @@
                                         @if ($setting->email)
                                             <span><a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></span>
                                         @endif
-                                        <span><a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></span>
+                                        <span><a href="tel:{{ str_replace('-', '', $setting->phone) }}">{{ $setting->phone }}</a></span>
                                     </p>
                                 </div>
                             </div>
