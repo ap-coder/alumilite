@@ -142,11 +142,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Brand Model
     Route::delete('brand-models/destroy', 'BrandModelController@massDestroy')->name('brand-models.massDestroy');
     Route::resource('brand-models', 'BrandModelController');
-        
+
+    // Snippets
+    Route::delete('snippets/destroy', 'SnippetsController@massDestroy')->name('snippets.massDestroy');
+    Route::post('snippets/media', 'SnippetsController@storeMedia')->name('snippets.storeMedia');
+    Route::post('snippets/ckmedia', 'SnippetsController@storeCKEditorImages')->name('snippets.storeCKEditorImages');
+    Route::resource('snippets', 'SnippetsController');
+
     Route::post('add_env_conditionals', function(Request $request) {
 
 		if($request->evnsData){
-		
+
 			foreach ($request->evnsData as $key => $value) {
 				\DB::table('admin_menu_items')->where('id', $value['menu_id'])->update( [$value['envs'] => $value['check']]);
 			}

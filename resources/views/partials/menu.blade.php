@@ -8,7 +8,7 @@
 
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
-            <a href="{{ url("admin") }}" class="c-sidebar-nav-link">
+            <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
                 <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
 
                 </i>
@@ -107,30 +107,8 @@
                 </ul>
             </li>
         @endcan
-        @can('build_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/builds*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.buildManagement.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('build_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.builds.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/builds") || request()->is("admin/builds/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-car c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.build.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </li>
-        @endcan
         @can('content_management_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/posts*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }} {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/sliders*") ? "c-show" : "" }} {{ request()->is("admin/pagesections*") ? "c-show" : "" }} {{ request()->is("admin/content-sections*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/sliders*") ? "c-show" : "" }} {{ request()->is("admin/builds*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }} {{ request()->is("admin/posts*") ? "c-show" : "" }} {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/reviews*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-book c-sidebar-nav-icon">
 
@@ -138,13 +116,23 @@
                     {{ trans('cruds.contentManagement.title') }}
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
-                    @can('post_access')
+                    @can('slider_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.posts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/posts") || request()->is("admin/posts/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file c-sidebar-nav-icon">
+                            <a href="{{ route("admin.sliders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/sliders") || request()->is("admin/sliders/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-images c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.post.title') }}
+                                {{ trans('cruds.slider.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('build_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.builds.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/builds") || request()->is("admin/builds/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-car c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.build.title') }}
                             </a>
                         </li>
                     @endcan
@@ -158,23 +146,13 @@
                             </a>
                         </li>
                     @endcan
-                    @can('pagesection_access')
+                    @can('post_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.pagesections.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pagesections") || request()->is("admin/pagesections/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.posts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/posts") || request()->is("admin/posts/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-file c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.pagesection.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('content_section_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.content-sections.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/content-sections") || request()->is("admin/content-sections/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.contentSection.title') }}
+                                {{ trans('cruds.post.title') }}
                             </a>
                         </li>
                     @endcan
@@ -198,56 +176,17 @@
                             </a>
                         </li>
                     @endcan
-                    @can('slider_access')
+                    @can('review_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.sliders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/sliders") || request()->is("admin/sliders/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-images c-sidebar-nav-icon">
+                            <a href="{{ route("admin.reviews.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/reviews") || request()->is("admin/reviews/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-star-half-alt c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.slider.title') }}
+                                {{ trans('cruds.review.title') }}
                             </a>
                         </li>
                     @endcan
                 </ul>
-            </li>
-        @endcan
-        @can('review_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.reviews.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/reviews") || request()->is("admin/reviews/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-star-half-alt c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.review.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('static_seo_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.static-seos.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/static-seos") || request()->is("admin/static-seos/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.staticSeo.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('setting_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
-                    <i class="fa-fw far fa-address-card c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.setting.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('menu_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.menu.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/menu") || request()->is("admin/menu/*") ? "c-active" : "" }}">
-                    <i class="fa-fw far fa-bell c-sidebar-nav-icon">
-                    </i>
-                    {{ trans('global.menu') }}
-                </a>
             </li>
         @endcan
         @can('user_management_access')
@@ -292,6 +231,36 @@
                 </ul>
             </li>
         @endcan
+        @can('static_seo_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.static-seos.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/static-seos") || request()->is("admin/static-seos/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.staticSeo.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('setting_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-address-card c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.setting.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('snippet_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.snippets.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/snippets") || request()->is("admin/snippets/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.snippet.title') }}
+                </a>
+            </li>
+        @endcan
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">
@@ -305,7 +274,9 @@
         @endif
         <li class="c-sidebar-nav-item">
             <a href="#" class="c-sidebar-nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt"></i>
+                <i class="c-sidebar-nav-icon fas fa-fw fa-sign-out-alt">
+
+                </i>
                 {{ trans('global.logout') }}
             </a>
         </li>
