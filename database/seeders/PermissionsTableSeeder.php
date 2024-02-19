@@ -486,6 +486,14 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 119,
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => 120,
+                'title' => 'media_library_access',
+            ],
+            [
+                'id'    => 121,
+                'title' => 'media_library_create',
+            ],
         ];
 
         Permission::insert($permissions);

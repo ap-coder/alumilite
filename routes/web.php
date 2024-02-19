@@ -115,6 +115,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('posts/ckmedia', 'PostController@storeCKEditorImages')->name('posts.storeCKEditorImages');
     Route::resource('posts', 'PostController');
 
+    //medialibrary
+    Route::resource('media', 'MediaLibraryController');
+    Route::get('media-library', 'MediaLibraryController@index')->name('media-library.index');
+    Route::get('medialibrary', 'MediaLibraryController@index_medialibrary')->name('media.medialibrary');
+    Route::post('mediaaction', 'MediaLibraryController@mediaaction')->name('media.mediaaction');
+    Route::post('delete', 'MediaLibraryController@delete')->name('media.delete');
+    
     // Slider
     Route::delete('sliders/destroy', 'SliderController@massDestroy')->name('sliders.massDestroy');
     Route::post('sliders/media', 'SliderController@storeMedia')->name('sliders.storeMedia');
