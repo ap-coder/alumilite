@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-
 <div class="card direct-chat direct-chat-primary" style="position: relative; left: 0px; top: 0px;">
     <div class="card-header ui-sortable-handle" style="cursor: move;">
       <h3 class="card-title">SERP Previews</h3>

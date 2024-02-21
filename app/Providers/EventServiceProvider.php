@@ -8,6 +8,22 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Observers\StaticSeoObserver;
 use App\Models\StaticSeo;
+use App\Observers\ProductObserver;
+use App\Models\Product;
+use App\Observers\PostObserver;
+use App\Models\Post;
+use App\Observers\ProductCategoryObserver;
+use App\Models\ProductCategory;
+use App\Observers\BrandObserver;
+use App\Models\Brand;
+use App\Observers\ProductTypeObserver;
+use App\Models\ProductType;
+use App\Observers\BuildObserver;
+use App\Models\Build;
+use App\Observers\ContentCategoryObserver;
+use App\Models\ContentCategory;
+use App\Observers\ContentTagObserver;
+use App\Models\ContentTag;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -29,6 +45,14 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $observers = [
         StaticSeo::class => [StaticSeoObserver::class],
+        Product::class => [ProductObserver::class],
+        Post::class => [PostObserver::class],
+        ProductCategory::class => [ProductCategoryObserver::class],
+        Brand::class => [BrandObserver::class],
+        ProductType::class => [ProductTypeObserver::class],
+        Build::class => [BuildObserver::class],
+        ContentCategory::class => [ContentCategoryObserver::class],
+        ContentTag::class => [ContentTagObserver::class],
     ];
 
     /**
