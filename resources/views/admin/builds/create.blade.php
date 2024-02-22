@@ -286,7 +286,8 @@
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
       allEditors[i], {
-        extraPlugins: [SimpleUploadAdapter]
+        extraPlugins: [SimpleUploadAdapter],
+        mediaEmbed: {previewsInData: true}
       }
     );
   }

@@ -5,7 +5,7 @@
                     @if ($photo->photo)
                         <a href="{{ route('builds.show',$photo->slug) }}" target="_blank" class="gallery__link">
                             <figure class="gallery__thumb">
-                                <img src="{{ $photo->photo->getUrl() }}" alt="{{ $photo->name }}" class="gallery__image">
+                                <img src="{{ $photo->photo->getUrl('homepage') }}" alt="{{ $photo->name }}" class="gallery__image">
                                 <figcaption class="gallery__caption">{{ $photo->name }}</figcaption>
                             </figure>
                         </a>
