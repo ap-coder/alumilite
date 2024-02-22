@@ -9,7 +9,11 @@
                 if ($slider->image) {
                     $sliderImage = $slider->image->getUrl();
                 } else {
-                    $sliderImage = 'assets/images/slider/slider-3.jpg';
+                    if ($env=='local') {
+                        $sliderImage = 'assets/images/slider/slider-3.jpg';
+                    } else {
+                        $sliderImage = '';
+                    }
                 }
                 @endphp
 

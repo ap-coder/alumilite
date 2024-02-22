@@ -8278,24 +8278,24 @@ p {
 }
 
 .inventory-single-content {
-  padding-top: 70px;
-  padding-bottom: 115px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .inventory-single-content {
-    padding-bottom: 95px;
+    padding-bottom: 20px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .inventory-single-content {
-    padding-top: 50px;
-    padding-bottom: 75px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 @media (max-width: 767px) {
   .inventory-single-content {
-    padding-top: 50px;
-    padding-bottom: 55px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 .inventory-single-content .breadcrumb {

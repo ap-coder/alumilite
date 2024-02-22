@@ -19,7 +19,9 @@
                                             @if($post->featured_image)
                                                 {{ $post->getFirstMedia('featured_image')('excerpt') }}
                                             @else
-                                                <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $post->title }}">
+                                                @if ($env=='local')
+                                                    <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $post->title }}">
+                                                @endif
                                             @endif
                                         </a>
                                     </div>

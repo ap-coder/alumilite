@@ -13,7 +13,9 @@
                                 {{-- {{ $build->getFirstMedia('photo')('excerpt') }} --}}
                                 <img src="{{ $similarBuild->photo->getUrl() }}" alt="{{ $similarBuild->name }}">
                             @else
-                                <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $similarBuild->name }}">
+                                @if ($env=='local')
+                                    <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $similarBuild->name }}">
+                                @endif
                             @endif
                         </a>
 

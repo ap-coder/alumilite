@@ -5,9 +5,11 @@
                         {{ $build->getFirstMedia('photo')('responsive') }}
                     </div>
                 @else
-                    <div class="single-image-gallery">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-1.jpg') }}" alt="{{ $build->name }}">
-                    </div>
+                    @if ($env=='local')
+                        <div class="single-image-gallery">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-1.jpg') }}" alt="{{ $build->name }}">
+                        </div>
+                    @endif
                 @endif
 
                 @if($build->additional_photos->count()>0)
@@ -15,15 +17,18 @@
                         {{ $photos('responsive') }}
                     @endforeach
                 @else
-                    <div class="single-image-gallery">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
-                    </div>
-                    <div class="single-image-gallery">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-3.jpg') }}" alt="{{ $build->name }}">
-                    </div>
-                    <div class="single-image-gallery">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
-                    </div>
+                    @if ($env=='local')
+                        <div class="single-image-gallery">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
+                        </div>
+                        <div class="single-image-gallery">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-3.jpg') }}" alt="{{ $build->name }}">
+                        </div>
+                        <div class="single-image-gallery">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
+                        </div>
+                    @endif
+                    
                 @endif
                 
                 
@@ -37,9 +42,12 @@
                         <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
                     </div>
                 @else
-                    <div class="single-image-thumb">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-1.jpg') }}" alt="{{ $build->name }}">
-                    </div>
+                    @if ($env=='local')
+                        <div class="single-image-thumb">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-1.jpg') }}" alt="{{ $build->name }}">
+                        </div>
+                    @endif
+                    
                 @endif
 
                 @if($build->additional_photos->count()>0)
@@ -50,15 +58,18 @@
                         </div>
                     @endforeach
                 @else
-                    <div class="single-image-thumb">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
-                    </div>
-                    <div class="single-image-thumb">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-3.jpg') }}" alt="">
-                    </div>
-                    <div class="single-image-thumb">
-                        <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
-                    </div>
+                    @if ($env=='local')
+                        <div class="single-image-thumb">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
+                        </div>
+                        <div class="single-image-thumb">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-3.jpg') }}" alt="">
+                        </div>
+                        <div class="single-image-thumb">
+                            <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
+                        </div>
+                    @endif
+                    
                 @endif
                 
                 

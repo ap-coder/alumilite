@@ -4,7 +4,10 @@
                                         {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
                                         <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                     @else
-                                    <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        @if ($env=='local')
+                                            <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        @endif
+                                    
                                 @endif
 
                                 @if($product->additional_photos->count()>0)
@@ -13,10 +16,13 @@
                                         <img src="{{ $photos->getUrl() }}" alt="{{ $product->name }}">
                                     @endforeach
                                 @else
-                                    <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
-                                    <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
-                                    <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
-                                    <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                    @if ($env=='local')
+                                        <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                    @endif
+                                    
                                 @endif
                                
                             </div>
@@ -29,7 +35,10 @@
                                         </div>
                                     </div>
                                 @else
-                                    <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                    @if ($env=='local')
+                                        <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                    @endif
+                                    
                                 @endif
                                 
                                 @if($product->additional_photos->count()>0)
@@ -42,26 +51,29 @@
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="thumb-col">
-                                        <div class="single-dealership-thumb">
-                                            <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                    @if ($env=='local')
+                                        <div class="thumb-col">
+                                            <div class="single-dealership-thumb">
+                                                <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="thumb-col">
-                                        <div class="single-dealership-thumb">
-                                            <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        <div class="thumb-col">
+                                            <div class="single-dealership-thumb">
+                                                <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="thumb-col">
-                                        <div class="single-dealership-thumb">
-                                            <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        <div class="thumb-col">
+                                            <div class="single-dealership-thumb">
+                                                <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="thumb-col">
-                                        <div class="single-dealership-thumb">
-                                            <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                        <div class="thumb-col">
+                                            <div class="single-dealership-thumb">
+                                                <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
+                                    
                                 @endif
                             </div>
                         </div>

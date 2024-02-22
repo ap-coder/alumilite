@@ -10,12 +10,14 @@
         @foreach ($sliders as $slider)
             @if ($slider->location == '2')
                 @php
-                if($env=='local'){
-                    $sliderImage = 'assets/images/slider/slider-3.jpg';
-                }elseif ($slider->image) {
+                if ($slider->image) {
                     $sliderImage = $slider->image->getUrl();
                 } else {
-                    $sliderImage = 'assets/images/slider/slider-3.jpg';
+                    if ($env=='local') {
+                        $sliderImage = 'assets/images/slider/slider-3.jpg';
+                    }else{
+                        $sliderImage = '';
+                    }
                 }
                 @endphp
                 <div class="single-blog-feature bg_cover d-flex align-items-center" style="background-image: url({!! $sliderImage !!});">

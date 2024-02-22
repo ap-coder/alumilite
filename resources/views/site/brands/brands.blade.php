@@ -21,7 +21,9 @@
                                     @if ($brand->logo)
                                         <img src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}">
                                     @else
-                                        <img src="https://placehold.co/300x300?text=Brand+Logo" alt="{{ $brand->name }}">
+                                        @if ($env=='local')
+                                            <img src="https://placehold.co/300x300?text=Brand+Logo" alt="{{ $brand->name }}">
+                                        @endif
                                     @endif
                                 </div>
                                 <!--  <div class="team-content">

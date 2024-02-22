@@ -22,7 +22,10 @@
                                             {{-- <img src="{{ $article->featured_image->getUrl() }}" alt="{{ $article->title }}"> --}}
                                         </a>
                                         @else
-                                            <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
+                                            @if ($env=='local')
+                                                <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
+                                            @endif
+                                            
                                         @endif
                                        </div>
                                    </div>

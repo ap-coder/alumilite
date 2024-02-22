@@ -25,7 +25,9 @@
                                                     {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
                                                     <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                                 @else
-                                                    <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
+                                                    @if ($env=='local')
+                                                        <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
+                                                    @endif
                                                 @endif
                                             </a>
                                           
@@ -65,7 +67,9 @@
                                                         
                                                         <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
                                                     @else
-                                                        <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
+                                                        @if ($env=='local')
+                                                            <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
+                                                        @endif
                                                     @endif
                                                 </a>
                                               

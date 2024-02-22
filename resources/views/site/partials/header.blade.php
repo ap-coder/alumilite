@@ -8,8 +8,6 @@
                         <a href="{{ url('') }}">
                             @if (isset($setting->header_logo))
                                 <img class="custom-logo" src="{{ $setting->header_logo->getUrl() }}" alt="alumilite armor logo">
-                            @else
-                                Logo
                             @endif
                         </a>
                     </div>

@@ -34,7 +34,9 @@
                                                         {{-- {{ $build->getFirstMedia('photo')('excerpt') }} --}}
                                                         <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
                                                     @else
-                                                        <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
+                                                        @if ($env=='local')
+                                                            <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
+                                                        @endif
                                                     @endif
                                                 </a>
 
@@ -65,7 +67,9 @@
                                                         {{-- {{ $build->getFirstMedia('photo')('excerpt') }} --}}
                                                         <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
                                                     @else
-                                                        <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
+                                                        @if ($env=='local')
+                                                            <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">
+                                                        @endif
                                                     @endif
                                                 </a>
 
