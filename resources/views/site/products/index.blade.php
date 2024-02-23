@@ -89,9 +89,16 @@
 
                                     <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
 
-                                    {{-- <div class="author-meta">
-                                        <span><i class="ion-android-person"></i> Dealer:  <a href="#">Eden Hazard</a></span>
-                                    </div> --}}
+                                    @if ($product->brand)
+                                        <div class="author-meta">
+                                            <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                                @if ($product->brand_model)
+                                                    {{ $product->brand_model->model }}
+                                                @endif
+                                            </span>
+                                        </div>
+                                    @endif
+                                    
                                     <ul class="car-meta">
                                         @if ($product->technical_specs->count()>0)
                                             @foreach ($product->technical_specs->take(3) as $specification)
@@ -131,6 +138,15 @@
                                     @endforeach
                                 @endif
                                 <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
+                                @if ($product->brand)
+                                    <div class="author-meta">
+                                        <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                            @if ($product->brand_model)
+                                                {{ $product->brand_model->model }}
+                                            @endif
+                                        </span>
+                                    </div>
+                                @endif
                             </div>
                             <span class="price">
                                 <span class="sale-price">${{ number_format($product->price) }}</span>

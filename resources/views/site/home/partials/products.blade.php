@@ -63,7 +63,18 @@
                                                 <span class="sale-badge">Sale</span> --}}
                                             </div>
                                             <div class="car-content">
-                                                <span class="body-type"><a href="javacript:void(0);">{{ $product->product_type->name }}</a></span>
+                                                <span class="body-type">
+                                                    <a href="javacript:void(0);">{{ $product->product_type->name }}</a>
+                                                </span>
+                                                @if ($product->brand)
+                                                    <div class="author-meta">
+                                                        <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                                            @if ($product->brand_model)
+                                                                {{ $product->brand_model->model }}
+                                                            @endif
+                                                        </span>
+                                                    </div>
+                                                @endif
                                                 <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                                                 <span class="price">
                                                     @if ($product->price && $product->msrp)
@@ -133,7 +144,18 @@
                                                     <span class="sale-badge">Sale</span> --}}
                                                 </div>
                                                 <div class="car-content">
-                                                    <span class="body-type"><a href="javacript:void(0);">{{ $product->product_type->name }}</a></span>
+                                                    <span class="body-type">
+                                                        <a href="javacript:void(0);">{{ $product->product_type->name }}</a>
+                                                    </span>
+                                                    @if ($product->brand)
+                                                        <div class="author-meta">
+                                                            <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                                                @if ($product->brand_model)
+                                                                    {{ $product->brand_model->model }}
+                                                                @endif
+                                                            </span>
+                                                        </div>
+                                                    @endif
                                                     <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                                                     <span class="price">
                                                         <span class="sale-price">${{ number_format($product->price) }}</span>
