@@ -203,7 +203,7 @@
 <script>
     Dropzone.options.imageDropzone = {
     url: '{{ route('admin.sliders.storeMedia') }}',
-    maxFilesize: 5, // MB
+    maxFilesize: 20, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,
     addRemoveLinks: true,
