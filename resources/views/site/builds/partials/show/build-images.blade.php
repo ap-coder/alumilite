@@ -28,15 +28,15 @@
                             <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
                         </div>
                     @endif
-                    
+
                 @endif
-                
-                
+
+
             </div>
 
             <div class="inventory-thumb-active">
 
-                @if ($build->photo)
+                @if ($build->photo && $build->additional_photos->count() > 0)
                     <div class="single-image-thumb">
                         {{-- {{ $build->getFirstMedia('photo')('responsive') }} --}}
                         <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
@@ -47,7 +47,6 @@
                             <img src="{{ asset('assets/images/inventory-single/inventory-single-1.jpg') }}" alt="{{ $build->name }}">
                         </div>
                     @endif
-                    
                 @endif
 
                 @if($build->additional_photos->count()>0)
@@ -69,9 +68,9 @@
                             <img src="{{ asset('assets/images/inventory-single/inventory-single-2.jpg') }}" alt="{{ $build->name }}">
                         </div>
                     @endif
-                    
+
                 @endif
-                
-                
+
+
             </div>
         </div>

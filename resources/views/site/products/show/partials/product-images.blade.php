@@ -7,7 +7,7 @@
                                         @if ($env=='local')
                                             <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
                                         @endif
-                                    
+
                                 @endif
 
                                 @if($product->additional_photos->count()>0)
@@ -22,12 +22,12 @@
                                         <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
                                         <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
                                     @endif
-                                    
+
                                 @endif
-                               
+
                             </div>
                             <div class="dealership-gallery-thumb-active">
-                                @if($product->photo)
+                                @if($product->photo && $product->additional_photos->count()>0)
                                     <div class="thumb-col">
                                         <div class="single-dealership-thumb">
                                             {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
@@ -38,9 +38,9 @@
                                     @if ($env=='local')
                                         <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
                                     @endif
-                                    
+
                                 @endif
-                                
+
                                 @if($product->additional_photos->count()>0)
                                     @foreach ($product->additional_photos as $photos)
                                         <div class="thumb-col">
@@ -73,7 +73,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    
+
                                 @endif
                             </div>
                         </div>
