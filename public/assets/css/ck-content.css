@@ -601,6 +601,12 @@ margin-left: -15px;
 .ck-content {
     margin:15px!important
 }
+   .ck-content p {
+       margin: 0 0 2rem !important;
+       font-size: 16px;
+       line-height: 1.6;
+   }
+
    .inventory-single-content .listing-social {}
 
    .inventory-single-dealership-tab {
