@@ -538,6 +538,64 @@ margin-left: -15px;
     padding: 0;
     border-radius: 0;
 }
+
+
+/* Paragraph */
+.cke-content p {
+   margin: 0 0 1em;
+   font-size: 16px;
+   line-height: 1.6;
+}
+
+
+
+/* Headings */
+.cke-content h1,
+.cke-content h2,
+.cke-content h3,
+.cke-content h4,
+.cke-content h5,
+.cke-content h6 {
+   margin-top: 20px;
+   margin-bottom: 10px;
+   font-weight: bold;
+}
+
+/* Unordered List */
+.cke-content ul {
+   list-style-type: disc;
+   margin-left: 20px;
+}
+
+/* Ordered List */
+.cke-content ol {
+   list-style-type: decimal;
+   margin-left: 20px;
+}
+
+/* List Item */
+.cke-content li {
+   margin-bottom: 10px; /* Adjust spacing between list items as needed */
+}
+
+/* Images */
+.cke-content img {
+   max-width: 100%;
+   height: auto;
+}
+
+/* Links */
+.cke-content a {
+   color: #007bff; /* Example color: Bootstrap default blue */
+   text-decoration: none;
+}
+
+.cke-content a:hover,
+.cke-content a:focus {
+  text-decoration: underline; /* Change as per your design */
+}
+
+
 @media print {
     /* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
     .ck-content .page-break {
