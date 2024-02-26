@@ -16,8 +16,10 @@
         <div class="title-price">
             <div class="title-excerpt">
                 <h3 class="entry-title">{{ $product->name }} <i class="ion-android-checkmark-circle"></i></h3>
-                <p class="entry-excerpt"> @if($product->brand)
-                        <a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> @endif
+                <p class="entry-excerpt">
+                    @if($product->brand)
+                        <strong>Brand: </strong> <a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
+                    @endif
                     {{ $product->brand_model ? '| Model: ' . $product->brand_model->model : '' }}
                 </p>
             </div>
