@@ -37,7 +37,7 @@ class BuildsController extends Controller
         } else {
             $similarBuilds = collect();
         }
-        
+
 //        $similarBuilds = Build::whereHas('brand', function ($query) use ($build) {
 //            $query->where('id', $build->brand->id);
 //        })
