@@ -602,6 +602,8 @@ margin-left: -15px;
     margin:15px!important
 }
 
+   .inventory-single-content .listing-social {}
+
 @media print {
     /* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
     .ck-content .page-break {
