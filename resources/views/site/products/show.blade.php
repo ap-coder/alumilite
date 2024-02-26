@@ -14,7 +14,7 @@
             <li class="breadcrumb-item active">{{ $product->name }}</li>
         </ul>
         <div class="listing-social d-lg-flex justify-content-between">
-            @include('site.products.show.partials.s')
+            @include('site.products.show.partials.social-share')
         </div>
         <div class="title-price">
             <div class="title-excerpt">

@@ -1,5 +1,5 @@
                             <div class="sidebar-dealer-contact">
-                                <h4 class="sidebar-title">contact dealer</h4>
+                                <h4 class="sidebar-title">Contact Us</h4>
 
                                 <div class="dealer-contact-form">
                                     <form action="#">
@@ -23,7 +23,7 @@
                                             <textarea placeholder="Write your Message here..."></textarea>
                                         </div>
                                         <div class="single-input">
-                                            <button class="main-btn d-block">check availability</button>
+                                            <button class="main-btn d-block">Send Email</button>
                                         </div>
                                     </form>
                                 </div>
