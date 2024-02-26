@@ -6,7 +6,7 @@
     <div class="container">
     <div class="inventory-single-content ">
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             @if ($product->categories->count() > 0)
                 <li class="breadcrumb-item"><a
                         href="javascript:void(0);">{{ $product->categories->first()->name }}</a></li>
@@ -15,7 +15,7 @@
         </ul>
         <div class="listing-social d-lg-flex justify-content-between">
             <div class="listing-btn">
-                
+
             </div>
             <div class="social-share">
                 <ul class="social">
