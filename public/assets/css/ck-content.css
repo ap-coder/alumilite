@@ -601,9 +601,11 @@ margin-left: -15px;
 .ck-content {
     margin:15px!important
 }
-
    .inventory-single-content .listing-social {}
 
+   .inventory-single-dealership-tab {
+       padding-top: 15px!important;
+   }
 @media print {
     /* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
     .ck-content .page-break {
