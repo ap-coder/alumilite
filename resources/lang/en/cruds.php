@@ -574,7 +574,7 @@ return [
             'id'                             => 'ID',
             'id_helper'                      => ' ',
             'image'                          => 'Image',
-            'image_helper'                   => 'Use image size 1920x540 for best results | max 1920x600',
+            'image_helper'                   => 'Use image size 1920x760 for best results',
             'sub_title'                      => 'Sub Title',
             'sub_title_helper'               => ' ',
             'main_title'                     => 'Main Title',
