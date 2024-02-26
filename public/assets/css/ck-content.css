@@ -595,6 +595,12 @@ margin-left: -15px;
   text-decoration: underline; /* Change as per your design */
 }
 
+.tab-content {
+    margin:10px!important
+}
+.ck-content {
+    margin:15px!important
+}
 
 @media print {
     /* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
