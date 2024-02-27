@@ -88,13 +88,12 @@ class Slider extends Model implements HasMedia
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
         $this->addMediaConversion('responsive')->format(Manipulations::FORMAT_WEBP)->width(1200)->height(500)->withResponsiveImages()->nonQueued();
         $this->addMediaConversion('slider')
-        // Assuming you want to ensure the image fits within certain dimensions before cropping
-        ->fit(Manipulations::FIT_CONTAIN, 1920, 1920) // Fit the image in 1920x1920, maintaining aspect ratio
-        ->crop('crop-center', 1920, 760) // Then crop the resized image to your desired dimensions from the center
-        ->format(Manipulations::FORMAT_WEBP) // Convert the format to WebP
-        ->quality(80)
-        ->withResponsiveImages() // Generate responsive images for different screen sizes
-        ->nonQueued();
+                ->fit(Manipulations::FIT_CONTAIN, 1920, 1920) // Fit the image in 1920x1920, maintaining aspect ratio
+                ->crop('crop-center', 1920, 760) // Then crop the resized image to your desired dimensions from the center
+                ->format(Manipulations::FORMAT_WEBP) // Convert the format to WebP
+                ->quality(80)
+                ->withResponsiveImages() // Generate responsive images for different screen sizes
+                ->nonQueued();
     }
 
     public function getImageAttribute()
