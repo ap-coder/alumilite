@@ -24,13 +24,13 @@
                                 <div class="slider-content">
 
                                     @if($slider->sub_title)
-                                    <h4 class="sub-title">{{ $slider->sub_title }}</h4>
+                                    <h4 class="sub-title" @style($slider->sub_title_css)>{{ $slider->sub_title }}</h4>
                                     @endif
                                     @if($slider->main_title)
                                     <h2 class="main-title" @style($slider->main_title_css)>{{ $slider->main_title }}</h2>
                                     @endif
                                     @if($slider->sub_title_2)
-                                    <p class="sub-title-2" style="{{ $slider->sub_title_2_css }}">{{ $slider->sub_title_2 }}</p>
+                                    <p class="sub-title-2" @style($slider->sub_title_2_css)">{{ $slider->sub_title_2 }}</p>
                                     @endif
                                     <div class="slider-description">
                                         <p class="text-heading">
@@ -45,14 +45,18 @@
                                             @endif
                                         </p>
                                         @if($slider->slider_description)
-                                        <p>{{ $slider->slider_description }}</p>
+                                        <p @style()>{{ $slider->slider_description }}</p>
                                         @endif
                                     </div>
                                     @if($slider->main_button_text)
                                     <ul class="slider-btn">
-                                        <li><a class="main-btn main-btn-2" target="_blank" href="{{ $slider->main_button_link }}">{{ $slider->main_button_text }}</a></li>
+                                        <li><a class="main-btn main-btn-2" @style() target="_blank" href="{{ $slider->main_button_link }}">{{ $slider->main_button_text }}</a></li>
                                         @if($slider->second_button_text)
-                                        <li><a class="main-btn" target="_blank" href="{{ $slider->second_button_link }}"><i class="ion-speedometer"></i> {{ $slider->second_button_text }}</a></li>
+                                        <li><a class="main-btn" @style() target="_blank" href="{{ $slider->second_button_link }}">
+                                                @if()<i class="ion-speedometer"></i>
+                                                {{ $slider->second_button_text }}
+                                            </a>
+                                        </li>
                                         @endif
                                     </ul>
                                     @endif
