@@ -1,5 +1,5 @@
 
-    
+
     <!--====== Slider Start ======-->
 
     <section class="slider-area slider-dark slider-active">
@@ -22,15 +22,15 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="slider-content">
-                                    
+
                                     @if($slider->sub_title)
                                     <h4 class="sub-title">{{ $slider->sub_title }}</h4>
                                     @endif
                                     @if($slider->main_title)
-                                    <h2 class="main-title">{{ $slider->main_title }}</h2>
+                                    <h2 class="main-title" @style($slider->main_title_css)>{{ $slider->main_title }}</h2>
                                     @endif
                                     @if($slider->sub_title_2)
-                                    <p class="sub-title-2">{{ $slider->sub_title_2 }}</p>
+                                    <p class="sub-title-2" style="{{ $slider->sub_title_2_css }}">{{ $slider->sub_title_2 }}</p>
                                     @endif
                                     <div class="slider-description">
                                         <p class="text-heading">
@@ -63,7 +63,7 @@
                 </div>
                 @endif
         @endforeach
- 
+
     </section>
 
     <!--====== Slider Ends ======-->
