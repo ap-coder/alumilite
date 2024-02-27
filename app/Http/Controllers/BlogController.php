@@ -34,7 +34,7 @@ class BlogController extends Controller
 
         $category=$request->category;
         $search=$request->search;
-        $sliders = Slider::get();
+        $sliders = Slider::published()->get();
 
         if ($category) {
             $articles = Post::published()->whereHas('categories', function ($query) use ($category) {

@@ -28,7 +28,7 @@ class SiteController extends Controller
         $posts = Post::published()->latest()->take(3)->get();
         $products = Product::published()->latest()->get();
         $builds = Build::published()->latest()->get();
-        $sliders = Slider::get();
+        $sliders = Slider::published()->get();
         $productTypes = ProductType::published()->get();
         $brands = Brand::published()->get();
 

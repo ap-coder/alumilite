@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductTag;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $category=$request->category;
+        $sliders = Slider::published()->get();
 
         if ($category) {
             $products = Product::published()->whereHas('categories', function ($query) use ($category) {
@@ -29,7 +31,7 @@ class ProductsController extends Controller
 
         $categories = ProductCategory::published()->get();
 
-        return view('site.products.index', compact('products','categories'));
+        return view('site.products.index', compact('products','categories', 'sliders'));
     }
 
     public function show(Product $product)
@@ -44,5 +46,5 @@ class ProductsController extends Controller
         ->get();
 
         return view('site.products.show', compact('product','similarProducts'));
-    } 
+    }
 }
