@@ -20,7 +20,7 @@
 
 -----------------------------------------------------------------------------------*/
 /*===========================
-    1. COMMON css 
+    1. COMMON css
 ===========================*/
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
@@ -414,7 +414,7 @@ p {
   }
 }
 /*===========================
-        02.Header css 
+        02.Header css
 ===========================*/
 .header-main-wrapper {
   padding: 25px 0;
@@ -1277,7 +1277,7 @@ p {
 }
 
 /*===========================
-        03.Slider css 
+        03.Slider css
 ===========================*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .slider-area {
@@ -1779,7 +1779,7 @@ p {
 }
 
 /*===========================
-       04.Search Box css 
+       04.Search Box css
 ===========================*/
 .search-box-area {
   background-color: #edeff1;
@@ -2269,7 +2269,7 @@ p {
 }
 
 /*===========================
-       05.Trending css 
+       05.Trending css
 ===========================*/
 .trending-area {
   padding-top: 115px;
@@ -2404,7 +2404,7 @@ p {
 }
 
 /*===========================
-       06.Browse car css 
+       06.Browse car css
 ===========================*/
 .browse-area {
   padding-top: 115px;
@@ -2507,7 +2507,7 @@ p {
 }
 
 /*===========================
-        07.cars css 
+        07.cars css
 ===========================*/
 .cars-area {
   padding-top: 115px;
@@ -3879,7 +3879,7 @@ p {
 }
 
 /*===========================
-  08.Testimonial & Brand css 
+  08.Testimonial & Brand css
 ===========================*/
 .testimonial-brand-area {
   background-color: #edeff1;
@@ -4455,7 +4455,7 @@ p {
 }
 
 /*===========================
-      09.Dealership css 
+      09.Dealership css
 ===========================*/
 .dealership-area {
   padding-top: 115px;
@@ -4586,7 +4586,7 @@ p {
 }
 
 /*===========================
-      10.Choose css 
+      10.Choose css
 ===========================*/
 .choose-area {
   padding-top: 115px;
@@ -4949,7 +4949,7 @@ p {
 }
 
 /*===========================
-      10.News css 
+      10.News css
 ===========================*/
 .news-area {
   padding-top: 115px;
@@ -5358,7 +5358,7 @@ p {
 }
 
 /*===========================
-      11.Footer css 
+      11.Footer css
 ===========================*/
 .footer-area {
   background-color: #edeff1;
@@ -5965,7 +5965,7 @@ p {
 }
 
 /*===========================
-     12.How It Work css 
+     12.How It Work css
 ===========================*/
 .how-work-area {
   padding-top: 112px;
@@ -6099,7 +6099,7 @@ p {
 }
 
 /*===========================
-       13.Car Logo css 
+       13.Car Logo css
 ===========================*/
 .car-logo-area .wrapper {
   border-top: 1px solid #d7dce6;
@@ -6278,7 +6278,7 @@ p {
 }
 
 /*===========================
-      14.Browse Type css 
+      14.Browse Type css
 ===========================*/
 .browse-type-area {
   padding-top: 115px;
@@ -6414,7 +6414,7 @@ p {
 }
 
 /*===========================
-    15.Call To Action css 
+    15.Call To Action css
 ===========================*/
 .call-to-action-area {
   background-color: #ce8339;
@@ -6548,7 +6548,7 @@ p {
 }
 
 /*===========================
-   16.Appointment About css 
+   16.Appointment About css
 ===========================*/
 .appointment-about {
   padding-bottom: 115px;
@@ -6871,7 +6871,7 @@ p {
 }
 
 /*===========================
-       17.Services css 
+       17.Services css
 ===========================*/
 .services-area {
   padding-top: 115px;
@@ -7023,7 +7023,7 @@ p {
 }
 
 /*===========================
-       18.Team css 
+       18.Team css
 ===========================*/
 .team-area {
   padding-top: 115px;
@@ -7274,7 +7274,7 @@ p {
 }
 
 /*===========================
-      18.Page Banner css 
+      18.Page Banner css
 ===========================*/
 .page-banner-area {
   padding-top: 175px;
@@ -7344,7 +7344,7 @@ p {
 }
 
 /*===========================
-      19.Inventory css 
+      19.Inventory css
 ===========================*/
 .inventory-area {
   padding-top: 70px;
@@ -7643,7 +7643,7 @@ p {
 }
 
 /*===========================
-   20.Inventory Sidebar css 
+   20.Inventory Sidebar css
 ===========================*/
 .sidebar .sidebar-title {
   font-size: 16px;
@@ -8196,7 +8196,7 @@ p {
 }
 
 /*===========================
-21.Inventory Single Classified css 
+21.Inventory Single Classified css
 ===========================*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .inventory-single-area {
@@ -9281,7 +9281,7 @@ p {
 }
 
 /*===========================
-22.Inventory Single Dealership css 
+22.Inventory Single Dealership css
 ===========================*/
 .inventory-single-dealership-content {
   border-bottom: 1px solid rgba(41, 57, 87, 0.15);
@@ -10283,7 +10283,7 @@ p {
 }
 
 /*===========================
-       23.Blog Page css 
+       23.Blog Page css
 ===========================*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .blog-feature-area {
@@ -10570,7 +10570,7 @@ p {
 }
 
 /*===========================
-       24.Blog Sidebar css 
+       24.Blog Sidebar css
 ===========================*/
 .blog-sidebar .sidebar-title {
   font-size: 20px;
@@ -10775,7 +10775,7 @@ p {
 }
 
 /*===========================
-       25.Blog Single css 
+       25.Blog Single css
 ===========================*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .blog-single-area {
@@ -11584,7 +11584,7 @@ p {
 }
 
 /*===========================
-         26.About css 
+         26.About css
 ===========================*/
 /*====== About ======*/
 .about-banner-area {
@@ -12012,7 +12012,7 @@ p {
 }
 
 /*===========================
-     27.services Page css 
+     27.services Page css
 ===========================*/
 .services-page {
   padding-top: 115px;
@@ -12161,7 +12161,7 @@ p {
 }
 
 /*===========================
-     28.Contact Page css 
+     28.Contact Page css
 ===========================*/
 .contact-map-area #contact-map {
   height: 640px;
@@ -12347,7 +12347,7 @@ p {
 }
 
 /*===========================
-     29.Error Page css 
+     29.Error Page css
 ===========================*/
 .error-page {
   padding-top: 120px;
@@ -12397,7 +12397,7 @@ p {
 }
 
 /*===========================
-     30.Coming Soon css 
+     30.Coming Soon css
 ===========================*/
 .coming-soon {
   height: 100vh;
@@ -12558,7 +12558,7 @@ p {
 }
 
 /*===========================
-   31.Vehicle Compare css 
+   31.Vehicle Compare css
 ===========================*/
 .vehicle-compare-page {
   padding-top: 115px;
@@ -12846,7 +12846,7 @@ p {
 }
 
 /*===========================
-         32.FAQ css 
+         32.FAQ css
 ===========================*/
 .faq-page {
   padding-top: 115px;
@@ -13085,7 +13085,7 @@ p {
 }
 
 /*===========================
-   33.Log In & Register css 
+   33.Log In & Register css
 ===========================*/
 .login-register-page {
   padding-top: 70px;
@@ -13368,7 +13368,7 @@ p {
 }
 
 /*===========================
-       34.Add Car css 
+       34.Add Car css
 ===========================*/
 .add-car-banner-area {
   height: 630px;
@@ -13827,7 +13827,7 @@ p {
 }
 
 /*===========================
-     35.Dealer List css 
+     35.Dealer List css
 ===========================*/
 .dealer-list-page {
   padding-top: 115px;
@@ -14168,7 +14168,7 @@ p {
 }
 
 /*===========================
-    36.Dealer Details css 
+    36.Dealer Details css
 ===========================*/
 .dealer-details-page {
   padding-top: 90px;
@@ -14787,7 +14787,7 @@ p {
 }
 
 /*===========================
-    37.Become a Dealer css 
+    37.Become a Dealer css
 ===========================*/
 .become-dealer-banner-area {
   height: 630px;
@@ -14993,7 +14993,7 @@ p {
 }
 
 /*===========================
-    38.Dealer Register css 
+    38.Dealer Register css
 ===========================*/
 .dealer-register-page {
   padding-top: 115px;
@@ -15131,7 +15131,7 @@ p {
 }
 
 /*===========================
-     39.Modal Popup css 
+     39.Modal Popup css
 ===========================*/
 .modal-backdrop.show {
   opacity: 0.75;
@@ -15530,20 +15530,20 @@ p {
   width: 20rem!important;
 }
 
-[class*="only-brands"] 
+[class*="only-brands"]
 {
     display:block;
     height: 15%!important;
     margin-top: -25px!important;
 }
- 
 
-[class*="brand-area-only"] 
-{ 
-  padding-bottom: 10px!important; 
+
+[class*="brand-area-only"]
+{
+  padding-bottom: 10px!important;
 }
 
-[class*="only-brand-wrapper"] 
+[class*="only-brand-wrapper"]
 {
     border-top:0!important;
     padding-top: 10px!important;
@@ -15668,3 +15668,86 @@ p {
 .build-item{
   padding: 0 15px;
 }
+
+.ck-content pre code {
+    background: unset;
+    padding: 0;
+    border-radius: 0;
+}
+
+
+/* Paragraph */
+.cke-content p {
+    margin: 0 0 1em;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+
+/* Headings */
+.cke-content h1,
+.cke-content h2,
+.cke-content h3,
+.cke-content h4,
+.cke-content h5,
+.cke-content h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Unordered List */
+.cke-content ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Ordered List */
+.cke-content ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+}
+
+/* List Item */
+.cke-content li {
+    margin-bottom: 10px; /* Adjust spacing between list items as needed */
+}
+
+/* Images */
+.cke-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Links */
+.cke-content a {
+    color: #007bff; /* Example color: Bootstrap default blue */
+    text-decoration: none;
+}
+
+.cke-content a:hover,
+.cke-content a:focus {
+    text-decoration: underline; /* Change as per your design */
+}
+
+.tab-content {
+    margin:10px!important
+}
+.ck-content {
+    margin:15px!important
+}
+.ck-content p {
+    margin: 0 0 1rem !important;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.inventory-single-content .listing-social {}
+.inventory-single-dealership-tab { padding-top: 15px!important;}
+.inventory-single-dealership-main { padding-top: 0!important; padding-bottom: 80px!important;}
+
+.slider-content [class*="main-title"] { font-family: Ariel!important;}
+.slider-content [class*="sub-title"] { font-family: Ariel!important;}
+.slider-content [class*="sub-title-2"] { font-family: Ariel!important;}
+.slider-content [class*="heading-2"], .slider-content [class*="heading-3"] ,.slider-content [class*="heading"]  { font-family: Ariel!important;}

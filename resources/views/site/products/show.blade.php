@@ -4,37 +4,37 @@
 
     <!--====== Page Breadcrumb Start ======-->
     <div class="container">
-    <div class="inventory-single-content ">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-            @if ($product->categories->count() > 0)
-                <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $product->categories->first()->name }}</a></li>
-            @endif
-            <li class="breadcrumb-item active">{{ $product->name }}</li>
-        </ul>
+        <div class="inventory-single-content ">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                @if ($product->categories->count() > 0)
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">{{ $product->categories->first()->name }}</a></li>
+                @endif
+                <li class="breadcrumb-item active">{{ $product->name }}</li>
+            </ul>
 
-        <div class="title-price">
-            <div class="title-excerpt">
-                <h3 class="entry-title">{{ $product->name }} <i class="ion-android-checkmark-circle"></i></h3>
-                <p class="entry-excerpt">
-                    @if($product->brand)
-                        <strong>Brand: </strong> <a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
-                    @endif
-                    {{ $product->brand_model ? '| Model: ' . $product->brand_model->model : '' }}
-                </p>
-            </div>
-            <div class="price">
-                <span class="price">
-                    <span class="sale-price">${{ number_format($product->price) }}</span>
-                    {{-- <span class="regular-price">$28,500</span>
-                    <span class="msrp">MSRP: <strong>$39,000</strong></span> --}}
-                    @if ($product->msrp)
-                        <span class="msrp">MSRP: <strong>${{ number_format($product->msrp) }}</strong></span>
-                    @endif
-                </span>
+            <div class="title-price">
+                <div class="title-excerpt">
+                    <h3 class="entry-title">{{ $product->name }} <i class="ion-android-checkmark-circle"></i></h3>
+                    <p class="entry-excerpt">
+                        @if($product->brand)
+                            <strong>Brand: </strong> <a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
+                        @endif
+                        {{ $product->brand_model ? '| Model: ' . $product->brand_model->model : '' }}
+                    </p>
+                </div>
+                <div class="price">
+                    <span class="price">
+                        <span class="sale-price">${{ number_format($product->price) }}</span>
+                        {{-- <span class="regular-price">$28,500</span>
+                        <span class="msrp">MSRP: <strong>$39,000</strong></span> --}}
+                        @if ($product->msrp)
+                            <span class="msrp">MSRP: <strong>${{ number_format($product->msrp) }}</strong></span>
+                        @endif
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <!--====== Inventory Single Dealership Start ======-->
 
