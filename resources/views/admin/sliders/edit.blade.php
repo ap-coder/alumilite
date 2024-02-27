@@ -384,18 +384,57 @@
         <div class="sidebar-css-cheatsheet">
             <h4>CSS Cheat Sheet</h4>
             <ul>
-                <li><strong>Color:</strong> color: #333;</li>
+                <li><strong>Color:</strong> color: #333; or color: red;</li>
                 <li><strong>Margin:</strong> margin: 20px;</li>
+                <li></li>
                 <li><strong>Padding:</strong> padding: 20px;</li>
                 <li><strong>Font Size:</strong> font-size: 16px;</li>
                 <li><strong>Font Weight:</strong> font-weight: bold;</li>
                 <li><strong>Text Decoration:</strong> text-decoration: underline;</li>
                 <li><strong>Background Color:</strong> background-color: #eee;</li>
+                <li><strong>Border:</strong> border: 1px solid #333;</li>
+                <li><strong>Font Style:</strong> font-style: italic;</li>
             </ul>
+            <p> If css not working add "!important" after the value. But before the ; Example: font-size: 16px !important;</p>
         </div>
     </div>
 </div>
 
+<div class="col-3">
+    <div class="sidebar-css-cheatsheet">
+        <h4>CSS Cheat Sheet</h4>
+        <ul>
+            <li onclick="toggleVisibility('color-explanation')"> <strong>Color:</strong> color: #333; or color: red;
+                <p id="color-explanation" class="explanation" style="display:none;">Defines the color of the text. Hex codes, RGB, and predefined color names can be used.</p>
+            </li>
+            <li onclick="toggleVisibility('margin-explanation')"> <strong>Margin:</strong> margin: 20px;
+                <p id="margin-explanation" class="explanation" style="display:none;">Controls the outer space around an element, effectively pushing it away from other elements.</p>
+            </li>
+            <li onclick="toggleVisibility('padding-explanation')"> <strong>Padding:</strong> padding: 20px;
+                <p id="padding-explanation" class="explanation" style="display:none;">Controls the inner space between the element's border and its content.</p>
+            </li>
+            <li onclick="toggleVisibility('font-size-explanation')"> <strong>Font Size:</strong> font-size: 16px;
+                <p id="font-size-explanation" class="explanation" style="display:none;">Determines the size of the text. Values can be in pixels, ems, rems, percentages, etc.</p>
+            </li>
+            <li onclick="toggleVisibility('font-weight-explanation')"> <strong>Font Weight:</strong> font-weight: bold;
+                <p id="font-weight-explanation" class="explanation" style="display:none;">Sets how thick or thin characters in text should be displayed.</p>
+            </li>
+            <li onclick="toggleVisibility('text-decoration-explanation')"> <strong>Text Decoration:</strong> text-decoration: underline;
+                <p id="text-decoration-explanation" class="explanation" style="display:none;">Specifies the decoration added to text, such as underline, overline, line-through, etc.</p>
+            </li>
+            <li onclick="toggleVisibility('background-color-explanation')"> <strong>Background Color:</strong> background-color: #eee;
+                <p id="background-color-explanation" class="explanation" style="display:none;">Sets the background color of an element. Colors can be defined by hex codes, RGB values, or predefined color names.</p>
+            </li>
+            <li onclick="toggleVisibility('border-explanation')"> <strong>Border:</strong> border: 1px solid #333;
+                <p id="border-explanation" class="explanation" style="display:none;">Defines the border of an element. It can specify the size, style, and color of the border.</p>
+            </li>
+            <li onclick="toggleVisibility('font-style-explanation')"> <strong>Font Style:</strong> font-style: italic;
+                <p id="font-style-explanation" class="explanation" style="display:none;">Specifies the font style for the text, such as normal, italic, or oblique.</p>
+            </li>
+        </ul>
+        <p>If CSS is not working, add "!important" after the value but before the semicolon. Example: font-size: 16px !important;</p>
+    </div>
+</div>
 
 
 
@@ -425,14 +464,14 @@
       }
     },
     init: function () {
-@if(isset($slider) && $slider->image)
-      var file = {!! json_encode($slider->image) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
+    @if(isset($slider) && $slider->image)
+          var file = {!! json_encode($slider->image) !!}
+              this.options.addedfile.call(this, file)
+          this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+          file.previewElement.classList.add('dz-complete')
+          $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
+          this.options.maxFiles = this.options.maxFiles - 1
+    @endif
     },
     error: function (file, response) {
         if ($.type(response) === 'string') {
@@ -452,5 +491,15 @@
     }
 }
 
+</script>
+<script>
+    function toggleVisibility(id) {
+        var element = document.getElementById(id);
+        if (element.style.display === "none") {
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    }
 </script>
 @endsection

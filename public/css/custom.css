@@ -141,4 +141,10 @@ table.dataTable thead .sorting_desc {
 .text-count-wrapper .error-text-max{margin-left:5px!important; font-weight: 700;}
 [class*="no-rad"] input,[class*="no-rad"] textarea {    border-radius: 0 !important; }
 
+.explanation {
+    padding: 5px;
+    margin-top: 5px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #ccc;
+}
 

@@ -1368,12 +1368,12 @@ p {
   }
 }
 .slider-content .sub-title-2 {
-  font-family: "Great Vibes", Sans-serif;
+  font-family: "Ariel", Sans-serif;
   letter-spacing: normal;
-  margin: -45px 0 0 30px;
+  margin: -45px 0 0 0px;
   font-size: 2.5rem;
   font-style: italic;
-  font-family: "Great Vibes", cursive;
+
   color: #fff;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
