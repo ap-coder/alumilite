@@ -62,9 +62,9 @@ class Controller extends BaseController
             $builds_menu = Menu::getByName('Builds Sidebar Menu');
 
             $menuposts = Post::all();
-		    $menuLandingPages = ContentPage::all();
-		    $menuProducts = Product::all();
-		    $setting = Setting::orderBy('id','DESC')->first();
+            $menuLandingPages = ContentPage::all();
+            $menuProducts = Product::all();
+            $setting = Setting::orderBy('id','DESC')->first();
 
             View::share('env', $env);
             View::share('main_menu', $main_menu);
