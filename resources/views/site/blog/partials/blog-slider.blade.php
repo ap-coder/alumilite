@@ -37,19 +37,19 @@
                                         @endif
 
                                         @if($slider->sub_title_2)
-                                            <p class="sub-title-2" @style($slider->sub_title_2_css)"> {{ $slider->sub_title_2 }}</p>
+                                            <p class="sub-title-2" @style($slider->sub_title_2_css)> {{ $slider->sub_title_2 }}</p>
                                         @endif
 
                                         <div class="slider-description">
                                             <p class="text-heading" @style($slider->text_heading_css)>
                                                 @if($slider->heading_1)
-                                                    <span class="heading-1" @style($slider->heading_1_css)>{{ $slider->heading_1 }}</span>
+                                                    <span class="heading-1" @style($slider->heading_1_css)>{{ $slider->heading_1 }}</span><br>
                                                 @endif
                                                 @if($slider->heading_2)
-                                                    <span class="heading-2" @style($slider->heading_2_css)>{{ $slider->heading_2 }}</span>
+                                                    <span class="heading-2" @style($slider->heading_2_css)>{{ $slider->heading_2 }}</span><br>
                                                 @endif
                                                 @if($slider->heading_3)
-                                                    <span class="heading-3" @style($slider->heading_3_css)>{{ $slider->heading_3 }}</span>
+                                                    <span class="heading-3" @style($slider->heading_3_css)>{{ $slider->heading_3 }}</span><br>
                                                 @endif
                                             </p>
                                             @if($slider->slider_description)
