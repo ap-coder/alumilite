@@ -46,7 +46,6 @@ class BlogController extends Controller
             $articles = Post::published()->orderBy('id', 'DESC')->paginate(12);
         }
 
-
         $categories = ContentCategory::all();
 
         return view('site.blog.index', compact('articles', 'sliders', 'categories'));

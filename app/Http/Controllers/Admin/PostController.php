@@ -122,6 +122,8 @@ class PostController extends Controller
         }
 
         $post = Post::findOrFail($post->id);
+        $cleanDescription = strip_tags($post->page_text);
+        $shortDescription = substr($cleanDescription, 0, 110);
 
         $menuName = \Str::of($post->slug)->replace('-', ' ')->title();
 
@@ -145,6 +147,12 @@ class PostController extends Controller
                 'html_schema_3' => 'Blog',
                 'body_schema' => 'Article',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $post->title,
+                'facebook_title' => $post->title,
+                'twitter_title' => $post->title,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 
@@ -181,6 +189,8 @@ class PostController extends Controller
         }
 
         $post = Post::findOrFail($post->id);
+        $cleanDescription = strip_tags($post->page_text);
+        $shortDescription = substr($cleanDescription, 0, 110);
 
         $menuName = \Str::of($post->slug)->replace('-', ' ')->title();
 
@@ -189,7 +199,7 @@ class PostController extends Controller
         } else {
             $seo_image_url = '';
         }
-        
+
         $post->staticSeo()->updateOrCreate(
             [
                 'post_id' => $post->id,
@@ -207,6 +217,12 @@ class PostController extends Controller
                 'html_schema_3' => 'Blog',
                 'body_schema' => 'Article',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $post->title,
+                'facebook_title' => $post->title,
+                'twitter_title' => $post->title,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 

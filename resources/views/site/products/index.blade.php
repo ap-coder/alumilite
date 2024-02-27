@@ -33,8 +33,9 @@
                     </ul>
                 </div>
             </div>
+
             <div class="tab-content">
-                <div class="tab-pane fade grid" id="grid" role="tabpanel">
+                <div class="tab-pane fade grid active" id="grid" role="tabpanel">
                     <div class="row">
 
                         @foreach ($products as $product)
@@ -114,7 +115,7 @@
 
                     </div>
                 </div>
-                <div class="tab-pane fade list show active" id="list" role="tabpanel">
+                <div class="tab-pane fade list show" id="list" role="tabpanel">
 
                     @foreach ($products as $product)
                     <div class="single-car-item-list">

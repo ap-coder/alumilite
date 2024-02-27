@@ -124,6 +124,8 @@ class BuildController extends Controller
         }
 
         $build = Build::findOrFail($build->id);
+        $cleanDescription = strip_tags($build->page_text);
+        $shortDescription = substr($cleanDescription, 0, 110);
 
         $menuName = \Str::of($build->slug)->replace('-', ' ')->title();
 
@@ -147,6 +149,12 @@ class BuildController extends Controller
                 'html_schema_3' => '',
                 'body_schema' => 'Website',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $build->title,
+                'facebook_title' => $build->title,
+                'twitter_title' => $build->title,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 
@@ -214,6 +222,8 @@ class BuildController extends Controller
         }
 
         $build = Build::findOrFail($build->id);
+        $cleanDescription = strip_tags($build->page_text);
+        $shortDescription = substr($cleanDescription, 0, 110);
 
         $menuName = \Str::of($build->slug)->replace('-', ' ')->title();
 
@@ -240,6 +250,12 @@ class BuildController extends Controller
                 'html_schema_3' => '',
                 'body_schema' => 'Website',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $build->title,
+                'facebook_title' => $build->title,
+                'twitter_title' => $build->title,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 

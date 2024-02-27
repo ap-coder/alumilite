@@ -140,6 +140,9 @@ class ProductController extends Controller
 
         $menuName = \Str::of($product->slug)->replace('-', ' ')->title();
 
+        $cleanDescription = strip_tags($product->description);
+        $shortDescription = substr($cleanDescription, 0, 110);
+
         if ($product->photo) {
             $seo_image_url = $product->photo->getUrl();
         } else {
@@ -161,6 +164,12 @@ class ProductController extends Controller
                 'body_schema' => 'IndividualProduct',
                 'body_schema_itemid' => '#product',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $product->name,
+                'facebook_title' => $product->name,
+                'twitter_title' => $product->name,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 
@@ -237,6 +246,8 @@ class ProductController extends Controller
         }
 
         $product = Product::findOrFail($product->id);
+        $cleanDescription = strip_tags($product->description);
+        $shortDescription = substr($cleanDescription, 0, 110);
 
         $menuName = \Str::of($product->slug)->replace('-', ' ')->title();
 
@@ -264,6 +275,12 @@ class ProductController extends Controller
                 'body_schema' => 'IndividualProduct',
                 'body_schema_itemid' => '#product',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $product->name,
+                'facebook_title' => $product->name,
+                'twitter_title' => $product->name,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 

@@ -40,12 +40,6 @@ class ContentPage extends Model implements HasMedia
         'updated_at',
         'deleted_at',
         'published',
-        'meta_title',
-        'meta_description',
-        'facebook_title',
-        'facebook_description',
-        'twitter_title',
-        'twitter_description',
         'use_textonly_header',
         'show_title',
         'show_tagline',
@@ -69,7 +63,7 @@ class ContentPage extends Model implements HasMedia
     ];
 
     public const TITLE_STYLE_SELECT = [
- 
+
         'text-primary bg-light'   => 'Primary',
         'text-secondary bg-dark'  => 'Secondary',
         'text-light bg-dark'      => 'Light',
@@ -86,9 +80,9 @@ class ContentPage extends Model implements HasMedia
         'text-dark bg-light p-2'      => 'Dark BG Light',
         '' => 'None',
     ];
-    
+
     public const TAGLINE_STYLE_SELECT = [
-        
+
         'text-primary bg-light'   => 'Primary',
         'text-secondary bg-dark'  => 'Secondary',
         'text-light bg-dark'      => 'Light',
@@ -129,7 +123,7 @@ class ContentPage extends Model implements HasMedia
     {
         return $query->where('published', true);
     }
-    
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
@@ -162,12 +156,12 @@ class ContentPage extends Model implements HasMedia
     {
         return $this->belongsToMany(ContentSection::class,'content_section_page','page_id','content_section_id')->published()->orderBy('order', 'ASC');
     }
-    
+
     public function pagesPagesections()
     {
         return $this->belongsToMany(Pagesection::class,'page_pagesection','page_id','pagesection_id')->orderBy('order', 'ASC');
     }
-    
+
     public function pagesFrontPagesections()
     {
         return $this->belongsToMany(Pagesection::class,'page_pagesection','page_id','pagesection_id')->published()->orderBy('order', 'ASC');
@@ -182,7 +176,7 @@ class ContentPage extends Model implements HasMedia
     {
         return $this->hasOne(StaticSeo::class, 'page_id', 'id');
     }
-    
+
     public function getFeaturedImageAttribute()
     {
         $file = $this->getMedia('featured_image')->last();

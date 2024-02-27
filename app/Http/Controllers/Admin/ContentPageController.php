@@ -157,6 +157,7 @@ class ContentPageController extends Controller
             File::delete(storage_path('tmp/uploads/' . basename($file)));
         }
 
+
         return redirect()->route('admin.content-pages.edit', $page->id);
     }
 
@@ -228,9 +229,11 @@ class ContentPageController extends Controller
             File::move(storage_path('tmp/uploads/' . basename($file)), public_path('site/attachments/landing-pages/'.basename($file)));
             File::delete(storage_path('tmp/uploads/' . basename($file)));
         }
-        
+
         $menuName = \Str::of($contentPage->slug)->replace('-', ' ')->title();
         $seo_image_url = optional($contentPage->featured_image)->getUrl();
+        $cleanDescription = strip_tags($contentPage->page_text);
+        $shortDescription = substr($cleanDescription, 0, 110);
 
         if ($contentPage->is_homepage == 1) {
             if ($contentPage->slug) {
@@ -257,18 +260,24 @@ class ContentPageController extends Controller
             [
                 'page_id' => $contentPage->id,
                 'canonical' => '1',
-                'meta_title' => $request->meta_title,
-                'meta_description' => $request->meta_description,
-                'facebook_title' => $request->facebook_title,
-                'facebook_description' => $request->facebook_description,
-                'twitter_title' => $request->twitter_title,
-                'twitter_description' => $request->twitter_description,
+                //    'meta_title' => $request->meta_title,
+                //    'meta_description' => $request->meta_description,
+                //    'facebook_title' => $request->facebook_title,
+                //    'facebook_description' => $request->facebook_description,
+                //    'twitter_title' => $request->twitter_title,
+                //    'twitter_description' => $request->twitter_description,
                 'content_type' => 'custom',
                 'menu_name' => $menuName,
                 'page_name' => $menuName,
                 'page_path' => $data,
                 'open_graph_type' => 'website',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $contentPage->title,
+                'facebook_title' => $contentPage->title,
+                'twitter_title' => $contentPage->title,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 
@@ -330,7 +339,7 @@ class ContentPageController extends Controller
 
     public function AddPageContentSection(Request $request)
     {
-        
+
         if($request->id){
             $contentSection=ContentSection::find($request->id);
             $contentSection->update($request->all());
@@ -370,7 +379,7 @@ class ContentPageController extends Controller
 
     public function AddPageSection(Request $request)
     {
-        
+
         if($request->id){
             $pageSection=Pagesection::find($request->id);
             $pageSection->update($request->all());
@@ -404,7 +413,7 @@ class ContentPageController extends Controller
     {
         $updatePage = ContentPage::where('id',$request->pages)->first();
 
-        $updatePage->pagesPagesections()->toggle($request->input('page_sections', []));        
+        $updatePage->pagesPagesections()->toggle($request->input('page_sections', []));
 
         $ContentPage = ContentPage::where('id',$request->pages)->first();
 
@@ -440,7 +449,7 @@ class ContentPageController extends Controller
             echo '';
         }
     }
-    
+
     public function removeMedia(Request $request)
     {
         $name = $request->name;
@@ -453,6 +462,6 @@ class ContentPageController extends Controller
         }
 
         echo 1;
-        
+
     }
 }
