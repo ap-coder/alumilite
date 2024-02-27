@@ -47,6 +47,9 @@ class SliderController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
+            $table->editColumn('published', function ($row) {
+                return '<input type="checkbox" disabled ' . ($row->published ? 'checked' : null) . '>';
+            });
             $table->editColumn('location', function ($row) {
                 return $row->location ? Slider::LOCATION_SELECT[$row->location] : '';
             });
@@ -61,53 +64,8 @@ class SliderController extends Controller
 
                 return '';
             });
-            $table->editColumn('sub_title', function ($row) {
-                return $row->sub_title ? $row->sub_title : '';
-            });
-            $table->editColumn('main_title', function ($row) {
-                return $row->main_title ? $row->main_title : '';
-            });
-            $table->editColumn('sub_title_2', function ($row) {
-                return $row->sub_title_2 ? $row->sub_title_2 : '';
-            });
-            $table->editColumn('slider_description', function ($row) {
-                return $row->slider_description ? $row->slider_description : '';
-            });
-            $table->editColumn('text_heading', function ($row) {
-                return $row->text_heading ? $row->text_heading : '';
-            });
-            $table->editColumn('heading_1', function ($row) {
-                return $row->heading_1 ? $row->heading_1 : '';
-            });
-            $table->editColumn('heading_2', function ($row) {
-                return $row->heading_2 ? $row->heading_2 : '';
-            });
-            $table->editColumn('heading_3', function ($row) {
-                return $row->heading_3 ? $row->heading_3 : '';
-            });
-            $table->editColumn('text', function ($row) {
-                return $row->text ? $row->text : '';
-            });
-            $table->editColumn('main_button_text', function ($row) {
-                return $row->main_button_text ? $row->main_button_text : '';
-            });
-            $table->editColumn('main_button_link', function ($row) {
-                return $row->main_button_link ? $row->main_button_link : '';
-            });
-            $table->editColumn('main_button_tab_index', function ($row) {
-                return $row->main_button_tab_index ? $row->main_button_tab_index : '';
-            });
-            $table->editColumn('second_button_text', function ($row) {
-                return $row->second_button_text ? $row->second_button_text : '';
-            });
-            $table->editColumn('second_button_link', function ($row) {
-                return $row->second_button_link ? $row->second_button_link : '';
-            });
-            $table->editColumn('second_button_tab_index', function ($row) {
-                return $row->second_button_tab_index ? $row->second_button_tab_index : '';
-            });
 
-            $table->rawColumns(['actions', 'placeholder', 'image']);
+            $table->rawColumns(['actions', 'placeholder', 'published', 'image']);
 
             return $table->make(true);
         }
