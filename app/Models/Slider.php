@@ -35,32 +35,47 @@ class Slider extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'published',
         'location',
         'sub_title',
+        'sub_title_css',
         'main_title',
+        'main_title_css',
         'sub_title_2',
+        'sub_title_2_css',
         'slider_description',
+        'slider_description_css',
         'text_heading',
+        'text_heading_css',
         'heading_1',
+        'heading_1_css',
         'heading_2',
+        'heading_2_css',
         'heading_3',
+        'heading_3_css',
         'text',
+        'text_css',
         'main_button_text',
         'main_button_link',
         'main_button_tab_index',
+        'main_button_css',
+        'main_button_icon_class',
         'second_button_text',
         'second_button_link',
         'second_button_tab_index',
+        'second_button_css',
+        'second_button_icon_class',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+
     public function scopePublished($query)
     {
         return $query->where('published', true);
     }
-    
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
