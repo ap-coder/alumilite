@@ -414,7 +414,7 @@
                 <p id="padding-explanation" class="explanation" style="display:none;">Controls the inner space between the element's border and its content.</p>
             </li>
             <li onclick="toggleVisibility('font-size-explanation')"> <strong>Font Size:</strong> font-size: 16px;
-                <p id="font-size-explanation" class="explanation" style="display:none;">Determines the size of the text. Values can be in pixels, ems, rems, percentages, etc.</p>
+                <p id="font-size-explanation" class="explanation" style="display:none;">Determines the size of the text. Values can be in pixels, ems, rems, percentages, etc. My prferred is rem because it is responsive.</p>
             </li>
             <li onclick="toggleVisibility('font-weight-explanation')"> <strong>Font Weight:</strong> font-weight: bold;
                 <p id="font-weight-explanation" class="explanation" style="display:none;">Sets how thick or thin characters in text should be displayed.</p>
