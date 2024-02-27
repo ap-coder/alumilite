@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.published') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $slider->published ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.location') }}
                         </th>
                         <td>
@@ -53,10 +61,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.sub_title_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->sub_title_css }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.main_title') }}
                         </th>
                         <td>
                             {{ $slider->main_title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.main_title_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->main_title_css }}
                         </td>
                     </tr>
                     <tr>
@@ -69,10 +93,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.sub_title_2_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->sub_title_2_css }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.slider_description') }}
                         </th>
                         <td>
                             {{ $slider->slider_description }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.slider_description_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->slider_description_css }}
                         </td>
                     </tr>
                     <tr>
@@ -85,10 +125,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.text_heading_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->text_heading_css }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.heading_1') }}
                         </th>
                         <td>
                             {{ $slider->heading_1 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.heading_1_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->heading_1_css }}
                         </td>
                     </tr>
                     <tr>
@@ -101,6 +157,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.heading_2_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->heading_2_css }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.heading_3') }}
                         </th>
                         <td>
@@ -109,10 +173,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.heading_3_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->heading_3_css }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.text') }}
                         </th>
                         <td>
                             {{ $slider->text }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.text_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->text_css }}
                         </td>
                     </tr>
                     <tr>
@@ -141,6 +221,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.slider.fields.main_button_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->main_button_css }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.main_button_icon_class') }}
+                        </th>
+                        <td>
+                            {{ $slider->main_button_icon_class }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.slider.fields.second_button_text') }}
                         </th>
                         <td>
@@ -161,6 +257,22 @@
                         </th>
                         <td>
                             {{ $slider->second_button_tab_index }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.second_button_css') }}
+                        </th>
+                        <td>
+                            {{ $slider->second_button_css }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.slider.fields.second_button_icon_class') }}
+                        </th>
+                        <td>
+                            {{ $slider->second_button_icon_class }}
                         </td>
                     </tr>
                 </tbody>

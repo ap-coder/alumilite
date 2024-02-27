@@ -25,13 +25,13 @@
                         {{ trans('cruds.slider.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.slider.fields.published') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.slider.fields.location') }}
                     </th>
                     <th>
                         {{ trans('cruds.slider.fields.image') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.slider.fields.sub_title') }}
                     </th>
                     <th>
                         &nbsp;
@@ -90,9 +90,9 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'published', name: 'published' },
 { data: 'location', name: 'location' },
 { data: 'image', name: 'image', sortable: false, searchable: false },
-{ data: 'sub_title', name: 'sub_title' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
