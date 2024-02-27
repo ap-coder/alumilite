@@ -32,8 +32,9 @@
                                     @endif
 
                                     @if($slider->sub_title_2)
-                                    <p class="sub-title-2" @style($slider->sub_title_2_css)"> {{$slider->sub_title_2}}</p>
+                                    <p class="sub-title-2" @style($slider->sub_title_2_css)"> {{ $slider->sub_title_2 }}</p>
                                     @endif
+
                                     <div class="slider-description">
                                         <p class="text-heading" @style($slider->text_heading_css)>
                                             @if($slider->heading_1)
@@ -50,6 +51,7 @@
                                         <p @style($slider->slider_description_css)>{{ $slider->slider_description }}</p>
                                         @endif
                                     </div>
+
                                     @if($slider->main_button_text)
                                     <ul class="slider-btn">
                                         <li>
