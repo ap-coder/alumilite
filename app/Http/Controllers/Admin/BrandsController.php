@@ -163,7 +163,8 @@ class BrandsController extends Controller
             ]
         );
 
-        return redirect()->route('admin.brands.index');
+        return $request->preview ? response()->json($brand->slug) : redirect()->route('admin.brands.index');
+
     }
 
     public function show(Brand $brand)

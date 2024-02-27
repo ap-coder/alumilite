@@ -1,5 +1,33 @@
 @can($viewGate)
-@if ($crudRoutePart=='content-pages')
+@if ($crudRoutePart == 'products')
+        @php
+            $url = url('products/' . $row->slug);
+        @endphp
+        <a class="btn btn-xs btn-primary" target="_blank" href="{{ $url }}">
+            {{ trans('global.view') }}
+        </a>
+    @elseif ($crudRoutePart == 'posts')
+        @php
+            $url = url('blog/' . $row->slug);
+        @endphp
+        <a class="btn btn-xs btn-primary" target="_blank" href="{{ $url }}">
+            {{ trans('global.view') }}
+        </a>
+    @elseif ($crudRoutePart == 'brands')
+        @php
+            $url = url('brands/' . $row->slug);
+        @endphp
+        <a class="btn btn-xs btn-primary" target="_blank" href="{{ $url }}">
+            {{ trans('global.view') }}
+        </a>
+    @elseif ($crudRoutePart == 'builds')
+        @php
+            $url = url('builds/' . $row->slug);
+        @endphp
+        <a class="btn btn-xs btn-primary" target="_blank" href="{{ $url }}">
+            {{ trans('global.view') }}
+        </a>
+    @elseif ($crudRoutePart == 'content-pages')
         @if ($row->is_homepage == 1)
             @php
                 $url = url('');

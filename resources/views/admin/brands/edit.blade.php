@@ -10,7 +10,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.brands.update", [$brand->id]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.brands.update", [$brand->id]) }}" enctype="multipart/form-data" id="submitBrandsForm">
             @method('PUT')
             @csrf
             <div class="form-group">
@@ -67,11 +67,20 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.brand.fields.logo_helper') }}</span>
             </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
+            <hr>
+
+
+              <div class="form-group">
+                <button class="btn btn-success saveContent" type="button" id="save" bType="save">
+                  {{ trans('global.save') }}
                 </button>
-            </div>
+                <button class="btn btn-primary saveContent" id="save-and-preview" type="button"  bType="preview">
+                  {{ trans('global.save_and_preview') }}
+                </button>
+                <button class="btn btn-danger" type="submit">
+                  {{ trans('global.save_and_close') }}
+              </button>
+              </div>
         </form>
     </div>
 </div>
@@ -82,6 +91,46 @@
 
 @section('scripts')
 <script>
+
+$('.saveContent').click(function() {
+        var bType = $(this).attr('bType');
+        $('#submitBrandsForm').validate({
+            rules: {
+                'name': {
+                    required: true,
+                },
+            },
+            messages: {
+                name: 'Please Enter brand Name',
+            },
+        });
+        if ($('#submitBrandsForm').valid()) // check if form is valid
+        {
+            $this = $(this);
+            $loader = '<div class="spinner-border text-dark" role="status">' +
+                '<span class="sr-only">Loading...</span>' +
+                '</div>';
+            $this.html($loader);
+            var formData = $('#submitBrandsForm').serializeArray();
+            formData.push({ name: 'preview', value: 1 });
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("admin.brands.update", [$brand->id]) }}',
+                dataType: 'json',
+                data: formData,
+                success: function(resultData) {
+                    var url = "{{ url('brands') }}" + '/' + resultData;
+                    if (bType == 'save') {
+                        $this.html("{{ trans('global.save') }}");
+                    } else {
+                        $this.html("{{ trans('global.save_and_preview') }}");
+                        window.open(url, '_blank');
+                    }
+                },
+            });
+        }
+    });
+
     Dropzone.options.logoDropzone = {
     url: '{{ route('admin.brands.storeMedia') }}',
     maxFilesize: 2, // MB

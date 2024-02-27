@@ -243,7 +243,7 @@ class BuildController extends Controller
             ]
         );
 
-        return redirect()->route('admin.builds.index');
+        return $request->preview ? response()->json($build->slug) : redirect()->route('admin.builds.index');
     }
 
     public function show(Build $build)

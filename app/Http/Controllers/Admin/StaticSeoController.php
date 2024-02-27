@@ -35,18 +35,33 @@ class StaticSeoController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'static_seo_show';
+                // $viewGate      = 'static_seo_show';
+                $viewGate      = '';
                 $editGate      = 'static_seo_edit';
                 $deleteGate    = 'static_seo_delete';
                 $crudRoutePart = 'static-seos';
 
-                return view('partials.datatablesActions', compact(
+                if ($row->post_id && optional($row->post)->slug) {
+                    $html = '<a target="_blank" class="btn btn-xs btn-primary mr-1" href="'.route('blog.show', $row->post->slug).'">View</a>';
+                } elseif ($row->product_id && optional($row->product)->slug) {
+                    $html = '<a target="_blank" class="btn btn-xs btn-primary mr-1" href="'.route('products.show', $row->product->slug).'">View</a>';
+                } elseif ($row->build_id && optional($row->build)->slug) {
+                    $html = '<a target="_blank" class="btn btn-xs btn-primary mr-1" href="'.route('builds.show', $row->build->slug).'">View</a>';
+                } elseif ($row->brand_id && optional($row->brand)->slug) {
+                    $html = '<a target="_blank" class="btn btn-xs btn-primary mr-1" href="'.route('brands.show', $row->brand->slug).'">View</a>';
+                } else {
+                    $html = '<a target="_blank" class="btn btn-xs btn-primary mr-1" href="'.url('').'/'.$row->page_path.'">View</a>';
+                }
+
+                $html .= view('partials.datatablesActions', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',
                     'crudRoutePart',
                     'row'
                 ));
+
+                return $html;
             });
 
             $table->editColumn('id', function ($row) {
@@ -151,9 +166,20 @@ class StaticSeoController extends Controller
 
     public function update(Request $request, StaticSeo $staticSeo)
     {
-        $this->validate($request, [
-            'page_path' => 'string|nullable|unique:static_seos,page_path,'.$request->id,
-        ]);
+        if ($request->preview) {
+            $validator = Validator::make($request->all(), [
+                'page_path' => 'string|nullable|unique:static_seos,page_path,'.$request->id,
+            ]);
+
+            if ($validator->passes()) {
+            } else {
+                return response()->json(['error'=>$validator->errors()->all()]);
+            }
+        } else {
+            $this->validate($request, [
+                'page_path' => 'string|nullable|unique:static_seos,page_path,'.$request->id,
+            ]);
+        }
 
         $staticSeo->update($request->all());
 
@@ -167,8 +193,25 @@ class StaticSeoController extends Controller
         } elseif ($staticSeo->seo_image) {
             $staticSeo->seo_image->delete();
         }
+        
 
-        return redirect()->route('admin.static-seos.index');
+        if ($request->preview) {
+            if (optional($staticSeo->post)->slug) {
+                $url = route('blog.show', $staticSeo->post->slug);
+            } elseif (optional($staticSeo->product)->slug) {
+                $url = route('products.show', $staticSeo->product->slug);
+            } elseif (optional($staticSeo->build)->slug) {
+                $url = route('builds.show', $staticSeo->build->slug);
+            } elseif (optional($staticSeo->brand)->slug) {
+                $url = route('brands.show', $staticSeo->brand->slug);
+            } else {
+                $url = url('').'/'.$staticSeo->page_path;
+            }
+
+            echo json_encode($url);
+        } else {
+            return redirect()->route('admin.static-seos.index');
+        }
     }
 
     public function show(StaticSeo $staticSeo)

@@ -29,7 +29,10 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.static-seos.update", [$staticSeo->id]) }}" enctype="multipart/form-data">
+        <div class="alert alert-danger print-error-msg" style="display:none">
+            <ul></ul>
+        </div>
+        <form method="POST" action="{{ route("admin.static-seos.update", [$staticSeo->id]) }}" enctype="multipart/form-data" id="submitPostForm">
             @method('PUT')
             @csrf
             <input type="hidden" name="id" id="id" value="{{ $staticSeo->id }}">
@@ -50,11 +53,18 @@
             </div>
                 @include('admin.staticSeos.partials.seo-class')
 
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
-                </button>
-            </div>
+                <div class="form-group">
+                    <label id="errorMsg" class="error" for="title"></label> <hr>
+                    <button class="btn btn-success saveContent" type="button" id="save" bType="save">
+                      {{ trans('global.save') }}
+                    </button>
+                    <button class="btn btn-primary saveContent" id="save-and-preview" type="button" bType="preview">
+                      {{ trans('global.save_and_preview') }}
+                    </button>
+                    <button class="btn btn-danger" type="submit">
+                      {{ trans('global.save_and_close') }}
+                  </button>
+                  </div>
         </form>
     </div>
 </div>
@@ -65,6 +75,78 @@
 
 @section('scripts')
 <script>
+
+function printErrorMsg (msg) {
+        $(".print-error-msg").find("ul").html('');
+        $(".print-error-msg").css('display','block');
+        $.each( msg, function( key, value ) {
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+        });
+    }
+    $('textarea#json_ld_tag').each(function () {
+        this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+    }).on('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+
+$('.saveContent').click(function(){
+
+var bType=$(this).attr('bType');
+
+$('#submitPostForm').validate({
+    rules: {
+      'meta_title': {
+          required: true
+      },
+    },
+    messages: {
+      title: "Please Enter Meta Title",
+  }
+});
+
+if ($('#submitPostForm').valid()) // check if form is valid
+{
+    $this=$(this);
+    $loader='<div class="spinner-border text-dark" role="status">'+
+              '<span class="sr-only">Loading...</span>'+
+              '</div>';
+    $this.html($loader);
+    var formData = $('#submitPostForm').serializeArray();
+
+    formData.push({name: "preview", value: 1});
+
+    $.ajax({
+        type: 'POST',
+        url: '{{ route("admin.static-seos.update", [$staticSeo->id]) }}',
+        dataType: 'json',
+        data: formData,
+        success: function(resultData) {
+
+          if (resultData.error && resultData.error.length>0) {
+            printErrorMsg(resultData.error);
+            if (bType=='save') {
+                    $this.html("{{ trans('global.save') }}");
+            }else{
+              $this.html("{{ trans('global.save_and_preview') }}");
+            }
+          } else {
+            $(".print-error-msg").css('display','none');
+            if (bType=='save') {
+                    $this.html("{{ trans('global.save') }}");
+            }else{
+              $this.html("{{ trans('global.save_and_preview') }}");
+              window.open(resultData, '_blank');
+            }
+          }
+
+        }
+    });
+
+}
+
+});
+
     Dropzone.options.seoImageDropzone = {
     url: '{{ route('admin.static-seos.storeMedia') }}',
     maxFilesize: 5, // MB

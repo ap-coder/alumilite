@@ -11,7 +11,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.posts.update", [$post->id]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.posts.update", [$post->id]) }}" enctype="multipart/form-data" id="submitPostForm">
             @method('PUT')
             @csrf
             <div class="form-group">
@@ -114,11 +114,20 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.slug_helper') }}</span>
             </div>
-            <div class="form-group">
-                <button class="btn btn-danger" type="submit">
-                    {{ trans('global.save') }}
+            <hr>
+
+
+              <div class="form-group">
+                <button class="btn btn-success saveContent" type="button" id="save" bType="save">
+                  {{ trans('global.save') }}
                 </button>
-            </div>
+                <button class="btn btn-primary saveContent" id="save-and-preview" type="button"  bType="preview">
+                  {{ trans('global.save_and_preview') }}
+                </button>
+                <button class="btn btn-danger" type="submit">
+                  {{ trans('global.save_and_close') }}
+              </button>
+              </div>
         </form>
     </div>
 </div>
@@ -129,6 +138,46 @@
 
 @section('scripts')
 <script>
+
+$('.saveContent').click(function() {
+        var bType = $(this).attr('bType');
+        $('#submitPostForm').validate({
+            rules: {
+                'title': {
+                    required: true,
+                },
+            },
+            messages: {
+                name: 'Please Enter Title Name',
+            },
+        });
+        if ($('#submitPostForm').valid()) // check if form is valid
+        {
+            $this = $(this);
+            $loader = '<div class="spinner-border text-dark" role="status">' +
+                '<span class="sr-only">Loading...</span>' +
+                '</div>';
+            $this.html($loader);
+            var formData = $('#submitPostForm').serializeArray();
+            formData.push({ name: 'preview', value: 1 });
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("admin.posts.update", [$post->id]) }}',
+                dataType: 'json',
+                data: formData,
+                success: function(resultData) {
+                    var url = "{{ url('blog') }}" + '/' + resultData;
+                    if (bType == 'save') {
+                        $this.html("{{ trans('global.save') }}");
+                    } else {
+                        $this.html("{{ trans('global.save_and_preview') }}");
+                        window.open(url, '_blank');
+                    }
+                },
+            });
+        }
+    });
+
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {
     editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {

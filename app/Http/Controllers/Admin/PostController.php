@@ -210,7 +210,7 @@ class PostController extends Controller
             ]
         );
 
-        return redirect()->route('admin.posts.index');
+        return $request->preview ? response()->json($post->slug) : redirect()->route('admin.posts.index');
     }
 
     public function show(Post $post)

@@ -30,6 +30,11 @@
     <link href="{{ asset('admin/css/codemirror.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/css/monokai.css') }}" rel="stylesheet" type="text/css">
 
+    <style>
+      .error{
+        color: red;
+      }
+    </style>
     @yield('styles')
 </head>
 
@@ -60,7 +65,19 @@
                         </div>
                     </li>
                 @endif
-
+                <li class="adminbuttonbar">
+                  <div class="btn-group">
+        
+                    {{-- @if(Auth::user()->isAdmin())
+                     <a type="button"  target="_blank" href="{{ url('r') }}" class="btn btn-outline-success" title="Route Endpoints">Routes</a>
+                    @endif
+        
+                     <a type="button" href="{{ url('clear-cache') }}" class="btn btn-outline-success" title="Clear Cache">Clear Cache</a> --}}
+        
+                    <a target="_blank" href="{{ url('/') }}" type="button" class="btn btn-info" title="View The Live Site">Live Site</a>
+        
+                    </div>
+                </li>
 
             </ul>
         </header>
@@ -131,6 +148,7 @@
     <script src="{{ asset('admin/js/prism-live-javascript.js') }}"></script>
     <script src="{{ asset('admin/js/prism-live-markup.js') }}"></script>
     <script src="{{ asset('admin/js/prism-line-numbers.js') }}"></script>
+    <script src="{{ asset('admin/js/jquery.validate.min.js') }}"></script>
     
     <script>
        $(document).ready(function () {
