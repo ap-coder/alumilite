@@ -2,8 +2,9 @@
 
 @section('content')
 
-@include('site.products.partials.page-start')
+{{--@include('site.products.partials.page-start')--}}
 
+@include('site.products.partials.slider')
     <!--====== Inventory Start ======-->
 
     <section class="inventory-area">
@@ -48,7 +49,7 @@
                                             @if ($env=='local')
                                                 <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                             @endif
-                                            
+
                                         @endif
                                     </a>
                                     {{-- <ul class="car-meta">
@@ -91,14 +92,14 @@
 
                                     @if ($product->brand)
                                         <div class="author-meta">
-                                            <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                            <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                                 @if ($product->brand_model)
                                                     {{ $product->brand_model->model }}
                                                 @endif
                                             </span>
                                         </div>
                                     @endif
-                                    
+
                                     <ul class="car-meta">
                                         @if ($product->technical_specs->count()>0)
                                             @foreach ($product->technical_specs->take(3) as $specification)
@@ -140,7 +141,7 @@
                                 <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                                 @if ($product->brand)
                                     <div class="author-meta">
-                                        <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                        <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                             @if ($product->brand_model)
                                                 {{ $product->brand_model->model }}
                                             @endif
@@ -170,7 +171,7 @@
                                 @endif
 
                             </ul>
-                             <div class="dealer-certificates d-sm-flex justify-content-between">
+                            <div class="dealer-certificates d-sm-flex justify-content-between">
                             @if($product->excerpt)
                                 {!! $product->excerpt ?? '' !!}
                             @else
@@ -212,7 +213,7 @@
 
     <!--====== Inventory Ends ======-->
 
-   @include('site.products.partials.call-to-action')
+{{--    @include('site.products.partials.call-to-action')--}}
 
 @endsection
 
