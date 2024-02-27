@@ -10,21 +10,117 @@
         <form method="POST" action="{{ route("admin.sliders.update", [$slider->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <div class="form-group">
-                <label>{{ trans('cruds.slider.fields.location') }}</label>
-                <select class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" name="location" id="location">
-                    <option value disabled {{ old('location', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Slider::LOCATION_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('location', $slider->location) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('location'))
+            <div class="row">
+                <div class="form-group col-auto">
+                    <div class="form-check {{ $errors->has('published') ? 'is-invalid' : '' }}">
+                        <input type="hidden" name="published" value="0">
+                        <input class="form-check-input" type="checkbox" name="published" id="published" value="1" {{ $slider->published || old('published', 0) === 1 ? 'checked' : '' }}>
+                        <label class="form-check-label" for="published">{{ trans('cruds.slider.fields.published') }}</label>
+                    </div>
+                    @if($errors->has('published'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('published') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.published_helper') }}</span>
+                </div>
+                <div class="form-group col-auto">
+                    <label>{{ trans('cruds.slider.fields.location') }}</label>
+                    <select class="form-control {{ $errors->has('location') ? 'is-invalid' : '' }}" name="location" id="location">
+                        <option value disabled {{ old('location', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                        @foreach(App\Models\Slider::LOCATION_SELECT as $key => $label)
+                            <option value="{{ $key }}" {{ old('location', $slider->location) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('location'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('location') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.location_helper') }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-auto">
+                <label for="main_title">{{ trans('cruds.slider.fields.main_title') }}</label>
+                <input class="form-control {{ $errors->has('main_title') ? 'is-invalid' : '' }}" type="text" name="main_title" id="main_title" value="{{ old('main_title', $slider->main_title) }}">
+                @if($errors->has('main_title'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('location') }}
+                        {{ $errors->first('main_title') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.location_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.slider.fields.main_title_helper') }}</span>
             </div>
+                <div class="form-group col-auto">
+                    <label for="main_title_css">{{ trans('cruds.slider.fields.main_title_css') }}</label>
+                    <input class="form-control {{ $errors->has('main_title_css') ? 'is-invalid' : '' }}" type="text" name="main_title_css" id="main_title_css" value="{{ old('main_title_css', $slider->main_title_css) }}">
+                    @if($errors->has('main_title_css'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('main_title_css') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.main_title_css_helper') }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-auto">
+                    <label for="sub_title">{{ trans('cruds.slider.fields.sub_title') }}</label>
+                    <input class="form-control {{ $errors->has('sub_title') ? 'is-invalid' : '' }}" type="text" name="sub_title" id="sub_title" value="{{ old('sub_title', $slider->sub_title) }}">
+                    @if($errors->has('sub_title'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('sub_title') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.sub_title_helper') }}</span>
+                </div>
+                <div class="form-group col-auto">
+                    <label for="sub_title_css">{{ trans('cruds.slider.fields.sub_title_css') }}</label>
+                    <input class="form-control {{ $errors->has('sub_title_css') ? 'is-invalid' : '' }}" type="text" name="sub_title_css" id="sub_title_css" value="{{ old('sub_title_css', $slider->sub_title_css) }}">
+                    @if($errors->has('sub_title_css'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('sub_title_css') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.sub_title_css_helper') }}</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-auto">
+                        <label for="sub_title_2">{{ trans('cruds.slider.fields.sub_title_2') }}</label>
+                        <input class="form-control {{ $errors->has('sub_title_2') ? 'is-invalid' : '' }}" type="text" name="sub_title_2" id="sub_title_2" value="{{ old('sub_title_2', $slider->sub_title_2) }}">
+                        @if($errors->has('sub_title_2'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('sub_title_2') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.slider.fields.sub_title_2_helper') }}</span>
+                    </div>
+                <div class="form-group col-auto">
+                    <label for="sub_title_2_css">{{ trans('cruds.slider.fields.sub_title_2_css') }}</label>
+                    <input class="form-control {{ $errors->has('sub_title_2_css') ? 'is-invalid' : '' }}" type="text" name="sub_title_2_css" id="sub_title_2_css" value="{{ old('sub_title_2_css', $slider->sub_title_2_css) }}">
+                    @if($errors->has('sub_title_2_css'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('sub_title_2_css') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.slider.fields.sub_title_2_css_helper') }}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="slider_description">{{ trans('cruds.slider.fields.slider_description') }}</label>
+                <input class="form-control {{ $errors->has('slider_description') ? 'is-invalid' : '' }}" type="text" name="slider_description" id="slider_description" value="{{ old('slider_description', $slider->slider_description) }}">
+                @if($errors->has('slider_description'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('slider_description') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.slider.fields.slider_description_helper') }}</span>
+            </div>
+
             <div class="form-group">
                 <label for="image">{{ trans('cruds.slider.fields.image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
@@ -36,46 +132,10 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.slider.fields.image_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label for="sub_title">{{ trans('cruds.slider.fields.sub_title') }}</label>
-                <input class="form-control {{ $errors->has('sub_title') ? 'is-invalid' : '' }}" type="text" name="sub_title" id="sub_title" value="{{ old('sub_title', $slider->sub_title) }}">
-                @if($errors->has('sub_title'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('sub_title') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.sub_title_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="main_title">{{ trans('cruds.slider.fields.main_title') }}</label>
-                <input class="form-control {{ $errors->has('main_title') ? 'is-invalid' : '' }}" type="text" name="main_title" id="main_title" value="{{ old('main_title', $slider->main_title) }}">
-                @if($errors->has('main_title'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('main_title') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.main_title_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="sub_title_2">{{ trans('cruds.slider.fields.sub_title_2') }}</label>
-                <input class="form-control {{ $errors->has('sub_title_2') ? 'is-invalid' : '' }}" type="text" name="sub_title_2" id="sub_title_2" value="{{ old('sub_title_2', $slider->sub_title_2) }}">
-                @if($errors->has('sub_title_2'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('sub_title_2') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.sub_title_2_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="slider_description">{{ trans('cruds.slider.fields.slider_description') }}</label>
-                <input class="form-control {{ $errors->has('slider_description') ? 'is-invalid' : '' }}" type="text" name="slider_description" id="slider_description" value="{{ old('slider_description', $slider->slider_description) }}">
-                @if($errors->has('slider_description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('slider_description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.slider.fields.slider_description_helper') }}</span>
-            </div>
+
+
+
+
             <div class="form-group">
                 <label for="text_heading">{{ trans('cruds.slider.fields.text_heading') }}</label>
                 <input class="form-control {{ $errors->has('text_heading') ? 'is-invalid' : '' }}" type="text" name="text_heading" id="text_heading" value="{{ old('text_heading', $slider->text_heading) }}">
