@@ -379,61 +379,42 @@
 
     </div>
 
-
     <div class="col-3">
         <div class="sidebar-css-cheatsheet">
             <h4>CSS Cheat Sheet</h4>
             <ul>
-                <li><strong>Color:</strong> color: #333; or color: red;</li>
-                <li><strong>Margin:</strong> margin: 20px;</li>
-                <li></li>
-                <li><strong>Padding:</strong> padding: 20px;</li>
-                <li><strong>Font Size:</strong> font-size: 16px;</li>
-                <li><strong>Font Weight:</strong> font-weight: bold;</li>
-                <li><strong>Text Decoration:</strong> text-decoration: underline;</li>
-                <li><strong>Background Color:</strong> background-color: #eee;</li>
-                <li><strong>Border:</strong> border: 1px solid #333;</li>
-                <li><strong>Font Style:</strong> font-style: italic;</li>
+                <li onclick="toggleVisibility('color-explanation')"> <strong>Color:</strong> color: #333; or color: red;
+                    <p id="color-explanation" class="explanation" style="display:none;">Defines the text color. Possible values: hex (#000000), RGB (rgb(0,0,0)), RGBA (rgba(0,0,0,0.5)), and color names (black, red).</p>
+                </li>
+                <li onclick="toggleVisibility('margin-explanation')"> <strong>Margin:</strong> margin: 20px;
+                    <p id="margin-explanation" class="explanation" style="display:none;">Controls the outer space around an element. Values: pixels (px), percentages (%), ems (em). Can specify each side individually (top, right, bottom, left).</p>
+                </li>
+                <li onclick="toggleVisibility('padding-explanation')"> <strong>Padding:</strong> padding: 20px;
+                    <p id="padding-explanation" class="explanation" style="display:none;">Controls the inner space between an element's border and its content. Values: pixels (px), percentages (%), ems (em). Can specify each side individually.</p>
+                </li>
+                <li onclick="toggleVisibility('font-size-explanation')"> <strong>Font Size:</strong> font-size: 16px;
+                    <p id="font-size-explanation" class="explanation" style="display:none;">Determines the size of the text. Values: pixels (px), root em (rem), ems (em), percentages (%). My prferred is rem because it is responsive and changes when the screensize changes.</p>
+                </li>
+                <li onclick="toggleVisibility('font-weight-explanation')"> <strong>Font Weight:</strong> font-weight: bold;
+                    <p id="font-weight-explanation" class="explanation" style="display:none;">Sets the thickness of the text. Values: normal, bold, bolder, lighter, or numerical values (100 to 900).</p>
+                </li>
+                <li onclick="toggleVisibility('text-decoration-explanation')"> <strong>Text Decoration:</strong> text-decoration: underline;
+                    <p id="text-decoration-explanation" class="explanation" style="display:none;">Specifies the decoration of the text. Values: none, underline, overline, line-through, blink.</p>
+                </li>
+                <li onclick="toggleVisibility('background-color-explanation')"> <strong>Background Color:</strong> background-color: #eee;
+                    <p id="background-color-explanation" class="explanation" style="display:none;">Sets the background color of an element. Values: hex, RGB, RGBA, color names.</p>
+                </li>
+                <li onclick="toggleVisibility('border-explanation')"> <strong>Border:</strong> border: 1px solid #333;
+                    <p id="border-explanation" class="explanation" style="display:none;">Defines the border around an element. Syntax: border: [border-width] [border-style] [border-color]. Styles: solid, dotted, dashed, double, groove, ridge, inset, outset.</p>
+                </li>
+                <li onclick="toggleVisibility('font-style-explanation')"> <strong>Font Style:</strong> font-style: italic;
+                    <p id="font-style-explanation" class="explanation" style="display:none;">Specifies the font style for text. Values: normal, italic, oblique.</p>
+                </li>
             </ul>
-            <p> If css not working add "!important" after the value. But before the ; Example: font-size: 16px !important;</p>
+            <p>If CSS is not working, add "!important" after the value but before the semicolon. Example: font-size: 16px !important;</p>
         </div>
     </div>
-</div>
 
-<div class="col-3">
-    <div class="sidebar-css-cheatsheet">
-        <h4>CSS Cheat Sheet</h4>
-        <ul>
-            <li onclick="toggleVisibility('color-explanation')"> <strong>Color:</strong> color: #333; or color: red;
-                <p id="color-explanation" class="explanation" style="display:none;">Defines the color of the text. Hex codes, RGB, and predefined color names can be used.</p>
-            </li>
-            <li onclick="toggleVisibility('margin-explanation')"> <strong>Margin:</strong> margin: 20px;
-                <p id="margin-explanation" class="explanation" style="display:none;">Controls the outer space around an element, effectively pushing it away from other elements.</p>
-            </li>
-            <li onclick="toggleVisibility('padding-explanation')"> <strong>Padding:</strong> padding: 20px;
-                <p id="padding-explanation" class="explanation" style="display:none;">Controls the inner space between the element's border and its content.</p>
-            </li>
-            <li onclick="toggleVisibility('font-size-explanation')"> <strong>Font Size:</strong> font-size: 16px;
-                <p id="font-size-explanation" class="explanation" style="display:none;">Determines the size of the text. Values can be in pixels, ems, rems, percentages, etc. My prferred is rem because it is responsive.</p>
-            </li>
-            <li onclick="toggleVisibility('font-weight-explanation')"> <strong>Font Weight:</strong> font-weight: bold;
-                <p id="font-weight-explanation" class="explanation" style="display:none;">Sets how thick or thin characters in text should be displayed.</p>
-            </li>
-            <li onclick="toggleVisibility('text-decoration-explanation')"> <strong>Text Decoration:</strong> text-decoration: underline;
-                <p id="text-decoration-explanation" class="explanation" style="display:none;">Specifies the decoration added to text, such as underline, overline, line-through, etc.</p>
-            </li>
-            <li onclick="toggleVisibility('background-color-explanation')"> <strong>Background Color:</strong> background-color: #eee;
-                <p id="background-color-explanation" class="explanation" style="display:none;">Sets the background color of an element. Colors can be defined by hex codes, RGB values, or predefined color names.</p>
-            </li>
-            <li onclick="toggleVisibility('border-explanation')"> <strong>Border:</strong> border: 1px solid #333;
-                <p id="border-explanation" class="explanation" style="display:none;">Defines the border of an element. It can specify the size, style, and color of the border.</p>
-            </li>
-            <li onclick="toggleVisibility('font-style-explanation')"> <strong>Font Style:</strong> font-style: italic;
-                <p id="font-style-explanation" class="explanation" style="display:none;">Specifies the font style for the text, such as normal, italic, or oblique.</p>
-            </li>
-        </ul>
-        <p>If CSS is not working, add "!important" after the value but before the semicolon. Example: font-size: 16px !important;</p>
-    </div>
 </div>
 
 
