@@ -624,7 +624,7 @@ return [
             'slider_description_css'          => 'Slider Description Css',
             'slider_description_css_helper'   => 'To add custom css',
             'text_heading_css'                => 'Text Heading Css',
-            'text_heading_css_helper'         => 'To add custom css',
+            'text_heading_css_helper'         => 'This css surrounds headings 1,2,3',
             'heading_1_css'                   => 'Heading 1 Css',
             'heading_1_css_helper'            => 'To add custom css',
             'heading_2_css'                   => 'Heading 2 Css',
