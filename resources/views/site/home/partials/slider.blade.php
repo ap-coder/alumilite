@@ -4,8 +4,8 @@
 
     <section class="slider-area slider-dark slider-active">
         @foreach ($sliders as $slider)
-            @if ($slider->published == '1')
-                @if ($slider->location == '3')
+{{--            @if ($slider->published == '1')--}}
+                @if ($slider->location == '1')
                 @php
                 if ($slider->image) {
                     $sliderImage = $slider->image->getUrl('slider');
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 @endif
-            @endif
+{{--            @endif--}}
         @endforeach
 
     </section>
