@@ -14,16 +14,14 @@
                     <ul class="nav" role="tablist">
                         <li><a class="active" data-bs-toggle="tab" href="#tabAll" role="tab">All</a></li>
                         @foreach ($productTypes as $key => $productType)
-                            <li>
-                                <a data-bs-toggle="tab" href="#tab{{ $key }}" role="tab"> {{ $productType->name }} </a>
-                            </li>
+                            <li> <a data-bs-toggle="tab" href="#tab{{ $key }}" role="tab"> {{ $productType->name }} </a></li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tabAll" role="tabpanel">
                         <div class="car-row cars-active">
-                            
+
                             @foreach($products->chunk(2) as $productSet)
                                 <div class="car-col">
                                     @foreach($productSet as $product)
@@ -37,7 +35,7 @@
                                                         @if ($env=='local')
                                                             <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                                         @endif
-                                                        
+
                                                     @endif
                                                 </a>
                                                 {{-- <ul class="car-meta">
@@ -63,14 +61,14 @@
                                                 <span class="sale-badge">Sale</span> --}}
                                             </div>
                                             <div class="car-content">
-                                                <span class="body-type">
-                                                    <a href="javacript:void(0);">{{ $product->product_type->name }}</a>
-                                                </span>
+                                                {{--    <span class="body-type">--}}
+                                                {{--        <a href="javacript:void(0);">{{ $product->product_type->name }}</a>--}}
+                                                {{--    </span>--}}
                                                 @if ($product->brand)
                                                     <div class="author-meta">
-                                                        <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                                        <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                                             @if ($product->brand_model)
-                                                                {{ $product->brand_model->model }}
+                                                                | {{ $product->brand_model->model }}
                                                             @endif
                                                         </span>
                                                     </div>
@@ -104,7 +102,7 @@
                     @foreach ($productTypes as $key => $productType)
                         <div class="tab-pane" id="tab{{ $key }}" role="tabpanel">
                             <div class="car-row cars-active">
-                                
+
                                 @foreach($productType->products->chunk(2) as $productSet)
                                     <div class="car-col">
                                         @foreach($productSet as $product)
@@ -118,7 +116,7 @@
                                                             @if ($env=='local')
                                                                 <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                                             @endif
-                                                            
+
                                                         @endif
                                                     </a>
                                                     {{-- <ul class="car-meta">
@@ -149,7 +147,7 @@
                                                     </span>
                                                     @if ($product->brand)
                                                         <div class="author-meta">
-                                                            <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                                            <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                                                 @if ($product->brand_model)
                                                                     {{ $product->brand_model->model }}
                                                                 @endif
@@ -178,11 +176,11 @@
                             </div>
                         </div>
                     @endforeach
-                    
-                    
-                    
+
+
+
                 </div>
-                
+
                 <div class="cars-more mt-50 text-center">
                     <a href="{{ route('products.index') }}" class="main-btn">See All</a>
                 </div>
