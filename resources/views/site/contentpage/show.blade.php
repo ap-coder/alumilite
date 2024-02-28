@@ -11,7 +11,7 @@
 
 
 @section('masthead')
-    @includeIf('site.contentpage.partials.masthead', ['featured_image' => @$page->featured_image])  
+    @includeIf('site.contentpage.partials.masthead', ['featured_image' => @$page->featured_image])
 @endsection
 
 @section('above-content')
@@ -23,21 +23,20 @@
             @endif
         @endforeach
     @endif
- 
+
 @endsection
-          
+
 @section('content')
 
 <!-- #wrapper-content start -->
-<div id="wrapper-content" class="wrapper-content pt-11 pb-13">
-    <div class="container">
+
         <div id="pageSectionDiv">
-    
+
         @if($page)
                 @foreach($page->pagesFrontPagesections as $ps)
                     <div class="ps-wrapper-{{ $ps->id }}">
                     {{--  {{ $ps->nickname }} --}}
-    
+
                     @if($ps->ps_css)
                         @section('headcss')
                             {!! $ps->ps_cdn_css !!}
@@ -46,9 +45,9 @@
                             </style>
                         @endsection
                     @endif
-    
+
                     {!! $ps->section !!}
-    
+
                     @if($ps->ps_js)
                         @section('footjs')
                             @parent
@@ -62,16 +61,12 @@
                 @endforeach
             @endif
         </div>
-    </div>
-</div>
-
-
 
 @endsection
 
 @section('below-content')
-  
-  {{-- THIS IS FOR BELOW CONTENT > CONTENT SECTION FOR PAGES CRUD --}}            
+
+  {{-- THIS IS FOR BELOW CONTENT > CONTENT SECTION FOR PAGES CRUD --}}
 
   @if(isset($page->pagesFrontContentSections))
     @foreach($page->pagesFrontContentSections as $ts)
@@ -80,7 +75,7 @@
         @endif
     @endforeach
   @endif
- 
+
 @endsection
 
 @section('footjs')
@@ -91,9 +86,9 @@
                 var src=$(el).attr("src");
                 var result = src.split('/');
                 var lastEl = result[result.length-1];
-                
+
                 var newSrc = $(el).attr("src").replace(src, "{{ asset('site/img/landing-pages') }}/"+lastEl);
-                $(el).attr("src", newSrc);                  
+                $(el).attr("src", newSrc);
 
             });
         });
