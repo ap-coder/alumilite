@@ -62,7 +62,7 @@
                         ])
 
 
-                        @include('site.products.show.partials.social-share')
+                    {{-- @include('site.products.show.partials.social-share')--}}
 
                     </div>
                     @include('site.products.show.partials.sidebar')
