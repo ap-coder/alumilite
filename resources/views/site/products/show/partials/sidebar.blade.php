@@ -7,6 +7,7 @@
 {{-- @include('site.products.show.partials.sidebar.calculater') --}}
 {{-- @include('site.products.show.partials.sidebar.related-posts') --}}
 @includeIf('site.products.show.partials.sidebar.similar-listings',['products'=>$similarProducts])
+@include('site.products.show.partials.social-share')
 
                         </div>
                     </div>

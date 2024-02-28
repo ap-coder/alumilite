@@ -61,9 +61,9 @@
                             'products' => $similarProducts,
                         ])
 
-                        <div class="listing-social d-lg-flex justify-content-between">
-                            @include('site.products.show.partials.social-share')
-                        </div>
+
+                        @include('site.products.show.partials.social-share')
+
                     </div>
                     @include('site.products.show.partials.sidebar')
 
