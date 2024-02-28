@@ -25,6 +25,9 @@
                         {{ trans('cruds.brandModel.fields.id') }}
                     </th>
                     <th>
+                        {{ trans('cruds.brandModel.fields.brand') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.brandModel.fields.model') }}
                     </th>
                     <th>
@@ -87,6 +90,7 @@
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
+{ data: 'brand', name: 'brand' },
 { data: 'model', name: 'model' },
 { data: 'description', name: 'description' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

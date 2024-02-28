@@ -24,6 +24,8 @@ use App\Observers\ContentCategoryObserver;
 use App\Models\ContentCategory;
 use App\Observers\ContentTagObserver;
 use App\Models\ContentTag;
+use App\Observers\BrandModelObserver;
+use App\Models\BrandModel;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -53,6 +55,7 @@ class EventServiceProvider extends ServiceProvider
         Build::class => [BuildObserver::class],
         ContentCategory::class => [ContentCategoryObserver::class],
         ContentTag::class => [ContentTagObserver::class],
+        BrandModel::class => [BrandModelObserver::class],
     ];
 
     /**

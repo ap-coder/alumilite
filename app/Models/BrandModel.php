@@ -21,11 +21,13 @@ class BrandModel extends Model
 
     protected $fillable = [
         'model',
+        'slug',
         'description',
         'created_at',
         'updated_at',
         'deleted_at',
         'published',
+        'brand_id',
     ];
 
     public function scopePublished($query)
@@ -46,5 +48,10 @@ class BrandModel extends Model
     public function brandModelBuilds()
     {
         return $this->hasMany(Build::class, 'brand_model_id', 'id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 }

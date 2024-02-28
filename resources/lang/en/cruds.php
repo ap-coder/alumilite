@@ -773,6 +773,8 @@ return [
             'id_helper'          => ' ',
             'model'              => 'Model',
             'model_helper'       => ' ',
+            'brand'              => 'Brand',
+            'brand_helper'       => ' ',
             'description'        => 'Description',
             'description_helper' => ' ',
             'created_at'         => 'Created at',

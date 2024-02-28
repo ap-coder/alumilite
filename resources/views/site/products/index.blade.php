@@ -9,30 +9,8 @@
 
     <section class="inventory-area">
         <div class="container">
-            <div class="inventory-top d-sm-flex justify-content-between align-items-center">
-                <div class="inventory-select">
-                    {{-- <form action="#">
-                        <select class="optgroup_test">
-                            <option value="" selected="selected">SORT BY: Date Last Added </option>
-                            <option value="">SORT BY: Date First Added </option>
-                            <option value="">SORT BY: Price (Low To High) </option>
-                            <option value="">SORT BY: Price (High To Low) </option>
-                        </select>
-                    </form> --}}
-                    <select class="optgroup_test" id="categoryFilter">
-                        <option value="">Filter By: Category</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->slug }}" @if(Request::get('category') && Request::get('category') == $category->slug) selected @endif>{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="inventory-switcher">
-                    <ul class="nav" role="tablist">
-                        <li><a data-bs-toggle="tab" href="#grid" role="tab"><i class="ion-android-apps"></i></a></li>
-                        <li><a class="active" data-bs-toggle="tab" href="#list" role="tab"><i class="ion-navicon"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+            
+            @include('site.products.partials.filter')
 
             <div class="tab-content">
                 <div class="tab-pane fade grid active" id="grid" role="tabpanel">
@@ -225,9 +203,19 @@
 <script>
     $(function () {
 
-        $('#categoryFilter').change(function(){
-            var category = $(this).val();
-            window.location.href = "{{ url('products') }}?category="+category;
+        $('.productFilter').change(function(){
+            var category = $('#productCategory').val();
+            var brand = $('#productBrand').val();
+            var brandModel = $('#productBrandModel').val();
+
+            var type = $(this).attr('type');
+
+            if (type=='brand') {
+                window.location.href = "{{ url('products') }}?category="+category+"&brand="+brand+"&brandModel=";
+            } else {
+                window.location.href = "{{ url('products') }}?category="+category+"&brand="+brand+"&brandModel="+brandModel;
+            }
+            
         });
 
     });
