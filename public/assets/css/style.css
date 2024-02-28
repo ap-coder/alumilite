@@ -15751,3 +15751,35 @@ p {
 .slider-content [class*="sub-title"] { font-family: Ariel!important;}
 .slider-content [class*="sub-title-2"] { font-family: Ariel!important;}
 .slider-content [class*="heading-2"], .slider-content [class*="heading-3"] ,.slider-content [class*="heading"]  { font-family: Ariel!important;}
+
+
+.product-social .listing-social { padding-top: 20px; }
+.product-social .listing-social .listing-btn { padding-top: 10px; }
+.product-social .listing-social .listing-btn .listing-actions li { display: inline-block; margin-right: 8px; margin-top: 10px; }
+.product-social .listing-social .listing-btn .listing-actions li a { background-color: #edeff1; font-size: 16px; font-weight: 700; color: #293957; text-transform: uppercase; -webkit-transition: all 0.3s linear; transition: all 0.3s linear; height: 40px; line-height: 40px; padding: 0 15px; border-radius: 3px; }
+
+@media only screen and (min-width:992px) and (max-width:1199px) {
+    .product-social .listing-social .listing-btn .listing-actions li a { font-size: 14px; }
+}
+@media (max-width:767px) {
+    .product-social .listing-social .listing-btn .listing-actions li a { font-size: 14px; height: 30px; line-height: 30px; }
+}
+.product-social .listing-social .listing-btn .listing-actions li a i { margin-right: 3px; }
+.product-social .listing-social .listing-btn .listing-actions li a:hover { background-color: #ce8339; color: #fff; }
+.product-social .listing-social .social-share { padding-top: 10px; }
+.product-social .listing-social .social-share .social li { display: inline-block; margin-top: 10px; }
+.product-social .listing-social .social-share .social li + li { margin-left: 8px; }
+.product-social .listing-social .social-share .social li a { font-size: 22px; color: #fff; width: 40px; height: 40px; line-height: 40px; text-align: center; border-radius: 3px; }
+
+@media (max-width:767px) {
+    .inventory-single-content .listing-social .social-share .social li a { font-size: 18px; width: 30px; height: 30px; line-height: 30px; }
+}
+@media only screen and (min-width:992px) and (max-width:1199px) {
+    .listing-social .social-share .social li a { font-size: 18px; }
+}
+
+.product-social .listing-social .social-share .social li a.facebook { background-color: #2b53b8; }
+.product-social .listing-social .social-share .social li a.twitter { background-color: #0096ff; }
+.product-social .listing-social .social-share .social li a.googleplus { background-color: #bf2828; }
+.product-social .listing-social .social-share .social li a.tumblr { background-color: #2b4873; }
+.product-social .listing-social .social-share .social li a.rss { background-color: #f37214; }
