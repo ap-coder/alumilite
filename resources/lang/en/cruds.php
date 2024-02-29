@@ -155,6 +155,8 @@ return [
             'brand_helper'             => ' ',
             'brand_model'              => 'Brand Model',
             'brand_model_helper'       => ' ',
+            'paypal_prod'              => 'Paypal Product ID',
+            'paypal_prod_helper'       => ' ',
         ],
     ],
     'staticSeo' => [
