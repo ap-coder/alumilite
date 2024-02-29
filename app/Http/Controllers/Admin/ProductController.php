@@ -246,43 +246,47 @@ class ProductController extends Controller
         }
 
         $product = Product::findOrFail($product->id);
-        $cleanDescription = strip_tags($product->description);
-        $shortDescription = substr($cleanDescription, 0, 110);
 
-        $menuName = \Str::of($product->slug)->replace('-', ' ')->title();
+        $staticSeo = $product->staticSeo()->first();
+        if ($staticSeo && !$staticSeo->deactivate_update) {
+            $cleanDescription = strip_tags($product->description);
+            $shortDescription = substr($cleanDescription, 0, 110);
 
-        if ($product->photo) {
-            $seo_image_url = $product->photo->getUrl();
-        } else {
-            $seo_image_url = '';
+            $menuName = \Str::of($product->slug)->replace('-', ' ')->title();
+
+            if ($product->photo) {
+                $seo_image_url = $product->photo->getUrl();
+            } else {
+                $seo_image_url = '';
+            }
+
+            $product->staticSeo()->updateOrCreate(
+                [
+                    'product_id' => $product->id,
+                ],
+                [
+                    'product_id' => $product->id,
+                    'canonical' => '1',
+                    'content_type' => 'product',
+                    'menu_name' => $menuName,
+                    'page_name' => $menuName,
+                    'page_path' => 'products/' . $product->slug,
+                    'open_graph_type' => 'product',
+                    'html_schema_1' => 'Thing',
+                    'html_schema_2' => 'Product',
+                    'html_schema_3' => '',
+                    'body_schema' => 'IndividualProduct',
+                    'body_schema_itemid' => '#product',
+                    'seo_image_url' => $seo_image_url,
+                    'meta_title' => $product->name,
+                    'facebook_title' => $product->name,
+                    'twitter_title' => $product->name,
+                    'facebook_description' => $shortDescription,
+                    'twitter_description' => $shortDescription,
+                    'meta_description' => $shortDescription,
+                ]
+            );
         }
-
-        $product->staticSeo()->updateOrCreate(
-            [
-                'product_id' => $product->id,
-            ],
-            [
-                'product_id' => $product->id,
-                'canonical' => '1',
-                'content_type' => 'product',
-                'menu_name' => $menuName,
-                'page_name' => $menuName,
-                'page_path' => 'products/'.$product->slug,
-                'open_graph_type' => 'product',
-                'html_schema_1' => 'Thing',
-                'html_schema_2' => 'Product',
-                'html_schema_3' => '',
-                'body_schema' => 'IndividualProduct',
-                'body_schema_itemid' => '#product',
-                'seo_image_url' => $seo_image_url,
-                'meta_title' => $product->name,
-                'facebook_title' => $product->name,
-                'twitter_title' => $product->name,
-                'facebook_description' => $shortDescription,
-                'twitter_description' => $shortDescription,
-                'meta_description' => $shortDescription,
-            ]
-        );
 
         return $request->preview ? response()->json($product->slug) : redirect()->route('admin.products.index');
 
