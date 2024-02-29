@@ -2,7 +2,7 @@
                                     <div class="inventory-dealership-overview">
                                         <div class="ck-content">
                                             {!! $product->description !!}
-                                        </div>
+
 
                                         @if ($product->documents->count()>0)
                                             <div class="downloadable-documents mt-5">
@@ -17,5 +17,6 @@
                                             </div>
                                         @endif
 
+                                        </div>
                                     </div>
                                 </div>

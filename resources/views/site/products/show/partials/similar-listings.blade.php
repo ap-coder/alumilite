@@ -1,3 +1,4 @@
+
 <div class="inventory-single-features-car">
     <h5 class="singe-title">similar Products</h5>
 
@@ -5,7 +6,7 @@
 
         @foreach($similarProducts as $product)
         <div class="car-col col-lg-3">
-            
+
                 <div class="single-car-item mt-50">
                     <div class="car-image">
                         <a href="{{ route('products.show',$product->slug) }}">
@@ -16,7 +17,7 @@
                                 @if ($env=='local')
                                     <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
                                 @endif
-                                
+
                             @endif
                         </a>
                         {{-- <ul class="car-meta">
@@ -46,7 +47,7 @@
                         </span>
                         @if ($product->brand)
                             <div class="author-meta">
-                                <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a> 
+                                <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                     @if ($product->brand_model)
                                         {{ $product->brand_model->model }}
                                     @endif
@@ -73,7 +74,7 @@
                         </div> --}}
                     </div>
                 </div>
-                
+
         </div>
         @endforeach
     </div>
