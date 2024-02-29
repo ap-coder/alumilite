@@ -10,7 +10,7 @@
 
     <section class="inventory-area">
         <div class="container">
-            
+
             @include('site.products.partials.filter')
 
             <div class="tab-content">
@@ -217,7 +217,7 @@ excerpt here
             } else {
                 window.location.href = "{{ url('products') }}?category="+category+"&brand="+brand+"&brandModel="+brandModel;
             }
-            
+
         });
 
     });

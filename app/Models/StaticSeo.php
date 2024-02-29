@@ -18,6 +18,17 @@ class StaticSeo extends Model implements HasMedia
 
     public $table = 'static_seos';
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($staticSeo) {
+            // Set deactivate_update to true this will prevent the content from changing it once it is manually updated in seo itself.
+            // turns off auto update. This way once its set to what you want it wont change unless you manually change it in seo.
+            $staticSeo->deactivate_update = true;
+        });
+    }
+
     protected $appends = [
         'seo_image',
     ];
@@ -40,7 +51,7 @@ class StaticSeo extends Model implements HasMedia
         'build'    => 'Build',
         'product'    => 'Product',
         'brand'    => 'Brand',
-  
+
     ];
 
     protected $fillable = [
@@ -84,6 +95,7 @@ class StaticSeo extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+        'deactivate_update',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

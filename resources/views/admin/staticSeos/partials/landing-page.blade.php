@@ -1,6 +1,6 @@
 {{-- Landing page builder section only  --}}
 @if ($staticSeo->content_type=='custom')
-	 
+
     <div id="landing-page-details" class="row">
 
         <div class="form-group col-5">
@@ -35,10 +35,11 @@
 
     </div>
 @else
-    <div class="form-group col-10">
-        <label for="seo_image_url">SEO IMAGE URL</label>
-        <input class="form-control {{ $errors->has('seo_image_url') ? 'is-invalid' : '' }}" type="text" name="seo_image_url" id="meta-featured-image" value="{{ old('seo_image_url', @$staticSeo->seo_image_url) }}">
+    <div class="row">
+        <div class="form-group col-8">
+            <label for="seo_image_url">SEO IMAGE URL</label>
+            <input class="form-control {{ $errors->has('seo_image_url') ? 'is-invalid' : '' }} form-control-lg" type="text" name="seo_image_url" id="meta-featured-image" value="{{ old('seo_image_url', @$staticSeo->seo_image_url) }}">
+        </div>
     </div>
-
 @endif
 {{-- / Landing page builder section only  --}}

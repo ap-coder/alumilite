@@ -82,6 +82,8 @@ class BrandsController extends Controller
         }
 
         $brand = Brand::findOrFail($brand->id);
+        $cleanDescription = strip_tags($brand->description);
+        $shortDescription = substr($cleanDescription, 0, 110);
 
         $menuName = \Str::of($brand->slug)->replace('-', ' ')->title();
 
@@ -105,6 +107,12 @@ class BrandsController extends Controller
                 'html_schema_3' => '',
                 'body_schema' => 'Website',
                 'seo_image_url' => $seo_image_url,
+                'meta_title' => $brand->name,
+                'facebook_title' => $brand->name,
+                'twitter_title' => $brand->name,
+                'facebook_description' => $shortDescription,
+                'twitter_description' => $shortDescription,
+                'meta_description' => $shortDescription,
             ]
         );
 
@@ -122,6 +130,7 @@ class BrandsController extends Controller
     {
         $brand->update($request->all());
 
+
         if ($request->input('logo', false)) {
             if (! $brand->logo || $request->input('logo') !== $brand->logo->file_name) {
                 if ($brand->logo) {
@@ -135,33 +144,46 @@ class BrandsController extends Controller
 
         $brand = Brand::findOrFail($brand->id);
 
-        $menuName = \Str::of($brand->slug)->replace('-', ' ')->title();
+        $staticSeo = $brand->staticSeo()->first();
 
-        if ($brand->logo) {
-            $seo_image_url = $brand->logo->getUrl();
-        } else {
-            $seo_image_url = '';
+        if ($staticSeo && !$staticSeo->deactivate_update) {
+            $cleanDescription = strip_tags($brand->description);
+            $shortDescription = substr($cleanDescription, 0, 110);
+
+            $menuName = \Str::of($brand->slug)->replace('-', ' ')->title();
+
+            if ($brand->logo) {
+                $seo_image_url = $brand->logo->getUrl();
+            } else {
+                $seo_image_url = '';
+            }
+
+            $staticSeo()->updateOrCreate(
+                [
+                    'brand_id' => $brand->id,
+                ],
+                [
+                    'brand_id' => $brand->id,
+                    'canonical' => '1',
+                    'content_type' => 'brand',
+                    'menu_name' => $menuName,
+                    'page_name' => $menuName,
+                    'page_path' => 'brands/' . $brand->slug,
+                    'open_graph_type' => 'website',
+                    'html_schema_1' => 'Thing',
+                    'html_schema_2' => 'Brand',
+                    'html_schema_3' => '',
+                    'body_schema' => 'Website',
+                    'seo_image_url' => $seo_image_url,
+                    'meta_title' => $brand->name,
+                    'facebook_title' => $brand->name,
+                    'twitter_title' => $brand->name,
+                    'facebook_description' => $shortDescription,
+                    'twitter_description' => $shortDescription,
+                    'meta_description' => $shortDescription
+                ]
+            );
         }
-
-        $brand->staticSeo()->updateOrCreate(
-            [
-                'brand_id' => $brand->id,
-            ],
-            [
-                'brand_id' => $brand->id,
-                'canonical' => '1',
-                'content_type' => 'brand',
-                'menu_name' => $menuName,
-                'page_name' => $menuName,
-                'page_path' => 'brands/'.$brand->slug,
-                'open_graph_type' => 'website',
-                'html_schema_1' => 'Thing',
-                'html_schema_2' => 'Brand',
-                'html_schema_3' => '',
-                'body_schema' => 'Website',
-                'seo_image_url' => $seo_image_url,
-            ]
-        );
 
         return $request->preview ? response()->json($brand->slug) : redirect()->route('admin.brands.index');
 

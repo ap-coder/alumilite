@@ -233,6 +233,8 @@ return [
             'build_helper'       => ' ',
             'brand'              => 'Brands',
             'brand_helper'       => ' ',
+            'deactivate_update'           => 'Deactivate Update',
+            'deactivate_update_helper'    => ' ',
         ],
     ],
     'technicalSpec' => [

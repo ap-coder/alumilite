@@ -232,8 +232,7 @@ class ContentPageController extends Controller
 
         $menuName = \Str::of($contentPage->slug)->replace('-', ' ')->title();
         $seo_image_url = optional($contentPage->featured_image)->getUrl();
-        $cleanDescription = strip_tags($contentPage->page_text);
-        $shortDescription = substr($cleanDescription, 0, 110);
+
 
         if ($contentPage->is_homepage == 1) {
             if ($contentPage->slug) {
@@ -254,32 +253,35 @@ class ContentPageController extends Controller
                 $data = $contentPage->slug;
             }
         }
+        $contentPage = ContentPage::findOrFail($contentPage->id);
 
-        $contentPage->staticSeo()->updateOrCreate(
-            ['page_id' => $contentPage->id],
-            [
-                'page_id' => $contentPage->id,
-                'canonical' => '1',
-                //    'meta_title' => $request->meta_title,
-                //    'meta_description' => $request->meta_description,
-                //    'facebook_title' => $request->facebook_title,
-                //    'facebook_description' => $request->facebook_description,
-                //    'twitter_title' => $request->twitter_title,
-                //    'twitter_description' => $request->twitter_description,
-                'content_type' => 'custom',
-                'menu_name' => $menuName,
-                'page_name' => $menuName,
-                'page_path' => $data,
-                'open_graph_type' => 'website',
-                'seo_image_url' => $seo_image_url,
-                'meta_title' => $contentPage->title,
-                'facebook_title' => $contentPage->title,
-                'twitter_title' => $contentPage->title,
-                'facebook_description' => $shortDescription,
-                'twitter_description' => $shortDescription,
-                'meta_description' => $shortDescription,
-            ]
-        );
+        $staticSeo = $contentPage->staticSeo()->first();
+
+        if ($staticSeo && !$staticSeo->deactivate_update) {
+
+            $cleanDescription = strip_tags($contentPage->page_text);
+            $shortDescription = substr($cleanDescription, 0, 110);
+
+            $staticSeo()->updateOrCreate(
+                ['page_id' => $contentPage->id],
+                [
+                    'page_id' => $contentPage->id,
+                    'canonical' => '1',
+                    'content_type' => 'custom',
+                    'menu_name' => $menuName,
+                    'page_name' => $menuName,
+                    'page_path' => $data,
+                    'open_graph_type' => 'website',
+                    'seo_image_url' => $seo_image_url,
+                    'meta_title' => $contentPage->title,
+                    'facebook_title' => $contentPage->title,
+                    'twitter_title' => $contentPage->title,
+                    'facebook_description' => $shortDescription,
+                    'twitter_description' => $shortDescription,
+                    'meta_description' => $shortDescription
+                ]
+            );
+        }
 
         if ($request->preview) {
             echo json_encode($data);

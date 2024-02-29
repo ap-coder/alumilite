@@ -38,6 +38,8 @@
             <input type="hidden" name="id" id="id" value="{{ $staticSeo->id }}">
 
             @include('admin.staticSeos.partials.top')
+            @include('admin.staticSeos.partials.seo-class')
+            @include('admin.staticSeos.partials.details')
             @include('admin.staticSeos.partials.landing-page')
             @include('admin.staticSeos.partials.post')
             @include('admin.staticSeos.partials.product')
@@ -51,20 +53,43 @@
             @include('admin.staticSeos.partials.jsonld')
 
             </div>
-                @include('admin.staticSeos.partials.seo-class')
+
+
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3">
+                    <p>If you uncheck this it will allow record to be updated automatically from content. You will lose any added seo information entered inside the seo
+                    section. This is only supposed to be unchecked if you have not take the time to write in what you want. This was to prevent empty seo data.</p>
+                    <div class="form-group">
+                        <div class="form-check {{ $errors->has('deactivate_update') ? 'is-invalid' : '' }}">
+                            <input type="hidden" name="deactivate_update" value="0">
+                            <input class="form-check-input" type="checkbox" name="deactivate_update" id="deactivate_update" value="1" {{ $staticSeo->deactivate_update || old('deactivate_update', 0) === 1 ? 'checked' : '' }}>
+                            <label class="form-check-label" for="deactivate_update">{{ trans('cruds.staticSeo.fields.deactivate_update') }}</label>
+                        </div>
+                        @if($errors->has('deactivate_update'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('deactivate_update') }}
+                            </div>
+                        @endif
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </div>
 
                 <div class="form-group">
                     <label id="errorMsg" class="error" for="title"></label> <hr>
                     <button class="btn btn-success saveContent" type="button" id="save" bType="save">
-                      {{ trans('global.save') }}
+                        {{ trans('global.save') }}
                     </button>
                     <button class="btn btn-primary saveContent" id="save-and-preview" type="button" bType="preview">
-                      {{ trans('global.save_and_preview') }}
+                        {{ trans('global.save_and_preview') }}
                     </button>
                     <button class="btn btn-danger" type="submit">
-                      {{ trans('global.save_and_close') }}
-                  </button>
-                  </div>
+                        {{ trans('global.save_and_close') }}
+                    </button>
+                </div>
+
+
         </form>
     </div>
 </div>

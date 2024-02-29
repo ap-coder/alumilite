@@ -124,6 +124,7 @@ class BuildController extends Controller
         }
 
         $build = Build::findOrFail($build->id);
+
         $cleanDescription = strip_tags($build->page_text);
         $shortDescription = substr($cleanDescription, 0, 110);
 
@@ -222,42 +223,47 @@ class BuildController extends Controller
         }
 
         $build = Build::findOrFail($build->id);
-        $cleanDescription = strip_tags($build->page_text);
-        $shortDescription = substr($cleanDescription, 0, 110);
+        $staticSeo = $build->staticSeo()->first();
 
-        $menuName = \Str::of($build->slug)->replace('-', ' ')->title();
+        if ($staticSeo && !$staticSeo->deactivate_update) {
 
-        if ($build->photo) {
-            $seo_image_url = $build->photo->getUrl();
-        } else {
-            $seo_image_url = '';
+            $cleanDescription = strip_tags($build->page_text);
+            $shortDescription = substr($cleanDescription, 0, 110);
+
+            $menuName = \Str::of($build->slug)->replace('-', ' ')->title();
+
+            if ($build->photo) {
+                $seo_image_url = $build->photo->getUrl();
+            } else {
+                $seo_image_url = '';
+            }
+
+            $staticSeo()->updateOrCreate(
+                [
+                    'build_id' => $build->id,
+                ],
+                [
+                    'build_id' => $build->id,
+                    'canonical' => '1',
+                    'content_type' => 'build',
+                    'menu_name' => $menuName,
+                    'page_name' => $menuName,
+                    'page_path' => 'builds/' . $build->slug,
+                    'open_graph_type' => 'website',
+                    'html_schema_1' => 'Thing',
+                    'html_schema_2' => 'Build',
+                    'html_schema_3' => '',
+                    'body_schema' => 'Website',
+                    'seo_image_url' => $seo_image_url,
+                    'meta_title' => $build->title,
+                    'facebook_title' => $build->title,
+                    'twitter_title' => $build->title,
+                    'facebook_description' => $shortDescription,
+                    'twitter_description' => $shortDescription,
+                    'meta_description' => $shortDescription,
+                ]
+            );
         }
-
-        $build->staticSeo()->updateOrCreate(
-            [
-                'build_id' => $build->id,
-            ],
-            [
-                'build_id' => $build->id,
-                'canonical' => '1',
-                'content_type' => 'build',
-                'menu_name' => $menuName,
-                'page_name' => $menuName,
-                'page_path' => 'builds/'.$build->slug,
-                'open_graph_type' => 'website',
-                'html_schema_1' => 'Thing',
-                'html_schema_2' => 'Build',
-                'html_schema_3' => '',
-                'body_schema' => 'Website',
-                'seo_image_url' => $seo_image_url,
-                'meta_title' => $build->title,
-                'facebook_title' => $build->title,
-                'twitter_title' => $build->title,
-                'facebook_description' => $shortDescription,
-                'twitter_description' => $shortDescription,
-                'meta_description' => $shortDescription,
-            ]
-        );
 
         return $request->preview ? response()->json($build->slug) : redirect()->route('admin.builds.index');
     }

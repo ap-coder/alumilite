@@ -189,42 +189,45 @@ class PostController extends Controller
         }
 
         $post = Post::findOrFail($post->id);
-        $cleanDescription = strip_tags($post->page_text);
-        $shortDescription = substr($cleanDescription, 0, 110);
+        $staticSeo = $post->staticSeo()->first();
+        if ($staticSeo && !$staticSeo->deactivate_update) {
+            $cleanDescription = strip_tags($post->page_text);
+            $shortDescription = substr($cleanDescription, 0, 110);
 
-        $menuName = \Str::of($post->slug)->replace('-', ' ')->title();
+            $menuName = \Str::of($post->slug)->replace('-', ' ')->title();
 
-        if ($post->featured_image) {
-            $seo_image_url = $post->featured_image->getUrl();
-        } else {
-            $seo_image_url = '';
+            if ($post->featured_image) {
+                $seo_image_url = $post->featured_image->getUrl();
+            } else {
+                $seo_image_url = '';
+            }
+
+            $post->staticSeo()->updateOrCreate(
+                [
+                    'post_id' => $post->id,
+                ],
+                [
+                    'post_id' => $post->id,
+                    'canonical' => '1',
+                    'content_type' => 'post',
+                    'menu_name' => $menuName,
+                    'page_name' => $menuName,
+                    'page_path' => 'blog/' . $post->slug,
+                    'open_graph_type' => 'article',
+                    'html_schema_1' => 'Thing',
+                    'html_schema_2' => 'CreativeWork',
+                    'html_schema_3' => 'Blog',
+                    'body_schema' => 'Article',
+                    'seo_image_url' => $seo_image_url,
+                    'meta_title' => $post->title,
+                    'facebook_title' => $post->title,
+                    'twitter_title' => $post->title,
+                    'facebook_description' => $shortDescription,
+                    'twitter_description' => $shortDescription,
+                    'meta_description' => $shortDescription,
+                ]
+            );
         }
-
-        $post->staticSeo()->updateOrCreate(
-            [
-                'post_id' => $post->id,
-            ],
-            [
-                'post_id' => $post->id,
-                'canonical' => '1',
-                'content_type' => 'post',
-                'menu_name' => $menuName,
-                'page_name' => $menuName,
-                'page_path' => 'blog/'.$post->slug,
-                'open_graph_type' => 'article',
-                'html_schema_1' => 'Thing',
-                'html_schema_2' => 'CreativeWork',
-                'html_schema_3' => 'Blog',
-                'body_schema' => 'Article',
-                'seo_image_url' => $seo_image_url,
-                'meta_title' => $post->title,
-                'facebook_title' => $post->title,
-                'twitter_title' => $post->title,
-                'facebook_description' => $shortDescription,
-                'twitter_description' => $shortDescription,
-                'meta_description' => $shortDescription,
-            ]
-        );
 
         return $request->preview ? response()->json($post->slug) : redirect()->route('admin.posts.index');
     }
