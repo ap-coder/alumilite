@@ -10,7 +10,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.products.update", [$product->id]) }}" enctype="multipart/form-data" id="submitProductsForm">
+        <div method="POST" action="{{ route("admin.products.update", [$product->id]) }}" enctype="multipart/form-data" id="submitProductsForm">
             @method('PUT')
             @csrf
             <div class="form-group">
@@ -56,7 +56,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.description_helper') }}</span>
             </div>
-            <div class="form-group">
+
+        <div class="row">
+            <div class="form-group col">
                 <label class="required" for="price">{{ trans('cruds.product.fields.price') }}</label>
                 <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price" id="price" value="{{ old('price', $product->price) }}" step="0.01" required>
                 @if($errors->has('price'))
@@ -66,7 +68,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.price_helper') }}</span>
             </div>
-            <div class="form-group">
+            <div class="form-group col">
                 <label for="msrp">{{ trans('cruds.product.fields.msrp') }}</label>
                 <input class="form-control {{ $errors->has('msrp') ? 'is-invalid' : '' }}" type="number" name="msrp" id="msrp" value="{{ old('msrp', $product->msrp) }}" step="0.01">
                 @if($errors->has('msrp'))
@@ -76,6 +78,17 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.msrp_helper') }}</span>
             </div>
+            <div class="form-group col">
+                <label class="required" for="name">{{ trans('cruds.product.fields.paypal_prod') }}</label>
+                <input class="form-control {{ $errors->has('paypal_prod') ? 'is-invalid' : '' }}" type="text" name="paypal_prod" id="paypal_prod" value="{{ old('paypal_prod', $product->paypal_prod) }}" required>
+                @if($errors->has('paypal_prod'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('paypal_prod') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.paypal_prod_helper') }}</span>
+            </div>
+        </div>
             <div class="form-group">
                 <label for="photo">{{ trans('cruds.product.fields.photo') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
@@ -280,6 +293,17 @@ $('.saveContent').click(function() {
             $this.html($loader);
             var formData = $('#submitProductsForm').serializeArray();
             formData.push({ name: 'preview', value: 1 });
+
+            var description=getDataFromTheDescEditor();
+
+            // Find and replace `content` if there
+            for (index = 0; index < formData.length; ++index) {
+                if (formData[index].name == "description") {
+                    formData[index].value = description;
+                    break;
+                }
+            }
+
             $.ajax({
                 type: 'POST',
                 url: '{{ route("admin.products.update", [$product->id]) }}',
@@ -472,6 +496,9 @@ Dropzone.options.documentsDropzone = {
 
 
 <script>
+
+let theDescEditor;
+
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {
     editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
@@ -524,15 +551,22 @@ Dropzone.options.documentsDropzone = {
     }
   }
 
-  var allEditors = document.querySelectorAll('.ckeditor');
+  var allEditors = document.querySelectorAll('#description');
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
       allEditors[i], {
         extraPlugins: [SimpleUploadAdapter],
         mediaEmbed: {previewsInData: true}
       }
-    );
+    ).then( editor => {
+        // CKEditorInspector.attach( editor );
+        theDescEditor = editor;
+    } )
   }
 });
+
+function getDataFromTheDescEditor() {
+  return theDescEditor.getData();
+}
 </script>
 @endsection

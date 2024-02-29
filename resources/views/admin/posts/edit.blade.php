@@ -160,6 +160,17 @@ $('.saveContent').click(function() {
             $this.html($loader);
             var formData = $('#submitPostForm').serializeArray();
             formData.push({ name: 'preview', value: 1 });
+
+            var description=getDataFromTheDescEditor();
+
+            // Find and replace `content` if there
+            for (index = 0; index < formData.length; ++index) {
+                if (formData[index].name == "page_text") {
+                    formData[index].value = description;
+                    break;
+                }
+            }
+
             $.ajax({
                 type: 'POST',
                 url: '{{ route("admin.posts.update", [$post->id]) }}',
@@ -177,6 +188,8 @@ $('.saveContent').click(function() {
             });
         }
     });
+
+    let theDescEditor;
 
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {
@@ -230,16 +243,23 @@ $('.saveContent').click(function() {
     }
   }
 
-  var allEditors = document.querySelectorAll('.ckeditor');
+  var allEditors = document.querySelectorAll('#page_text');
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
       allEditors[i], {
         extraPlugins: [SimpleUploadAdapter],
         mediaEmbed: {previewsInData: true}
       }
-    );
+    ).then( editor => {
+        // CKEditorInspector.attach( editor );
+        theDescEditor = editor;
+    } )
   }
 });
+
+function getDataFromTheDescEditor() {
+  return theDescEditor.getData();
+}
 </script>
 
 <script>

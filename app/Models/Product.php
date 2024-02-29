@@ -37,6 +37,7 @@ class Product extends Model implements HasMedia
         'description',
         'price',
         'msrp',
+        'paypal_prod',
         'product_type_id',
         'brand_id',
         'brand_model_id',

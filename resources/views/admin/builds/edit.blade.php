@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label for="excerpt">{{ trans('cruds.build.fields.excerpt') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{!! old('excerpt', $build->excerpt) !!}</textarea>
+                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{!! old('excerpt', $build->excerpt) !!}</textarea>
                 @if($errors->has('excerpt'))
                     <div class="invalid-feedback">
                         {{ $errors->first('excerpt') }}
@@ -265,6 +265,17 @@ $('.saveContent').click(function() {
             $this.html($loader);
             var formData = $('#submitBuildForm').serializeArray();
             formData.push({ name: 'preview', value: 1 });
+
+            var description=getDataFromTheDescEditor();
+
+            // Find and replace `content` if there
+            for (index = 0; index < formData.length; ++index) {
+                if (formData[index].name == "description") {
+                    formData[index].value = description;
+                    break;
+                }
+            }
+
             $.ajax({
                 type: 'POST',
                 url: '{{ route("admin.builds.update", [$build->id]) }}',
@@ -282,6 +293,8 @@ $('.saveContent').click(function() {
             });
         }
     });
+
+    let theDescEditor;
 
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {
@@ -335,16 +348,23 @@ $('.saveContent').click(function() {
     }
   }
 
-  var allEditors = document.querySelectorAll('.ckeditor');
+  var allEditors = document.querySelectorAll('#description');
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
       allEditors[i], {
         extraPlugins: [SimpleUploadAdapter],
         mediaEmbed: {previewsInData: true}
       }
-    );
+    ).then( editor => {
+        // CKEditorInspector.attach( editor );
+        theDescEditor = editor;
+    } )
   }
 });
+
+function getDataFromTheDescEditor() {
+  return theDescEditor.getData();
+}
 </script>
 
 <script>
