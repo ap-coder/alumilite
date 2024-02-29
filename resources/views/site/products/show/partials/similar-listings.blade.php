@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-<div class="inventory-single-features-car bottom">
-=======
 
 <div class="inventory-single-features-car">
->>>>>>> 21684658a72c41310abfdfd1b10d8dab20b9f768
+
     <h5 class="singe-title">similar Products</h5>
 
     <div class="row car-row cars-active-3">
