@@ -91,6 +91,12 @@ class ProductController extends Controller
         return view('admin.products.index');
     }
 
+    protected static function booted() {
+        static::updating(function ($product) {
+            \Log::debug('Product updating:', $product->toArray());
+        });
+    }
+
     public function create()
     {
         abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -202,10 +208,12 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->all());
+
         $product->categories()->sync($request->input('categories', []));
         $product->tags()->sync($request->input('tags', []));
         $product->technical_specs()->sync($request->input('technical_specs', []));
         $product->features()->sync($request->input('features', []));
+
         if ($request->input('photo', false)) {
             if (! $product->photo || $request->input('photo') !== $product->photo->file_name) {
                 if ($product->photo) {
@@ -245,9 +253,10 @@ class ProductController extends Controller
             }
         }
 
-        $product = Product::findOrFail($product->id);
+//        $product = Product::findOrFail($product->id);
 
         $staticSeo = $product->staticSeo()->first();
+
         if ($staticSeo && !$staticSeo->deactivate_update) {
             $cleanDescription = strip_tags($product->description);
             $shortDescription = substr($cleanDescription, 0, 110);
