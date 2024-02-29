@@ -158,7 +158,7 @@ class BrandsController extends Controller
                 $seo_image_url = '';
             }
 
-            $staticSeo()->updateOrCreate(
+            $staticSeo->updateOrCreate(
                 [
                     'brand_id' => $brand->id,
                 ],

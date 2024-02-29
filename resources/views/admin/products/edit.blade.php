@@ -280,6 +280,17 @@ $('.saveContent').click(function() {
             $this.html($loader);
             var formData = $('#submitProductsForm').serializeArray();
             formData.push({ name: 'preview', value: 1 });
+
+            var description=getDataFromTheDescEditor();
+
+            // Find and replace `content` if there
+            for (index = 0; index < formData.length; ++index) {
+                if (formData[index].name == "description") {
+                    formData[index].value = description;
+                    break;
+                }
+            }
+            
             $.ajax({
                 type: 'POST',
                 url: '{{ route("admin.products.update", [$product->id]) }}',
@@ -472,6 +483,9 @@ Dropzone.options.documentsDropzone = {
 
 
 <script>
+
+let theDescEditor;
+
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {
     editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
@@ -524,15 +538,22 @@ Dropzone.options.documentsDropzone = {
     }
   }
 
-  var allEditors = document.querySelectorAll('.ckeditor');
+  var allEditors = document.querySelectorAll('#description');
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
       allEditors[i], {
         extraPlugins: [SimpleUploadAdapter],
         mediaEmbed: {previewsInData: true}
       }
-    );
+    ).then( editor => {
+        // CKEditorInspector.attach( editor );
+        theDescEditor = editor;
+    } )
   }
 });
+
+function getDataFromTheDescEditor() {
+  return theDescEditor.getData();
+}
 </script>
 @endsection
