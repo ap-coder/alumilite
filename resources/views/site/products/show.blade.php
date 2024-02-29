@@ -26,8 +26,8 @@
                 <div class="price">
                     <span class="price">
                         <span class="sale-price">${{ number_format($product->price) }}</span>
-                        {{-- <span class="regular-price">$28,500</span>
-                        <span class="msrp">MSRP: <strong>$39,000</strong></span> --}}
+                        <span class="regular-price">$28,500</span>
+                        <span class="msrp">MSRP: <strong>$39,000</strong></span>  
                         @if ($product->msrp)
                             <span class="msrp">MSRP: <strong>${{ number_format($product->msrp) }}</strong></span>
                         @endif
