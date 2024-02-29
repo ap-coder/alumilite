@@ -202,7 +202,7 @@ class PostController extends Controller
                 $seo_image_url = '';
             }
 
-            $post->staticSeo()->updateOrCreate(
+            $post->staticSeo->updateOrCreate(
                 [
                     'post_id' => $post->id,
                 ],
