@@ -56,17 +56,12 @@
                                 {{-- @include('site.products.show.partials.reviews-tab') --}}
                             </div>
                         </div>
-<<<<<<< HEAD
-
+ 
                         @includeIf('site.products.show.partials.similar-listings', [
                            'products' => $similarProducts, 
                         ])  
 
-=======
-{{--                        @if($similarProducts->count() > 0)--}}
-{{--                            @includeIf('site.products.show.partials.similar-listings', ['products' => $similarProducts])--}}
-{{--                        @endif--}}
->>>>>>> 21684658a72c41310abfdfd1b10d8dab20b9f768
+ 
 
                     {{-- @include('site.products.show.partials.social-share') --}}
 
