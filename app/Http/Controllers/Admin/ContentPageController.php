@@ -259,10 +259,10 @@ class ContentPageController extends Controller
 
         if ($staticSeo && !$staticSeo->deactivate_update) {
 
-            $cleanDescription = strip_tags($contentPage->page_text);
+            $cleanDescription = strip_tags($contentPage->excerpt);
             $shortDescription = substr($cleanDescription, 0, 110);
 
-            $staticSeo()->updateOrCreate(
+            $staticSeo->updateOrCreate(
                 ['page_id' => $contentPage->id],
                 [
                     'page_id' => $contentPage->id,

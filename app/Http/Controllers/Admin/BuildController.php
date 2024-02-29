@@ -227,7 +227,7 @@ class BuildController extends Controller
 
         if ($staticSeo && !$staticSeo->deactivate_update) {
 
-            $cleanDescription = strip_tags($build->page_text);
+            $cleanDescription = strip_tags($build->description);
             $shortDescription = substr($cleanDescription, 0, 110);
 
             $menuName = \Str::of($build->slug)->replace('-', ' ')->title();
@@ -238,7 +238,7 @@ class BuildController extends Controller
                 $seo_image_url = '';
             }
 
-            $staticSeo()->updateOrCreate(
+            $staticSeo->updateOrCreate(
                 [
                     'build_id' => $build->id,
                 ],
@@ -255,9 +255,9 @@ class BuildController extends Controller
                     'html_schema_3' => '',
                     'body_schema' => 'Website',
                     'seo_image_url' => $seo_image_url,
-                    'meta_title' => $build->title,
-                    'facebook_title' => $build->title,
-                    'twitter_title' => $build->title,
+                    'meta_title' => $build->name,
+                    'facebook_title' => $build->name,
+                    'twitter_title' => $build->name,
                     'facebook_description' => $shortDescription,
                     'twitter_description' => $shortDescription,
                     'meta_description' => $shortDescription,

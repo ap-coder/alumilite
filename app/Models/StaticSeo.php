@@ -22,11 +22,11 @@ class StaticSeo extends Model implements HasMedia
     {
         parent::boot();
 
-        static::updating(function ($staticSeo) {
-            // Set deactivate_update to true this will prevent the content from changing it once it is manually updated in seo itself.
-            // turns off auto update. This way once its set to what you want it wont change unless you manually change it in seo.
-            $staticSeo->deactivate_update = true;
-        });
+        // static::updating(function ($staticSeo) {
+        //     // Set deactivate_update to true this will prevent the content from changing it once it is manually updated in seo itself.
+        //     // turns off auto update. This way once its set to what you want it wont change unless you manually change it in seo.
+        //     $staticSeo->deactivate_update = true;
+        // });
     }
 
     protected $appends = [
