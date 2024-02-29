@@ -49,9 +49,8 @@
             @include('admin.staticSeos.partials.seo-meta')
 
             <div class="row">
-            @include('admin.staticSeos.partials.microdata')
-            @include('admin.staticSeos.partials.jsonld')
-
+                @include('admin.staticSeos.partials.microdata')
+                @include('admin.staticSeos.partials.jsonld')
             </div>
 
             <br />

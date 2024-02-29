@@ -1,4 +1,4 @@
-<div class="row">
+<div class="form-row col-12 d-flex border border-dark align-baseline p-2 m-0 mb-2 bg-dark text-light">
 
     <div class="input-group bg-dark pt-3">
         <div class="form-group col">
