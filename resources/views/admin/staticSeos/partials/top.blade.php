@@ -75,7 +75,9 @@
         </div>
     </div>
 
+</div>
 
+<div class="row">
 
     <div class="form-group col-md-4">
         <label for="menu_name">{{ trans('cruds.staticSeo.fields.menu_name') }}</label>

@@ -1,9 +1,10 @@
-{{-- brand section only  --}}
+
 @if ($staticSeo->content_type=='brand')
-    <div class="row">
+    {{-- brand section only  --}}
+    <div class="col-12">
         <div class="form-group col-6">
             <label for="brand_id">{{ trans('cruds.staticSeo.fields.brand') }}</label>
-            <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
+            <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }} form-control-lg" name="brand_id" id="brand_id">
                 @foreach($brands as $id => $entry)
                     <option value="{{ $id }}" {{ (old('brand_id') ? old('brand_id') : $staticSeo->brand->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                 @endforeach
@@ -14,5 +15,6 @@
             <span class="help-block">{{ trans('cruds.staticSeo.fields.brand_helper') }}</span>
         </div>
     </div>
+    {{-- brand section only  --}}
 @endif
-{{-- brand section only  --}}
+
