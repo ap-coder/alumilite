@@ -56,12 +56,9 @@
                                 {{-- @include('site.products.show.partials.reviews-tab') --}}
                             </div>
                         </div>
- 
                         @includeIf('site.products.show.partials.similar-listings', [
-                           'products' => $similarProducts, 
-                        ])  
-
- 
+                            'products' => $similarProducts,
+                        ])
 
                     {{-- @include('site.products.show.partials.social-share') --}}
 
