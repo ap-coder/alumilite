@@ -58,15 +58,14 @@
                         </div>
 
                         @includeIf('site.products.show.partials.similar-listings', [
-                            'products' => $similarProducts,
-                        ])
+                           'products' => $similarProducts, 
+                        ])  
 
 
-                    {{-- @include('site.products.show.partials.social-share')--}}
+                    {{-- @include('site.products.show.partials.social-share') --}}
 
                     </div>
                     @include('site.products.show.partials.sidebar')
-
                 </div>
             </div>
         </div>

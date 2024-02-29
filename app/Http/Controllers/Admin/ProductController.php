@@ -293,7 +293,7 @@ class ProductController extends Controller
         abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $product->load('brand', 'brand_model', 'categories', 'tags', 'technical_specs', 'product_type','features');
-
+        
         return view('admin.products.show', compact('product'));
     }
 

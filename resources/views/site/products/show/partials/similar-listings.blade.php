@@ -1,4 +1,4 @@
-<div class="inventory-single-features-car">
+<div class="inventory-single-features-car bottom">
     <h5 class="singe-title">similar Products</h5>
 
     <div class="row car-row cars-active-3">
@@ -55,7 +55,7 @@
                         @endif
                         <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
                         <span class="price">
-                            @if ($product->price && $product->msrp)
+                                @if ($product->price && $product->msrp)
                                     <span class="sale-price">${{ number_format($product->price) }}</span>
                                     <span class="regular-price">${{ number_format($product->msrp) }}</span>
                                 @else

@@ -5,6 +5,7 @@
 {{--@include('site.products.partials.page-start')--}}
 
 @include('site.products.partials.slider')
+
     <!--====== Inventory Start ======-->
 
     <section class="inventory-area">
@@ -51,7 +52,8 @@
                                             </button>
                                         </li>
                                     </ul>
-                                    <span class="status special"><i class="ion-flash"></i> Special</span> --}}
+                                    <span class="status special"><i class="ion-flash"></i> Special</span> 
+                                    --}}
                                 </div>
                                 <div class="car-content">
                                     <span class="price">
@@ -73,7 +75,7 @@
                                         <div class="author-meta">
                                             <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                                 @if ($product->brand_model)
-                                                    {{ $product->brand_model->model }}
+                                                  | {{ $product->brand_model->model }}
                                                 @endif
                                             </span>
                                         </div>
@@ -122,7 +124,7 @@
                                     <div class="author-meta">
                                         <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                             @if ($product->brand_model)
-                                                {{ $product->brand_model->model }}
+                                              | {{ $product->brand_model->model }}
                                             @endif
                                         </span>
                                     </div>
@@ -157,7 +159,7 @@
                                 {!! \Str::limit($product->description, $limit = 200, $end = '...') !!}
                             @endif
 
-
+excerpt here 
                             </div>
 
                         </div>

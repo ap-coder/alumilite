@@ -72,6 +72,8 @@ class ProductsController extends Controller
         ->take(6)
         ->get();
 
+        // dd($product->description);
+
         return view('site.products.show', compact('product','similarProducts'));
     }
 }
