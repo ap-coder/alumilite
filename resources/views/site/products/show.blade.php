@@ -100,7 +100,7 @@
 {{-- Temporary debug output --}}
 {{ var_dump($product->paypal_prod) }}
 
-    @if($product->paypal_prod)
+    @if(isset($product->paypal_prod))
     <script>
         document.getElementById('paypal-button').addEventListener('click', function() {
             
