@@ -47,6 +47,11 @@ class Product extends Model implements HasMedia
         'deleted_at',
     ];
 
+    protected $casts = [
+        'paypal_prod' => 'string', 
+    ];
+    
+
     protected $with = ['media', 'categories', 'tags'];
 
     public function scopePublished($query)

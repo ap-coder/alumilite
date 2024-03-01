@@ -35,16 +35,28 @@
                         
                     </p>
                 </div>
-                <div class="price">
-                    <span class="price">
-                        <span class="sale-price">${{ number_format($product->price) }}</span>
-                        <span class="regular-price">$28,500</span>
-                        <span class="msrp">MSRP: <strong>$39,000</strong></span>  
-                        @if ($product->msrp)
-                            <span class="msrp">MSRP: <strong>${{ number_format($product->msrp) }}</strong></span>
-                        @endif
-                    </span>
-                </div>
+                {{-- <div class="right-group"> --}}
+                    <div class="price">
+                        <span class="price">
+                            
+                            {{-- <span class="regular-price">$28,500</span> --}}
+                            {{-- <span class="msrp">MSRP: <strong style="text-decoration: line-through;">$39,000</strong></span>  <br> --}}
+                            @if ($product->msrp)
+                                <span class="msrp">MSRP: 
+                                    <strong style="text-decoration: line-through;">
+                                        ${{ number_format($product->msrp) }}
+                                    </strong>
+                                </span> <br>
+                            @endif
+                            <span class="sale-price">${{ number_format($product->price) }}</span>
+                        </span>
+                        <!-- Image that acts as a button link -->
+                    <br>
+                
+                    {{-- <div class="paypal-cont">
+                        <img class="pt-3" id="paypal-button" src="https://alumilitearmor.com/storage/96/paypal-button.png" alt="Buy With PayPal" style="cursor: pointer;width:15rem;">
+                    </div> --}}
+                {{-- </div> --}}
             </div>
         </div>
     </div>
@@ -88,5 +100,17 @@
 @endsection
 @section('headjs')
 @endsection
+
 @section('footjs')
+
+{{-- Temporary debug output --}}
+{{ var_dump($product->paypal_prod) }}
+
+    @if($product->paypal_prod)
+    <script>
+        document.getElementById('paypal-button').addEventListener('click', function() {
+            window.open('{!! $product->paypal_prod !!}', '_blank');
+        });
+    </script>
+    @endif
 @endsection
