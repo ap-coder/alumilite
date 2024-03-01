@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/dropzone.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/gijgo.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/filepond.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.min.css">
 
     <!--====== Main Style CSS ======-->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">

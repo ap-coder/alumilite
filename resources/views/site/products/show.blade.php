@@ -17,10 +17,22 @@
                 <div class="title-excerpt">
                     <h3 class="entry-title">{{ $product->name }} <i class="ion-android-checkmark-circle"></i></h3>
                     <p class="entry-excerpt">
+                        @if ($product->categories->count() > 0)
+                            <strong>Categories: </strong> 
+                            @foreach ($product->categories as $key => $category)
+                                <a href="{{ route('products.index') }}?category={{ $category->slug }}">{{ $category->name }}</a> @if($product->categories->count() > $key+1), @endif
+                            @endforeach
+                            | 
+                        @endif
                         @if($product->brand)
                             <strong>Brand: </strong> <a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
+
+                            @if($product->brand_model)
+                                <strong>Model: </strong> <a href="{{ route('products.index') }}?brand={{ $product->brand->slug }}&brandModel={{ $product->brand_model->slug }}">{{ $product->brand_model->model }}</a>
+                            @endif
+
                         @endif
-                        {{ $product->brand_model ? '| Model: ' . $product->brand_model->model : '' }}
+                        
                     </p>
                 </div>
                 <div class="price">
