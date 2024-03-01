@@ -10,7 +10,7 @@
     </div>
 
     <div class="card-body">
-        <div method="POST" action="{{ route("admin.products.update", [$product->id]) }}" enctype="multipart/form-data" id="submitProductsForm">
+        <form method="POST" action="{{ route("admin.products.update", [$product->id]) }}" enctype="multipart/form-data" id="submitProductsForm">
             @method('PUT')
             @csrf
             <div class="form-group">
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group col">
                 <label class="required" for="name">{{ trans('cruds.product.fields.paypal_prod') }}</label>
-                <input class="form-control {{ $errors->has('paypal_prod') ? 'is-invalid' : '' }}" type="text" name="paypal_prod" id="paypal_prod" value="{{ old('paypal_prod', $product->paypal_prod) }}" required>
+                <input class="form-control {{ $errors->has('paypal_prod') ? 'is-invalid' : '' }}" type="text" name="paypal_prod" id="paypal_prod" value="{{ old('paypal_prod', $product->paypal_prod) }}">
                 @if($errors->has('paypal_prod'))
                     <div class="invalid-feedback">
                         {{ $errors->first('paypal_prod') }}
