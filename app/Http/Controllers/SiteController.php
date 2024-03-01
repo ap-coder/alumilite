@@ -37,7 +37,8 @@ class SiteController extends Controller
         ->get();
 
         $totalProducts = 12; // Total number of products you want to retrieve
-        $productsPerBrand = ceil($totalProducts / $brandsWithProducts->count());
+        $productsPerBrand = floor($totalProducts / $brandsWithProducts->count());
+        $remainingProducts = $totalProducts % $brandsWithProducts->count();
 
         $products = collect();
 
@@ -51,12 +52,13 @@ class SiteController extends Controller
             $products = $products->merge($brandProducts);
         }
 
-        // Adjust products if there are fewer than $totalProducts
-        if ($products->count() > $totalProducts) {
-            $products = $products->take($totalProducts);
+        // If there are remaining products, retrieve them randomly from any brand
+        if ($remainingProducts > 0) {
+            $randomProducts = Product::published()->inRandomOrder()->take($remainingProducts)->get();
+            $products = $products->merge($randomProducts);
         }
 
-        // Now $products contains a collection of products evenly distributed among all brands
+        // Now $products contains a collection of products distributed among all brands, meeting the total number of products required
 
         return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds','brandsWithProducts'));
     }
