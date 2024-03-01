@@ -36,11 +36,27 @@ class SiteController extends Controller
         ->has('brandProducts')
         ->get();
 
-        $products = Product::whereHas('brand', function ($query) {
-            $query->whereHas('brandProducts', function ($query) {
-                $query->published();
-            });
-        })->published()->latest()->inRandomOrder()->take(12)->get();
+        $totalProducts = 12; // Total number of products you want to retrieve
+        $productsPerBrand = ceil($totalProducts / $brandsWithProducts->count());
+
+        $products = collect();
+
+        // Retrieve products for each brand
+        $brands = Brand::whereHas('brandProducts', function ($query) {
+            $query->published();
+        })->get();
+
+        foreach ($brands as $brand) {
+            $brandProducts = $brand->brandProducts()->published()->latest()->take($productsPerBrand)->get();
+            $products = $products->merge($brandProducts);
+        }
+
+        // Adjust products if there are fewer than $totalProducts
+        if ($products->count() > $totalProducts) {
+            $products = $products->take($totalProducts);
+        }
+
+        // Now $products contains a collection of products evenly distributed among all brands
 
         return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds','brandsWithProducts'));
     }
