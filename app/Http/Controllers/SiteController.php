@@ -26,13 +26,23 @@ class SiteController extends Controller
     public function index(Request $request)
     {
         $posts = Post::published()->latest()->take(3)->get();
-        $products = Product::published()->latest()->get();
+        // $products = Product::published()->latest()->take(12)->get();
         $builds = Build::published()->latest()->get();
         $sliders = Slider::published()->get();
         $productTypes = ProductType::published()->get();
         $brands = Brand::published()->get();
 
-        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds'));
+        $brandsWithProducts = Brand::published()
+        ->has('brandProducts')
+        ->get();
+
+        $products = Product::whereHas('brand', function ($query) {
+            $query->whereHas('brandProducts', function ($query) {
+                $query->published();
+            });
+        })->published()->latest()->inRandomOrder()->take(12)->get();
+
+        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds','brandsWithProducts'));
     }
 
     public function about()
