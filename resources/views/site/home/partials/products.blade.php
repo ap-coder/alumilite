@@ -13,18 +13,20 @@
                 <div class="cars-tab-menu">
                     <ul class="nav products-filter">
                         <li class="active" data-filter="*"><a href="javascript:void(0);">All</a></li>
-                        @foreach ($brands as $key => $brand)
+                        @foreach ($brandsWithProducts as $key => $brand)
                             <li data-filter=".{{ $brand->slug }}"> <a href="javascript:void(0);"> {{ $brand->name }} </a></li>
                         @endforeach
                     </ul>
-                    @foreach ($brands as $key => $brand) 
-                        @if ($brand->models)
-                        <ul class="nav model-filter {{ $brand->slug }}-model" style="display: none;">
-                            {{-- <li class="active" data-filter="*"><a href="javascript:void(0);">All</a></li> --}}
+                    @foreach ($brandsWithProducts as $key => $brand) 
+                        @if ($brand->models->isNotEmpty())
+                            <ul class="nav model-filter {{ $brand->slug }}-model" style="display: none;">
+                                {{-- <li class="active" data-filter="*"><a href="javascript:void(0);">All</a></li> --}}
                                 @foreach ($brand->models as $model)
-                                    <li data-filter=".{{ $model->slug }}"> <a href="javascript:void(0);"> {{ $model->model }} </a></li>
+                                    @if ($model->brandModelProducts->isNotEmpty())
+                                        <li data-filter=".{{ $model->slug }}"><a href="javascript:void(0);">{{ $model->model }}</a></li>
+                                    @endif
                                 @endforeach
-                        </ul>
+                            </ul>
                         @endif
                     @endforeach
                 </div>

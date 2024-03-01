@@ -26,13 +26,41 @@ class SiteController extends Controller
     public function index(Request $request)
     {
         $posts = Post::published()->latest()->take(3)->get();
-        $products = Product::published()->latest()->get();
+        // $products = Product::published()->latest()->take(12)->get();
         $builds = Build::published()->latest()->get();
         $sliders = Slider::published()->get();
         $productTypes = ProductType::published()->get();
         $brands = Brand::published()->get();
 
-        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds'));
+        $brandsWithProducts = Brand::published()
+        ->has('brandProducts')
+        ->get();
+
+        $totalProducts = 12; // Total number of products you want to retrieve
+        $productsPerBrand = floor($totalProducts / $brandsWithProducts->count());
+        $remainingProducts = $totalProducts % $brandsWithProducts->count();
+
+        $products = collect();
+
+        // Retrieve products for each brand
+        $brands = Brand::whereHas('brandProducts', function ($query) {
+            $query->published();
+        })->get();
+
+        foreach ($brands as $brand) {
+            $brandProducts = $brand->brandProducts()->published()->latest()->take($productsPerBrand)->get();
+            $products = $products->merge($brandProducts);
+        }
+
+        // If there are remaining products, retrieve them randomly from any brand
+        if ($remainingProducts > 0) {
+            $randomProducts = Product::published()->inRandomOrder()->take($remainingProducts)->get();
+            $products = $products->merge($randomProducts);
+        }
+
+        // Now $products contains a collection of products distributed among all brands, meeting the total number of products required
+
+        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds','brandsWithProducts'));
     }
 
     public function about()
