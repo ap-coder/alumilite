@@ -32,6 +32,8 @@ class CodeMedia extends Model implements HasMedia
         $this->addMediaConversion('thumb-center')->crop('crop-center', 50, 50)->format(Manipulations::FORMAT_WEBP)->nonQueued();
 
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
-        $this->addMediaConversion('responsive')->withResponsiveImages()->format(Manipulations::FORMAT_WEBP)->width(1200)->height(500)->nonQueued();
+        $this->addMediaConversion('homepage')->crop('crop-center',321,195)->format(Manipulations::FORMAT_WEBP)->nonQueued();
+        $this->addMediaConversion('excerpt')->crop('crop-center',400,580)->format(Manipulations::FORMAT_WEBP)->nonQueued();
+        $this->addMediaConversion('responsive')->crop('crop-center',1170,650)->format(Manipulations::FORMAT_WEBP)->withResponsiveImages()->nonQueued();
     }
 }
