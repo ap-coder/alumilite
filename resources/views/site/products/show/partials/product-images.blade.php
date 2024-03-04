@@ -2,7 +2,7 @@
                             <div class="dealership-gallery-active">
                                 @if($product->photo)
                                         {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
-                                        <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
+                                        <img src="{{ $product->photo->getUrl('product') }}" alt="{{ $product->name }}">
                                     @else
                                         @if ($env=='local')
                                             <img src="{{ asset('assets/images/inventory-single-dealership/dealership-1.jpg') }}" alt="{{ $product->name }}">
@@ -13,7 +13,7 @@
                                 @if($product->additional_photos->count()>0)
                                     @foreach ($product->additional_photos as $photos)
                                         {{-- {{ $photos('responsive') }} --}}
-                                        <img src="{{ $photos->getUrl() }}" alt="{{ $product->name }}">
+                                        <img src="{{ $photos->getUrl('product') }}" alt="{{ $product->name }}">
                                     @endforeach
                                 @else
                                     @if ($env=='local')

@@ -24,7 +24,7 @@
                                     <a href="{{ route('products.show',$product->slug) }}">
                                         @if ($product->photo)
                                             {{-- {{ $product->getFirstMedia('photo')('responsive') }} --}}
-                                            <img src="{{ $product->photo->getUrl() }}" alt="{{ $product->name }}">
+                                            <img src="{{ $product->photo->getUrl('excerpt') }}" alt="{{ $product->name }}">
                                         @else
                                             @if ($env=='local')
                                                 <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $product->name }}">
