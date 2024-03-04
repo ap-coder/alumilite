@@ -76,4 +76,41 @@ class ProductsController extends Controller
 
         return view('site.products.show', compact('product','similarProducts'));
     }
+
+    public function GetByBrands(Request $request)
+    {
+        $id=$request->id;
+
+        if ($id=='all') {
+            $products = Product::published()->latest()->take(12)->get();
+        }else{
+            $products = Product::published()->where('brand_id',$id)->latest()->take(12)->get();
+        }
+
+        $html = view('site.home.partials.product-data', compact('products'))->render();
+
+        $data['html'] = $html;
+
+        return response()->json($data);
+
+    }
+
+    public function GetByBrandModels(Request $request)
+    {
+        $brandId=$request->brandId;
+        $modelId=$request->modelId;
+
+        if ($modelId=='all') {
+            $products = Product::published()->where('brand_id',$brandId)->latest()->take(12)->get();
+        }else{
+            $products = Product::published()->where('brand_id',$brandId)->where('brand_model_id',$modelId)->latest()->take(12)->get();
+        }
+
+        $html = view('site.home.partials.product-data', compact('products'))->render();
+
+        $data['html'] = $html;
+
+        return response()->json($data);
+
+    }
 }

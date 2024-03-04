@@ -28,7 +28,7 @@
 
     .product-item {
         flex: 1 0 calc(25% - 20px); /* Adjust the width and margin as needed */
-        max-width: calc(25% - 20px); /* Limit maximum width to maintain 4 columns */
+        max-width: 100%; /* Limit maximum width to maintain 4 columns */
         transition: transform 0.3s ease-in-out;
         margin: 0 10px 20px 0; /* Adjust the margin as needed */
     }
@@ -44,6 +44,38 @@
     .model-filter li.active a {
         color: #fff !important;
     }
+
+    /* Overlay CSS */
+		.products-loader-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+			z-index: 9999; /* Ensure the overlay is on top of other content */
+			display: none; /* Initially hidden */
+		}
+
+		/* Spinner CSS */
+		.productsloader {
+			border: 4px solid rgba(0, 0, 0, 0.1);
+			border-left: 4px solid #ffffff;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			animation: productsspin 1s linear infinite;
+			margin: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		@keyframes productsspin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
 </style>
 @endsection
 @section('headjs') 
@@ -53,33 +85,53 @@
 
 <script>
    $(document).ready(function () {
-            var $grid = $('.product-column').isotope({
-                itemSelector: '.product-item',
-                layoutMode: 'fitRows'
-            });
+        $('.products-filter li').on('click', function () {
+            var filterValue = $(this).attr('data-filter');
+            var id = $(this).attr('data-id');
+            $('.model-filter').hide();
+            $(filterValue+'-model').show();
+            $(this).addClass('active').siblings().removeClass('active');
 
-            $('.products-filter li').on('click', function () {
-                var filterValue = $(this).attr('data-filter');
-                $('.model-filter').hide();
-                $(filterValue+'-model').show();
-                $grid.isotope({ filter: filterValue });
-            });
+            var spinner = $('#products-loader-overlay');
 
-            $('.model-filter li').on('click', function () {
-                var filterValue = $(this).attr('data-filter');
-                $grid.isotope({ filter: filterValue });
-            });
+            spinner.show();
 
-            // Add active class to the current button (highlight it)
-            $('.products-filter li').on('click', function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-
-            // Add active class to the current button (highlight it)
-            $('.model-filter li').on('click', function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
+            var _token = $('meta[name="csrf-token"]').attr('content');
+			$.ajax({
+				url:"{{ route('products.GetByBrands') }}",
+				dataType:'json',
+				method:"POST",
+				data:{id:id, _token:_token},
+				success:function(data){
+					$('#product-data').html(data.html);
+                    spinner.hide();
+				}
+			});
         });
+
+        $('.model-filter li').on('click', function () {
+            var filterValue = $(this).attr('data-filter');
+            var brandId = $(this).attr('brand-id');
+            var modelId = $(this).attr('model-id');
+            $(this).addClass('active').siblings().removeClass('active');
+
+            var spinner = $('#products-loader-overlay');
+
+            spinner.show();
+
+            var _token = $('meta[name="csrf-token"]').attr('content');
+			$.ajax({
+				url:"{{ route('products.GetByBrandModels') }}",
+				dataType:'json',
+				method:"POST",
+				data:{brandId:brandId,modelId:modelId, _token:_token},
+				success:function(data){
+					$('#product-data').html(data.html);
+                    spinner.hide();
+				}
+			});
+        });
+    });
 
 </script>
 
