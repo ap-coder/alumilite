@@ -111,17 +111,29 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $post = Post::create($request->all());
-        $post->categories()->sync($request->input('categories', []));
-        $post->tags()->sync($request->input('tags', []));
-        if ($request->input('featured_image', false)) {
-            $post->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+
+        $categoryIds = [];
+        foreach ($request->input('categories', []) as $categoryName) {
+            $category = ContentCategory::firstOrCreate(['name' => $categoryName], ['slug' => \Str::slug($categoryName)]);
+            $categoryIds[] = $category->id;
         }
+
+        $post->categories()->sync($categoryIds);
+
+
+        $tagIds = [];
+        foreach ($request->input('tags', []) as $tagName) {
+            $tag = ContentTag::firstOrCreate(['name' => $tagName], ['slug' => \Str::slug($tagName)]);
+            $tagIds[] = $tag->id;
+        }
+        $post->tags()->sync($tagIds);
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $post->id]);
         }
 
         $post = Post::findOrFail($post->id);
+
         $cleanDescription = strip_tags($post->page_text);
         $shortDescription = substr($cleanDescription, 0, 110);
 
@@ -175,8 +187,24 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $post->update($request->all());
-        $post->categories()->sync($request->input('categories', []));
-        $post->tags()->sync($request->input('tags', []));
+
+        //$post->categories()->sync($request->input('categories', []));
+        //$post->tags()->sync($request->input('tags', []));
+
+        $categoryIds = [];
+        foreach ($request->input('categories', []) as $categoryName) {
+            $category = ContentCategory::firstOrCreate(['name' => $categoryName], ['slug' => \Str::slug($categoryName)]);
+            $categoryIds[] = $category->id;
+        }
+        $post->categories()->sync($categoryIds);
+
+        $tagIds = [];
+        foreach ($request->input('tags', []) as $tagName) {
+            $tag = ContentTag::firstOrCreate(['name' => $tagName], ['slug' => \Str::slug($tagName)]);
+            $tagIds[] = $tag->id;
+        }
+        $post->tags()->sync($tagIds);
+
         if ($request->input('featured_image', false)) {
             if (! $post->featured_image || $request->input('featured_image') !== $post->featured_image->file_name) {
                 if ($post->featured_image) {
