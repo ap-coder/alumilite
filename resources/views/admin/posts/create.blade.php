@@ -32,17 +32,49 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.title_helper') }}</span>
             </div>
-            <div class="form-group">
+            
+            
+            {{-- <div class="form-group">
                 <label for="categories">{{ trans('cruds.post.fields.category') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
-                    @foreach($categories as $id => $category)
-                        <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $category }}</option>
-                    @endforeach
-                </select>
+
+                   <div class="input-group">
+                        <select class="form-control select2" name="categories[]" id="categories" multiple="multiple">
+                            @foreach($categories as $id => $name)
+                                <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="addCategory"><i class="cil-plus"></i> Button </button>
+                        </div>
+                    </div>
+
+                @if($errors->has('categories'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('categories') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.post.fields.category_helper') }}</span>
+            </div> --}}
+
+
+            <div class="form-group">
+                <label for="categories">{{ trans('cruds.post.fields.category') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="categories[]" id="categories" multiple="multiple">
+                        @foreach($categories as $id => $name)
+                            <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addCategory">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
                 @if($errors->has('categories'))
                     <div class="invalid-feedback">
                         {{ $errors->first('categories') }}
@@ -50,7 +82,56 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.category_helper') }}</span>
             </div>
+
+ 
+      
+            {{-- <div class="form-group">
+                <label for="tags">{{ trans('cruds.post.fields.tag') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="tags[]" id="tags" multiple="multiple">
+                        @foreach($tags as $id => $name) <!-- Assuming $tags is defined similarly to $categories -->
+                            <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addTag">
+                            <i class="fas fa-plus"></i> <!-- Font Awesome "+" icon -->
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('tags'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('tags') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.post.fields.tag_helper') }}</span>
+            </div> --}}
+            
+
             <div class="form-group">
+                <label for="tags">{{ trans('cruds.post.fields.tag') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="tags[]" id="tags" multiple="multiple">
+                        @foreach($tags as $id => $name) <!-- Assuming $tags is defined similarly to $categories -->
+                            <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addTag">
+                            <i class="fas fa-plus"></i> <!-- Font Awesome "+" icon -->
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('tags'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('tags') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.post.fields.tag_helper') }}</span>
+            </div>
+
+
+            {{-- <div class="form-group">
                 <label for="tags">{{ trans('cruds.post.fields.tag') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -67,7 +148,10 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.tag_helper') }}</span>
-            </div>
+            </div> --}}
+
+
+
             <div class="form-group">
                 <label for="page_text">{{ trans('cruds.post.fields.page_text') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text') !!}</textarea>
@@ -242,5 +326,87 @@
     }
 }
 
+
 </script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize Select2
+        $('#categories').select2({             
+            width: '100%',  
+            tags: true, // Allows the creation of new options on the fly
+            createTag: function (params) {
+                // This function overrides the default behavior for creating new tags
+                // You can add custom logic here if needed, for example, to prevent automatic tag creation
+                return null; // Prevents Select2 from automatically creating a new tag
+            }
+        });
+
+        $('#addCategory').click(function() {
+            var categoryName = prompt("Please enter the new category name:");
+            if (categoryName) {
+                $.ajax({
+                    url: '/admin/content-categories/store-ajax',
+                    type: 'POST',
+                    data: {
+                        name: categoryName,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        // Create a new Option and append it to the Select2 control
+                        var newOption = new Option(response.name, response.id, false, false);
+                        $('#categories').append(newOption).trigger('change');
+
+                        // Optionally, you can make the new option selected immediately
+                        $('#categories').val(response.id).trigger('change');
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Error adding category: " + error);
+                    }
+                });
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#addTag').click(function() {
+            var tagName = prompt("Please enter the new tag name:");
+            if (tagName) {
+                $.ajax({
+                    url: '/admin/content-tags/store-ajax', 
+                    type: 'POST',
+                    data: {
+                        name: tagName,
+                        _token: $('meta[name="csrf-token"]').attr('content') // CSRF token
+                    },
+                    success: function(response) {
+                        var newOption = new Option(response.name, response.id, true, true);
+                        $('#tags').append(newOption).trigger('change');
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Error adding tag: " + error);
+                    }
+                });
+            }
+        });
+
+        $('.select2').select2({
+            width: '100%',
+            tags: true // Allows the creation of new options on the fly
+        });
+    });
+
+
+
+    $(document).ready(function() {
+        function adjustSelect2Width() {
+            var select2Width = $('.input-group').width() - $('.input-group-append').outerWidth(true) - 2; // 2px for border
+            $('.select2-container--default').css('width', select2Width);
+        }
+
+        adjustSelect2Width();
+        $(window).resize(adjustSelect2Width);
+    });
+</script>
+
 @endsection

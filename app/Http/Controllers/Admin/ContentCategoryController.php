@@ -7,7 +7,8 @@ use App\Http\Requests\MassDestroyContentCategoryRequest;
 use App\Http\Requests\StoreContentCategoryRequest;
 use App\Http\Requests\UpdateContentCategoryRequest;
 use App\Models\ContentCategory;
-use Gate;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -34,6 +35,25 @@ class ContentCategoryController extends Controller
         $contentCategory = ContentCategory::create($request->all());
 
         return redirect()->route('admin.content-categories.index');
+    }
+
+    public function storeAjax(Request $request)
+    {
+        if (Gate::denies('content_category_create')) {
+            return response()->json(['message' => 'Access Denied'], Response::HTTP_FORBIDDEN);
+        }
+
+        $request->validate([
+            'name' => 'required|string|unique:content_categories,name',
+        ]);
+
+        $category = ContentCategory::create([
+            'name' => $request->name,
+            // Assuming you have a 'slug' field. Adjust as necessary.
+            'slug' => \Str::slug($request->name),
+        ]);
+
+        return response()->json(['id' => $category->id, 'name' => $category->name]);
     }
 
     public function edit(ContentCategory $contentCategory)

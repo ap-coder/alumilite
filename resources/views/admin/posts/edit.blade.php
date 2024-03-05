@@ -27,6 +27,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.published_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label class="required" for="title">{{ trans('cruds.post.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $post->title) }}" required>
@@ -37,17 +38,28 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.title_helper') }}</span>
             </div>
+
+            {{-- {{ dd($postCategories, $postTags) }} --}}
+
+            {{-- {{ dd($postTags) }} --}}
+
             <div class="form-group">
                 <label for="categories">{{ trans('cruds.post.fields.category') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                <div class="input-group">
+
+                    <select class="form-control select2" name="categories[]" id="categories" multiple="multiple">
+                        @foreach($categories as $id => $name)
+                            <option value="{{ $id }}" {{ in_array($id, old('categories', $postCategories)) ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addCategory">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
                 </div>
-                <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories[]" id="categories" multiple>
-                    @foreach($categories as $id => $category)
-                        <option value="{{ $id }}" {{ (in_array($id, old('categories', [])) || $post->categories->contains($id)) ? 'selected' : '' }}>{{ $category }}</option>
-                    @endforeach
-                </select>
                 @if($errors->has('categories'))
                     <div class="invalid-feedback">
                         {{ $errors->first('categories') }}
@@ -55,17 +67,23 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.category_helper') }}</span>
             </div>
+
+ 
             <div class="form-group">
                 <label for="tags">{{ trans('cruds.post.fields.tag') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                <div class="input-group">
+                    <select class="form-control select2" name="tags[]" id="tags" multiple="multiple">
+                        @foreach($tags as $id => $name)
+                            <option value="{{ $id }}" {{ (in_array($id, old('tags', $postTags)) ? 'selected' : '') }}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addTag">
+                            <i class="fas fa-plus"></i>  
+                        </button>
+                    </div>
                 </div>
-                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
-                    @foreach($tags as $id => $tag)
-                        <option value="{{ $id }}" {{ (in_array($id, old('tags', [])) || $post->tags->contains($id)) ? 'selected' : '' }}>{{ $tag }}</option>
-                    @endforeach
-                </select>
                 @if($errors->has('tags'))
                     <div class="invalid-feedback">
                         {{ $errors->first('tags') }}
@@ -73,6 +91,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.tag_helper') }}</span>
             </div>
+ 
+
             <div class="form-group">
                 <label for="page_text">{{ trans('cruds.post.fields.page_text') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $post->page_text) !!}</textarea>
@@ -257,9 +277,9 @@ $('.saveContent').click(function() {
   }
 });
 
-function getDataFromTheDescEditor() {
-  return theDescEditor.getData();
-}
+    function getDataFromTheDescEditor() {
+    return theDescEditor.getData();
+    }
 </script>
 
 <script>
@@ -289,14 +309,14 @@ function getDataFromTheDescEditor() {
       }
     },
     init: function () {
-@if(isset($post) && $post->featured_image)
-      var file = {!! json_encode($post->featured_image) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
+    @if(isset($post) && $post->featured_image)
+        var file = {!! json_encode($post->featured_image) !!}
+            this.options.addedfile.call(this, file)
+        this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+        file.previewElement.classList.add('dz-complete')
+        $('form').append('<input type="hidden" name="featured_image" value="' + file.file_name + '">')
+        this.options.maxFiles = this.options.maxFiles - 1
+    @endif
     },
     error: function (file, response) {
         if ($.type(response) === 'string') {
@@ -316,5 +336,81 @@ function getDataFromTheDescEditor() {
     }
 }
 
+</script>
+
+<script>
+    $(document).ready(function() {
+       
+        $('#categories').select2({             
+            width: '100%',  
+            tags: true, 
+            createTag: function (params) {
+                return null; 
+            }
+        });
+
+        $('#addCategory').click(function() {
+            var categoryName = prompt("Please enter the new category name:");
+            if (categoryName) {
+                $.ajax({
+                    url: '/admin/content-categories/store-ajax',
+                    type: 'POST',
+                    data: {
+                        name: categoryName,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {       
+                        var newOption = new Option(response.name, response.id, false, false);
+                        $('#categories').append(newOption).trigger('change');
+
+                        $('#categories').val(response.id).trigger('change');
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Error adding category: " + error);
+                    }
+                });
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#addTag').click(function() {
+            var tagName = prompt("Please enter the new tag name:");
+            if (tagName) {
+                $.ajax({
+                    url: '/admin/content-tags/store-ajax', 
+                    type: 'POST',
+                    data: {
+                        name: tagName,
+                        _token: $('meta[name="csrf-token"]').attr('content') // CSRF token
+                    },
+                    success: function(response) {
+                        var newOption = new Option(response.name, response.id, true, true);
+                        $('#tags').append(newOption).trigger('change');
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Error adding tag: " + error);
+                    }
+                });
+            }
+        });
+
+        $('.select2').select2({
+            width: '100%',
+            tags: true // Allows the creation of new options on the fly
+        });
+    });
+
+
+
+    $(document).ready(function() {
+        function adjustSelect2Width() {
+            var select2Width = $('.input-group').width() - $('.input-group-append').outerWidth(true) - 2; // 2px for border
+            $('.select2-container--default').css('width', select2Width);
+        }
+
+        adjustSelect2Width();
+        $(window).resize(adjustSelect2Width);
+    });
 </script>
 @endsection

@@ -78,6 +78,18 @@ class TechnicalSpecController extends Controller
         return redirect()->route('admin.technical-specs.index');
     }
 
+    public function storeAjax(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|unique:technical_specs,name', // Adjust table_name accordingly
+        ]);
+
+        $entity = TechnicalSpec::create($validatedData); // Adjust EntityModel accordingly
+
+        return response()->json(['id' => $entity->id, 'name' => $entity->name]);
+    }
+
+
     public function edit(TechnicalSpec $technicalSpec)
     {
         abort_if(Gate::denies('technical_spec_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

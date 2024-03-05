@@ -10,6 +10,7 @@
     <title>{{ trans('panel.site_title') }}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
@@ -18,9 +19,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/@coreui/coreui@3.2/dist/css/coreui.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" /> --}}
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
+
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     <link href="{{ asset('jquery-seo-preview/css/jquery-seopreview.css') }}" rel="stylesheet">
 
@@ -31,9 +35,26 @@
     <link href="{{ asset('admin/css/monokai.css') }}" rel="stylesheet" type="text/css">
 
     <style>
-      .error{
-        color: red;
-      }
+      .error{ color: red; }
+      /* .input-group > .select2-container--default { width: calc(100% - 38px) !important;  flex-grow: 1; }
+      .input-group .select2-selection--multiple { border: 1px solid #072e55; padding: .375rem .25rem!important; height: auto!important; min-height: 25px!important; border-radius: 0!important;  }
+      .input-group-append { margin-left: -1px;} */
+      /* Adjust the Select2 container to fit within the input group */
+      .input-group > .select2-container--default {
+    width: auto !important; /* Allow the select2 container to size according to content */
+    flex-grow: 1; /* Allow it to grow as needed */
+}
+
+.input-group > .select2-container--default .select2-selection--multiple {
+    border: 1px solid #ced4da; /* Match Bootstrap's input border */
+    padding: .375rem .75rem; /* Match Bootstrap's input padding */
+    height: auto; /* Adjust height as needed */
+    min-height: 38px; /* Match Bootstrap's input height */
+}
+
+.input-group-append {
+    margin-left: -1px; /* Align the button with the select2 container */
+}
     </style>
     @yield('styles')
 </head>
@@ -134,7 +155,8 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/jquery-characters-caculator.js') }}"></script>

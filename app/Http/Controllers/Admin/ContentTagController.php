@@ -7,7 +7,8 @@ use App\Http\Requests\MassDestroyContentTagRequest;
 use App\Http\Requests\StoreContentTagRequest;
 use App\Http\Requests\UpdateContentTagRequest;
 use App\Models\ContentTag;
-use Gate;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -34,6 +35,25 @@ class ContentTagController extends Controller
         $contentTag = ContentTag::create($request->all());
 
         return redirect()->route('admin.content-tags.index');
+    }
+
+    public function storeAjax(Request $request)
+    {
+        if (Gate::denies('content_tag_create')) {
+            return response()->json(['message' => 'Access Denied'], Response::HTTP_FORBIDDEN);
+        }
+    
+        $request->validate([
+            'name' => 'required|string|unique:content_tags,name',
+        ]);
+    
+        $tag = ContentTag::create([
+            'name' => $request->name,
+            // Assuming you have a 'slug' field for tags as well. Adjust as necessary.
+            'slug' => Str::slug($request->name),
+        ]);
+    
+        return response()->json(['id' => $tag->id, 'name' => $tag->name]);
     }
 
     public function edit(ContentTag $contentTag)

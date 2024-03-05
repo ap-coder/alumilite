@@ -88,6 +88,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.paypal_prod_helper') }}</span>
             </div>
+
+
         </div>
             <div class="form-group">
                 <label for="photo">{{ trans('cruds.product.fields.photo') }}</label>
@@ -100,6 +102,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.photo_helper') }}</span>
             </div>
+
+
             <div class="form-group">
                 <label for="additional_photos">{{ trans('cruds.product.fields.additional_photos') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('additional_photos') ? 'is-invalid' : '' }}" id="additional_photos-dropzone">
@@ -111,6 +115,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.additional_photos_helper') }}</span>
             </div>
+
+
             <div class="form-group">
                 <label for="documents">{{ trans('cruds.product.fields.documents') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('documents') ? 'is-invalid' : '' }}" id="documents-dropzone">
@@ -122,6 +128,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.documents_helper') }}</span>
             </div>
+
+
             <div class="form-group">
                 <label for="brand_id">{{ trans('cruds.product.fields.brand') }}</label>
                 <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
@@ -136,6 +144,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.brand_helper') }}</span>
             </div>
+
+
             <div class="form-group">
                 <label for="brand_model_id">{{ trans('cruds.product.fields.brand_model') }}</label>
                 <select class="form-control select2 {{ $errors->has('brand_model') ? 'is-invalid' : '' }}" name="brand_model_id" id="brand_model_id">
@@ -150,7 +160,108 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.brand_model_helper') }}</span>
             </div>
-            <div class="form-group">
+
+
+
+
+
+
+            <div class="form-group col-8">
+                <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="categories[]" id="categories" multiple>
+                        @foreach($categories as $id => $name)
+                            <option value="{{ $id }}" {{ in_array($id, old('categories', $product->categories->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addCategory">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('categories'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('categories') }}
+                    </div>
+                @endif
+                <span class="help-block">Only select one or two to reduce issues in SEO.</span>
+            </div>
+            
+            
+
+            <div class="form-group col-8">
+                <label for="tags">{{ trans('cruds.product.fields.tag') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="tags[]" id="tags" multiple>
+                        @foreach($tags as $id => $tag)
+                            <option value="{{ $id }}" {{ in_array($id, old('tags', $product->tags->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $tag }}</option>
+                        @endforeach
+                    </select>
+                    
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addTag">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('tags'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('tags') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.tag_helper') }}</span>
+            </div>
+            
+            
+            
+            <div class="form-group col-8">
+                <label for="features">{{ trans('cruds.product.fields.feature') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="features[]" id="features" multiple>
+                        @foreach($features as $id => $feature)
+                        <option value="{{ $id }}" {{ in_array($id, old('features', $product->features->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $feature }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addFeature">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('features'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('features') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.feature_helper') }}</span>
+            </div>
+            
+        
+            <div class="form-group col-8">
+                <label for="technical_specs">{{ trans('cruds.product.fields.technical_specs') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="technical_specs[]" id="technical_specs" multiple>
+                        @foreach($technical_specs as $id => $technical_spec)
+                        <option value="{{ $id }}" {{ in_array($id, old('technical_specs', $product->technical_specs->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $technical_spec }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addTechnicalSpec">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('technical_specs'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('technical_specs') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.technical_specs_helper') }}</span>
+            </div>
+
+
+            {{-- <div class="form-group">
                 <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -221,32 +332,36 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.technical_specs_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="product_type_id">{{ trans('cruds.product.fields.product_type') }}</label>
-                <select class="form-control select2 {{ $errors->has('product_type') ? 'is-invalid' : '' }}" name="product_type_id" id="product_type_id">
-                    @foreach($product_types as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('product_type_id') ? old('product_type_id') : $product->product_type->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('product_type'))
+            </div> --}}
+
+
+            <div class="form-row">
+
+                <div class="form-group col">
+                    <label for="product_type_id">{{ trans('cruds.product.fields.product_type') }}</label>
+                    <select class="form-select select2 {{ $errors->has('product_type') ? 'is-invalid' : '' }}" name="product_type_id" id="product_type_id">
+                        @foreach($product_types as $id => $entry)
+                            <option value="{{ $id }}" {{ (old('product_type_id') ? old('product_type_id') : $product->product_type->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('product_type'))
                     <div class="invalid-feedback">
                         {{ $errors->first('product_type') }}
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.product.fields.product_type_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="slug">{{ trans('cruds.product.fields.slug') }}</label>
-                <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $product->slug) }}">
-                @if($errors->has('slug'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('slug') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.product.fields.slug_helper') }}</span>
-            </div>
-
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.product_type_helper') }}</span>
+                </div>
+                <div class="form-group col">
+                    <label for="slug">{{ trans('cruds.product.fields.slug') }}</label>
+                    <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $product->slug) }}">
+                    @if($errors->has('slug'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('slug') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.slug_helper') }}</span>
+                </div>
+            </div>                      
             <hr>
 
 
@@ -270,9 +385,99 @@
 @endsection
 
 @section('scripts')
+
+<script>
+    $(document).ready(function() {
+        $('#addTag').on('click', function() {
+            var tagName = prompt("Enter new tag name:");
+            if (!tagName) return;
+
+            $.ajax({
+                url: '/admin/product-tags/store-ajax', // Adjust the URL if necessary
+                type: 'POST',
+                data: {
+                    name: tagName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#tags').append(newOption).trigger('change'); // Update the selector to '#tags'
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding tag: " + error);
+                }
+            });
+        });
+
+
+        $('#addTechnicalSpec').on('click', function() {
+            var specName = prompt("Enter new technical spec name:");
+            if (!specName) return;
+
+            $.ajax({
+                url: '/admin/technical-specs/store-ajax',
+                type: 'POST',
+                data: {
+                    name: specName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#technical_specs').append(newOption).trigger('change');
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding technical spec: " + error);
+                }
+            });
+        });
+
+        $('#addFeature').on('click', function() {
+            var featureName = prompt("Enter new feature name:");
+            if (!featureName) return;
+
+            $.ajax({
+                url: '/admin/features/store-ajax',
+                type: 'POST',
+                data: {
+                    name: featureName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#features').append(newOption).trigger('change');
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding feature: " + error);
+                }
+            });
+        });
+
+        $('#addCategory').on('click', function() {
+            var categoryName = prompt("Enter new product category name:");
+            if (!categoryName) return;
+
+            $.ajax({
+                url: '/admin/product-categories/store-ajax', // Adjust this URL as needed
+                type: 'POST',
+                data: {
+                    name: categoryName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#categories').append(newOption).trigger('change');
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding product category: " + error);
+                }
+            });
+        });
+    });
+</script>
+
 <script>
 
-$('.saveContent').click(function() {
+    $('.saveContent').click(function() {
         var bType = $(this).attr('bType');
         $('#submitProductsForm').validate({
             rules: {
@@ -348,14 +553,14 @@ $('.saveContent').click(function() {
       }
     },
     init: function () {
-@if(isset($product) && $product->photo)
-      var file = {!! json_encode($product->photo) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
+    @if(isset($product) && $product->photo)
+        var file = {!! json_encode($product->photo) !!}
+            this.options.addedfile.call(this, file)
+        this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+        file.previewElement.classList.add('dz-complete')
+        $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
+        this.options.maxFiles = this.options.maxFiles - 1
+    @endif
     },
     error: function (file, response) {
         if ($.type(response) === 'string') {
@@ -378,45 +583,45 @@ $('.saveContent').click(function() {
 </script>
 <script>
     var uploadedAdditionalPhotosMap = {}
-Dropzone.options.additionalPhotosDropzone = {
-    url: '{{ route('admin.products.storeMedia') }}',
-    maxFilesize: 2, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    params: {
-      size: 2,
-      width: 1800,
-      height: 1800
-    },
-    success: function (file, response) {
-      $('form').append('<input type="hidden" name="additional_photos[]" value="' + response.name + '">')
-      uploadedAdditionalPhotosMap[file.name] = response.name
-    },
-    removedfile: function (file) {
-      console.log(file)
-      file.previewElement.remove()
-      var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-      } else {
-        name = uploadedAdditionalPhotosMap[file.name]
-      }
-      $('form').find('input[name="additional_photos[]"][value="' + name + '"]').remove()
-    },
-    init: function () {
-@if(isset($product) && $product->additional_photos)
-      var files = {!! json_encode($product->additional_photos) !!}
-          for (var i in files) {
-          var file = files[i]
-          this.options.addedfile.call(this, file)
-          this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
-          file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="additional_photos[]" value="' + file.file_name + '">')
+    Dropzone.options.additionalPhotosDropzone = {
+        url: '{{ route('admin.products.storeMedia') }}',
+        maxFilesize: 2, // MB
+        acceptedFiles: '.jpeg,.jpg,.png,.gif',
+        addRemoveLinks: true,
+        headers: {
+        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        },
+        params: {
+        size: 2,
+        width: 1800,
+        height: 1800
+        },
+        success: function (file, response) {
+        $('form').append('<input type="hidden" name="additional_photos[]" value="' + response.name + '">')
+        uploadedAdditionalPhotosMap[file.name] = response.name
+        },
+        removedfile: function (file) {
+        console.log(file)
+        file.previewElement.remove()
+        var name = ''
+        if (typeof file.file_name !== 'undefined') {
+            name = file.file_name
+        } else {
+            name = uploadedAdditionalPhotosMap[file.name]
         }
-@endif
+        $('form').find('input[name="additional_photos[]"][value="' + name + '"]').remove()
+        },
+        init: function () {
+    @if(isset($product) && $product->additional_photos)
+        var files = {!! json_encode($product->additional_photos) !!}
+            for (var i in files) {
+            var file = files[i]
+            this.options.addedfile.call(this, file)
+            this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
+            file.previewElement.classList.add('dz-complete')
+            $('form').append('<input type="hidden" name="additional_photos[]" value="' + file.file_name + '">')
+            }
+    @endif
     },
      error: function (file, response) {
          if ($.type(response) === 'string') {
@@ -439,41 +644,41 @@ Dropzone.options.additionalPhotosDropzone = {
 </script>
 <script>
     var uploadedDocumentsMap = {}
-Dropzone.options.documentsDropzone = {
-    url: '{{ route('admin.products.storeMedia') }}',
-    maxFilesize: 2, // MB
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    params: {
-      size: 2
-    },
-    success: function (file, response) {
-      $('form').append('<input type="hidden" name="documents[]" value="' + response.name + '">')
-      uploadedDocumentsMap[file.name] = response.name
-    },
-    removedfile: function (file) {
-      file.previewElement.remove()
-      var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-      } else {
-        name = uploadedDocumentsMap[file.name]
-      }
-      $('form').find('input[name="documents[]"][value="' + name + '"]').remove()
-    },
-    init: function () {
-@if(isset($product) && $product->documents)
-          var files =
-            {!! json_encode($product->documents) !!}
-              for (var i in files) {
-              var file = files[i]
-              this.options.addedfile.call(this, file)
-              file.previewElement.classList.add('dz-complete')
-              $('form').append('<input type="hidden" name="documents[]" value="' + file.file_name + '">')
-            }
-@endif
+    Dropzone.options.documentsDropzone = {
+        url: '{{ route('admin.products.storeMedia') }}',
+        maxFilesize: 2, // MB
+        addRemoveLinks: true,
+        headers: {
+        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        },
+        params: {
+        size: 2
+        },
+        success: function (file, response) {
+        $('form').append('<input type="hidden" name="documents[]" value="' + response.name + '">')
+        uploadedDocumentsMap[file.name] = response.name
+        },
+        removedfile: function (file) {
+        file.previewElement.remove()
+        var name = ''
+        if (typeof file.file_name !== 'undefined') {
+            name = file.file_name
+        } else {
+            name = uploadedDocumentsMap[file.name]
+        }
+        $('form').find('input[name="documents[]"][value="' + name + '"]').remove()
+        },
+        init: function () {
+    @if(isset($product) && $product->documents)
+            var files =
+                {!! json_encode($product->documents) !!}
+                for (var i in files) {
+                var file = files[i]
+                this.options.addedfile.call(this, file)
+                file.previewElement.classList.add('dz-complete')
+                $('form').append('<input type="hidden" name="documents[]" value="' + file.file_name + '">')
+                }
+    @endif
     },
      error: function (file, response) {
          if ($.type(response) === 'string') {
@@ -497,76 +702,76 @@ Dropzone.options.documentsDropzone = {
 
 <script>
 
-let theDescEditor;
+    let theDescEditor;
 
     $(document).ready(function () {
-  function SimpleUploadAdapter(editor) {
-    editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
-      return {
-        upload: function() {
-          return loader.file
-            .then(function (file) {
-              return new Promise(function(resolve, reject) {
-                // Init request
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', '{{ route('admin.products.storeCKEditorImages') }}', true);
-                xhr.setRequestHeader('x-csrf-token', window._token);
-                xhr.setRequestHeader('Accept', 'application/json');
-                xhr.responseType = 'json';
+    function SimpleUploadAdapter(editor) {
+        editor.plugins.get('FileRepository').createUploadAdapter = function(loader) {
+        return {
+            upload: function() {
+            return loader.file
+                .then(function (file) {
+                return new Promise(function(resolve, reject) {
+                    // Init request
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ route('admin.products.storeCKEditorImages') }}', true);
+                    xhr.setRequestHeader('x-csrf-token', window._token);
+                    xhr.setRequestHeader('Accept', 'application/json');
+                    xhr.responseType = 'json';
 
-                // Init listeners
-                var genericErrorText = `Couldn't upload file: ${ file.name }.`;
-                xhr.addEventListener('error', function() { reject(genericErrorText) });
-                xhr.addEventListener('abort', function() { reject() });
-                xhr.addEventListener('load', function() {
-                  var response = xhr.response;
+                    // Init listeners
+                    var genericErrorText = `Couldn't upload file: ${ file.name }.`;
+                    xhr.addEventListener('error', function() { reject(genericErrorText) });
+                    xhr.addEventListener('abort', function() { reject() });
+                    xhr.addEventListener('load', function() {
+                    var response = xhr.response;
 
-                  if (!response || xhr.status !== 201) {
-                    return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
-                  }
-
-                  $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
-
-                  resolve({ default: response.url });
-                });
-
-                if (xhr.upload) {
-                  xhr.upload.addEventListener('progress', function(e) {
-                    if (e.lengthComputable) {
-                      loader.uploadTotal = e.total;
-                      loader.uploaded = e.loaded;
+                    if (!response || xhr.status !== 201) {
+                        return reject(response && response.message ? `${genericErrorText}\n${xhr.status} ${response.message}` : `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`);
                     }
-                  });
-                }
 
-                // Send request
-                var data = new FormData();
-                data.append('upload', file);
-                data.append('crud_id', '{{ $product->id ?? 0 }}');
-                xhr.send(data);
-              });
-            })
+                    $('form').append('<input type="hidden" name="ck-media[]" value="' + response.id + '">');
+
+                    resolve({ default: response.url });
+                    });
+
+                    if (xhr.upload) {
+                    xhr.upload.addEventListener('progress', function(e) {
+                        if (e.lengthComputable) {
+                        loader.uploadTotal = e.total;
+                        loader.uploaded = e.loaded;
+                        }
+                    });
+                    }
+
+                    // Send request
+                    var data = new FormData();
+                    data.append('upload', file);
+                    data.append('crud_id', '{{ $product->id ?? 0 }}');
+                    xhr.send(data);
+                });
+                })
+            }
+        };
         }
-      };
     }
-  }
 
-  var allEditors = document.querySelectorAll('#description');
-  for (var i = 0; i < allEditors.length; ++i) {
-    ClassicEditor.create(
-      allEditors[i], {
-        extraPlugins: [SimpleUploadAdapter],
-        mediaEmbed: {previewsInData: true}
-      }
-    ).then( editor => {
-        // CKEditorInspector.attach( editor );
-        theDescEditor = editor;
-    } )
-  }
-});
+    var allEditors = document.querySelectorAll('#description');
+    for (var i = 0; i < allEditors.length; ++i) {
+        ClassicEditor.create(
+        allEditors[i], {
+            extraPlugins: [SimpleUploadAdapter],
+            mediaEmbed: {previewsInData: true}
+        }
+        ).then( editor => {
+            // CKEditorInspector.attach( editor );
+            theDescEditor = editor;
+        } )
+    }
+    });
 
-function getDataFromTheDescEditor() {
-  return theDescEditor.getData();
-}
+    function getDataFromTheDescEditor() {
+    return theDescEditor.getData();
+    }
 </script>
 @endsection

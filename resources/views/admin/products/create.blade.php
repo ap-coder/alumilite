@@ -22,6 +22,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.published_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.product.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
@@ -32,6 +33,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.name_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="excerpt">{{ trans('cruds.product.fields.excerpt') }}</label>
                 <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt') }}</textarea>
@@ -94,6 +96,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.additional_photos_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="documents">{{ trans('cruds.product.fields.documents') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('documents') ? 'is-invalid' : '' }}" id="documents-dropzone">
@@ -105,6 +108,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.documents_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="brand_id">{{ trans('cruds.product.fields.brand') }}</label>
                 <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
@@ -119,6 +123,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.brand_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="brand_model_id">{{ trans('cruds.product.fields.brand_model') }}</label>
                 <select class="form-control select2 {{ $errors->has('brand_model') ? 'is-invalid' : '' }}" name="brand_model_id" id="brand_model_id">
@@ -133,7 +138,33 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.brand_model_helper') }}</span>
             </div>
-            <div class="form-group">
+
+
+            <div class="form-group col-8">
+                <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="categories[]" id="categories" multiple>
+                        @foreach($categories as $id => $name)
+                            <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $name }}</option> 
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addCategory">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('categories'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('categories') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.category_helper') }}</span>
+            </div>
+            
+            
+
+            {{-- <div class="form-group">
                 <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -150,8 +181,35 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.category_helper') }}</span>
+            </div> --}}
+
+           
+            <div class="form-group col-8">
+                <label for="tags">{{ trans('cruds.product.fields.tag') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="tags[]" id="tags" multiple>
+                        @foreach($tags as $id => $tag)
+                            <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tag }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addTag">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('tags'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('tags') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.tag_helper') }}</span>
             </div>
-            <div class="form-group">
+            
+            
+            
+
+            {{-- <div class="form-group">
                 <label for="tags">{{ trans('cruds.product.fields.tag') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -168,8 +226,32 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.tag_helper') }}</span>
+            </div> --}}
+
+            <div class="form-group col-8">
+                <label for="features">{{ trans('cruds.product.fields.feature') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="features[]" id="features" multiple>
+                        @foreach($features as $id => $feature)
+                            <option value="{{ $id }}" {{ in_array($id, old('features', [])) ? 'selected' : '' }}>{{ $feature }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addFeature">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('features'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('features') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.feature_helper') }}</span>
             </div>
-            <div class="form-group">
+            
+            
+            {{-- <div class="form-group">
                 <label for="features">{{ trans('cruds.product.fields.feature') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -186,8 +268,34 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.feature_helper') }}</span>
+            </div> --}}
+
+
+            <div class="form-group col-8">
+                <label for="technical_specs">{{ trans('cruds.product.fields.technical_specs') }}</label>
+                <div class="input-group">
+                    <select class="form-control select2" name="technical_specs[]" id="technical_specs" multiple>
+                        @foreach($technical_specs as $id => $technical_spec)
+                            <option value="{{ $id }}" {{ in_array($id, old('technical_specs', [])) ? 'selected' : '' }}>{{ $technical_spec }}</option>
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="addTechnicalSpec">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                @if($errors->has('technical_specs'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('technical_specs') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.product.fields.technical_specs_helper') }}</span>
             </div>
-            <div class="form-group">
+            
+
+
+            {{-- <div class="form-group">
                 <label for="technical_specs">{{ trans('cruds.product.fields.technical_specs') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
@@ -204,7 +312,9 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.technical_specs_helper') }}</span>
-            </div>
+            </div> --}}
+
+
             <div class="form-group">
                 <label for="product_type_id">{{ trans('cruds.product.fields.product_type') }}</label>
                 <select class="form-control select2 {{ $errors->has('product_type') ? 'is-invalid' : '' }}" name="product_type_id" id="product_type_id">
@@ -219,6 +329,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.product_type_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="slug">{{ trans('cruds.product.fields.slug') }}</label>
                 <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
@@ -243,6 +354,96 @@
 @endsection
 
 @section('scripts')
+<script>
+    $(document).ready(function() {
+        $('#addTag').on('click', function() {
+        
+            var tagName = prompt("Enter new product tag name:");
+            if (!tagName) return;
+
+            
+            $.ajax({
+                url: '/admin/product-tags/store-ajax', 
+                type: 'POST',
+                data: {
+                    name: tagName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#tags').append(newOption).trigger('change');
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding product tag: " + error);
+                }
+            });
+        });
+
+        $('#addTechnicalSpec').on('click', function() {
+            var specName = prompt("Enter new technical spec name:");
+            if (!specName) return;
+
+            $.ajax({
+                url: '/admin/technical-specs/store-ajax',
+                type: 'POST',
+                data: {
+                    name: specName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#technical_specs').append(newOption).trigger('change');
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding technical spec: " + error);
+                }
+            });
+        });
+
+        $('#addFeature').on('click', function() {
+            var featureName = prompt("Enter new feature name:");
+            if (!featureName) return;
+
+            $.ajax({
+                url: '/admin/features/store-ajax',
+                type: 'POST',
+                data: {
+                    name: featureName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#features').append(newOption).trigger('change');
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding feature: " + error);
+                }
+            });
+        });
+
+        $('#addCategory').on('click', function() {
+            var categoryName = prompt("Enter new product category name:");
+            if (!categoryName) return;
+
+            $.ajax({
+                url: '/admin/product-categories/store-ajax',  
+                type: 'POST',
+                data: {
+                    name: categoryName,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    var newOption = new Option(response.name, response.id, true, true);
+                    $('#categories').append(newOption).trigger('change');
+                },
+                error: function(xhr, status, error) {
+                    alert("Error adding product category: " + error);
+                }
+            });
+        });
+    });
+</script>
 <script>
     Dropzone.options.photoDropzone = {
     url: '{{ route('admin.products.storeMedia') }}',

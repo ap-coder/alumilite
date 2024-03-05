@@ -1,6 +1,11 @@
 <?php
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProductTagController;
+use App\Http\Controllers\Admin\FeaturesController;
+use App\Http\Controllers\Admin\TechnicalSpecController;
+
 // Route::redirect('/login', '/login');
 
 Route::get('/admin', function () {
@@ -78,10 +83,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
     Route::resource('content-categories', 'ContentCategoryController');
+    Route::post('content-categories/store-ajax', [App\Http\Controllers\Admin\ContentCategoryController::class, 'storeAjax'])->name('content-categories.store-ajax');
 
     // Content Tag
     Route::delete('content-tags/destroy', 'ContentTagController@massDestroy')->name('content-tags.massDestroy');
     Route::resource('content-tags', 'ContentTagController');
+    Route::post('content-tags/store-ajax', [App\Http\Controllers\Admin\ContentTagController::class, 'storeAjax'])->name('content-tags.store-ajax');
+
 
     // Content Page
     Route::delete('content-pages/destroy', 'ContentPageController@massDestroy')->name('content-pages.massDestroy');
@@ -149,6 +157,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Brand Model
     Route::delete('brand-models/destroy', 'BrandModelController@massDestroy')->name('brand-models.massDestroy');
     Route::resource('brand-models', 'BrandModelController');
+
+    // Routes for AJAX store methods
+    Route::post('product-categories/store-ajax', 'ProductCategoryController@storeAjax')->name('product-categories.store-ajax');
+    Route::post('product-tags/store-ajax', 'ProductTagController@storeAjax')->name('product-tags.store-ajax');
+    Route::post('features/store-ajax', 'FeaturesController@storeAjax')->name('features.store-ajax');
+    Route::post('technical-specs/store-ajax', 'TechnicalSpecController@storeAjax')->name('technical-specs.store-ajax');
+
 
     // Snippets
     Route::delete('snippets/destroy', 'SnippetsController@massDestroy')->name('snippets.massDestroy');

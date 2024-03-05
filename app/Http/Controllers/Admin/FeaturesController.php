@@ -72,6 +72,18 @@ class FeaturesController extends Controller
         return redirect()->route('admin.features.index');
     }
 
+    public function storeAjax(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|unique:features,name', // Adjust table_name accordingly
+        ]);
+
+        $entity = Feature::create($validatedData); // Adjust EntityModel accordingly
+
+        return response()->json(['id' => $entity->id, 'name' => $entity->name]);
+    }
+
+
     public function edit(Feature $feature)
     {
         abort_if(Gate::denies('feature_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

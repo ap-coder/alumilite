@@ -163,14 +163,36 @@ class PostController extends Controller
     {
         abort_if(Gate::denies('post_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = ContentCategory::pluck('name', 'id');
+        $categories = ContentCategory::pluck('name', 'id')->toArray();
+        $tags = ContentTag::pluck('name', 'id')->toArray();
 
-        $tags = ContentTag::pluck('name', 'id');
+        // Fetching IDs of the categories and tags associated with the post
+        $postCategories = $post->categories->pluck('id')->toArray();
+        $postTags = $post->tags->pluck('id')->toArray();
 
-        $post->load('categories', 'tags');
-
-        return view('admin.posts.edit', compact('categories', 'post', 'tags'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'postCategories', 'postTags'));
     }
+
+    // public function edit(Post $post)
+    // {
+    //     abort_if(Gate::denies('post_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    
+    //     // Fetch all categories for the dropdown
+    //     $categories = ContentCategory::pluck('name', 'id');
+    
+    //     // Fetch all tags for the dropdown
+    //     $tags = ContentTag::pluck('name', 'id');
+    
+    //     // Fetch IDs of the categories associated with the post for pre-selection in Select2
+    //     $postCategories = $post->categories->pluck('id')->toArray();
+    
+    //     // Fetch IDs of the tags associated with the post for pre-selection in Select2
+    //     $postTags = $post->tags->pluck('id')->toArray();
+    
+    //     // Pass 'categories', 'tags', 'postCategories', and 'postTags' to the view
+    //     return view('admin.posts.edit', compact('categories', 'post', 'tags', 'postCategories', 'postTags'));
+    // }
+    
 
     public function update(UpdatePostRequest $request, Post $post)
     {

@@ -36,6 +36,17 @@ class ProductTagController extends Controller
         return redirect()->route('admin.product-tags.index');
     }
 
+    public function storeAjax(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:product_tags,name',
+        ]);
+
+        $tag = ProductTag::create($validatedData);
+
+        return response()->json(['id' => $tag->id, 'name' => $tag->name]);
+    }
+
     public function edit(ProductTag $productTag)
     {
         abort_if(Gate::denies('product_tag_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
