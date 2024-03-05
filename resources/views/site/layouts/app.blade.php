@@ -19,6 +19,7 @@
     <meta charset="utf-8">
 
     @include('site.static-seo')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
