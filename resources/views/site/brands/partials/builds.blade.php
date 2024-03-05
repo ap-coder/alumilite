@@ -58,7 +58,7 @@
                                             <a href="{{ route('builds.show',$build->slug) }}">
                                                 @if($build->photo)
                                                     {{-- {{ $build->getFirstMedia('photo')('excerpt') }} --}}
-                                                    <img src="{{ $build->photo->getUrl() }}" alt="{{ $build->name }}">
+                                                    <img src="{{ $build->photo->getUrl('excerpt') }}" alt="{{ $build->name }}">
                                                 @else
                                                     @if ($env=='local')
                                                         <img src="{{ asset('assets/images/car-2/car-1.jpg') }}" alt="{{ $build->name }}">

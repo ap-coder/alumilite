@@ -10,7 +10,7 @@
 {{--        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ asset('assets/images/blog-single/blog-single-2.jpg') }}');">--}}
 {{--        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ $article->getFirstMedia('featured_image')('responsive') }}');">--}}
         @if($article->featured_image)
-        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ $article->featured_image->getUrl() }}');">
+        <div class="single-post-header-2 d-flex align-items-end bg_cover" style="background-image: url('{{ $article->featured_image->getUrl('banner') }}');">
             <div class="container">
                 <div class="single-post-header-inner-2">
                     <div class="entry-meta">
@@ -21,7 +21,7 @@
 {{--                            <li><a href="#"> </a></li>--}}
                         </ul>
                     </div>
-                    <h2 class="entry-title">Audi in town 2019 - the festival of  audior in florencia, italy</h2>
+                    <h2 class="entry-title">{{ $article->title ?? '' }}</h2>
                 </div>
             </div>
         </div>

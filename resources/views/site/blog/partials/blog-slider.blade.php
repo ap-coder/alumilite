@@ -12,7 +12,7 @@
                 @if ($slider->location == '2')
                 @php
                 if ($slider->image) {
-                    $sliderImage = $slider->image->getUrl();
+                    $sliderImage = $slider->image->getUrl('slider');
                 } else {
                     if ($env=='local') {
                         $sliderImage = 'assets/images/slider/slider-3.jpg';

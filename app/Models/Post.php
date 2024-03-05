@@ -92,7 +92,8 @@ class Post extends Model implements HasMedia, Viewable
         $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(150)->height(150)->nonQueued();
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
         $this->addMediaConversion('homepage')->crop('crop-center',321,195)->format(Manipulations::FORMAT_WEBP)->nonQueued();
-        $this->addMediaConversion('excerpt')->crop('crop-center',400,580)->format(Manipulations::FORMAT_WEBP)->nonQueued();
+        $this->addMediaConversion('excerpt')->crop('crop-center',356,221)->format(Manipulations::FORMAT_WEBP)->nonQueued();
+        $this->addMediaConversion('banner')->crop('crop-center',1920,670)->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('responsive')->crop('crop-center',1170,650)->format(Manipulations::FORMAT_WEBP)->withResponsiveImages()->nonQueued();
     }
 
