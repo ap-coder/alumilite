@@ -11,8 +11,7 @@
                         <a href="{{ route('blog.show', $relatedPost->slug) }}">
                             @if($relatedPost->featured_image)
                                 {{--  <img src="{{ $relatedPost->featured_image->url }}" alt="{{ $relatedPost->title }}">--}}
-                                {{ $article->getFirstMedia('featured_image')('responsive') }}
-{{--                                {{ $article->getFirstMedia('featured_image')('excerpt') }}--}}
+                                {{ $article->getFirstMedia('featured_image')('excerpt') }}
                             @else
                                 <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
                             @endif

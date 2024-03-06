@@ -22,7 +22,7 @@
                             </div>
                             <div class="footer-content d-flex flex-wrap justify-content-between align-items-center">
                                 <hr />
-                                @include('site.blog.partials.show.categories')
+                                @include('site.blog.partials.show.social-share')
                             </div>
                         </div>
                         @include('site.blog.partials.show.author')
@@ -36,8 +36,9 @@
                     <div class="col-xxl-3 col-lg-4">
                         <div class="blog-sidebar">
                             @include('site.blog.partials.search')
+                            @include('site.blog.partials.show.categories')
                             @include('site.blog.partials.blog-menu')
-                            {{-- @include('site.blog.partials.show.categories')--}}
+
                             {{-- @include('site.blog.partials.show.popular-posts')--}}
                             {{-- @include('site.blog.partials.show.newsletter')--}}
                         </div>
