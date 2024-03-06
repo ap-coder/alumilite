@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 <div class="single-news mt-50">
                     <div class="news-image">
-                        <a href="{{ route('posts.show', $relatedPost->slug) }}">
+                        <a href="{{ route('blog.show', $relatedPost->slug) }}">
                             @if($relatedPost->featured_image)
                                 {{--  <img src="{{ $relatedPost->featured_image->url }}" alt="{{ $relatedPost->title }}">--}}
                                 {{ $article->getFirstMedia('featured_image')('responsive') }}
