@@ -17,7 +17,6 @@
                     <div class="col-lg-8">
                         <div class="post-content-inner single-post-left">
                             @include('site.blog.partials.show.breadcrumb')
-
                             <div class="ck-content">
                                 {!! $article->page_text ?? '' !!}
                             </div>
@@ -26,21 +25,21 @@
                                 @include('site.blog.partials.show.categories')
                             </div>
                         </div>
-
                         @include('site.blog.partials.show.author')
 
-{{--                        @include('site.blog.partials.related-posts')--}}
-{{--                        @include('site.blog.partials.comments')--}}
+                        @if($relatedPosts->isNotEmpty())
+                            @include('site.blog.partials.show.related-posts', ['relatedPosts' => $relatedPosts])
+                        @endif
 
-
+                        {{-- @include('site.blog.partials.comments')--}}
                     </div>
                     <div class="col-xxl-3 col-lg-4">
                         <div class="blog-sidebar">
                             @include('site.blog.partials.search')
                             @include('site.blog.partials.blog-menu')
-{{--                            @include('site.blog.partials.show.categories')--}}
-{{--                            @include('site.blog.partials.show.popular-posts')--}}
-{{--                            @include('site.blog.partials.show.newsletter')--}}
+                            {{-- @include('site.blog.partials.show.categories')--}}
+                            {{-- @include('site.blog.partials.show.popular-posts')--}}
+                            {{-- @include('site.blog.partials.show.newsletter')--}}
                         </div>
                     </div>
                 </div>
