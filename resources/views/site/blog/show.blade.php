@@ -51,6 +51,12 @@
     <!--====== Blog Single Ends ======-->
 @endsection
 
-@section('headcss') @endsection
+@section('headcss')
+    <style>
+        .single-post-main-content .post-content-inner .footer-content {
+            padding-top: 0!important;
+        }
+    </style>
+@endsection
 @section('headjs') @endsection
 @section('footjs') @endsection

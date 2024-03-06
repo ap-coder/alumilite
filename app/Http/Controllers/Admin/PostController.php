@@ -10,7 +10,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentTag;
 use App\Models\Post;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
@@ -128,6 +128,10 @@ class PostController extends Controller
         }
         $post->tags()->sync($tagIds);
 
+        if ($request->input('featured_image', false)) {
+            $post->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
+        }
+
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $post->id]);
         }
@@ -185,27 +189,6 @@ class PostController extends Controller
         return view('admin.posts.edit', compact('post', 'categories', 'tags', 'postCategories', 'postTags'));
     }
 
-    // public function edit(Post $post)
-    // {
-    //     abort_if(Gate::denies('post_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-    
-    //     // Fetch all categories for the dropdown
-    //     $categories = ContentCategory::pluck('name', 'id');
-    
-    //     // Fetch all tags for the dropdown
-    //     $tags = ContentTag::pluck('name', 'id');
-    
-    //     // Fetch IDs of the categories associated with the post for pre-selection in Select2
-    //     $postCategories = $post->categories->pluck('id')->toArray();
-    
-    //     // Fetch IDs of the tags associated with the post for pre-selection in Select2
-    //     $postTags = $post->tags->pluck('id')->toArray();
-    
-    //     // Pass 'categories', 'tags', 'postCategories', and 'postTags' to the view
-    //     return view('admin.posts.edit', compact('categories', 'post', 'tags', 'postCategories', 'postTags'));
-    // }
-    
-
     public function update(UpdatePostRequest $request, Post $post)
     {
         $post->update($request->all());
@@ -239,7 +222,9 @@ class PostController extends Controller
         }
 
         $post = Post::findOrFail($post->id);
+
         $staticSeo = $post->staticSeo()->first();
+
         if ($staticSeo && !$staticSeo->deactivate_update) {
             $cleanDescription = strip_tags($post->page_text);
             $shortDescription = substr($cleanDescription, 0, 110);

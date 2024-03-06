@@ -143,4 +143,9 @@ class Post extends Model implements HasMedia, Viewable
     {
         return $this->hasOne(StaticSeo::class);
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 }

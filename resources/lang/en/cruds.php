@@ -63,6 +63,12 @@ return [
             'updated_at_helper'        => ' ',
             'deleted_at'               => 'Deleted at',
             'deleted_at_helper'        => ' ',
+            'is_author'                => 'Is Author',
+            'is_author_helper'         => ' ',
+            'avatar'                   => 'Avatar',
+            'avatar_helper'            => ' ',
+            'bio'                      => 'Bio',
+            'bio_helper'               => ' ',
         ],
     ],
     'productManagement' => [
@@ -569,6 +575,8 @@ return [
             'updated_at_helper'     => ' ',
             'deleted_at'            => 'Deleted At',
             'deleted_at_helper'     => ' ',
+            'author'                => 'Author',
+            'author_helper'         => ' ',
         ],
     ],
     'slider' => [
