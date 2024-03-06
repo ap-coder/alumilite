@@ -112,21 +112,24 @@ class PostController extends Controller
     {
         $post = Post::create($request->all());
 
-        $categoryIds = [];
-        foreach ($request->input('categories', []) as $categoryName) {
-            $category = ContentCategory::firstOrCreate(['name' => $categoryName], ['slug' => \Str::slug($categoryName)]);
-            $categoryIds[] = $category->id;
-        }
+        $post->categories()->sync($request->input('categories', []));
+        $post->tags()->sync($request->input('tags', []));
+        
+        // $categoryIds = [];
+        // foreach ($request->input('categories', []) as $categoryName) {
+        //     $category = ContentCategory::firstOrCreate(['name' => $categoryName], ['slug' => \Str::slug($categoryName)]);
+        //     $categoryIds[] = $category->id;
+        // }
 
-        $post->categories()->sync($categoryIds);
+        // $post->categories()->sync($categoryIds);
 
 
-        $tagIds = [];
-        foreach ($request->input('tags', []) as $tagName) {
-            $tag = ContentTag::firstOrCreate(['name' => $tagName], ['slug' => \Str::slug($tagName)]);
-            $tagIds[] = $tag->id;
-        }
-        $post->tags()->sync($tagIds);
+        // $tagIds = [];
+        // foreach ($request->input('tags', []) as $tagName) {
+        //     $tag = ContentTag::firstOrCreate(['name' => $tagName], ['slug' => \Str::slug($tagName)]);
+        //     $tagIds[] = $tag->id;
+        // }
+        // $post->tags()->sync($tagIds);
 
         if ($request->input('featured_image', false)) {
             $post->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
@@ -193,22 +196,22 @@ class PostController extends Controller
     {
         $post->update($request->all());
 
-        //$post->categories()->sync($request->input('categories', []));
-        //$post->tags()->sync($request->input('tags', []));
+        $post->categories()->sync($request->input('categories', []));
+        $post->tags()->sync($request->input('tags', []));
 
-        $categoryIds = [];
-        foreach ($request->input('categories', []) as $categoryName) {
-            $category = ContentCategory::firstOrCreate(['name' => $categoryName], ['slug' => \Str::slug($categoryName)]);
-            $categoryIds[] = $category->id;
-        }
-        $post->categories()->sync($categoryIds);
+        // $categoryIds = [];
+        // foreach ($request->input('categories', []) as $categoryName) {
+        //     $category = ContentCategory::firstOrCreate(['name' => $categoryName], ['slug' => \Str::slug($categoryName)]);
+        //     $categoryIds[] = $category->id;
+        // }
+        // $post->categories()->sync($categoryIds);
 
-        $tagIds = [];
-        foreach ($request->input('tags', []) as $tagName) {
-            $tag = ContentTag::firstOrCreate(['name' => $tagName], ['slug' => \Str::slug($tagName)]);
-            $tagIds[] = $tag->id;
-        }
-        $post->tags()->sync($tagIds);
+        // $tagIds = [];
+        // foreach ($request->input('tags', []) as $tagName) {
+        //     $tag = ContentTag::firstOrCreate(['name' => $tagName], ['slug' => \Str::slug($tagName)]);
+        //     $tagIds[] = $tag->id;
+        // }
+        // $post->tags()->sync($tagIds);
 
         if ($request->input('featured_image', false)) {
             if (! $post->featured_image || $request->input('featured_image') !== $post->featured_image->file_name) {

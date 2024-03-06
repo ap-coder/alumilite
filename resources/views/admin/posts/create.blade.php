@@ -354,11 +354,11 @@
                     },
                     success: function(response) {
                         // Create a new Option and append it to the Select2 control
-                        var newOption = new Option(response.name, response.id, false, false);
+                        var newOption = new Option(response.name, response.id, true, true);
                         $('#categories').append(newOption).trigger('change');
 
                         // Optionally, you can make the new option selected immediately
-                        $('#categories').val(response.id).trigger('change');
+                        // $('#categories').val(response.id).trigger('change');
                     },
                     error: function(xhr, status, error) {
                         alert("Error adding category: " + error);

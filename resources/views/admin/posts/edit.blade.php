@@ -360,10 +360,10 @@ $('.saveContent').click(function() {
                         _token: $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        var newOption = new Option(response.name, response.id, false, false);
+                        var newOption = new Option(response.name, response.id, true, true);
                         $('#categories').append(newOption).trigger('change');
 
-                        $('#categories').val(response.id).trigger('change');
+                        // $('#categories').val(response.id).trigger('change');
                     },
                     error: function(xhr, status, error) {
                         alert("Error adding category: " + error);
