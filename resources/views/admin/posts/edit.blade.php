@@ -3,11 +3,11 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.post.title_singular') }} 
+        {{ trans('global.edit') }} {{ trans('cruds.post.title_singular') }}
         @if ($post->staticSeo)
             <a class="btn btn-success float-right" href="{{ route('admin.static-seos.edit', $post->staticSeo->id) }}">SEO</a>
         @endif
-        
+
     </div>
 
     <div class="card-body">
@@ -43,17 +43,14 @@
 
             {{-- {{ dd($postTags) }} --}}
 
-            <div class="form-group">
+            <div class="form-group col-8">
                 <label for="categories">{{ trans('cruds.post.fields.category') }}</label>
                 <div class="input-group">
-
                     <select class="form-control select2" name="categories[]" id="categories" multiple="multiple">
                         @foreach($categories as $id => $name)
                             <option value="{{ $id }}" {{ in_array($id, old('categories', $postCategories)) ? 'selected' : '' }}>{{ $name }}</option>
                         @endforeach
                     </select>
-                    
-
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="addCategory">
                             <i class="fas fa-plus"></i>
@@ -68,8 +65,8 @@
                 <span class="help-block">{{ trans('cruds.post.fields.category_helper') }}</span>
             </div>
 
- 
-            <div class="form-group">
+
+            <div class="form-group col-8">
                 <label for="tags">{{ trans('cruds.post.fields.tag') }}</label>
                 <div class="input-group">
                     <select class="form-control select2" name="tags[]" id="tags" multiple="multiple">
@@ -77,10 +74,10 @@
                             <option value="{{ $id }}" {{ (in_array($id, old('tags', $postTags)) ? 'selected' : '') }}>{{ $name }}</option>
                         @endforeach
                     </select>
-                    
+
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="addTag">
-                            <i class="fas fa-plus"></i>  
+                            <i class="fas fa-plus"></i>
                         </button>
                     </div>
                 </div>
@@ -91,7 +88,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.tag_helper') }}</span>
             </div>
- 
+
 
             <div class="form-group">
                 <label for="page_text">{{ trans('cruds.post.fields.page_text') }}</label>
@@ -103,6 +100,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.page_text_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="excerpt">{{ trans('cruds.post.fields.excerpt') }}</label>
                 <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $post->excerpt) }}</textarea>
@@ -113,6 +111,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.excerpt_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="featured_image">{{ trans('cruds.post.fields.featured_image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
@@ -124,6 +123,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.featured_image_helper') }}</span>
             </div>
+
             <div class="form-group">
                 <label for="slug">{{ trans('cruds.post.fields.slug') }}</label>
                 <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $post->slug) }}">
@@ -340,12 +340,12 @@ $('.saveContent').click(function() {
 
 <script>
     $(document).ready(function() {
-       
-        $('#categories').select2({             
-            width: '100%',  
-            tags: true, 
+
+        $('#categories').select2({
+            width: '100%',
+            tags: true,
             createTag: function (params) {
-                return null; 
+                return null;
             }
         });
 
@@ -359,7 +359,7 @@ $('.saveContent').click(function() {
                         name: categoryName,
                         _token: $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function(response) {       
+                    success: function(response) {
                         var newOption = new Option(response.name, response.id, false, false);
                         $('#categories').append(newOption).trigger('change');
 
@@ -378,7 +378,7 @@ $('.saveContent').click(function() {
             var tagName = prompt("Please enter the new tag name:");
             if (tagName) {
                 $.ajax({
-                    url: '/admin/content-tags/store-ajax', 
+                    url: '/admin/content-tags/store-ajax',
                     type: 'POST',
                     data: {
                         name: tagName,
