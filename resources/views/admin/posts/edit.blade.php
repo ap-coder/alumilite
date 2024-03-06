@@ -123,7 +123,18 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.post.fields.featured_image_helper') }}</span>
             </div>
-
+            <div class="form-group">
+                <label for="author_id">{{ trans('cruds.post.fields.author') }}</label>
+                <select class="form-control select2 {{ $errors->has('author') ? 'is-invalid' : '' }}" name="author_id" id="author_id" style="width: 100%;" >
+                    @foreach($authors as $id => $author)
+                    <option value="{{ $id }}" {{ (old('author_id') ? old('author_id') : $post->author->id ?? '') == $id ? 'selected' : '' }}>{{ $author }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('author'))
+                    <span class="text-danger">{{ $errors->first('author') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.post.fields.author_helper') }}</span>
+            </div>
             <div class="form-group">
                 <label for="slug">{{ trans('cruds.post.fields.slug') }}</label>
                 <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', $post->slug) }}">

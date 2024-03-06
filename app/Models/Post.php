@@ -45,6 +45,7 @@ class Post extends Model implements HasMedia, Viewable
         'page_text',
         'excerpt',
         'slug',
+        'author_id',
         'created_at',
         'updated_at',
         'deleted_at',
