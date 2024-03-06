@@ -10,6 +10,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentTag;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -105,7 +106,9 @@ class PostController extends Controller
 
         $tags = ContentTag::pluck('name', 'id');
 
-        return view('admin.posts.create', compact('categories', 'tags'));
+        $authors = User::where('is_author',1)->get()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.posts.create', compact('categories', 'tags','authors'));
     }
 
     public function store(StorePostRequest $request)
@@ -189,7 +192,9 @@ class PostController extends Controller
         $postCategories = $post->categories->pluck('id')->toArray();
         $postTags = $post->tags->pluck('id')->toArray();
 
-        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'postCategories', 'postTags'));
+        $authors = User::where('is_author',1)->get()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'postCategories', 'postTags','authors'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_author')->default(0)->nullable();
-            $table->longText('bio')->nullable();
+        Schema::table('posts', function (Blueprint $table) {
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->foreign('author_id', 'author_fk_2332235')->references('id')->on('users');
         });
     }
 };

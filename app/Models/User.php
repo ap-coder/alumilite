@@ -15,8 +15,9 @@ use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Image;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use SoftDeletes, Notifiable, InteractsWithMedia, HasFactory;
 
