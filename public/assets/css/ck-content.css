@@ -586,39 +586,40 @@ margin-left: -15px;
 
 /* Links */
 .cke-content a {
-   color: #007bff; /* Example color: Bootstrap default blue */
-   text-decoration: none;
+    color: #007bff; /* Example color: Bootstrap default blue */
+    text-decoration: none;
 }
 
 .cke-content a:hover,
 .cke-content a:focus {
-  text-decoration: underline; /* Change as per your design */
+    text-decoration: underline; /* Change as per your design */
 }
 
 .tab-content {
     margin:10px!important
 }
-   .ck-content {
-       border-top: solid 1px;
-       margin: 15px 0 15px 0!important;
-       padding-top: 15px;
-   }
-   .ck-content p {
-       margin: 0 0 1rem !important;
-       font-size: 16px;
-       line-height: 1.6;
-   }
 
-   .inventory-single-content .listing-social {}
+.ck-content {
+    border-top: solid 1px;
+    margin: 15px 0 15px 0!important;
+    padding-top: 15px;
+}
+.ck-content p {
+    margin: 0 0 1rem !important;
+    font-size: 16px;
+    line-height: 1.6;
+}
 
-   .inventory-single-dealership-tab {
-       padding-top: 15px!important;
-   }
+.inventory-single-content .listing-social {}
 
-   .inventory-single-dealership-main {
-       padding-top: 0px!important;
-       padding-bottom: 80px!important;
-   }
+.inventory-single-dealership-tab {
+    padding-top: 15px!important;
+}
+
+.inventory-single-dealership-main {
+    padding-top: 0px!important;
+    padding-bottom: 80px!important;
+}
 @media print {
     /* @ckeditor/ckeditor5-page-break/theme/pagebreak.css */
     .ck-content .page-break {
