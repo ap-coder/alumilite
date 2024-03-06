@@ -1,4 +1,4 @@
-@if($categories)
+{{--@if($categories)--}}
     <div class="blog-sidebar-category">
         <h3 class="sidebar-title">categories</h3>
         <div class="category-list">
@@ -11,6 +11,6 @@
             </ul>
         </div>
     </div>
-@endif
+{{--@endif--}}
 
 
