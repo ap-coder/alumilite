@@ -29,10 +29,10 @@
                                 <a href="#">{{ $relatedPost->created_at->format('F d, Y') }}</a>
                             </span>
                         </div>
-                        <h3 class="news-title"><a href="{{ route('posts.show', $relatedPost->slug) }}">{{ $relatedPost->title }}</a></h3>
+                        <h3 class="news-title"><a href="{{ route('blog.show', $relatedPost->slug) }}">{{ $relatedPost->title }}</a></h3>
                         <ul class="news-meta-bottom">
                             <li><a href="#"><i class="ion-chatboxes"></i> {{ $relatedPost->comments_count ?? '0' }} Comments </a></li>
-                            <li><span><i class="ion-eye"></i> {{ views($relatedPost)->count() }} Viewed</span></li>
+                            <li><span><i class="ion-eye"></i> {{ $viewcount }} Viewed</span></li>
                             <!-- Assuming you're using the laravel-views package for view count -->
                             <li><a href="#"><i class="ion-android-share-alt"></i> Share</a></li>
                         </ul>
