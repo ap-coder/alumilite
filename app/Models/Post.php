@@ -93,8 +93,18 @@ class Post extends Model implements HasMedia, Viewable
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
         $this->addMediaConversion('homepage')->crop('crop-center',321,195)->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('excerpt')->crop('crop-center',356,221)->format(Manipulations::FORMAT_WEBP)->nonQueued();
-        $this->addMediaConversion('banner')->crop('crop-center',1920,670)->format(Manipulations::FORMAT_WEBP)->nonQueued();
-        $this->addMediaConversion('responsive')->crop('crop-center',1170,650)->format(Manipulations::FORMAT_WEBP)->withResponsiveImages()->nonQueued();
+       // $this->addMediaConversion('banner')->crop('crop-center',1920,760)->format(Manipulations::FORMAT_WEBP)->nonQueued();
+        $this->addMediaConversion('banner')
+            ->fit(Manipulations::FIT_CONTAIN, 1920, 1920)
+            ->crop('crop-center', 1920, 760)
+            ->format(Manipulations::FORMAT_WEBP)
+            ->withResponsiveImages()
+            ->nonQueued();
+        $this->addMediaConversion('responsive')
+            ->fit(Manipulations::FIT_CONTAIN, 1920, 1920)
+            ->crop('crop-center',1170,650)
+            ->format(Manipulations::FORMAT_WEBP)
+            ->withResponsiveImages()->nonQueued();
     }
 
     public function categories()
