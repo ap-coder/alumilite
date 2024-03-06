@@ -115,7 +115,9 @@ class Post extends Model implements HasMedia, Viewable
             $file->original = $file->getUrl('original');
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview = $file->getUrl('preview');
-            $file->preview = $file->getUrl('excerpt');
+            $file->homepage = $file->getUrl('homepage');
+            $file->excerpt = $file->getUrl('excerpt');
+            $file->banner = $file->getUrl('banner');
             $file->responsive = $file->getUrl('responsive');
         }
 
