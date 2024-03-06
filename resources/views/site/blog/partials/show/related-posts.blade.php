@@ -1,6 +1,6 @@
 <div class="related-post">
     <div class="section-title">
-        <h2 class="title">Posts You’d Might Like</h2>
+        <h2 class="title">Posts You Might Like</h2>
     </div>
 
     <div class="row">
