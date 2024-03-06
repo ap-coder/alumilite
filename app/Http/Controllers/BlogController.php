@@ -83,7 +83,7 @@ class BlogController extends Controller
         $relatedPosts = Post::whereHas('categories', function ($query) use ($categoryIds) {
             $query->whereIn('content_categories.id', $categoryIds);
         })->where('id', '!=', $post->id)
-            ->where('status', 'published')
+            ->where('published', 1)
             ->latest()
             ->take(2)
             ->get();
