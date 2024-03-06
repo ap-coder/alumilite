@@ -598,9 +598,11 @@ margin-left: -15px;
 .tab-content {
     margin:10px!important
 }
-.ck-content {
-    margin:15px!important
-}
+   .ck-content {
+       border-top: solid 1px;
+       margin: 15px 0 15px 0!important;
+       padding-top: 15px;
+   }
    .ck-content p {
        margin: 0 0 1rem !important;
        font-size: 16px;
