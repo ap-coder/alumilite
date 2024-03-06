@@ -71,7 +71,7 @@ class Product extends Model implements HasMedia
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
         $this->addMediaConversion('product')->crop('crop-center',770,428)->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('homepage')->crop('crop-center',321,195)->format(Manipulations::FORMAT_WEBP)->nonQueued();
-        $this->addMediaConversion('excerpt')->crop('crop-center',400,580)->format(Manipulations::FORMAT_WEBP)->nonQueued();
+        $this->addMediaConversion('excerpt')->crop('crop-center',321,321)->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('responsive')->crop('crop-center',1170,650)->format(Manipulations::FORMAT_WEBP)->withResponsiveImages()->nonQueued();
     }
 

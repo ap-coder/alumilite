@@ -19,7 +19,7 @@
                             <div class="single-team">
                                 <div class="team-image">
                                     @if ($brand->logo)
-                                        <img src="{{ $brand->logo->getUrl() }}" alt="{{ $brand->name }}">
+                                        <img src="{{ $brand->logo->getUrl('original') }}" alt="{{ $brand->name }}">
                                     @else
                                         @if ($env=='local')
                                             <img src="https://placehold.co/300x300?text=Brand+Logo" alt="{{ $brand->name }}">
