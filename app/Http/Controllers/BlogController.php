@@ -87,6 +87,8 @@ class BlogController extends Controller
             ->latest()
             ->take(2)
             ->get();
+        
+        $popularPosts = Post::orderByUniqueViews('desc')->take(3)->get();
 
         // $post = Cache::remember('published-post-'.$slug, 1440, function () use ($slug) {
         //    return Post::where('slug', $slug)->with('categories', 'tags')->first();
@@ -108,7 +110,7 @@ class BlogController extends Controller
 
         $viewcount = views($article)->unique()->remember()->count();
 
-        return view('site.blog.show', compact('article', 'viewcount', 'relatedPosts'));
+        return view('site.blog.show', compact('article', 'viewcount', 'relatedPosts','popularPosts'));
     }
 
     /**
