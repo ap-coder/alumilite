@@ -10,10 +10,7 @@
                     <div class="news-image">
                         <a href="{{ route('blog.show', $relatedPost->slug) }}">
                             @if($relatedPost->featured_image)
-                                {{--  <img src="{{ $relatedPost->featured_image->url }}" alt="{{ $relatedPost->title }}">--}}
-                                {{ $article->getFirstMedia('featured_image')('excerpt') }}
-                            @else
-                                <img src="{{ asset('assets/images/blog/blog-1.jpg') }}" alt="">
+                                 <img src="{{ $relatedPost->featured_image->excerpt }}" alt="{{ $relatedPost->title }}">
                             @endif
                         </a>
                     </div>
@@ -21,11 +18,11 @@
                         <div class="news-meta">
                             <span class="meta-cat">
                                 @foreach($relatedPost->categories as $category)
-                                    <a href="#">{{ $category->name }}</a>
+                                    <a href="javascript:void(0);">{{ $category->name }}</a>
                                 @endforeach
                             </span>
                             <span class="meta-date">
-                                <a href="#">{{ $relatedPost->created_at->format('F d, Y') }}</a>
+                                <a href="javascript:void(0);">{{ $relatedPost->created_at->format('F d, Y') }}</a>
                             </span>
                         </div>
                         <h3 class="news-title"><a href="{{ route('blog.show', $relatedPost->slug) }}">{{ $relatedPost->title }}</a></h3>
@@ -33,7 +30,7 @@
 {{--                            <li><a href="#"><i class="ion-chatboxes"></i> {{ $relatedPost->comments_count ?? '0' }} Comments </a></li>--}}
                             <li><span><i class="ion-eye"></i> {{ $viewcount }} Viewed</span></li>
                             <!-- Assuming you're using the laravel-views package for view count -->
-                            <li><a href="#"><i class="ion-android-share-alt"></i> Share</a></li>
+                            <li><a href="javascript:void(0);"><i class="ion-android-share-alt"></i> Share</a></li>
                         </ul>
                     </div>
                 </div>

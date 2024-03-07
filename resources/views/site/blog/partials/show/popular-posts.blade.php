@@ -2,53 +2,33 @@
                                 <h3 class="sidebar-title">Popular posts</h3>
 
                                 <ul class="post-items">
+
+                                    @foreach ($popularPosts as $popularPost)
                                     <li>
                                         <div class="single-post">
                                             <div class="post-image">
-                                                <a href="#">
-                                                    <img src="assets/images/blog/blog-4.jpg" alt="">
+                                                <a href="{{ route('blog.show', $popularPost->slug) }}">
+                                                    @if($popularPost->featured_image)
+                                                         <img src="{{ $popularPost->featured_image->excerpt }}" alt="{{ $popularPost->title }}">
+                                                    @endif
                                                 </a>
                                             </div>
                                             <div class="post-content">
                                                 <div class="news-meta">
-                                                    <span class="meta-cat"><a href="#">News</a></span>
-                                                    <span class="meta-date"><a href="#">July 31, 2020</a></span>
+                                                    <span class="meta-cat">
+                                                        <a href="javascript:void(0);">
+                                                            @if ($popularPost->categories->count()>0)
+                                                                {{ $popularPost->categories->first()->name }}
+                                                            @endif
+                                                        </a>
+                                                    </span>
+                                                    <span class="meta-date"><a href="javascript:void(0);">{{ $popularPost->created_at->format('F d, Y') }}</a></span>
                                                 </div>
-                                                <h6 class="post-title"><a href="#">Ford Focus 2016 - New Catalog from Carify’s expert, Brian O’Nel</a></h6>
+                                                <h6 class="post-title"><a href="{{ route('blog.show', $popularPost->slug) }}">{{ $popularPost->title ?? '' }}</a></h6>
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="single-post">
-                                            <div class="post-image">
-                                                <a href="#">
-                                                    <img src="assets/images/blog/blog-10.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content">
-                                                <div class="news-meta">
-                                                    <span class="meta-cat"><a href="#">Review</a></span>
-                                                    <span class="meta-date"><a href="#">July 31, 2020</a></span>
-                                                </div>
-                                                <h6 class="post-title"><a href="#">BMW X3 White 2018, Powerful with Sport Level</a></h6>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="single-post">
-                                            <div class="post-image">
-                                                <a href="#">
-                                                    <img src="assets/images/blog/blog-9.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="post-content">
-                                                <div class="news-meta">
-                                                    <span class="meta-cat"><a href="#">Inspiration</a></span>
-                                                    <span class="meta-date"><a href="#">July 31, 2020</a></span>
-                                                </div>
-                                                <h6 class="post-title"><a href="#">Danoh ABR 2019, The Attraction from Traditional Brand</a></h6>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @endforeach
+                                    
                                 </ul>
                             </div>
