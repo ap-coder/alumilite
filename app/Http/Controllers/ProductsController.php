@@ -57,6 +57,8 @@ class ProductsController extends Controller
         }else{
             $brandModels = collect();
         }  
+
+        $products->appends(request()->query());
         
         return view('site.products.index', compact('products','categories', 'sliders','brands','brandModels'));
     }
