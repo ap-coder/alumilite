@@ -27,7 +27,7 @@
                         </div>
                     @endif
                     <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
-                        <p>{{ $product->excerpt ?? '' }}</p>
+                        <p>{!! Str::words($product->excerpt, $limit = 15, $end = ' ...') !!}</p>
                     <span class="price">
                         @if ($product->price && $product->msrp)
                                 <span class="sale-price">${{ number_format($product->price) }}</span>

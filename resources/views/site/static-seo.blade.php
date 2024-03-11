@@ -66,6 +66,5 @@
                 <meta itemprop="height" content="500"/>
             @endif
         @endif
-
     @endif
 @endforeach
