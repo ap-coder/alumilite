@@ -13,10 +13,10 @@
 
                         @endif
                     </a>
-                    
+
                 </div>
                 <div class="car-content">
-                
+
                     @if ($product->brand)
                         <div class="author-meta">
                             <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
@@ -27,6 +27,7 @@
                         </div>
                     @endif
                     <h4 class="car-title"><a href="{{ route('products.show',$product->slug) }}">{{ $product->name }}</a></h4>
+                        <p>{{ $product->excerpt ?? '' }}</p>
                     <span class="price">
                         @if ($product->price && $product->msrp)
                                 <span class="sale-price">${{ number_format($product->price) }}</span>
@@ -35,9 +36,9 @@
                                 <span class="price-amount">${{ number_format($product->price) }}</span>
                             @endif
                     </span>
-                    
+
                 </div>
             </div>
-            
+
         </div>
     @endforeach
