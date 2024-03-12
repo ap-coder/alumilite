@@ -3,7 +3,7 @@
 @section('content')
 
 @include('site.home.partials.slider')
-{{-- @include('site.home.partials.search') --}}
+@include('site.home.partials.search')
 {{-- @include('site.home.partials.trending') --}}
 {{-- @include('site.home.partials.browse-types') --}}
 
@@ -131,6 +131,24 @@
 				}
 			});
         });
+    });
+
+    $('#productBrand').change(function(){
+        var brandId = $(this).val();
+        var _token = $('meta[name="csrf-token"]').attr('content');
+			$.ajax({
+				url:"{{ route('products.GetModelsByBrand') }}",
+				dataType:'json',
+				method:"POST",
+				data:{brandId:brandId, _token:_token},
+				success:function(data){
+					$('#productBrandModel').html(data.html);
+                    $('#productBrandModel')[0].sumo.unload();
+                    $('#productBrandModel').SumoSelect({
+                        // SumoSelect options
+                    });
+				}
+			});
     });
 
 </script>

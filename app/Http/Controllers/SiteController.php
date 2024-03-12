@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\ProductCategory;
 use App\Models\Brand;
 use App\Models\Post;
 use App\Models\User;
@@ -19,6 +20,7 @@ use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
+use App\Mail\ContactMail;
 
 class SiteController extends Controller
 {
@@ -31,6 +33,7 @@ class SiteController extends Controller
         $sliders = Slider::published()->get();
         $productTypes = ProductType::published()->get();
         $brands = Brand::published()->get();
+        $categories = ProductCategory::published()->get();
 
         // Retrieve products for each brand
         $brandsWithProducts = Brand::whereHas('brandProducts', function ($query) {
@@ -38,7 +41,7 @@ class SiteController extends Controller
         })->get();
 
         
-        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds','brandsWithProducts'));
+        return view('site.home.index', compact( 'posts', 'products','sliders','brands','productTypes','builds','brandsWithProducts','categories'));
     }
 
     public function about()
@@ -50,6 +53,15 @@ class SiteController extends Controller
 
     public function contact()
     {
+        // $mailData = [
+        //     'title' => 'Mail from itcodestuff.com',
+        //     'body' => 'This is for testing email using smtp.'
+        // ];
+
+        // Mail::to('testingdata282@gmail.com')->send(new ContactMail($mailData));
+
+        // dd('Email is sent successfully.');
+
         return view('site.contact.index');
     }
 

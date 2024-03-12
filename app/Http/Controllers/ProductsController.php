@@ -115,4 +115,25 @@ class ProductsController extends Controller
         return response()->json($data);
 
     }
+
+    public function GetModelsByBrand(Request $request)
+    {
+        $brandId=$request->brandId;
+
+        $html = '<option value="">All models</option>';
+
+        if ($brandId) {
+            $brand = Brand::where('slug',$brandId)->first();
+            $models = BrandModel::where('brand_id',$brand->id)->get();
+
+            foreach ($models as $key => $model) {
+                $html .= '<option value="'.$model->slug.'">'.$model->model.'</option>';
+            }
+        }
+
+        $data['html'] = $html;
+
+        return response()->json($data);
+
+    }
 }

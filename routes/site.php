@@ -16,6 +16,7 @@ Route::resource('products', 'ProductsController', ['except' => ['create', 'store
 Route::get('products/{product:slug}', 'ProductsController@show')->name('products.show');
 Route::post('products/GetByBrands', 'ProductsController@GetByBrands')->name('products.GetByBrands');
 Route::post('products/GetByBrandModels', 'ProductsController@GetByBrandModels')->name('products.GetByBrandModels');
+Route::post('products/GetModelsByBrand', 'ProductsController@GetModelsByBrand')->name('products.GetModelsByBrand');
 
 Route::resource('builds', 'BuildsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 Route::get('builds/{build:slug}', 'BuildsController@show')->name('builds.show');
