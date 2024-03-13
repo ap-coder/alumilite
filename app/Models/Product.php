@@ -45,12 +45,14 @@ class Product extends Model implements HasMedia
         'created_at',
         'updated_at',
         'deleted_at',
+        'year_to',
+        'year_from',
     ];
 
     protected $casts = [
-        'paypal_prod' => 'string', 
+        'paypal_prod' => 'string',
     ];
-    
+
 
     protected $with = ['media', 'categories', 'tags'];
 

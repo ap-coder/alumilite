@@ -163,6 +163,10 @@ return [
             'brand_model_helper'       => ' ',
             'paypal_prod'              => 'Paypal Product ID',
             'paypal_prod_helper'       => ' ',
+            'year_from'                => 'Year From',
+            'year_from_helper'         => ' ',
+            'year_to'                  => 'Year To',
+            'year_to_helper'           => ' ',
         ],
     ],
     'staticSeo' => [

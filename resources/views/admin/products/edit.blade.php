@@ -13,18 +13,43 @@
         <form method="POST" action="{{ route("admin.products.update", [$product->id]) }}" enctype="multipart/form-data" id="submitProductsForm">
             @method('PUT')
             @csrf
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('published') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="published" value="0">
-                    <input class="form-check-input" type="checkbox" name="published" id="published" value="1" {{ $product->published || old('published', 0) === 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="published">{{ trans('cruds.product.fields.published') }}</label>
-                </div>
-                @if($errors->has('published'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('published') }}
+            <div class="form-row">
+                <div class="form-group col">
+                    <div class="form-check {{ $errors->has('published') ? 'is-invalid' : '' }}">
+                        <input type="hidden" name="published" value="0">
+                        <input class="form-check-input" type="checkbox" name="published" id="published" value="1" {{ $product->published || old('published', 0) === 1 ? 'checked' : '' }}>
+                        <label class="form-check-label" for="published">{{ trans('cruds.product.fields.published') }}</label>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.product.fields.published_helper') }}</span>
+                    @if($errors->has('published'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('published') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.published_helper') }}</span>
+                </div>
+
+                <div class="form-group col">
+                    <label for="year_from">{{ trans('cruds.product.fields.year_from') }}</label>
+                    <input class="form-control {{ $errors->has('year_from') ? 'is-invalid' : '' }}" type="text" name="year_from" id="year_from" value="{{ old('year_from', $product->year_from) }}">
+                    @if($errors->has('year_from'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('year_from') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.year_from_helper') }}</span>
+                </div>
+
+                <div class="form-group col">
+                    <label for="year_to">{{ trans('cruds.product.fields.year_to') }}</label>
+                    <input class="form-control {{ $errors->has('year_to') ? 'is-invalid' : '' }}" type="text" name="year_to" id="year_to" value="{{ old('year_to', $product->year_to) }}">
+                    @if($errors->has('year_to'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('year_to') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.year_to_helper') }}</span>
+                </div>
+
             </div>
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.product.fields.name') }}</label>
@@ -58,7 +83,7 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.product.fields.msrp_helper') }}</span>
                 </div>
-                
+
                 <div class="form-group col">
                     <label class="required" for="name">{{ trans('cruds.product.fields.paypal_prod') }}</label>
                     <input class="form-control {{ $errors->has('paypal_prod') ? 'is-invalid' : '' }}" type="text" name="paypal_prod" id="paypal_prod" value="{{ old('paypal_prod', $product->paypal_prod) }}">
@@ -69,8 +94,8 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.product.fields.paypal_prod_helper') }}</span>
                 </div>
-    
-    
+
+
             </div>
 
 
@@ -96,7 +121,7 @@
                 <span class="help-block">{{ trans('cruds.product.fields.description_helper') }}</span>
             </div>
 
- 
+
             <div class="form-group">
                 <label for="photo">{{ trans('cruds.product.fields.photo') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
@@ -193,8 +218,8 @@
                 @endif
                 <span class="help-block">Only select one or two to reduce issues in SEO.</span>
             </div>
-            
-            
+
+
 
             <div class="form-group col-8">
                 <label for="tags">{{ trans('cruds.product.fields.tag') }}</label>
@@ -204,7 +229,7 @@
                             <option value="{{ $id }}" {{ in_array($id, old('tags', $product->tags->pluck('id')->toArray())) ? 'selected' : '' }}>{{ $tag }}</option>
                         @endforeach
                     </select>
-                    
+
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="addTag">
                             <i class="fas fa-plus"></i>
@@ -218,9 +243,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.tag_helper') }}</span>
             </div>
-            
-            
-            
+
+
+
             <div class="form-group col-8">
                 <label for="features">{{ trans('cruds.product.fields.feature') }}</label>
                 <div class="input-group">
@@ -242,8 +267,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.feature_helper') }}</span>
             </div>
-            
-        
+
+
             <div class="form-group col-8">
                 <label for="technical_specs">{{ trans('cruds.product.fields.technical_specs') }}</label>
                 <div class="input-group">
@@ -367,7 +392,7 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.product.fields.slug_helper') }}</span>
                 </div>
-            </div>                      
+            </div>
             <hr>
 
 

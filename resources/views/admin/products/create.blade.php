@@ -9,19 +9,44 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.products.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('published') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="published" value="0">
-                    <input class="form-check-input" type="checkbox" name="published" id="published" value="1" {{ old('published', 0) == 1 || old('published') === null ? 'checked' : '' }}>
-                    <label class="form-check-label" for="published">{{ trans('cruds.product.fields.published') }}</label>
-                </div>
-                @if($errors->has('published'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('published') }}
+            <div class="form-row">
+                <div class="form-group col">
+                    <div class="form-check {{ $errors->has('published') ? 'is-invalid' : '' }}">
+                        <input type="hidden" name="published" value="0">
+                        <input class="form-check-input" type="checkbox" name="published" id="published" value="1" {{ old('published', 0) == 1 || old('published') === null ? 'checked' : '' }}>
+                        <label class="form-check-label" for="published">{{ trans('cruds.product.fields.published') }}</label>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.product.fields.published_helper') }}</span>
+                    @if($errors->has('published'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('published') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.published_helper') }}</span>
+                </div>
+
+                <div class="form-group col">
+                    <label for="year_from">{{ trans('cruds.product.fields.year_from') }}</label>
+                    <input class="form-control {{ $errors->has('year_from') ? 'is-invalid' : '' }}" type="text" name="year_from" id="year_from" value="{{ old('year_from', '') }}">
+                    @if($errors->has('year_from'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('year_from') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.year_from_helper') }}</span>
+                </div>
+
+                <div class="form-group col">
+                    <label for="year_to">{{ trans('cruds.product.fields.year_to') }}</label>
+                    <input class="form-control {{ $errors->has('year_to') ? 'is-invalid' : '' }}" type="text" name="year_to" id="year_to" value="{{ old('year_to', '') }}">
+                    @if($errors->has('year_to'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('year_to') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.year_to_helper') }}</span>
+                </div>
             </div>
+
 
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.product.fields.name') }}</label>
@@ -153,7 +178,7 @@
                 <div class="input-group">
                     <select class="form-control select2" name="categories[]" id="categories" multiple>
                         @foreach($categories as $id => $name)
-                            <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $name }}</option> 
+                            <option value="{{ $id }}" {{ in_array($id, old('categories', [])) ? 'selected' : '' }}>{{ $name }}</option>
                         @endforeach
                     </select>
                     <div class="input-group-append">
@@ -169,8 +194,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.category_helper') }}</span>
             </div>
-            
-            
+
+
 
             {{-- <div class="form-group">
                 <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
@@ -191,7 +216,7 @@
                 <span class="help-block">{{ trans('cruds.product.fields.category_helper') }}</span>
             </div> --}}
 
-           
+
             <div class="form-group col-8">
                 <label for="tags">{{ trans('cruds.product.fields.tag') }}</label>
                 <div class="input-group">
@@ -213,9 +238,9 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.tag_helper') }}</span>
             </div>
-            
-            
-            
+
+
+
 
             {{-- <div class="form-group">
                 <label for="tags">{{ trans('cruds.product.fields.tag') }}</label>
@@ -257,8 +282,8 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.feature_helper') }}</span>
             </div>
-            
-            
+
+
             {{-- <div class="form-group">
                 <label for="features">{{ trans('cruds.product.fields.feature') }}</label>
                 <div style="padding-bottom: 4px">
@@ -300,7 +325,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.technical_specs_helper') }}</span>
             </div>
-            
+
 
 
             {{-- <div class="form-group">
@@ -369,20 +394,20 @@
 <script>
     $(document).ready(function() {
         $('#addTag').on('click', function() {
-        
+
             var tagName = prompt("Enter new product tag name:");
             if (!tagName) return;
 
-            
+
             $.ajax({
-                url: '/admin/product-tags/store-ajax', 
+                url: '/admin/product-tags/store-ajax',
                 type: 'POST',
                 data: {
                     name: tagName,
                     _token: $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
-                    
+
                     var newOption = new Option(response.name, response.id, true, true);
                     $('#tags').append(newOption).trigger('change');
                 },
@@ -439,7 +464,7 @@
             if (!categoryName) return;
 
             $.ajax({
-                url: '/admin/product-categories/store-ajax',  
+                url: '/admin/product-categories/store-ajax',
                 type: 'POST',
                 data: {
                     name: categoryName,
