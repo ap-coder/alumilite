@@ -1797,7 +1797,7 @@ p {
 
 .search-box-wrapper {
   background-color: #fff;
-    border: tan solid 2px!important;
+    border: tan solid 1px!important;
   position: relative;
   border-radius: 3px;
   text-align: left;
