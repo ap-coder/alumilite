@@ -63,16 +63,16 @@ class ProductController extends Controller
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
             });
-            $table->editColumn('msrp', function ($row) {
-                return $row->msrp ? $row->msrp : '';
+            // $table->editColumn('msrp', function ($row) {
+            //     return $row->msrp ? $row->msrp : '';
+            // });
+            $table->addColumn('brand_name', function ($row) {
+                return $row->brand ? $row->brand->name : '';
             });
-            // $table->addColumn('brand_name', function ($row) {
-            //     return $row->brand ? $row->brand->name : '';
-            // });
 
-            // $table->addColumn('brand_model_model', function ($row) {
-            //     return $row->brand_model ? $row->brand_model->model : '';
-            // });
+            $table->addColumn('brand_model_model', function ($row) {
+                return $row->brand_model ? $row->brand_model->model : '';
+            });
 
             $table->editColumn('category', function ($row) {
                 $labels = [];

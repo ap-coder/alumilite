@@ -36,9 +36,9 @@
                     <th>
                         {{ trans('cruds.product.fields.price') }}
                     </th>
-                    <th>
+                    {{-- <th>
                         {{ trans('cruds.product.fields.msrp') }}
-                    </th>
+                    </th> --}}
                     {{-- <th>
                         {{ trans('cruds.product.fields.photo') }}
                     </th>
@@ -63,6 +63,12 @@
                     {{-- <th>
                         {{ trans('cruds.product.fields.slug') }}
                     </th> --}}
+                    <th>
+                        {{ trans('cruds.product.fields.brand') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.product.fields.brand_model') }}
+                    </th>
                     <th>
                         &nbsp;
                     </th>
@@ -124,7 +130,7 @@
 { data: 'name', name: 'name' },
 // { data: 'description', name: 'description' },
 { data: 'price', name: 'price' },
-{ data: 'msrp', name: 'msrp' },
+//{ data: 'msrp', name: 'msrp' },
 // { data: 'photo', name: 'photo', sortable: false, searchable: false },
 // { data: 'additional_photos', name: 'additional_photos', sortable: false, searchable: false },
 // { data: 'documents', name: 'documents', sortable: false, searchable: false },
@@ -133,6 +139,8 @@
 // { data: 'technical_specs', name: 'technical_specs.name' },
 // { data: 'product_type_name', name: 'product_type.name' },
 // { data: 'slug', name: 'slug' },
+{ data: 'brand_name', name: 'brand_name' },
+{ data: 'brand_model_model', name: 'brand_model_model' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
