@@ -85,14 +85,14 @@
                 </div>
 
                 <div class="form-group col">
-                    <label class="required" for="name">{{ trans('cruds.product.fields.paypal_prod') }}</label>
+                    <label class="required" for="name">Paypal Product Link</label>
                     <input class="form-control {{ $errors->has('paypal_prod') ? 'is-invalid' : '' }}" type="text" name="paypal_prod" id="paypal_prod" value="{{ old('paypal_prod', $product->paypal_prod) }}">
                     @if($errors->has('paypal_prod'))
                         <div class="invalid-feedback">
                             {{ $errors->first('paypal_prod') }}
                         </div>
                     @endif
-                    <span class="help-block">{{ trans('cruds.product.fields.paypal_prod_helper') }}</span>
+                    <span class="help-block">Add the whole link paypal gives you into this field</span>
                 </div>
 
 

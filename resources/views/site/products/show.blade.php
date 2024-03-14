@@ -32,7 +32,7 @@
                             @endif
                         @endif
                         @if($product->year_to || $product->year_from)
-                            | <strong>YEARS: </strong> <span class="years">{{ $product->year_to ?? '' }} - {{ $product->year_from ?? '' }}</span>
+                            | <strong>YEARS: </strong> <span class="years">{{ $product->year_from ?? '' }} - {{ $product->year_to ?? '' }}</span>
                         @endif
                     </p>
                 </div>

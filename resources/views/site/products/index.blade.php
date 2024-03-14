@@ -77,14 +77,12 @@
                                                 @if ($product->brand_model)
                                                     | {{ $product->brand_model->model }}
                                                     @if($product->year_to || $product->year_from)
-                                                        | <span class="years">{{ $product->year_to ?? '' }} - {{ $product->year_from ?? '' }}</span>
+                                                        | <span class="years">{{ $product->year_from ?? '' }} - {{ $product->year_to ?? '' }}</span>
                                                     @endif
                                                 @endif
                                             </span>
                                         </div>
                                     @endif
-
-
 
                                     <ul class="car-meta">
                                         @if ($product->technical_specs->count()>0)
