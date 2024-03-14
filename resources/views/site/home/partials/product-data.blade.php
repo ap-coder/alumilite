@@ -23,6 +23,9 @@
                                 @if ($product->brand_model)
                                     | {{ $product->brand_model->model }}
                                 @endif
+                                @if($product->year_to || $product->year_from)
+                                    | <span class="years">{{ $product->year_to ?? '' }} - {{ $product->year_from ?? '' }}</span>
+                                @endif
                             </span>
                         </div>
                     @endif

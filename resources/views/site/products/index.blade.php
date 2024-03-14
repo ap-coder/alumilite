@@ -52,7 +52,7 @@
                                             </button>
                                         </li>
                                     </ul>
-                                    <span class="status special"><i class="ion-flash"></i> Special</span> 
+                                    <span class="status special"><i class="ion-flash"></i> Special</span>
                                     --}}
                                 </div>
                                 <div class="car-content">
@@ -75,11 +75,16 @@
                                         <div class="author-meta">
                                             <span><a href="{{ route('brands.show',$product->brand->slug) }}">{{ $product->brand->name }}</a>
                                                 @if ($product->brand_model)
-                                                  | {{ $product->brand_model->model }}
+                                                    | {{ $product->brand_model->model }}
+                                                    @if($product->year_to || $product->year_from)
+                                                        | <span class="years">{{ $product->year_to ?? '' }} - {{ $product->year_from ?? '' }}</span>
+                                                    @endif
                                                 @endif
                                             </span>
                                         </div>
                                     @endif
+
+
 
                                     <ul class="car-meta">
                                         @if ($product->technical_specs->count()>0)
@@ -159,7 +164,7 @@
                                 {!! \Str::limit($product->description, $limit = 200, $end = '...') !!}
                             @endif
 
-excerpt here 
+excerpt here
                             </div>
 
                         </div>
