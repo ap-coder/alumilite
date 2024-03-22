@@ -53,16 +53,22 @@ class SiteController extends Controller
 
     public function contact()
     {
-        // $mailData = [
-        //     'title' => 'Mail from itcodestuff.com',
-        //     'body' => 'This is for testing email using smtp.'
-        // ];
-
-        // Mail::to('testingdata282@gmail.com')->send(new ContactMail($mailData));
-
-        // dd('Email is sent successfully.');
-
         return view('site.contact.index');
+    }
+
+    public function contactSubmit(Request $request)
+    {
+        $mailData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message
+        ];
+
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($mailData));
+
+        echo "Email is sent successfully.";
+
     }
 
 }

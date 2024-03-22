@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 Route::get('/', 'SiteController@index')->name('homepage');
 Route::get('contact', 'SiteController@contact')->name('contact');
+Route::post('contactSubmit', 'SiteController@contactSubmit')->name('contactSubmit');
 Route::resource('blog', 'BlogController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
 // // Route::get('load-more-data', 'BlogController@more_data');
@@ -17,10 +18,12 @@ Route::get('products/{product:slug}', 'ProductsController@show')->name('products
 Route::post('products/GetByBrands', 'ProductsController@GetByBrands')->name('products.GetByBrands');
 Route::post('products/GetByBrandModels', 'ProductsController@GetByBrandModels')->name('products.GetByBrandModels');
 Route::post('products/GetModelsByBrand', 'ProductsController@GetModelsByBrand')->name('products.GetModelsByBrand');
+Route::post('products/productContact', 'ProductsController@productContact')->name('products.productContact');
 
 Route::resource('builds', 'BuildsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 Route::get('builds/{build:slug}', 'BuildsController@show')->name('builds.show');
 Route::post('builds/review/store', 'BuildsController@review_store')->name('builds.review.store');
+Route::post('builds/buildContact', 'BuildsController@buildContact')->name('builds.buildContact');
 
 Route::get('brands', 'BrandsController@index', ['except' => ['create', 'store', 'edit', 'update', 'destroy']])->name('brands');
 Route::get('brands/{brand:slug}', 'BrandsController@show')->name('brands.show');

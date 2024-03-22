@@ -46,32 +46,33 @@
             <div class="contact-form">
                 <h2 class="form-title">Get In Touch</h2>
 
-                <form id="contact-form" action="" method="post">
+                <form id="contact-form" action="{{ route('contactSubmit') }}" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="single-form">
-                                <input type="text" name="name" placeholder="Your Name">
+                                <input type="text" name="name" placeholder="Your Name" required>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="single-form">
-                                <input type="email" name="email" placeholder="Email Address">
+                                <input type="email" name="email" placeholder="Email Address" required>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="single-form">
-                                <input type="text" name="subject" placeholder="Subject">
+                                <input type="text" name="subject" placeholder="Subject" required>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="single-form">
-                                <textarea name="message" placeholder="Write your message here..."></textarea>
+                                <textarea name="message" placeholder="Write your message here..." required></textarea>
                             </div>
                         </div>
                         <p class="form-message"></p>
                         <div class="col-lg-12">
                             <div class="single-form">
-                                <button class="main-btn">Send Message</button>
+                                <button id="contactFormButton" class="main-btn">Send Message</button>
                             </div>
                         </div>
                     </div>

@@ -26,6 +26,46 @@
 
     {{-- @includeIf('site.static-seo', ['static-seo' => $seo])) --}}
 
+    <style>
+        .spinner-border {
+        width: 2rem;
+        height: 2rem;
+        border-width: 0.25em;
+        }
+
+        .spinner-border::after {
+        width: 2rem;
+        height: 2rem;
+        border-width: 0.25em;
+        }
+
+        /* You can adjust the color and other properties as needed */
+        .spinner-border,
+        .spinner-border::before,
+        .spinner-border::after {
+        border-color: #000; /* Change the color as needed */
+        border-right-color: transparent;
+        }
+
+        @keyframes spinner-border {
+        to {
+            transform: rotate(360deg);
+        }
+        }
+
+        .spinner-border {
+        display: inline-block;
+        position: relative;
+        width: 2rem;
+        height: 2rem;
+        vertical-align: text-bottom;
+        border: 0.25em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: spinner-border .75s linear infinite;
+        margin-top: 6px;
+        }
+    </style>
 @yield('headcss')
 @include('site.partials.head-assets')
 @yield('headjs')

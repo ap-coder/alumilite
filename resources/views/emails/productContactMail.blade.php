@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form Submission</title>
+    <title>Product Contact Form Submission</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -54,11 +54,13 @@
                 <img src="{{ $setting->header_logo->getUrl() }}" alt="alumilitearmor">
             @endif
         </div>
-        <h2>Contact Form Submission</h2>
+        <h2>Product Contact Form Submission</h2>
         <p>Dear Alumilitearmor,</p>
         <div class="message">
+            <p><strong>Product Name:</strong> <a href="{{ $mailData['product_name'] }}">{{ $mailData['product_name'] }}</a> </p>
             <p><strong>Name:</strong> {{ $mailData['name'] }}</p>
             <p><strong>Email:</strong> {{ $mailData['email'] }}</p>
+            <p><strong>Phone:</strong> {{ $mailData['phone'] }}</p>
             <p><strong>Subject:</strong> {{ $mailData['subject'] }}</p>
             <p><strong>Message:</strong> {{ $mailData['message'] }}</p>
         </div>

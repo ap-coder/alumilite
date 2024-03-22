@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Build;
 use App\Models\Review;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BuildContactMail;
 
 class BuildsController extends Controller
 {
@@ -61,5 +63,24 @@ class BuildsController extends Controller
         }
 
         return redirect()->back()->with('success', 'Successfully submitted your review!');
+    }
+
+    public function buildContact(Request $request)
+    {
+        $mailData = [
+            'build_name' => $request->build_name,
+            'build_slug' => $request->build_slug,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'zipcode' => $request->zipcode,
+            'subject' => 'Build Contact from : '.$request->build_name,
+            'message' => $request->message
+        ];
+
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new BuildContactMail($mailData));
+
+        echo "Email is sent successfully.";
+
     }
 }

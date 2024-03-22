@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class BuildContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -23,9 +23,12 @@ class ContactMail extends Mailable
         $this->mailData = $mailData;
     }
 
+    /**
+     * Get the message build.
+     */
     public function build()
     {
         return $this->subject($this->mailData['subject'])
-                    ->view('emails.contactMail');
+                    ->view('emails.buildContactMail');
     }
 }
