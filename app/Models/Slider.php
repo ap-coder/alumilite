@@ -105,6 +105,7 @@ class Slider extends Model implements HasMedia
             $file->thumbnail = $file->getUrl('thumb');
             $file->preview = $file->getUrl('preview');
             $file->responsive = $file->getUrl('responsive');
+            $file->slider = $file->getUrl('slider');
         }
 
         return $file;
