@@ -13,6 +13,8 @@ use App\Models\BrandModel;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ProductContactMail;
 
 class ProductsController extends Controller
 {
@@ -134,6 +136,24 @@ class ProductsController extends Controller
         $data['html'] = $html;
 
         return response()->json($data);
+
+    }
+
+    public function productContact(Request $request)
+    {
+        $mailData = [
+            'product_name' => $request->product_name,
+            'product_slug' => $request->product_slug,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => 'Product Contact from : '.$request->product_name,
+            'message' => $request->message
+        ];
+
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ProductContactMail($mailData));
+
+        echo "Email is sent successfully.";
 
     }
 }

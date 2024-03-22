@@ -11,6 +11,11 @@ $(function() {
 		// Stop the browser from submitting the form.
 		e.preventDefault();
 
+		$loader = '<div class="spinner-border" role="status">' +
+                '<span class="sr-only">Loading...</span>' +
+                '</div>';
+            $('#contactFormButton').html($loader);
+
 		// Serialize the form data.
 		var formData = $(form).serialize();
 
@@ -30,6 +35,8 @@ $(function() {
 
 			// Clear the form.
 			$('#contact-form input,#contact-form textarea').val('');
+
+			$('#contactFormButton').html('Send Message');
 		})
 		.fail(function(data) {
 			// Make sure that the formMessages div has the 'error' class.

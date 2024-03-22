@@ -2,24 +2,28 @@
                                 <h4 class="sidebar-title">CONTACT US</h4>
 
                                 <div class="dealer-contact-form">
-                                    <form action="#">
+                                    <form id="contact-form" action="{{ route('products.productContact') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_name" value="{{ $product->name }}">
+                                        <input type="hidden" name="product_slug" value="{{ route('products.show',$product->slug) }}">
                                         <div class="single-input">
-                                            <input type="text" placeholder="Full Name">
+                                            <input type="text" placeholder="Full Name" name="name" required>
                                             <i class="ion-android-person"></i>
                                         </div>
                                         <div class="single-input">
-                                            <input type="email" placeholder="Emaill Address *">
+                                            <input type="email" placeholder="Emaill Address *" name="email" required>
                                             <i class="ion-android-mail"></i>
                                         </div>
                                         <div class="single-input">
-                                            <input type="text" placeholder="Phone (Optinal)">
+                                            <input type="text" placeholder="Phone (Optinal)" name="phone">
                                             <i class="ion-android-call"></i>
                                         </div>
                                         <div class="single-input">
-                                            <textarea placeholder="Write your Message here..."></textarea>
+                                            <textarea required name="message" placeholder="Write your Message here..."></textarea>
                                         </div>
+                                        <p class="form-message"></p>
                                         <div class="single-input">
-                                            <button class="main-btn d-block">SEND EMAIL</button>
+                                            <button id="contactFormButton" class="main-btn d-block">Send Message</button>
                                         </div>
                                     </form>
                                 </div>
