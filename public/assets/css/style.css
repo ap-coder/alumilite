@@ -7900,7 +7900,7 @@ p {
 }
 .sidebar-dealer-contact .dealer-contact-form .single-input textarea {
   height: 150px;
-  padding-top: 10px;
+  padding: 10px !important;
   resize: none;
 }
 
