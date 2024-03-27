@@ -44,10 +44,18 @@ class ProductsController extends Controller
                 });
             }
 
+            $productQuery->withCount('media') // Eager load the count of media
+            ->orderByRaw('ISNULL(media_count), media_count DESC') // Orders by products with images first
+            ->latest();
+            
             $products = $productQuery->paginate(12);
 
         } else {
-            $products = Product::published()->paginate(12);
+            $products = Product::published()
+            ->withCount('media') // Eager load the count of media
+            ->orderByRaw('ISNULL(media_count), media_count DESC') // Orders by products with images first
+            ->latest()
+            ->paginate(12);
         }
 
         $categories = ProductCategory::published()->get();
@@ -86,9 +94,20 @@ class ProductsController extends Controller
         $id=$request->id;
 
         if ($id=='all') {
-            $products = Product::published()->latest()->take(12)->get();
+            $products = Product::published()
+            ->withCount('media') // Eager load the count of media
+            ->orderByRaw('ISNULL(media_count), media_count DESC') // Orders by products with images first
+            ->latest()
+            ->take(12)
+            ->get();
         }else{
-            $products = Product::published()->where('brand_id',$id)->latest()->take(12)->get();
+            $products = Product::published()
+            ->where('brand_id',$id)
+            ->withCount('media') // Eager load the count of media
+            ->orderByRaw('ISNULL(media_count), media_count DESC') // Orders by products with images first
+            ->latest()
+            ->take(12)
+            ->get();
         }
 
         $html = view('site.home.partials.product-data', compact('products'))->render();
@@ -105,9 +124,22 @@ class ProductsController extends Controller
         $modelId=$request->modelId;
 
         if ($modelId=='all') {
-            $products = Product::published()->where('brand_id',$brandId)->latest()->take(12)->get();
+            $products = Product::published()
+            ->where('brand_id',$brandId)
+            ->withCount('media') // Eager load the count of media
+            ->orderByRaw('ISNULL(media_count), media_count DESC') // Orders by products with images first
+            ->latest()
+            ->take(12)
+            ->get();
         }else{
-            $products = Product::published()->where('brand_id',$brandId)->where('brand_model_id',$modelId)->latest()->take(12)->get();
+            $products = Product::published()
+            ->where('brand_id',$brandId)
+            ->where('brand_model_id',$modelId)
+            ->withCount('media') // Eager load the count of media
+            ->orderByRaw('ISNULL(media_count), media_count DESC') // Orders by products with images first
+            ->latest()
+            ->take(12)
+            ->get();
         }
 
         $html = view('site.home.partials.product-data', compact('products'))->render();

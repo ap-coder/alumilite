@@ -27,8 +27,15 @@ class SiteController extends Controller
 
     public function index(Request $request)
     {
+        $products = Product::published()
+        ->withCount('media') // Eager load the count of media
+        ->orderByRaw('ISNULL(media_count), media_count DESC') // Orders by products with images first
+        ->latest()
+        ->take(12)
+        ->get();
+    
         $posts = Post::published()->latest()->take(3)->get();
-        $products = Product::published()->latest()->take(12)->get();
+        // $products = Product::published()->latest()->take(12)->get();
         $builds = Build::published()->latest()->get();
         $sliders = Slider::published()->get();
         $productTypes = ProductType::published()->get();

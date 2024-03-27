@@ -251,6 +251,15 @@
                 </a>
             </li>
         @endcan
+        @can('menu_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.menu.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/menu") || request()->is("admin/menu/*") ? "c-active" : "" }}">
+                    <i class="fa-fw far fa-bell c-sidebar-nav-icon">
+                    </i>
+                    {{ trans('global.menu') }}
+                </a>
+            </li>
+        @endcan
         @can('setting_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
