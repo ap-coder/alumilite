@@ -29,16 +29,12 @@ class BuildsController extends Controller
 
         $viewcount = views($build)->unique()->count();
 
-        if ($build->brand) {
-            $similarBuilds = Build::whereHas('brand', function ($query) use ($build) {
-                $query->where('id', $build->brand->id);
-            })
-                ->where('id', '!=', $build->id)
-                ->take(6)
-                ->get();
-        } else {
-            $similarBuilds = collect();
-        }
+        $similarBuilds = Build::whereHas('brand', function ($query) use ($build) {
+            $query->where('id', $build->brand->id);
+        })
+        ->where('id', '!=', $build->id)
+        ->take(6)
+        ->get();
 
 //        $similarBuilds = Build::whereHas('brand', function ($query) use ($build) {
 //            $query->where('id', $build->brand->id);
