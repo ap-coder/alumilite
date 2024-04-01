@@ -20,39 +20,27 @@ class GenerateProductSlug extends Command
      *
      * @var string
      */
-    protected $description = 'Generate slugs for all products based on brand, model, and name';
+    protected $description = 'Generate slugs for products';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $products = Product::all();
+        $products = Product::get();
 
         foreach ($products as $product) {
             $originalSlug = $product->slug;
+            $newSlug = Str::slug($product->name);
 
-            $slug = '';
-            if ($product->brand) {
-                $slug .= Str::slug($product->brand->name, '-') . '-';
-            }
-
-            if ($product->brand_model) {
-                $slug .= Str::slug($product->brand_model->model, '-') . '-';
-            }
-
-            $slugSuffix = $product->slug ? $product->slug : $product->name;
-            $slug .= Str::slug($slugSuffix, '-');
-
-            $slug = strtolower($slug);
-
-            if ($slug !== $originalSlug) {
-                $product->slug = $slug;
+            if ($originalSlug !== $newSlug) {
+                $product->slug = $newSlug;
                 $product->save();
-                $this->info("Slug for product ID {$product->id} updated: '{$originalSlug}' -> '{$slug}'");
+
+                $this->line("Updated product ID {$product->id}: Slug changed from '{$originalSlug}' to '{$newSlug}'.");
             }
         }
 
-        $this->info('All product slugs have been updated.');
+        $this->info('Product slugs generated successfully.');
     }
 }
