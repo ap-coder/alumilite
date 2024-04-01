@@ -20,7 +20,7 @@ class GenerateProductSlug extends Command
      *
      * @var string
      */
-    protected $description = 'Generate slugs for products';
+    protected $description = 'Generate slugs for all products regardless of current value';
 
     /**
      * Execute the console command.
@@ -30,17 +30,19 @@ class GenerateProductSlug extends Command
         $products = Product::get();
 
         foreach ($products as $product) {
-            $originalSlug = $product->slug;
+            // Generate the new slug regardless of the existing one
             $newSlug = Str::slug($product->name);
 
-            if ($originalSlug !== $newSlug) {
-                $product->slug = $newSlug;
-                $product->save();
+            // Assign the new slug to the product
+            $product->slug = $newSlug;
 
-                $this->line("Updated product ID {$product->id}: Slug changed from '{$originalSlug}' to '{$newSlug}'.");
-            }
+            // Save the product with the new slug
+            $product->save();
+
+            // Optionally, you can log each slug generation to the CLI for visibility
+            $this->line("Product ID {$product->id} slug updated to '{$newSlug}'.");
         }
 
-        $this->info('Product slugs generated successfully.');
+        $this->info('All product slugs have been regenerated and saved.');
     }
 }
