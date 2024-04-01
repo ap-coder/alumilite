@@ -14,12 +14,43 @@ class ProductObserver
     public function creating(Product $product)
     {
         if ($product->slug) {
-            $slug = Str::slug($product->slug, '-');
+
+            $slug = '';
+
+            if ($product->brand) {
+                $slug .= Str::slug($product->brand->name, '-') . '-';
+            }
+            
+            if ($product->brand_model) {
+                $slug .= Str::slug($product->brand_model->model, '-') . '-';
+            }
+            
+            // Append additional attributes to the slug
+            $slug .= Str::slug($product->slug, '-');
+
+            // Convert the slug to lowercase
             $slug = strtolower($slug);
+
             $product->slug = $slug;
+
         } else {
-            $slug = Str::slug($product->name, '-');
+
+            $slug = '';
+
+            if ($product->brand) {
+                $slug .= Str::slug($product->brand->name, '-') . '-';
+            }
+            
+            if ($product->brand_model) {
+                $slug .= Str::slug($product->brand_model->model, '-') . '-';
+            }
+            
+            // Append additional attributes to the slug
+            $slug .= Str::slug($product->name, '-');
+            
+            // Convert the slug to lowercase
             $slug = strtolower($slug);
+
             $product->slug = $slug;
         }
     }
@@ -29,6 +60,45 @@ class ProductObserver
      */
     public function updating(Product $product)
     {
-        $product->slug = $product->slug ? $product->slug : Str::slug($product->name, '-');
+        if ($product->slug) {
+
+            $slug = '';
+
+            if ($product->brand) {
+                $slug .= Str::slug($product->brand->name, '-') . '-';
+            }
+            
+            if ($product->brand_model) {
+                $slug .= Str::slug($product->brand_model->model, '-') . '-';
+            }
+            
+            // Append additional attributes to the slug
+            $slug .= Str::slug($product->slug, '-');
+
+            // Convert the slug to lowercase
+            $slug = strtolower($slug);
+
+            $product->slug = $slug;
+
+        } else {
+
+            $slug = '';
+
+            if ($product->brand) {
+                $slug .= Str::slug($product->brand->name, '-') . '-';
+            }
+            
+            if ($product->brand_model) {
+                $slug .= Str::slug($product->brand_model->model, '-') . '-';
+            }
+            
+            // Append additional attributes to the slug
+            $slug .= Str::slug($product->name, '-');
+            
+            // Convert the slug to lowercase
+            $slug = strtolower($slug);
+
+            $product->slug = $slug;
+        }
     }
 }

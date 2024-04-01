@@ -52,8 +52,8 @@
 
             </div>
             <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.product.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $product->name) }}" required>
+                <label class="required" for="product_name">{{ trans('cruds.product.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="product_name" value="{{ old('name', $product->name) }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -365,9 +365,7 @@
                 <span class="help-block">{{ trans('cruds.product.fields.technical_specs_helper') }}</span>
             </div> --}}
 
-
             <div class="form-row">
-
                 <div class="form-group col">
                     <label for="product_type_id">{{ trans('cruds.product.fields.product_type') }}</label>
                     <select class="form-select select2 {{ $errors->has('product_type') ? 'is-invalid' : '' }}" name="product_type_id" id="product_type_id">
@@ -393,6 +391,7 @@
                     <span class="help-block">{{ trans('cruds.product.fields.slug_helper') }}</span>
                 </div>
             </div>
+               
             <hr>
 
 
@@ -418,6 +417,33 @@
 @section('scripts')
 
 <script>
+
+    // function generateSlug() {
+    //     var productName = $('#product_name').val().trim();
+    //     var slug = productName.toLowerCase().replace(/ /g,'-');
+    //     $('#slug').val(slug);
+    //     checkSlug(slug);
+    // }
+
+    // function checkSlug(slug) {
+    //     var product_id = {{ $product->id }};
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: "{{ route('admin.products.check.slug') }}",
+    //         data: {slug: slug,product_id:product_id,_token: $('meta[name="csrf-token"]').attr('content')},
+    //         success: function(response) {
+    //             if (response.status === 'error') {
+    //                 // Handle the case where the slug is not unique
+    //                 // For example, display an error message
+    //                 alert(response.message);
+    //                 $('.checkbutton').prop('disabled', true);
+    //             }else{
+    //                 $('.checkbutton').prop('disabled', false);
+    //             }
+    //         }
+    //     });
+    // }
+
     $(document).ready(function() {
         $('#addTag').on('click', function() {
             var tagName = prompt("Enter new tag name:");

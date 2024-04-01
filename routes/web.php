@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
     Route::post('products/ckmedia', 'ProductController@storeCKEditorImages')->name('products.storeCKEditorImages');
     Route::resource('products', 'ProductController');
+    Route::post('/check-product-slug', 'ProductController@checkSlug')->name('products.check.slug');
 
     // Static Seo
     Route::delete('static-seos/destroy', 'StaticSeoController@massDestroy')->name('static-seos.massDestroy');

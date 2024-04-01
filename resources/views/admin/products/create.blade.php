@@ -49,8 +49,8 @@
 
 
             <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.product.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                <label class="required" for="product_name">{{ trans('cruds.product.fields.name') }}</label>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="product_name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))
                     <div class="invalid-feedback">
                         {{ $errors->first('name') }}
@@ -58,8 +58,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.name_helper') }}</span>
             </div>
-
-
 
             <div class="form-row">
                 <div class="form-group col">
@@ -362,7 +360,6 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.product.fields.product_type_helper') }}</span>
                 </div>
-
                 <div class="form-group col">
                     <label for="slug">{{ trans('cruds.product.fields.slug') }}</label>
                     <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" type="text" name="slug" id="slug" value="{{ old('slug', '') }}">
@@ -373,8 +370,8 @@
                     @endif
                     <span class="help-block">{{ trans('cruds.product.fields.slug_helper') }}</span>
                 </div>
-
             </div>
+               
 
 
             <div class="form-group">
@@ -392,6 +389,32 @@
 
 @section('scripts')
 <script>
+
+    // function generateSlug() {
+    //     var productName = $('#product_name').val().trim();
+    //     var slug = productName.toLowerCase().replace(/ /g,'-');
+    //     $('#slug').val(slug);
+    //     checkSlug(slug);
+    // }
+
+    // function checkSlug(slug) {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: "{{ route('admin.products.check.slug') }}",
+    //         data: {slug: slug,_token: $('meta[name="csrf-token"]').attr('content')},
+    //         success: function(response) {
+    //             if (response.status === 'error') {
+    //                 // Handle the case where the slug is not unique
+    //                 // For example, display an error message
+    //                 alert(response.message);
+    //                 $('.checkbutton').prop('disabled', true);
+    //             }else{
+    //                 $('.checkbutton').prop('disabled', false);
+    //             }
+    //         }
+    //     });
+    // }
+
     $(document).ready(function() {
         $('#addTag').on('click', function() {
 

@@ -343,4 +343,23 @@ class ProductController extends Controller
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
+
+    // public function checkSlug(Request $request)
+    // {
+    //     $slug = $request->input('slug');
+    //     $productId = $request->input('product_id'); // Assuming you're passing product_id for update
+
+    //     // Check if the slug exists for any other product except the current one (in case of update)
+    //     $query = Product::where('slug', $slug);
+    //     if ($productId) {
+    //         $query->where('id', '!=', $productId);
+    //     }
+    //     $count = $query->count();
+
+    //     if ($count > 0) {
+    //         return response()->json(['status' => 'error', 'message' => 'Slug already exists']);
+    //     } else {
+    //         return response()->json(['status' => 'success']);
+    //     }
+    // }
 }
