@@ -30,8 +30,15 @@ class GenerateProductSlug extends Command
         $products = Product::get();
 
         foreach ($products as $product) {
-            $product->slug = Str::slug($product->name);
-            $product->save();
+            $originalSlug = $product->slug;
+            $newSlug = Str::slug($product->name);
+
+            if ($originalSlug !== $newSlug) {
+                $product->slug = $newSlug;
+                $product->save();
+
+                $this->line("Updated product ID {$product->id}: Slug changed from '{$originalSlug}' to '{$newSlug}'.");
+            }
         }
 
         $this->info('Product slugs generated successfully.');
