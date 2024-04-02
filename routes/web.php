@@ -18,6 +18,7 @@ Route::get('/admin', function () {
 
 Auth::routes(['register' => false]);
 
+Route::get('r', function () { return view('site.routes'); })->name('assigned-routes')->middleware('auth');
 
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
@@ -132,7 +133,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('medialibrary', 'MediaLibraryController@index_medialibrary')->name('media.medialibrary');
     Route::post('mediaaction', 'MediaLibraryController@mediaaction')->name('media.mediaaction');
     Route::post('delete', 'MediaLibraryController@delete')->name('media.delete');
-    
+
     // Slider
     Route::delete('sliders/destroy', 'SliderController@massDestroy')->name('sliders.massDestroy');
     Route::post('sliders/media', 'SliderController@storeMedia')->name('sliders.storeMedia');
@@ -185,7 +186,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
    })->name('add_env_conditionals');
 
-   Route::post('logged_in_only', function (Request $request) {
+
+
+    Route::post('logged_in_only', function (Request $request) {
         \DB::table('admin_menu_items')->where('id', $request->menu_id)->update(['logged_in_only' => $request->check]);
     })->name('logged_in_only');
 

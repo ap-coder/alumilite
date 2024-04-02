@@ -30,17 +30,14 @@ class GenerateProductSlug extends Command
         $products = Product::get();
 
         foreach ($products as $product) {
-            // Generate the new slug regardless of the existing one
+
             $newSlug = Str::slug($product->name);
 
-            // Assign the new slug to the product
             $product->slug = $newSlug;
 
-            // Save the product with the new slug
             $product->save();
 
-            // Optionally, you can log each slug generation to the CLI for visibility
-            $this->line("Product ID {$product->id} slug updated to '{$newSlug}'.");
+            $this->line("Product: {$product->name} slug updated to '{$newSlug}'.");
         }
 
         $this->info('All product slugs have been regenerated and saved.');
