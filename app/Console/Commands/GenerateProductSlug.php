@@ -30,58 +30,17 @@ class GenerateProductSlug extends Command
         $products = Product::get();
 
         foreach ($products as $product) {
+            // Generate the new slug regardless of the existing one
+            $newSlug = Str::slug($product->name);
 
-            $originalSlug = $product->slug;
+            // Assign the new slug to the product
+            $product->slug = $newSlug;
 
-            if ($product->slug) {
-
-                $slug = '';
-
-                if ($product->brand) {
-                    $slug .= Str::slug($product->brand->name, '-') . '-';
-                }
-
-                if ($product->brand_model) {
-                    $slug .= Str::slug($product->brand_model->model, '-') . '-';
-                }
-
-                // Append additional attributes to the slug
-                $slug .= Str::slug($product->slug, '-');
-
-                // Convert the slug to lowercase
-                $slug = strtolower($slug);
-
-                $product->slug = $slug;
-
-            } else {
-
-                $slug = '';
-
-                if ($product->brand) {
-                    $slug .= Str::slug($product->brand->name, '-') . '-';
-                }
-
-                if ($product->brand_model) {
-                    $slug .= Str::slug($product->brand_model->model, '-') . '-';
-                }
-
-                // Append additional attributes to the slug
-                $slug .= Str::slug($product->name, '-');
-
-                // Convert the slug to lowercase
-                $slug = strtolower($slug);
-
-                $product->slug = $slug;
-            }
-
+            // Save the product with the new slug
             $product->save();
 
-            if ($product->slug !== $originalSlug) {
-                $this->line('Product creating: Slug changed from "' . $originalSlug . '" to "' . $product->slug . '"');
-            }
-
             // Optionally, you can log each slug generation to the CLI for visibility
-           
+            $this->line("Product ID {$product->id} slug updated to '{$newSlug}'.");
         }
 
         $this->info('All product slugs have been regenerated and saved.');
