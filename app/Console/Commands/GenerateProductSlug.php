@@ -31,13 +31,55 @@ class GenerateProductSlug extends Command
 
         foreach ($products as $product) {
 
-            $newSlug = Str::slug($product->name);
+            $originalSlug = $product->slug;
 
-            $product->slug = $newSlug;
+            if ($product->slug) {
 
-            $product->save();
+                $slug = '';
 
-            $this->line("Product: {$product->name} slug updated to '{$newSlug}'.");
+                if ($product->brand) {
+                    $slug .= Str::slug($product->brand->name, '-') . '-';
+                }
+
+                if ($product->brand_model) {
+                    $slug .= Str::slug($product->brand_model->model, '-') . '-';
+                }
+
+                // Append additional attributes to the slug
+                $slug .= Str::slug($product->slug, '-');
+
+                // Convert the slug to lowercase
+                $slug = strtolower($slug);
+
+                $product->slug = $slug;
+
+            } else {
+
+                $slug = '';
+
+                if ($product->brand) {
+                    $slug .= Str::slug($product->brand->name, '-') . '-';
+                }
+
+                if ($product->brand_model) {
+                    $slug .= Str::slug($product->brand_model->model, '-') . '-';
+                }
+
+                // Append additional attributes to the slug
+                $slug .= Str::slug($product->name, '-');
+
+                // Convert the slug to lowercase
+                $slug = strtolower($slug);
+
+                $product->slug = $slug;
+            }
+
+            if ($product->slug !== $originalSlug) {
+                $this->line('Product creating: Slug changed from "' . $originalSlug . '" to "' . $product->slug . '"');
+            }
+
+            // Optionally, you can log each slug generation to the CLI for visibility
+           
         }
 
         $this->info('All product slugs have been regenerated and saved.');
