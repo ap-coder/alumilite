@@ -74,6 +74,8 @@ class GenerateProductSlug extends Command
                 $product->slug = $slug;
             }
 
+            $product->save();
+
             if ($product->slug !== $originalSlug) {
                 $this->line('Product creating: Slug changed from "' . $originalSlug . '" to "' . $product->slug . '"');
             }
