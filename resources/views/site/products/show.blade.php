@@ -100,7 +100,7 @@
 @section('footjs')
 
 {{-- Temporary debug output --}}
-{{ var_dump($product->paypal_prod) }}
+{{-- {{ var_dump($product->paypal_prod) }} --}}
 
     @if(isset($product->paypal_prod))
     <script>
@@ -120,3 +120,33 @@
 
     @endif
 @endsection
+
+@section('jsonld')
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "{{ $product->name }}",
+      "image": ["{{ $product->photo ? $product->photo->getUrl('product') : '' }}"],
+      "description": "{!! $product->staticSeo ? $product->staticSeo->meta_description : '' !!}",
+ 
+      "brand": {
+        "@type": "Brand",
+        "name": "{{ $product->brand ? $product->brand->name : '' }}",
+        "model": "{{ $product->brand_model ? $product->brand_model->model : '' }}"
+      },
+     
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ route('products.show',$product->slug) }}",
+        "priceCurrency": "USD",
+        "price": {{ $product->price }},
+        "priceValidUntil": "{{ $product->created_at }}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+@endsection
+
+
