@@ -48,9 +48,9 @@ class StaticSeo extends Model implements HasMedia
     public const CONTENT_TYPE_SELECT = [
         'custom'     => 'Pages Builder',
         'post'       => 'Blog Post',
-        'build'    => 'Build',
+        'build'      => 'Build',
         'product'    => 'Product',
-        'brand'    => 'Brand',
+        'brand'      => 'Brand',
 
     ];
 
