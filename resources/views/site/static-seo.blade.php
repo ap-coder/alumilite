@@ -1,5 +1,5 @@
 @foreach($staticseo as $seo)
-    @if(request()->path() == $seo->page_path)
+@if(request()->path() == $seo->page_path)
 
     @env('production')
     <!-- start jsonld -->
@@ -26,20 +26,16 @@
     @endif
     @if($seo->noarchive) <meta name="robots" content="noarchive"> @endif
     @if($seo->nosnippet) <meta name="robots" content="nosnippet"> @endif
-    @else
-    <meta name="robots" content="index, follow">
-    @endenv
     @if($seo->meta_title)
     <title>{!! $seo->meta_title !!}</title>
     <meta property="title" content="{!! $seo->meta_title !!}"/>
     @else
-        <title>Alumilite Armor Expert Custom ATV - UTV Enclosure Solutions</title>
+    <title>Alumilite Armor Expert Custom ATV - UTV Enclosure Solutions</title>
     @endif
     @if($seo->meta_description)
-        <meta property="description" content="{!! $seo->meta_description !!}"/>
+    <meta property="description" content="{!! $seo->meta_description !!}"/>
     @endif
     @if($seo->facebook_title)
-    <!-- CUSTOM META FROM CODE -->
     <meta property="og:site_name" content="Code">
     <meta property="og:url" content="{!! url()->current() !!}"/>
     <meta property="og:type" content="{!! $seo->open_graph_type !!}"/>
@@ -73,5 +69,8 @@
     <meta itemprop="height" content="500"/>
     @endif
     @endif
-    @endif
+    @else
+    <meta name="robots" content="noindex, nofollow">
+    @endenv
+@endif
 @endforeach
