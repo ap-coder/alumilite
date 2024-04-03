@@ -4,12 +4,15 @@
     {!! $seo->json_ld_tag ?  : '' !!}
     @yield('jsonld')
     <!-- / start jsonld -->
+    <meta name="revisit-after" content="5 days">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="yamaha utv parts, argo utv parts, honda utv parts, canam utv parts, kawasaki utv parts, arctic cat utv parts, polaris utv parts">
     @env('production')
     <meta name="language" content="English">
     <meta name="revisit-after" content="8 days">
     @if($seo->noindex)
     <meta name="robots" content="noindex,follow">
-    @elseif($seo->noindex && $seo->noindex)
+    @elseif($seo->noindex && $seo->nofollow)
     <meta name="robots" content="noindex,nofollow">
     @else
     <meta name="robots" content="index,follow">
@@ -17,11 +20,8 @@
     @if($seo->noarchive) <meta name="robots" content="noarchive"> @endif
     @if($seo->nosnippet) <meta name="robots" content="nosnippet"> @endif
     @else
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
     @endenv
-    <meta name="revisit-after" content="5 days">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="keywords" content="yamaha utv parts, argo utv parts, honda utv parts, canam utv parts, kawasaki utv parts, arctic cat utv parts, polaris utv parts">
     @if($seo->meta_title)
     <title>{!! $seo->meta_title !!}</title>
     <meta property="title" content="{!! $seo->meta_title !!}"/>
