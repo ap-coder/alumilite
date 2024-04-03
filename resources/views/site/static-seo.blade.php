@@ -1,15 +1,18 @@
 @foreach($staticseo as $seo)
     @if(request()->path() == $seo->page_path)
+
+    @env('production')
     <!-- start jsonld -->
     {!! $seo->json_ld_tag ?  : '' !!}
     @yield('jsonld')
     <!-- / start jsonld -->
-    <meta name="revisit-after" content="5 days">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="keywords" content="yamaha utv parts, argo utv parts, honda utv parts, canam utv parts, kawasaki utv parts, arctic cat utv parts, polaris utv parts">
-    @env('production')
     <meta name="language" content="English">
-    <meta name="revisit-after" content="8 days">
+    <meta name="revisit-after" content="5 days">
+    @if($seo->canonical)
+    <link rel="canonical" href="{{ url()->current() }}">
+    @endif
     @if($seo->noindex)
     <meta name="robots" content="noindex,follow">
     @elseif($seo->noindex && $seo->nofollow)
@@ -25,9 +28,11 @@
     @if($seo->meta_title)
     <title>{!! $seo->meta_title !!}</title>
     <meta property="title" content="{!! $seo->meta_title !!}"/>
-    @if($seo->meta_description)
-    <meta property="description" content="{!! $seo->meta_description !!}"/>
+    @else
+        <title>Alumilite Armor Expert Custom ATV - UTV Enclosure Solutions</title>
     @endif
+    @if($seo->meta_description)
+        <meta property="description" content="{!! $seo->meta_description !!}"/>
     @endif
     @if($seo->facebook_title)
     <!-- CUSTOM META FROM CODE -->
