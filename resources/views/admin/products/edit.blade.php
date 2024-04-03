@@ -29,6 +29,36 @@
                 </div>
 
                 <div class="form-group col">
+                    <label for="brand_id">{{ trans('cruds.product.fields.brand') }}</label>
+                    <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
+                        @foreach($brands as $id => $entry)
+                            <option value="{{ $id }}" {{ (old('brand_id') ? old('brand_id') : $product->brand->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('brand'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('brand') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.brand_helper') }}</span>
+                </div>
+
+                <div class="form-group col">
+                    <label for="brand_model_id">{{ trans('cruds.product.fields.brand_model') }}</label>
+                    <select class="form-control select2 {{ $errors->has('brand_model') ? 'is-invalid' : '' }}" name="brand_model_id" id="brand_model_id">
+                        @foreach($brand_models as $id => $entry)
+                            <option value="{{ $id }}" {{ (old('brand_model_id') ? old('brand_model_id') : $product->brand_model->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('brand_model'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('brand_model') }}
+                        </div>
+                    @endif
+                    <span class="help-block">{{ trans('cruds.product.fields.brand_model_helper') }}</span>
+                </div>
+
+                <div class="form-group col">
                     <label for="year_from">{{ trans('cruds.product.fields.year_from') }}</label>
                     <input class="form-control {{ $errors->has('year_from') ? 'is-invalid' : '' }}" type="text" name="year_from" id="year_from" value="{{ old('year_from', $product->year_from) }}">
                     @if($errors->has('year_from'))
@@ -159,43 +189,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.product.fields.documents_helper') }}</span>
             </div>
-
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="brand_id">{{ trans('cruds.product.fields.brand') }}</label>
-                    <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
-                        @foreach($brands as $id => $entry)
-                            <option value="{{ $id }}" {{ (old('brand_id') ? old('brand_id') : $product->brand->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has('brand'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('brand') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.product.fields.brand_helper') }}</span>
-                </div>
-
-                <div class="form-group col">
-                    <label for="brand_model_id">{{ trans('cruds.product.fields.brand_model') }}</label>
-                    <select class="form-control select2 {{ $errors->has('brand_model') ? 'is-invalid' : '' }}" name="brand_model_id" id="brand_model_id">
-                        @foreach($brand_models as $id => $entry)
-                            <option value="{{ $id }}" {{ (old('brand_model_id') ? old('brand_model_id') : $product->brand_model->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                        @endforeach
-                    </select>
-                    @if($errors->has('brand_model'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('brand_model') }}
-                        </div>
-                    @endif
-                    <span class="help-block">{{ trans('cruds.product.fields.brand_model_helper') }}</span>
-                </div>
-            </div>
-
-
-
-
-
 
             <div class="form-group col-8">
                 <label for="categories">{{ trans('cruds.product.fields.category') }}</label>
@@ -391,7 +384,7 @@
                     <span class="help-block">{{ trans('cruds.product.fields.slug_helper') }}</span>
                 </div>
             </div>
-               
+
             <hr>
 
 
