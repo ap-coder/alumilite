@@ -7,9 +7,13 @@
     @yield('jsonld')
     <!-- / start jsonld -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <meta charset="utf-8">
     <meta name="keywords" content="yamaha utv parts, argo utv parts, honda utv parts, canam utv parts, kawasaki utv parts, arctic cat utv parts, polaris utv parts">
     <meta name="language" content="English">
     <meta name="revisit-after" content="5 days">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
     @if($seo->canonical)
     <link rel="canonical" href="{{ url()->current() }}">
     @endif
