@@ -30,7 +30,7 @@
 
                 <div class="form-group col">
                     <label for="brand_id">{{ trans('cruds.product.fields.brand') }}</label>
-                    <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
+                    <select class="form-select form-select-lg select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
                         @foreach($brands as $id => $entry)
                             <option value="{{ $id }}" {{ (old('brand_id') ? old('brand_id') : $product->brand->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                         @endforeach
@@ -45,7 +45,7 @@
 
                 <div class="form-group col">
                     <label for="brand_model_id">{{ trans('cruds.product.fields.brand_model') }}</label>
-                    <select class="form-control select2 {{ $errors->has('brand_model') ? 'is-invalid' : '' }}" name="brand_model_id" id="brand_model_id">
+                    <select class="form-select form-select-lg select2 {{ $errors->has('brand_model') ? 'is-invalid' : '' }}" name="brand_model_id" id="brand_model_id">
                         @foreach($brand_models as $id => $entry)
                             <option value="{{ $id }}" {{ (old('brand_model_id') ? old('brand_model_id') : $product->brand_model->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                         @endforeach
