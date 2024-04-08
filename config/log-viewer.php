@@ -114,16 +114,16 @@ return [
         //     ],
         // ],
         //
-        // 'production' => [
-        //     'name' => 'Production',
-        //     'host' => 'https://alumiliteartmor.com/log-viewer',
+        'production' => [
+            'name' => 'Production',
+            'host' => 'https://alumiliteartmor.com/log-viewer',
         //     'auth' => [      // Example of Bearer token auth
         //         'token' => env('LOG_VIEWER_PRODUCTION_TOKEN'),
         //     ],
         //     'headers' => [
         //         'X-Foo' => 'Bar',
         //     ],
-        // ],
+        ],
     ],
 
     /*
