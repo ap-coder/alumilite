@@ -144,7 +144,7 @@ p.indented { margin-left: 5px 0 5px 1.25rem!important; }
 							{{-- <div class="col-md-6 align-right">
 								<span style="line-height: 2rem;">Click Corresponding Button To Check All</span>
 							</div> --}}
-							<div class="col-md-12 check-all-buttons btn-group align-right" role="group" aria-label="check all buttons">
+							{{-- <div class="col-md-12 check-all-buttons btn-group align-right" role="group" aria-label="check all buttons">
 
  
 								<button type="button" class="btn check-all localbtn" checkType="local"><i class="fas fa-check-square"></i> &nbsp; All LOCAL</button>
@@ -153,7 +153,7 @@ p.indented { margin-left: 5px 0 5px 1.25rem!important; }
 								<button type="button" class="btn check-all prodbtn" checkType="production"><i class="fas fa-check-square"></i> &nbsp; All PROD</button>
 								<button type="button" class="btn check-all prodbtn" checkType="marketing"><i class="fas fa-check-square"></i> &nbsp; All MARKETING</button>
  
-							</div>
+							</div> --}}
 						</div>
 
 							@else
@@ -249,7 +249,7 @@ p.indented { margin-left: 5px 0 5px 1.25rem!important; }
  
 										<p>
  
-											<div id="env-options" class="description-wide border p-2 mb-4">
+											{{-- <div id="env-options" class="description-wide border p-2 mb-4">
 													<strong>Environment Accessible</strong>
 													<div class="form-check">
 															{!! Form::checkbox('conditionals[]','local', $m->local ==1 ?'checked' : null, ['id' => 'local_'.$m->id.'', 'class' => 'form-check-input local-input conditionals', 'menuId'=>$m->id]) !!} 
@@ -284,7 +284,7 @@ p.indented { margin-left: 5px 0 5px 1.25rem!important; }
 													<div id="envHelpBlock" class="form-text">
 														<i class="text-info">Select the places you want this menu link to be visible.</i>
 													</div>
-											</div>
+											</div> --}}
  
 										</p>
 

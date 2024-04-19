@@ -84,13 +84,13 @@
                                         </div>
                                     @endif
 
-                                    <ul class="car-meta">
+                                    {{-- <ul class="car-meta">
                                         @if ($product->technical_specs->count()>0)
                                             @foreach ($product->technical_specs->take(3) as $specification)
                                                 <li><a href="javascript:void(0);"><i class="{{ $specification->icon_class }}"></i> {{ $specification->name }}</a></li>
                                             @endforeach
                                         @endif
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <span class="msrp">MSRP: <strong>${{ number_format($product->msrp) }}</strong></span>
                                 @endif
                             </span>
-                            <ul class="car-meta">
+                            {{-- <ul class="car-meta">
 
                                 @if ($product->technical_specs->count()>0)
                                     @foreach ($product->technical_specs->take(3) as $specification)
@@ -154,16 +154,14 @@
                                     @endforeach
                                 @endif
 
-                            </ul>
-                            <div class="dealer-certificates d-sm-flex justify-content-between">
+                            </ul> --}}
+                            {{-- <div class="dealer-certificates d-sm-flex justify-content-between">
                             @if($product->excerpt)
                                 {!! $product->excerpt ?? '' !!}
                             @else
                                 {!! \Str::limit($product->description, $limit = 200, $end = '...') !!}
                             @endif
-
-excerpt here
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>

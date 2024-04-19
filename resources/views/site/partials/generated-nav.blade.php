@@ -3,8 +3,6 @@
         
     @foreach($main_menu as $menu)
 
-    @if ($menu[$env]==1)
-
         @if ($menu['logged_in_only']==1)
 
             @if (auth()->check() && empty(menuRoles($menu['id'])) && empty(menuUsers($menu['id'])))
@@ -20,7 +18,6 @@
                     @if( $menu['child'] )
                         <ul class="sub-menu">
                             @foreach( $menu['child'] as $child )
-                            @if ($child[$env]==1)
                             @if ($child['logged_in_only']==1)
 
                                 @if (auth()->check() && empty(menuUsers($child['id'])) && empty(menuRoles($child['id'])))
@@ -38,7 +35,6 @@
                                     <a href="{{  preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode(strpos($child['link'], "http") === 0 ? $child['link'] : url('',$child['link']))) }}" title="{{ $child['label'] }}" itemprop="url">{{ $child['label'] }}</a>
                                 </li>
                             @endif
-                                @endif
                             @endforeach
                         </ul><!-- /.sub-menu -->
                     @endif
@@ -55,7 +51,6 @@
                 @if( $menu['child'] )
                     <ul class="sub-menu">
                         @foreach( $menu['child'] as $child )
-                        @if ($child[$env]==1)
                         @if ($child['logged_in_only']==1)                               
 
                             @if (auth()->check() && empty(menuUsers($child['id'])) && empty(menuRoles($child['id'])))
@@ -73,7 +68,6 @@
                                 <a href="{{  preg_replace("/%u([0-9a-f]{3,4})/i","&#x\\1;",urldecode(strpos($child['link'], "http") === 0 ? $child['link'] : url('',$child['link']))) }}" title="{{ $child['label'] }}" itemprop="url">{{ $child['label'] }}</a>
                             </li>
                         @endif
-                            @endif
                         @endforeach
                     </ul><!-- /.sub-menu -->
                 @endif
@@ -92,7 +86,6 @@
                 @if( $menu['child'] )
                     <ul class="sub-menu">
                         @foreach( $menu['child'] as $child )
-                        @if ($child[$env]==1)
 
                             @if ($child['logged_in_only']==1)
 
@@ -112,15 +105,12 @@
                                 </li>
                             @endif
                                
-                        @endif
                         @endforeach
                     </ul><!-- /.sub-menu -->
                 @endif
             </li> 
         @endif
-        
-    @endif
-    
+            
     @endforeach
 
     @endif
