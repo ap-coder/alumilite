@@ -21,6 +21,7 @@
                                         <div class="single-input">
                                             <textarea required name="message" placeholder="Write your Message here..."></textarea>
                                         </div>
+                                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                                         <p class="form-message"></p>
                                         <div class="single-input">
                                             <button id="contactFormButton" class="main-btn d-block">Send Message</button>

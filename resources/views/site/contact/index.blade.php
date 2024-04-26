@@ -69,12 +69,15 @@
                                 <textarea name="message" placeholder="Write your message here..." required></textarea>
                             </div>
                         </div>
+                        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
                         <p class="form-message"></p>
                         <div class="col-lg-12">
                             <div class="single-form">
                                 <button id="contactFormButton" class="main-btn">Send Message</button>
                             </div>
                         </div>
+                        
+
                     </div>
                 </form>
             </div>
