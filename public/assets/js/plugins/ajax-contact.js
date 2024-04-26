@@ -11,13 +11,20 @@ $(function() {
 		// Stop the browser from submitting the form.
 		e.preventDefault();
 
+		// Serialize the form data.
+		var formData = $(form).serialize();
+
+		var token = grecaptcha.getResponse();
+
+		if (token.length === 0) {
+			$(formMessages).text("Please verify you are not a robot.");
+			return false;
+		}
+
 		$loader = '<div class="spinner-border" role="status">' +
                 '<span class="sr-only">Loading...</span>' +
                 '</div>';
             $('#contactFormButton').html($loader);
-
-		// Serialize the form data.
-		var formData = $(form).serialize();
 
 		// Submit the form using AJAX.
 		$.ajax({

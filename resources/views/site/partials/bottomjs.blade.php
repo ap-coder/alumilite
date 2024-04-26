@@ -13,7 +13,7 @@
     <script src="{{ asset('assets/js/plugins/jquery.countdown.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/ajax-contact.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
-    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
 
