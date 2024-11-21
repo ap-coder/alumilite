@@ -123,37 +123,6 @@
 }
 
 
-/* General Slider Styles */
-.slick-slide {
-    height: 760px; /* Define the height of each slide */
-    background-size: contain; /* Fit image within slide without cropping */
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.slick-slide img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Ensures the image fits without distortion */
-    display: block;
-}
-
-/* Fix for Slider List Height */
-.slick-list {
-    height: 760px; /* Match the slider height */
-    overflow: hidden; /* Prevent content overflow */
-}
-
-/* Ensure Arrow Visibility */
-.slick-arrow {
-    display: block; /* Ensure arrows are always visible */
-    z-index: 10; /* Ensure they appear above other content */
-}
-
-/* Hide Arrows Only When Necessary */
-.slick-arrow.slick-hidden {
-    display: none !important;
-}
 
 /*[class*='bg_cover'] {*/
 /*    background-position: center center;*/
