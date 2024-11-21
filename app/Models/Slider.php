@@ -86,7 +86,7 @@ class Slider extends Model implements HasMedia
         $this->addMediaConversion('original')->format(Manipulations::FORMAT_WEBP)->nonQueued();
         $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(150)->height(150)->nonQueued();
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
-        $this->addMediaConversion('responsive')->format(Manipulations::FORMAT_WEBP)->width(1200)->height(500)->withResponsiveImages()->nonQueued();
+        $this->addMediaConversion('responsive')->format(Manipulations::FORMAT_WEBP)->width(1920)->height(760)->withResponsiveImages()->nonQueued();
 //        $this->addMediaConversion('slider')
 //                ->fit(Manipulations::FIT_CONTAIN, 1920, 1920) // Fit the image in 1920x1920, maintaining aspect ratio
 //                ->crop('crop-center', 1920, 760) // Then crop the resized image to your desired dimensions from the center
