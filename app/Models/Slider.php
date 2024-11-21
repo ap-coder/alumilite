@@ -95,7 +95,7 @@ class Slider extends Model implements HasMedia
 //                ->withResponsiveImages() // Generate responsive images for different screen sizes
 //                ->nonQueued();
         $this->addMediaConversion('slider')
-            ->fit(Manipulations::FIT_CONTAIN, 2992, 2992) // Ensure large images are resized to fit within 2992x2992
+            //->fit(Manipulations::FIT_CONTAIN, 2992, 2992) // Ensure large images are resized to fit within 2992x2992
             ->crop(Manipulations::CROP_CENTER, 1920, 760) // Crop to your desired dimensions
             ->format(Manipulations::FORMAT_WEBP) // Optimize by converting to WebP
             ->quality(90)
