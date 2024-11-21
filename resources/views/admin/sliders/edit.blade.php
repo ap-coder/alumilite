@@ -357,7 +357,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="image">{{ trans('cruds.slider.fields.image') }}</label>
+                        <label for="image">Slider Image</label>
                         <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
                         </div>
                         @if($errors->has('image'))
@@ -365,7 +365,7 @@
                                 {{ $errors->first('image') }}
                             </div>
                         @endif
-                        <span class="help-block">{{ trans('cruds.slider.fields.image_helper') }}</span>
+                        <span class="help-block">(Preferred: 1920 x760 | Max: 2992x2992)</span>
                     </div>
 
                     <div class="form-group">
@@ -425,52 +425,58 @@
 @section('scripts')
 <script>
     Dropzone.options.imageDropzone = {
-    url: '{{ route('admin.sliders.storeMedia') }}',
-    maxFilesize: 20, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
-    maxFiles: 1,
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    success: function (file, response) {
-      $('form').find('input[name="image"]').remove()
-      $('form').append('<input type="hidden" name="image" value="' + response.name + '">')
-    },
-    removedfile: function (file) {
-      file.previewElement.remove()
-      if (file.status !== 'error') {
-        $('form').find('input[name="image"]').remove()
-        this.options.maxFiles = this.options.maxFiles + 1
-      }
-    },
-    init: function () {
-    @if(isset($slider) && $slider->image)
-          var file = {!! json_encode($slider->image) !!}
-              this.options.addedfile.call(this, file)
-          this.options.thumbnail.call(this, file, file.preview ?? file.preview_url)
-          file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">')
-          this.options.maxFiles = this.options.maxFiles - 1
-    @endif
-    },
-    error: function (file, response) {
-        if ($.type(response) === 'string') {
-            var message = response //dropzone sends it's own error messages in string
-        } else {
-            var message = response.errors.file
-        }
-        file.previewElement.classList.add('dz-error')
-        _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-        _results = []
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            node = _ref[_i]
-            _results.push(node.textContent = message)
-        }
+        url: '{{ route('admin.sliders.storeMedia') }}',
+        maxFilesize: 20, // Max file size in MB
+        acceptedFiles: '.jpeg,.jpg,.png,.gif,.webp', // Allowed formats
+        maxFiles: 1, // Only one file allowed
+        addRemoveLinks: true,
+        headers: {
+            'X-CSRF-TOKEN': "{{ csrf_token() }}" // CSRF token for Laravel
+        },
+        params: {
+            width: 2992, // Expected width for large images
+            height: 2992 // Expected height for large images
+        },
+        success: function (file, response) {
+            $('form').find('input[name="image"]').remove(); // Remove any existing image input
+            $('form').append('<input type="hidden" name="image" value="' + response.name + '">'); // Add the new image input
+        },
+        removedfile: function (file) {
+            file.previewElement.remove();
+            if (file.status !== 'error') {
+                $('form').find('input[name="image"]').remove(); // Remove image input
+                this.options.maxFiles = this.options.maxFiles + 1; // Allow one more file
+            }
+        },
+        init: function () {
+            @if(isset($slider) && $slider->image)
+            var file = {!! json_encode($slider->image) !!};
+            this.options.addedfile.call(this, file);
+            this.options.thumbnail.call(this, file, file.preview ?? file.preview_url);
+            file.previewElement.classList.add('dz-complete');
+            $('form').append('<input type="hidden" name="image" value="' + file.file_name + '">');
+            this.options.maxFiles = this.options.maxFiles - 1;
+            @endif
+        },
+        error: function (file, response) {
+            let message = $.type(response) === 'string' ? response : response.errors.file;
+            file.previewElement.classList.add('dz-error');
+            $(file.previewElement).find('[data-dz-errormessage]').text(message);
+        },
+        accept: function (file, done) {
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
 
-        return _results
-    }
-}
+            img.onload = function () {
+                if (img.width !== 2992 || img.height !== 2992) {
+                    done("Image dimensions must be 2992x2992.");
+                } else {
+                    done();
+                }
+            };
+        }
+    };
+
 
 </script>
 <script>
