@@ -353,8 +353,8 @@
             'X-CSRF-TOKEN': "{{ csrf_token() }}" // CSRF token for Laravel
         },
         params: {
-            width: 2992, // Expected width for large images
-            height: 2992 // Expected height for large images
+            // width: 2992, // Expected width for large images
+            // height: 2992 // Expected height for large images
         },
         success: function (file, response) {
             $('form').find('input[name="image"]').remove(); // Remove any existing image input
