@@ -1,7 +1,7 @@
 <!--====== Slider Start ======-->
 @if ($sliders->where('published', 1)->where('location', 1)->count() > 0)
     <section class="slider-area slider-dark slider-active">
-        @foreach ($sliders->where('published', 1)->where('location', 3) as $slider)
+        @foreach ($sliders->where('published', 1)->where('location', 1) as $slider)
             @php
                 $sliderImage = $slider->image ? $slider->image->getUrl('slider') : asset('assets/images/slider/slider-3.jpg');
             @endphp
