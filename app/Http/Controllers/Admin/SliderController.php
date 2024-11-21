@@ -23,16 +23,16 @@ class SliderController extends Controller
         abort_if(Gate::denies('slider_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Slider::query()->select(sprintf('%s.*', (new Slider)->table));
+            $query = Slider::with('media')->select(sprintf('%s.*', (new Slider)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'slider_show';
-                $editGate      = 'slider_edit';
-                $deleteGate    = 'slider_delete';
+                $viewGate = 'slider_show';
+                $editGate = 'slider_edit';
+                $deleteGate = 'slider_delete';
                 $crudRoutePart = 'sliders';
 
                 return view('partials.datatablesActions', compact(
@@ -44,24 +44,19 @@ class SliderController extends Controller
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
-            $table->editColumn('published', function ($row) {
-                return '<input type="checkbox" disabled ' . ($row->published ? 'checked' : null) . '>';
-            });
-            $table->editColumn('location', function ($row) {
-                return $row->location ? Slider::LOCATION_SELECT[$row->location] : '';
-            });
+            $table->editColumn('id', fn($row) => $row->id ?? '');
+            $table->editColumn('published', fn($row) => '<input type="checkbox" disabled ' . ($row->published ? 'checked' : null) . '>');
+
+            $table->editColumn('location', fn($row) => $row->location ? Slider::LOCATION_SELECT[$row->location] : '');
+
             $table->editColumn('image', function ($row) {
-                if ($photo = $row->image) {
+                if ($photo = $row->getFirstMedia('image')) {
                     return sprintf(
                         '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
-                        $photo->url,
-                        $photo->thumbnail
+                        $photo->getUrl(),
+                        $photo->getUrl('thumb')
                     );
                 }
-
                 return '';
             });
 
@@ -99,6 +94,8 @@ class SliderController extends Controller
     {
         abort_if(Gate::denies('slider_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $slider->load('media');
+
         return view('admin.sliders.edit', compact('slider'));
     }
 
@@ -107,14 +104,12 @@ class SliderController extends Controller
         $slider->update($request->all());
 
         if ($request->input('image', false)) {
-            if (! $slider->image || $request->input('image') !== $slider->image->file_name) {
-                if ($slider->image) {
-                    $slider->image->delete();
-                }
+            if (!$slider->getFirstMedia('image') || $request->input('image') !== $slider->getFirstMedia('image')->file_name) {
+                $slider->clearMediaCollection('image');
                 $slider->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
             }
-        } elseif ($slider->image) {
-            $slider->image->delete();
+        } elseif ($slider->getFirstMedia('image')) {
+            $slider->clearMediaCollection('image');
         }
 
         return redirect()->route('admin.sliders.index');
@@ -138,11 +133,7 @@ class SliderController extends Controller
 
     public function massDestroy(MassDestroySliderRequest $request)
     {
-        $sliders = Slider::find(request('ids'));
-
-        foreach ($sliders as $slider) {
-            $slider->delete();
-        }
+        Slider::whereIn('id', $request->input('ids', []))->get()->each->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
@@ -151,10 +142,10 @@ class SliderController extends Controller
     {
         abort_if(Gate::denies('slider_create') && Gate::denies('slider_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $model         = new Slider();
-        $model->id     = $request->input('crud_id', 0);
+        $model = new Slider();
+        $model->id = $request->input('crud_id', 0);
         $model->exists = true;
-        $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
+        $media = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
     }
