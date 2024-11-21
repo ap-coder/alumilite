@@ -468,11 +468,11 @@
             img.src = URL.createObjectURL(file);
 
             img.onload = function () {
-                if (img.width !== 2992 || img.height !== 2992) {
-                    done("Image dimensions must be 2992x2992.");
-                } else {
+                // if (img.width !== 2992 || img.height !== 2992) {
+                //     done("Image dimensions must be 2992x2992.");
+                // } else {
                     done();
-                }
+                // }
             };
         }
     };
