@@ -87,13 +87,19 @@ class Slider extends Model implements HasMedia
         $this->addMediaConversion('thumb')->format(Manipulations::FORMAT_WEBP)->width(150)->height(150)->nonQueued();
         $this->addMediaConversion('preview')->format(Manipulations::FORMAT_WEBP)->width(120)->height(120)->nonQueued();
         $this->addMediaConversion('responsive')->format(Manipulations::FORMAT_WEBP)->width(1200)->height(500)->withResponsiveImages()->nonQueued();
+//        $this->addMediaConversion('slider')
+//                ->fit(Manipulations::FIT_CONTAIN, 1920, 1920) // Fit the image in 1920x1920, maintaining aspect ratio
+//                ->crop('crop-center', 1920, 760) // Then crop the resized image to your desired dimensions from the center
+//                ->format(Manipulations::FORMAT_WEBP) // Convert the format to WebP
+//                ->quality(80)
+//                ->withResponsiveImages() // Generate responsive images for different screen sizes
+//                ->nonQueued();
         $this->addMediaConversion('slider')
-                ->fit(Manipulations::FIT_CONTAIN, 1920, 1920) // Fit the image in 1920x1920, maintaining aspect ratio
-                ->crop('crop-center', 1920, 760) // Then crop the resized image to your desired dimensions from the center
-                ->format(Manipulations::FORMAT_WEBP) // Convert the format to WebP
-                ->quality(80)
-                ->withResponsiveImages() // Generate responsive images for different screen sizes
-                ->nonQueued();
+            ->fit(Manipulations::FIT_CONTAIN, 2992, 2992) // Ensure large images are resized to fit within 2992x2992
+            ->crop(Manipulations::CROP_CENTER, 1920, 760) // Crop to your desired dimensions
+            ->format(Manipulations::FORMAT_WEBP) // Optimize by converting to WebP
+            ->quality(90)
+            ->withResponsiveImages();
     }
 
     public function getImageAttribute()
