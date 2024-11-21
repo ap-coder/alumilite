@@ -1,13 +1,13 @@
 $(function() {
-    
+
     "use strict";
-    
-    
+
+
     /*=============================================
     =                   Sticky                    =
     =============================================*/
-    
-    $(window).on('scroll', function(event) {    
+
+    $(window).on('scroll', function(event) {
         var scroll = $(window).scrollTop();
         if (scroll < 110) {
             $(".navigation").removeClass("sticky");
@@ -17,7 +17,7 @@ $(function() {
     });
 
     /*=====  End of Sticky  ======*/
-    
+
 
     /*=============================================
     =                  Menu                 =
@@ -30,31 +30,38 @@ $(function() {
     /*=============================================
     =                 Slick Slider                =
     =============================================*/
-    
+
     function mainSlider() {
-            
+
         var BasicSlider = $('.slider-active');
-            
+
         BasicSlider.on('init', function(e, slick) {
             var $firstAnimatingElements = $('.single-slider:first-child').find('[data-animation]');
             doAnimations($firstAnimatingElements);
         });
-            
+
         BasicSlider.on('beforeChange', function(e, slick, currentSlide, nextSlide) {
             var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
             doAnimations($animatingElements);
         });
-            
+
         BasicSlider.slick({
             autoplay: true,
             autoplaySpeed: 10000,
             pauseOnHover: false,
             dots: false,
             fade: true,
-			      arrows: true,
+            arrows: true,
             prevArrow:'<span class="prev"><i class="ion-ios-arrow-back"></i></span>',
             nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
-            responsive: [            
+            responsive: [
+                {
+                    breakpoint: 1900,
+                    settings: {
+                        arrows: false,
+                        dots: true,
+                    }
+                },
               {
                 breakpoint: 1200,
                 settings: {
@@ -83,7 +90,7 @@ $(function() {
                   dots: true,
                 }
               }
-            ] 
+            ]
         });
 
         function doAnimations(elements) {
@@ -130,7 +137,7 @@ $(function() {
     });
 
   /*=====  End of Bootstrap dropdown ======*/
-    
+
 
     /*=============================================
     =                Sumo Select                  =
@@ -139,12 +146,12 @@ $(function() {
     $('.optgroup_test').SumoSelect();
 
     /*=====  End of Sumo Select  ======*/
-    
+
 
     /*=============================================
     =           Search Field Show                 =
     =============================================*/
-  
+
     $(".field-toggle").on('click', function(){
         $(".field-toggle-wrapper").slideToggle("slow");
     });
@@ -153,7 +160,7 @@ $(function() {
         $(this).toggleClass("shown");
     });
 
-    
+
     /*=====  End of Search Field Show ======*/
 
 
@@ -165,18 +172,18 @@ $(function() {
         $('.mobile-navigation').addClass('open')
         $('.overlay').addClass('open')
     });
-    
+
     $('.close-navbar-mobile').on('click', function(){
         $('.mobile-navigation').removeClass('open')
         $('.overlay').removeClass('open')
     });
-    
+
     $('.overlay').on('click', function(){
         $('.mobile-navigation').removeClass('open')
         $('.overlay').removeClass('open')
     });
-        
-    
+
+
     /*Variables*/
     var $offCanvasNav = $('.mobile-navigation'),
         $offCanvasNavSubMenu = $offCanvasNav.find('.sub-menu');
@@ -203,7 +210,7 @@ $(function() {
             }
         }
     });
-    
+
     $( ".sub-menu" ).parent( "li" ).addClass( "menu-item-has-children" );
 
     /*=====  End of Navbar Category ======*/
@@ -256,8 +263,8 @@ $(function() {
         nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
         speed: 800,
         slidesToShow: 5,
-        slidesToScroll: 1,      
-        responsive: [            
+        slidesToScroll: 1,
+        responsive: [
           {
             breakpoint: 1200,
             settings: {
@@ -282,9 +289,9 @@ $(function() {
               slidesToShow: 1,
             }
           }
-        ]  
+        ]
     });
-  
+
     /*===== End of Trending Active ======*/
 
 
@@ -300,8 +307,8 @@ $(function() {
         nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
         speed: 800,
         slidesToShow: 4,
-        slidesToScroll: 1,      
-        responsive: [            
+        slidesToScroll: 1,
+        responsive: [
           {
             breakpoint: 1200,
             settings: {
@@ -326,7 +333,7 @@ $(function() {
               slidesToShow: 1,
             }
           }
-      ]  
+      ]
     });
 
 
@@ -338,8 +345,8 @@ $(function() {
         nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
         speed: 800,
         slidesToShow: 5,
-        slidesToScroll: 1,      
-        responsive: [            
+        slidesToScroll: 1,
+        responsive: [
           {
             breakpoint: 1600,
             settings: {
@@ -370,10 +377,10 @@ $(function() {
               slidesToShow: 1,
             }
           }
-      ]  
+      ]
     });
 
-    
+
     $('.cars-active-3').slick({
         dots: false,
         infinite: true,
@@ -382,8 +389,8 @@ $(function() {
         nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
         speed: 800,
         slidesToShow: 2,
-        slidesToScroll: 1,      
-        responsive: [          
+        slidesToScroll: 1,
+        responsive: [
           {
             breakpoint: 1200,
             settings: {
@@ -410,9 +417,9 @@ $(function() {
               arrows: false,
             }
           }
-      ]  
+      ]
     });
-  
+
     /*===== End of Trending Active ======*/
 
 
@@ -428,8 +435,8 @@ $(function() {
         nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
         speed: 800,
         slidesToShow: 2,
-        slidesToScroll: 1,      
-        responsive: [            
+        slidesToScroll: 1,
+        responsive: [
           {
             breakpoint: 1200,
             settings: {
@@ -454,9 +461,9 @@ $(function() {
               slidesToShow: 1,
             }
           }
-      ]  
+      ]
     });
-  
+
     /*===== End of Trending Active ======*/
 
 
@@ -498,7 +505,7 @@ $(function() {
             slidesToShow: 2,
           }
         }
-      ]  
+      ]
     });
 
     /*===== End of Car Logo Active ======*/
@@ -516,8 +523,8 @@ $(function() {
       nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
       speed: 800,
       slidesToShow: 4,
-      slidesToScroll: 1,      
-      responsive: [            
+      slidesToScroll: 1,
+      responsive: [
         {
           breakpoint: 1200,
           settings: {
@@ -542,7 +549,7 @@ $(function() {
             slidesToShow: 1,
           }
         }
-      ]  
+      ]
     });
 
     /*===== End of Browse Type Active ======*/
@@ -588,7 +595,7 @@ $(function() {
             slidesToScroll: 2,
           }
         }
-      ]  
+      ]
     });
 
     /*===== End of Car Logo Active ======*/
@@ -606,8 +613,8 @@ $(function() {
       nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
       speed: 800,
       slidesToShow: 4,
-      slidesToScroll: 1,      
-      responsive: [            
+      slidesToScroll: 1,
+      responsive: [
         {
           breakpoint: 1200,
           settings: {
@@ -634,12 +641,12 @@ $(function() {
             arrows: false,
           }
         }
-      ]  
+      ]
     });
 
     /*===== End of Team Active ======*/
-       
-    
+
+
     /*=============================================
     =                Testimonial                  =
     =============================================*/
@@ -660,7 +667,7 @@ $(function() {
       dots: false,
       arrows: false,
       focusOnSelect: true,
-      responsive: [        
+      responsive: [
         {
           breakpoint: 992,
           settings: {
@@ -679,7 +686,7 @@ $(function() {
             slidesToShow: 1,
           }
         }
-      ] 
+      ]
     });
 
 
@@ -708,7 +715,7 @@ $(function() {
       dots: false,
       arrows: false,
       focusOnSelect: true,
-      responsive: [        
+      responsive: [
         {
           breakpoint: 992,
           settings: {
@@ -727,13 +734,13 @@ $(function() {
             slidesToShow: 1,
           }
         }
-      ] 
+      ]
     });
 
 
     /*===== End of Testimonial 2 ======*/
-       
-    
+
+
     /*=============================================
     =            Inventory Gallery                =
     =============================================*/
@@ -747,13 +754,13 @@ $(function() {
       asNavFor: '.inventory-thumb-active',
       speed: 800,
       infinite: true,
-      responsive: [        
+      responsive: [
         {
           breakpoint: 1600,
           settings: {
             centerPadding: '150px',
           }
-        },       
+        },
         {
           breakpoint: 1200,
           settings: {
@@ -767,9 +774,9 @@ $(function() {
             centerPadding: '0',
           }
         }
-      ] 
+      ]
     });
-    
+
     $('.inventory-thumb-active').slick({
       slidesToShow: 4,
       slidesToScroll: 1,
@@ -787,7 +794,7 @@ $(function() {
             centerPadding: '0',
           }
         }
-      ] 
+      ]
     });
 
     /*===== End of Inventory Gallery ======*/
@@ -804,9 +811,9 @@ $(function() {
       nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
       asNavFor: '.dealership-gallery-thumb-active',
       speed: 800,
-      infinite: true,      
+      infinite: true,
     });
-    
+
     $('.dealership-gallery-thumb-active').slick({
       slidesToShow: 4,
       slidesToScroll: 1,
@@ -826,7 +833,7 @@ $(function() {
             centerPadding: '0',
           }
         }
-      ] 
+      ]
     });
 
     /*===== End of Dealership Gallery Active ======*/
@@ -844,9 +851,9 @@ $(function() {
       nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
       speed: 800,
       slidesToShow: 1,
-      slidesToScroll: 1,  
+      slidesToScroll: 1,
     });
-    
+
     /*=====  End of Post Wrapper ======*/
 
 
@@ -862,8 +869,8 @@ $(function() {
       nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
       speed: 800,
       slidesToShow: 1,
-      slidesToScroll: 1,  
-      responsive: [            
+      slidesToScroll: 1,
+      responsive: [
         {
           breakpoint: 1200,
           settings: {
@@ -894,7 +901,7 @@ $(function() {
         }
       ]
     });
-    
+
     /*=====  End of Blog Features Active ======*/
 
 
@@ -910,9 +917,9 @@ $(function() {
       nextArrow: '<span class="next"><i class="ion-ios-arrow-forward"></i></span>',
       speed: 800,
       slidesToShow: 1,
-      slidesToScroll: 1,      
+      slidesToScroll: 1,
     });
-    
+
     /*=====  End of Blog Features Active ======*/
 
 
@@ -923,7 +930,7 @@ $(function() {
     /* 1. Visualizing things on Hover - See next part for action on click */
     $('#stars li').on('mouseover', function(){
         var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-        
+
         // Now highlight all the stars that's not after the current hovered star
         $(this).parent().children('li.star').each(function(e){
             if (e < onStar) {
@@ -933,7 +940,7 @@ $(function() {
                 $(this).removeClass('hover');
             }
         });
-        
+
     }).on('mouseout', function(){
         $(this).parent().children('li.star').each(function(e){
             $(this).removeClass('hover');
@@ -949,8 +956,8 @@ $(function() {
         for(var i=0 ; i < $(this).index() + 1; i++){
             $('#stars li').eq(i).addClass('selected')
         }
-    })   
-      
+    })
+
 
     /*=====  End of Rating Active ======*/
 
@@ -967,12 +974,12 @@ $(function() {
             $('.back-to-top').fadeOut(200)
         }
     });
-    
-    
+
+
     //Animate the scroll to yop
     $('.back-to-top').on('click', function(event) {
         event.preventDefault();
-        
+
         $('html, body').animate({
             scrollTop: 0,
         }, 1500);
@@ -988,11 +995,11 @@ $(function() {
     $('.color-items li span').each(function() {
         var get_color = $(this).attr('data-color');
         $(this).css("background-color", get_color);
-    });        
-        
+    });
+
     /*=====  End of Car Color Active ======*/
-       
-    
+
+
     /*=============================================
     =                Datepicker                   =
     =============================================*/
@@ -1005,26 +1012,26 @@ $(function() {
     });
 
     /*=====  End of Datepicker ======*/
-    
-    
+
+
     /*=============================================
     =              File Upload Js                 =
     =============================================*/
-    
+
     var inputs = document.querySelectorAll('.file-input')
 
     for (var i = 0, len = inputs.length; i < len; i++) {
       customInput(inputs[i])
     }
-    
+
     function customInput (el) {
       const fileInput = el.querySelector('[type="file"]')
       const label = el.querySelector('[data-js-label]')
-      
+
       fileInput.onchange =
       fileInput.onmouseout = function () {
         if (!fileInput.value) return
-        
+
         var value = fileInput.value.replace(/^.*[\\\/]/, '')
         el.className += ' -chosen'
         label.innerText = value
@@ -1032,8 +1039,8 @@ $(function() {
     }
 
     /*=====  End of  ======*/
-    
-    
+
+
     /*=============================================
     =                Countdown                    =
     =============================================*/
@@ -1046,17 +1053,17 @@ $(function() {
     });
 
     /*=====  End of Countdown ======*/
-    
-    
+
+
     /*=============================================
     =                                  =
     =============================================*/
 
-    
+
 
     /*=====  End of  ======*/
 
-    
-    
-    
+
+
+
 });

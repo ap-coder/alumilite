@@ -43,6 +43,7 @@ $(document).ready(function () {
     $select2.find('option').prop('selected', 'selected')
     $select2.trigger('change')
   })
+
   $('.deselect-all').click(function () {
     let $select2 = $(this).parent().siblings('.select2')
     $select2.find('option').prop('selected', '')
@@ -54,12 +55,13 @@ $(document).ready(function () {
   $('.treeview').each(function () {
     var shouldExpand = false
     $(this).find('li').each(function () {
-      if ($(this).hasClass('active')) {
+        if ($(this).hasClass('active')) {
         shouldExpand = true
-      }
+        }
     })
+
     if (shouldExpand) {
-      $(this).addClass('active')
+        $(this).addClass('active')
     }
   })
 
@@ -67,7 +69,7 @@ $(document).ready(function () {
     $('#sidebar').toggleClass('c-sidebar-lg-show');
 
     setTimeout(function () {
-      $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+        $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
     }, 400);
   });
 
