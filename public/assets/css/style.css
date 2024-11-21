@@ -1803,13 +1803,13 @@ p {
   padding: 65px 85px;
   font-size: 14px;
   color: #293957;
-  margin: -125px -85px 0;
+  margin: -25px -85px 0;
   z-index: 9;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .search-box-wrapper {
     padding: 40px;
-    margin: -125px 0 0;
+    margin: -25px 0 0;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
