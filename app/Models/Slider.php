@@ -100,13 +100,13 @@ class Slider extends Model implements HasMedia
             ->format(Manipulations::FORMAT_WEBP)
             ->quality(90)
             ->withResponsiveImages();
-        $this->addMediaConversion('slider-1')
+        $this->addMediaConversion('slider1')
             ->fit(Manipulations::FIT_CONTAIN, 2992, 2992)
             //->crop(Manipulations::CROP_CENTER, 1920, 760)
             ->format(Manipulations::FORMAT_WEBP)
             ->quality(90)
             ->withResponsiveImages();
-        $this->addMediaConversion('slider-2')
+        $this->addMediaConversion('slider2')
             //->fit(Manipulations::FIT_CONTAIN, 2992, 2992)
             //->crop(Manipulations::CROP_CENTER, 1920, 760)
             ->format(Manipulations::FORMAT_WEBP)
@@ -124,8 +124,8 @@ class Slider extends Model implements HasMedia
             $file->preview = $file->getUrl('preview');
             $file->responsive = $file->getUrl('responsive');
             $file->slider = $file->getUrl('slider');
-            $file->{'slider-1'} = $file->getUrl('slider-1');
-            $file->{'slider-2'} = $file->getUrl('slider-2');
+            $file->slider1 = $file->getUrl('slider1');
+            $file->slider2 = $file->getUrl('slider2');
         }
 
         return $file;

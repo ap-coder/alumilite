@@ -1800,7 +1800,7 @@ p {
   position: relative;
   border-radius: 3px;
   text-align: left;
-  padding: 65px 85px;
+  padding: 65px 85px!important;
   font-size: 14px;
   color: #293957;
   margin: -25px -85px 0;
